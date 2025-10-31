@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HandRing
+  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Elbow_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Middle_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Middle_a_jnt_bn/Middle_b_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Middle_a_jnt_bn/Middle_b_jnt_bn/Middle_c_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Middle_a_jnt_bn/Middle_b_jnt_bn/Middle_c_jnt_bn/collision_middle
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Pinky_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Pinky_a_jnt_bn/Pinky_b_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Pinky_a_jnt_bn/Pinky_b_jnt_bn/Pinky_c_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Pinky_a_jnt_bn/Pinky_b_jnt_bn/Pinky_c_jnt_bn/collision_pinky
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Point_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Point_a_jnt_bn/Point_b_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Point_a_jnt_bn/Point_b_jnt_bn/Point_c_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Point_a_jnt_bn/Point_b_jnt_bn/Point_c_jnt_bn/collision_point
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Ring_a_jnt_bn
+    m_Weight: 1
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Ring_a_jnt_bn/Ring_b_jnt_bn
+    m_Weight: 1
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Ring_a_jnt_bn/Ring_b_jnt_bn/Ring_c_jnt_bn
+    m_Weight: 1
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Ring_a_jnt_bn/Ring_b_jnt_bn/Ring_c_jnt_bn/collision_ring
+    m_Weight: 1
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Thumb_Twist_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Thumb_Twist_a_jnt_bn/Thumb_a_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Thumb_Twist_a_jnt_bn/Thumb_a_jnt_bn/Thumb_b_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Thumb_Twist_a_jnt_bn/Thumb_a_jnt_bn/Thumb_b_jnt_bn/Thumb_c_jnt_bn
+    m_Weight: 0
+  - m_Path: Elbow_a_jnt_bn/Wrist_a_jnt_bn/Thumb_Twist_a_jnt_bn/Thumb_a_jnt_bn/Thumb_b_jnt_bn/Thumb_c_jnt_bn/collision_thumb
+    m_Weight: 0
+  - m_Path: hand
+    m_Weight: 0
