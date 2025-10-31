@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Glass
+  - Metal
+  - Plastic
+  - Paper
+  - Hazardous
+  - Waste
   layers:
   - Default
   - TransparentFX

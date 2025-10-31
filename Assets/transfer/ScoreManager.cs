@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     public int TotalScore { get; private set; }
 
     [Header("Countdown & Multiplier")]
-    [SerializeField] private float countdownDuration = 5f;    
+    [SerializeField] private float countdownDuration = 5f;
     [SerializeField] private int startMultiplierAtStreak = 3;
 
     [Header("UI (opsiyonel—birini ata)")]
@@ -33,8 +34,8 @@ public class ScoreManager : MonoBehaviour
     private Coroutine countdownCo;
 
     private bool multiplierActive;
-    private int multiItems;            
-    private int sumTotalsInMultiplier;  
+    private int multiItems;
+    private int sumTotalsInMultiplier;
 
     void Awake()
     {
@@ -49,10 +50,8 @@ public class ScoreManager : MonoBehaviour
         UpdateMultiplierUI();
     }
 
-   
     public bool HasCounted(int id) => countedGlobal.Contains(id);
     public void MarkCounted(int id) => countedGlobal.Add(id);
-
 
     public void RegisterCorrectDeposit(int itemBaseTotal)
     {
@@ -78,7 +77,6 @@ public class ScoreManager : MonoBehaviour
             multiItems = prevN + 1;
             sumTotalsInMultiplier = prevS + itemBaseTotal;
 
-          
             int delta = (sumTotalsInMultiplier * multiItems) - (prevS * prevN);
             AddScore(delta);
         }

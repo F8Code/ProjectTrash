@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 58609473}
   m_Layer: 0
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 58609471}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 118.8, z: -2.73133}
+  m_LocalPosition: {x: -3, y: 118.8, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &58609474
 Rigidbody:
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 60150756}
   m_Layer: 0
   m_Name: Gasoline can
-  m_TagString: Untagged
+  m_TagString: Hazardous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 60150754}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.98, y: 36.96, z: -2.73133}
+  m_LocalPosition: {x: -2.98, y: 36.96, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 4
+  Size: 3
   TargetBin: 0
 --- !u!54 &60150757
 Rigidbody:
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 106714586}
   m_Layer: 0
   m_Name: Nails
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +459,7 @@ Transform:
   m_GameObject: {fileID: 106714584}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.91, y: 113.33, z: -2.73133}
+  m_LocalPosition: {x: -2.91, y: 113.33, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 130594504}
   m_Layer: 0
   m_Name: Flower vase
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -668,8 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 2
+  Size: 3
   TargetBin: 0
 --- !u!54 &130594505
 Rigidbody:
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 202799170}
   m_Layer: 0
   m_Name: Book
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -941,7 +941,7 @@ Transform:
   m_GameObject: {fileID: 202799168}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.09, y: 70.01, z: -2.73133}
+  m_LocalPosition: {x: -3.09, y: 70.01, z: 2.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -959,8 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 2
+  Size: 2
   TargetBin: 0
 --- !u!54 &202799171
 Rigidbody:
@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: 231757223}
   m_Layer: 0
   m_Name: Bolt (rusty)
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,7 +1096,7 @@ Transform:
   m_GameObject: {fileID: 231757221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.97, y: 8.5, z: -2.63}
+  m_LocalPosition: {x: -2.97, y: 8.5, z: 7.2213297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
+  Weight: 1
   Size: 0
   TargetBin: 0
 --- !u!54 &231757224
@@ -1237,7 +1237,7 @@ GameObject:
   - component: {fileID: 263456005}
   m_Layer: 0
   m_Name: Yogurt package
-  m_TagString: Untagged
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1251,7 +1251,7 @@ Transform:
   m_GameObject: {fileID: 263456003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.96, y: 91.7, z: -2.73133}
+  m_LocalPosition: {x: -2.96, y: 91.7, z: 0.5799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
   Weight: 0
-  Size: 0
+  Size: 1
   TargetBin: 0
 --- !u!54 &263456006
 Rigidbody:
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 313027987}
   m_Layer: 0
   m_Name: Soda Can
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
   Weight: 0
-  Size: 0
+  Size: 1
   TargetBin: 0
 --- !u!54 &313027988
 Rigidbody:
@@ -1547,7 +1547,7 @@ GameObject:
   - component: {fileID: 352669710}
   m_Layer: 0
   m_Name: Yogurt package (dirty)
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1561,7 +1561,7 @@ Transform:
   m_GameObject: {fileID: 352669708}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 25.1, z: -2.73133}
+  m_LocalPosition: {x: -3, y: 25.1, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1579,8 +1579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &352669711
 Rigidbody:
@@ -1702,7 +1702,7 @@ GameObject:
   - component: {fileID: 398956088}
   m_Layer: 0
   m_Name: Syringe
-  m_TagString: Untagged
+  m_TagString: Hazardous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1716,7 +1716,7 @@ Transform:
   m_GameObject: {fileID: 398956086}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.93, y: 44.95, z: -2.73133}
+  m_LocalPosition: {x: -2.93, y: 44.95, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
+  Weight: 1
   Size: 0
   TargetBin: 0
 --- !u!54 &398956089
@@ -1931,7 +1931,7 @@ GameObject:
   - component: {fileID: 480705709}
   m_Layer: 0
   m_Name: Toxic barrel
-  m_TagString: Untagged
+  m_TagString: Hazardous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1945,7 +1945,7 @@ Transform:
   m_GameObject: {fileID: 480705707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.88, y: 29.37, z: -2.73133}
+  m_LocalPosition: {x: -2.88, y: 29.37, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1963,8 +1963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 4
+  Size: 4
   TargetBin: 0
 --- !u!54 &480705710
 Rigidbody:
@@ -2222,7 +2222,7 @@ GameObject:
   - component: {fileID: 531958577}
   m_Layer: 0
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2236,7 +2236,7 @@ Transform:
   m_GameObject: {fileID: 531958575}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.08, y: 61.61, z: -2.73133}
+  m_LocalPosition: {x: -3.08, y: 61.61, z: 2.8599997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2255,7 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
   Weight: 0
-  Size: 0
+  Size: 2
   TargetBin: 0
 --- !u!54 &531958578
 Rigidbody:
@@ -2513,7 +2513,7 @@ GameObject:
   - component: {fileID: 685589870}
   m_Layer: 0
   m_Name: Nail (rusty)
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2527,7 +2527,7 @@ Transform:
   m_GameObject: {fileID: 685589868}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.97, y: 11.49, z: -2.73133}
+  m_LocalPosition: {x: -2.97, y: 11.49, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2668,7 +2668,7 @@ GameObject:
   - component: {fileID: 703578621}
   m_Layer: 0
   m_Name: Cooking pot
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2682,7 +2682,7 @@ Transform:
   m_GameObject: {fileID: 703578619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.84, y: 108.7, z: -2.73133}
+  m_LocalPosition: {x: -2.84, y: 108.7, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2700,8 +2700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 3
   TargetBin: 0
 --- !u!54 &703578622
 Rigidbody:
@@ -2902,7 +2902,7 @@ GameObject:
   - component: {fileID: 811581234}
   m_Layer: 0
   m_Name: Bouncy ball
-  m_TagString: Untagged
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2916,7 +2916,7 @@ Transform:
   m_GameObject: {fileID: 811581232}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.98, y: 85.66, z: -2.73133}
+  m_LocalPosition: {x: -2.98, y: 85.66, z: 0.5799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2934,8 +2934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &811581235
 Rigidbody:
@@ -3073,7 +3073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13184073992519144a4779ab265c63c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
-  Accepts: 0
+  useTagCheck: 1
+  AcceptsTag: Glass
+  compareOnItemRoot: 1
+  AcceptsBin: 0
   consumeOnDeposit: 1
 --- !u!65 &816693863
 BoxCollider:
@@ -3183,7 +3186,7 @@ GameObject:
   - component: {fileID: 879250868}
   m_Layer: 0
   m_Name: Toilet paper
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3197,7 +3200,7 @@ Transform:
   m_GameObject: {fileID: 879250866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.02, y: 56.61, z: -2.73133}
+  m_LocalPosition: {x: -3.02, y: 56.61, z: 2.8599997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3215,8 +3218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &879250869
 Rigidbody:
@@ -3338,7 +3341,7 @@ GameObject:
   - component: {fileID: 1018128046}
   m_Layer: 0
   m_Name: Book
-  m_TagString: Untagged
+  m_TagString: Hazardous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3352,7 +3355,7 @@ Transform:
   m_GameObject: {fileID: 1018128044}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.92, y: 41.3, z: -2.73133}
+  m_LocalPosition: {x: -2.92, y: 41.3, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3370,8 +3373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 3
+  Size: 2
   TargetBin: 0
 --- !u!54 &1018128047
 Rigidbody:
@@ -3493,7 +3496,7 @@ GameObject:
   - component: {fileID: 1040765813}
   m_Layer: 0
   m_Name: Magnifying glass
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3525,8 +3528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 2
+  Size: 1
   TargetBin: 0
 --- !u!54 &1040765814
 Rigidbody:
@@ -3701,7 +3704,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13184073992519144a4779ab265c63c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
-  Accepts: 0
+  useTagCheck: 1
+  AcceptsTag: Metal
+  compareOnItemRoot: 1
+  AcceptsBin: 0
   consumeOnDeposit: 1
 --- !u!65 &1141573016
 BoxCollider:
@@ -3811,7 +3817,7 @@ GameObject:
   - component: {fileID: 1168084162}
   m_Layer: 0
   m_Name: Bolt
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3825,7 +3831,7 @@ Transform:
   m_GameObject: {fileID: 1168084160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9, y: 124.4, z: -2.73133}
+  m_LocalPosition: {x: -2.9, y: 124.4, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3843,7 +3849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
+  Weight: 1
   Size: 0
   TargetBin: 0
 --- !u!54 &1168084163
@@ -4003,6 +4009,135 @@ Transform:
   - {fileID: 2112917195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1276178288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276178293}
+  - component: {fileID: 1276178292}
+  - component: {fileID: 1276178291}
+  - component: {fileID: 1276178290}
+  - component: {fileID: 1276178289}
+  m_Layer: 0
+  m_Name: Bin (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1276178289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276178288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13184073992519144a4779ab265c63c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
+  useTagCheck: 1
+  AcceptsTag: Waste
+  compareOnItemRoot: 1
+  AcceptsBin: 0
+  consumeOnDeposit: 1
+--- !u!65 &1276178290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276178288}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1276178291
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276178288}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1276178292
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276178288}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1276178293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276178288}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000011444092, y: -2.67, z: 10.34}
+  m_LocalScale: {x: 1.5731, y: 2.5661, z: 1.634}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1304306093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,7 +4154,7 @@ GameObject:
   - component: {fileID: 1304306095}
   m_Layer: 0
   m_Name: Rubik cube
-  m_TagString: Untagged
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4033,7 +4168,7 @@ Transform:
   m_GameObject: {fileID: 1304306093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 80.16, z: -2.73133}
+  m_LocalPosition: {x: -3.2, y: 80.16, z: 0.5799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4051,8 +4186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &1304306096
 Rigidbody:
@@ -4174,7 +4309,7 @@ GameObject:
   - component: {fileID: 1359319859}
   m_Layer: 0
   m_Name: Newspaper
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4188,7 +4323,7 @@ Transform:
   m_GameObject: {fileID: 1359319857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.96, y: 65.6, z: -2.73133}
+  m_LocalPosition: {x: -2.96, y: 65.6, z: 2.8599997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4207,7 +4342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
   Weight: 0
-  Size: 0
+  Size: 2
   TargetBin: 0
 --- !u!54 &1359319860
 Rigidbody:
@@ -4509,7 +4644,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13184073992519144a4779ab265c63c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
-  Accepts: 0
+  useTagCheck: 1
+  AcceptsTag: Paper
+  compareOnItemRoot: 1
+  AcceptsBin: 0
   consumeOnDeposit: 1
 --- !u!65 &1458352074
 BoxCollider:
@@ -4619,7 +4757,7 @@ GameObject:
   - component: {fileID: 1462864293}
   m_Layer: 0
   m_Name: Half-eaten burger
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4633,7 +4771,7 @@ Transform:
   m_GameObject: {fileID: 1462864291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1, y: 21.39, z: -2.73133}
+  m_LocalPosition: {x: -3.1, y: 21.39, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4651,8 +4789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 2
   TargetBin: 0
 --- !u!54 &1462864294
 Rigidbody:
@@ -4774,7 +4912,7 @@ GameObject:
   - component: {fileID: 1479681496}
   m_Layer: 0
   m_Name: Bleach
-  m_TagString: Untagged
+  m_TagString: Hazardous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4788,7 +4926,7 @@ Transform:
   m_GameObject: {fileID: 1479681494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.05, y: 32.9, z: -2.73133}
+  m_LocalPosition: {x: -3.05, y: 32.9, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4806,8 +4944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 2
+  Size: 2
   TargetBin: 0
 --- !u!54 &1479681497
 Rigidbody:
@@ -4929,7 +5067,7 @@ GameObject:
   - component: {fileID: 1485546883}
   m_Layer: 0
   m_Name: Bottle
-  m_TagString: Untagged
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4943,7 +5081,7 @@ Transform:
   m_GameObject: {fileID: 1485546881}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.96738, y: 96.5, z: -2.73133}
+  m_LocalPosition: {x: -2.96738, y: 96.5, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4962,7 +5100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
   Weight: 0
-  Size: 0
+  Size: 2
   TargetBin: 0
 --- !u!54 &1485546884
 Rigidbody:
@@ -5084,7 +5222,7 @@ GameObject:
   - component: {fileID: 1489212005}
   m_Layer: 0
   m_Name: Glass bottle
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5098,7 +5236,7 @@ Transform:
   m_GameObject: {fileID: 1489212003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.17, y: 17.77, z: -2.73133}
+  m_LocalPosition: {x: -3.17, y: 17.77, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5116,8 +5254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 2
+  Size: 2
   TargetBin: 0
 --- !u!54 &1489212006
 Rigidbody:
@@ -5239,7 +5377,7 @@ GameObject:
   - component: {fileID: 1586630031}
   m_Layer: 0
   m_Name: Catbubu
-  m_TagString: Untagged
+  m_TagString: Hazardous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5253,7 +5391,7 @@ Transform:
   m_GameObject: {fileID: 1586630029}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9, y: 48.52, z: -2.73133}
+  m_LocalPosition: {x: -2.9, y: 48.52, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5271,8 +5409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &1586630032
 Rigidbody:
@@ -5394,7 +5532,7 @@ GameObject:
   - component: {fileID: 1671425483}
   m_Layer: 0
   m_Name: Honey Jar
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5530,8 +5668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 2
+  Size: 2
   TargetBin: 0
 --- !u!1 &1678001268
 GameObject:
@@ -5549,7 +5687,7 @@ GameObject:
   - component: {fileID: 1678001270}
   m_Layer: 0
   m_Name: Graffiti spray
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5563,7 +5701,7 @@ Transform:
   m_GameObject: {fileID: 1678001268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.84, y: 102.14, z: -2.73133}
+  m_LocalPosition: {x: -2.84, y: 102.14, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5581,8 +5719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &1678001271
 Rigidbody:
@@ -5720,7 +5858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13184073992519144a4779ab265c63c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
-  Accepts: 0
+  useTagCheck: 1
+  AcceptsTag: Plastic
+  compareOnItemRoot: 1
+  AcceptsBin: 0
   consumeOnDeposit: 1
 --- !u!65 &1692970197
 BoxCollider:
@@ -5866,7 +6007,7 @@ GameObject:
   - component: {fileID: 1768014590}
   m_Layer: 0
   m_Name: Wine Bottle
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5898,8 +6039,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 2
   TargetBin: 0
 --- !u!54 &1768014591
 Rigidbody:
@@ -6021,7 +6162,7 @@ GameObject:
   - component: {fileID: 1872618952}
   m_Layer: 0
   m_Name: Mirror
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6053,8 +6194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 3
+  Size: 1
   TargetBin: 0
 --- !u!54 &1872618953
 Rigidbody:
@@ -6176,7 +6317,7 @@ GameObject:
   - component: {fileID: 1932910464}
   m_Layer: 0
   m_Name: Playing cards
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6190,7 +6331,7 @@ Transform:
   m_GameObject: {fileID: 1932910462}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9, y: 52.1, z: -2.73133}
+  m_LocalPosition: {x: -2.9, y: 52.1, z: 2.8599997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6208,8 +6349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &1932910465
 Rigidbody:
@@ -6326,6 +6467,7 @@ GameObject:
   - component: {fileID: 1938702452}
   - component: {fileID: 1938702451}
   - component: {fileID: 1938702450}
+  - component: {fileID: 1938702453}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6400,13 +6542,57 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938702449}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 14.38, y: 1, z: 6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1938702453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938702449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &1983776905
 GameObject:
   m_ObjectHideFlags: 0
@@ -6423,7 +6609,7 @@ GameObject:
   - component: {fileID: 1983776907}
   m_Layer: 0
   m_Name: Christmas ornament
-  m_TagString: Untagged
+  m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6455,8 +6641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 1
   TargetBin: 0
 --- !u!54 &1983776908
 Rigidbody:
@@ -6578,7 +6764,7 @@ GameObject:
   - component: {fileID: 2035158165}
   m_Layer: 0
   m_Name: Plastic bottle
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6592,7 +6778,7 @@ Transform:
   m_GameObject: {fileID: 2035158163}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.92, y: 14.49, z: -2.73133}
+  m_LocalPosition: {x: -2.92, y: 14.49, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6610,8 +6796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5115aeeaa0d094f84a80ef6e12efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemStats
-  Weight: 0
-  Size: 0
+  Weight: 1
+  Size: 2
   TargetBin: 0
 --- !u!54 &2035158166
 Rigidbody:
@@ -6733,7 +6919,7 @@ GameObject:
   - component: {fileID: 2061873583}
   m_Layer: 0
   m_Name: Legos
-  m_TagString: Untagged
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6747,7 +6933,7 @@ Transform:
   m_GameObject: {fileID: 2061873581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.06, y: 74.86, z: -2.73133}
+  m_LocalPosition: {x: -3.06, y: 74.86, z: 0.5799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7045,7 +7231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13184073992519144a4779ab265c63c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
-  Accepts: 0
+  useTagCheck: 1
+  AcceptsTag: Hazardous
+  compareOnItemRoot: 1
+  AcceptsBin: 0
   consumeOnDeposit: 1
 --- !u!65 &2140908281
 BoxCollider:
@@ -7152,4 +7341,5 @@ SceneRoots:
   - {fileID: 1692970200}
   - {fileID: 1458352077}
   - {fileID: 2140908284}
+  - {fileID: 1276178293}
   - {fileID: 2075483883}
