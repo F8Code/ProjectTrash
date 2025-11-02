@@ -1645,6 +1645,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 794786637981174801, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1139873098911614045, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1829,6 +1833,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3380572656193575719, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3454700674181900515, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Height
       value: 0.05
@@ -1852,6 +1860,10 @@ PrefabInstance:
     - target: {fileID: 3546064979460370875, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3934070470357282235, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4258127202546914302, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1911,6 +1923,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4644124295607104602, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4662514470289664607, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4850784056435592548, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
@@ -2021,6 +2037,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 15.15075
       objectReference: {fileID: 0}
+    - target: {fileID: 6508033580364890827, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6602800419444116824, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Height
       value: 0.05
@@ -2028,6 +2048,10 @@ PrefabInstance:
     - target: {fileID: 6602800419444116824, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Radius
       value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614135768789381228, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6866976222593799207, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Layer
@@ -2104,6 +2128,10 @@ PrefabInstance:
     - target: {fileID: 8531007848253721502, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 51.324547
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575079587609146935, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8712441992470805400, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Layer
