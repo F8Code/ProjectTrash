@@ -7,6 +7,11 @@ public class PlayerFingertip : MonoBehaviour
     [SerializeField] string _animatorVariable;
     [SerializeField] Collider _detectionCollider;
 
+    void Awake()
+    {
+        _detectionCollider.isTrigger = true;
+    }
+
     readonly HashSet<GameObject> _contacts = new();
 
     public string AnimatorVariable => _animatorVariable;
