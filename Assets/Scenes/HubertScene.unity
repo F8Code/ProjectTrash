@@ -1683,7 +1683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243372871294262134, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _thrownTrashSpeedModifier
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2243372871294262134, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: '_otherFingers.Array.data[0]'
@@ -1703,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 1085521267}
     - target: {fileID: 2243372871294262134, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _thrownTrashBonusUpwardsVelocity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2442642718195707633, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Layer
