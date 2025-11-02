@@ -123,4 +123,9 @@ public class PlayerArm : MonoBehaviour
     {
         _shouldLift = isGrabbing;
     }
+
+    void OnDisable()
+    {
+        _wrist.OnTrashGrabbed -= SwitchHeight;
+    }
 }
