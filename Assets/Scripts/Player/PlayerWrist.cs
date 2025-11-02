@@ -21,7 +21,7 @@ public class PlayerWrist : MonoBehaviour
 
     [Header("Throwing settings")]
     [Tooltip("Multiplier applied to the thrown object's velocity based on hand movement")]
-    [SerializeField, Range(0.1f, 2f)] float _thrownTrashSpeedModifier = 1f;
+    [SerializeField, Range(0.1f, 2f)] float _thrownTrashSpeedMultiplier = 1f;
     [Tooltip("Additional upward velocity applied when releasing a grabbed object")]
     [SerializeField, Range(0.1f, 2f)] float _thrownTrashBonusUpwardsVelocity = 1f;
 
@@ -100,7 +100,7 @@ public class PlayerWrist : MonoBehaviour
     void ReleaseTrash()
     {
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = false;
-        _grabbedTrash.GetComponent<Rigidbody>().linearVelocity = _trashVelocity * _thrownTrashSpeedModifier + Vector3.up * _thrownTrashBonusUpwardsVelocity;
+        _grabbedTrash.GetComponent<Rigidbody>().linearVelocity = _trashVelocity * _thrownTrashSpeedMultiplier + Vector3.up * _thrownTrashBonusUpwardsVelocity;
         _grabbedTrash.transform.parent = null;
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
         OnTrashGrabbed?.Invoke(false);
