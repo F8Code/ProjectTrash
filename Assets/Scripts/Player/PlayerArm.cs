@@ -45,6 +45,8 @@ public class PlayerArm : MonoBehaviour
     [Tooltip("Speed at which the arm lifts or lowers in degrees per second")]
     [SerializeField] float _armDegreesPerSecond = 30f;
 
+    public PlayerWrist Wrist => _wrist;
+
     Quaternion _baseElbowRotation;
     Quaternion _baseWristRotation;
     float _currentElbowZ, _currentWristX;
@@ -122,5 +124,10 @@ public class PlayerArm : MonoBehaviour
     void SwitchHeight(bool isGrabbing)
     {
         _shouldLift = isGrabbing;
+    }
+
+    void OnDisable()
+    {
+        _wrist.OnTrashGrabbed -= SwitchHeight;
     }
 }

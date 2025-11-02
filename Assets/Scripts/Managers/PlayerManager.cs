@@ -2,7 +2,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance { get; private set; }
+
     [SerializeField] PlayerArm _arm;
+
+    public PlayerArm Arm => _arm;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
     
     void OnEnable()
     {
