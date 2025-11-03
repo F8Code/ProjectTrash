@@ -34,22 +34,12 @@ public class Trash : MonoBehaviour
         _collider.sharedMesh = data.Mesh;
         _collider.material = data.PhysicsMaterial;
         _rb.mass = data.RigidBodyMass;
-        _rb.linearDamping = _rb.angularDamping = data.RigidBodyFriction;
 
         //Visual variety data
         transform.localScale = Vector3.one * Random.Range(data.RandomSizeMultiplierRange.x, data.RandomSizeMultiplierRange.y);
-        _renderer.material.color = GetMaterialColor(data);
-    }
-
-    Color GetMaterialColor(TrashData data)
-    {
-        Color tint = data.RandomColorTintRange.Evaluate(Random.value);
-        float brightness = Random.Range(data.RandomColorBrightnessMultiplierRange.x, data.RandomColorBrightnessMultiplierRange.y);
-        float vibrancy = Random.Range(data.RandomColorVibrancyMultiplierRange.x, data.RandomColorVibrancyMultiplierRange.y);
-
-        Color.RGBToHSV(tint, out float h, out float s, out float v);
-
-        return Color.HSVToRGB(h, Mathf.Clamp01(s * vibrancy), Mathf.Clamp01(v * brightness));
+        Color modifiedColor = data.RandomColorTintRange.Evaluate(Random.value);
+        modifiedColor.a *= Random.Range(data.RandomColorBrightnessMultiplierRange.x, data.RandomColorBrightnessMultiplierRange.y);
+        _renderer.material.color = modifiedColor;
     }
 
     void PlayFeedbackActions(bool isGrabbed)

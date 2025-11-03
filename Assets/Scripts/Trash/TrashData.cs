@@ -13,7 +13,6 @@ public class TrashData : ScriptableObject
     [Header("Physics data")]
     public PhysicsMaterial PhysicsMaterial;
     public float RigidBodyMass;
-    public float RigidBodyFriction;
 
     [Header("Feedback data")]
     public float HandSpeedMultiplier;
@@ -24,10 +23,11 @@ public class TrashData : ScriptableObject
     public Vector2 RandomSizeMultiplierRange;
     public Gradient RandomColorTintRange;
     public Vector2 RandomColorBrightnessMultiplierRange;
-    public Vector2 RandomColorVibrancyMultiplierRange;
 
     [Header("Scoring data")]
-    public uint ScoreAward;
+    public uint MassValue;
+    public uint SizeValue;
+    public uint Score;
 }
 
 public enum TrashType
