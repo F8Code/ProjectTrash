@@ -13,34 +13,24 @@ public class InputManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return;
         }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+        Instance = this;
 
         _input = new();
 
-        // Initialize actions
         InitializeActions();
     }
 
     private void OnEnable()
     {
         _input?.Enable();
-
-        GameManager.Instance._onPause.AddListener(OnPause);
-        GameManager.Instance._onResume.AddListener(OnResume);
     }
 
     private void OnDisable()
     {
         _input?.Disable();
-
-        GameManager.Instance._onPause.RemoveListener(OnPause);
-        GameManager.Instance._onResume.RemoveListener(OnResume);
     }
 
     private void InitializeActions()
@@ -48,8 +38,4 @@ public class InputManager : MonoBehaviour
         PlayerActions = _input.Player;
         UIActions = _input.UI;
     }
-
-    private void OnPause() => PlayerActions.Disable();
-
-    private void OnResume() => PlayerActions.Enable();
 }

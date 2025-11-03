@@ -108,9 +108,9 @@ GameObject:
   - component: {fileID: 7657243599034643591}
   - component: {fileID: 1190171369042228118}
   - component: {fileID: 5411896516646783995}
-  - component: {fileID: 2829005701123781466}
   - component: {fileID: 6602800419444116824}
   - component: {fileID: 4619659319179851960}
+  - component: {fileID: 6508033580364890827}
   m_Layer: 0
   m_Name: collision_ring
   m_TagString: Untagged
@@ -212,33 +212,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.00000047823414, y: -1.6956922e-16, z: 0.000000013038516}
---- !u!54 &2829005701123781466
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888960924720279114}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &6602800419444116824
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -276,6 +249,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FingerTip
   _animatorVariable: Ring
   _detectionCollider: {fileID: 5411896516646783995}
+--- !u!54 &6508033580364890827
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888960924720279114}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2044556134975853624
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,9 +352,9 @@ GameObject:
   - component: {fileID: 460577302088540870}
   - component: {fileID: 6797080496431840813}
   - component: {fileID: 6260521116120272261}
-  - component: {fileID: 3197751977379157815}
   - component: {fileID: 3007515442481025355}
   - component: {fileID: 4008159903838433329}
+  - component: {fileID: 794786637981174801}
   m_Layer: 0
   m_Name: collision_thumb
   m_TagString: Untagged
@@ -456,33 +456,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.00000047823414, y: -0.00000047683716, z: -0.0000000018626451}
---- !u!54 &3197751977379157815
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2442642718195707633}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &3007515442481025355
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -520,6 +493,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FingerTip
   _animatorVariable: Thumb
   _detectionCollider: {fileID: 6260521116120272261}
+--- !u!54 &794786637981174801
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442642718195707633}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2911327410415163159
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,9 +532,9 @@ GameObject:
   - component: {fileID: 7225379913991870640}
   - component: {fileID: 6468935628078392413}
   - component: {fileID: 7139559269589475195}
-  - component: {fileID: 8596584639664216547}
   - component: {fileID: 2786969979788076392}
   - component: {fileID: 7062812053850792835}
+  - component: {fileID: 6614135768789381228}
   m_Layer: 0
   m_Name: collision_middle
   m_TagString: Untagged
@@ -636,33 +636,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.0000000013969834, y: 1.2172456e-16, z: 0.000000027939677}
---- !u!54 &8596584639664216547
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2911327410415163159}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &2786969979788076392
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -700,6 +673,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FingerTip
   _animatorVariable: Middle
   _detectionCollider: {fileID: 7139559269589475195}
+--- !u!54 &6614135768789381228
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911327410415163159}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3206625157996257740
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +710,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4387425238224597081}
   - component: {fileID: 7272914714721273472}
-  - component: {fileID: 3426633676879242902}
+  - component: {fileID: 3380572656193575719}
+  - component: {fileID: 2243372871294262134}
   m_Layer: 0
   m_Name: Wrist_a_jnt_bn
   m_TagString: Untagged
@@ -759,7 +760,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07, y: 0.01, z: 0.1}
   m_Center: {x: 0.005, y: 0, z: -0.05}
---- !u!54 &3426633676879242902
+--- !u!54 &3380572656193575719
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -767,7 +768,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3206625157996257740}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -786,6 +787,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2243372871294262134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206625157996257740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287832ba683ff264dad213add42fb9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWrist
+  _thumb: {fileID: 0}
+  _otherFingers: []
+  _armAnimator: {fileID: 0}
+  _grabSpeed: 1
+  _thrownTrashSpeedModifier: 1
+  _thrownTrashBonusUpwardsVelocity: 1
 --- !u!1 &3296429521139650845
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 753279735176529812}
   - component: {fileID: 4644124295607104602}
+  - component: {fileID: 2720570375213784136}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -842,6 +862,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2720570375213784136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296429521139650845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21819901c3df0af40adc52409a7e9150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerArm
+  _wrist: {fileID: 0}
+  _camera: {fileID: 0}
+  _elbowJoint: {fileID: 0}
+  _armMovementStrength: 1
+  _cameraMovementStrength: 0.5
+  _armXPositionRange: {x: -0.4, y: 0.4}
+  _armZPositionRange: {x: -0.03, y: 0.4}
+  _armSidewaysRotationRangeDegrees: {x: -30, y: 5}
+  _armRotationSpeed: 1
+  _elbowRotationRangeDegrees: {x: -60, y: 180}
+  _wristRotationRangeDegrees: {x: -60, y: 60}
+  _reverseElbowAxis: 0
+  _reverseWristAxis: 0
+  _armLiftDegrees: 30
+  _armDegreesPerSecond: 30
 --- !u!1 &3546064979460370875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367308837537172332}
   - component: {fileID: 1088143940553552694}
-  - component: {fileID: 8080754488930877129}
+  - component: {fileID: 8575079587609146935}
   m_Layer: 0
   m_Name: Elbow_a_jnt_bn
   m_TagString: Untagged
@@ -1166,7 +1213,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.04, z: 0.3}
   m_Center: {x: -0.0025, y: -0.01, z: -0.08}
---- !u!54 &8080754488930877129
+--- !u!54 &8575079587609146935
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1174,7 +1221,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6866976222593799207}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1205,9 +1252,9 @@ GameObject:
   - component: {fileID: 4371241300597495734}
   - component: {fileID: 288990716537208295}
   - component: {fileID: 3315307154823093497}
-  - component: {fileID: 4702815853246061877}
   - component: {fileID: 3454700674181900515}
   - component: {fileID: 3519710649070591389}
+  - component: {fileID: 3934070470357282235}
   m_Layer: 0
   m_Name: collision_pinky
   m_TagString: Untagged
@@ -1309,33 +1356,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.0000000013969839, y: -2.4437917e-16, z: -0.0000000018626454}
---- !u!54 &4702815853246061877
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280639175589363019}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &3454700674181900515
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1373,6 +1393,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FingerTip
   _animatorVariable: Pinky
   _detectionCollider: {fileID: 3315307154823093497}
+--- !u!54 &3934070470357282235
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280639175589363019}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7304844673881761698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,9 +1464,9 @@ GameObject:
   - component: {fileID: 1698663147604214030}
   - component: {fileID: 544925063373339003}
   - component: {fileID: 81492863951979403}
-  - component: {fileID: 485322536143219635}
   - component: {fileID: 6158913895375076652}
   - component: {fileID: 6260985928432432645}
+  - component: {fileID: 4662514470289664607}
   m_Layer: 0
   m_Name: collision_point
   m_TagString: Untagged
@@ -1521,33 +1568,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.0000000013969842, y: -4.4052853e-17, z: -0.000000031664968}
---- !u!54 &485322536143219635
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7319781884543663483}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &6158913895375076652
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1585,6 +1605,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FingerTip
   _animatorVariable: Point
   _detectionCollider: {fileID: 81492863951979403}
+--- !u!54 &4662514470289664607
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7319781884543663483}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7548074042120412058
 GameObject:
   m_ObjectHideFlags: 0
