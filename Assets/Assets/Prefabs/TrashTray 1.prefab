@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.25873, y: -0.03859, z: -0.2}
-  m_LocalScale: {x: 1.5, y: 1, z: 1.1}
+  m_LocalScale: {x: 1.6, y: 1, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2910695650773423024}
@@ -83,14 +83,22 @@ PrefabInstance:
     - target: {fileID: -5995163062116429111, guid: b8bdfd3c707175c47966111b7033fcd2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e58a1075c7ceeff4da0345d2f703982b, type: 2}
+      objectReference: {fileID: 2100000, guid: ebf01e9b29ba18044b4fc8a010ff25ab, type: 2}
     - target: {fileID: -5169578811043067064, guid: b8bdfd3c707175c47966111b7033fcd2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 67546f01b0501af46b45e9f363724155, type: 2}
+    - target: {fileID: -351794877043969093, guid: b8bdfd3c707175c47966111b7033fcd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.462
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b8bdfd3c707175c47966111b7033fcd2, type: 3}
       propertyPath: m_Name
       value: Table_Tray
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891792828147989070, guid: b8bdfd3c707175c47966111b7033fcd2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
