@@ -29,6 +29,7 @@ public class PlayerWrist : MonoBehaviour
     float _currentGrab01;
     PlayerFingertip[] _allFingers;
     GameObject _grabbedTrash = null;
+    Transform _originalTrashParent;
     Vector3 _lastTrashPosition, _trashVelocity;
 
     public event Action<bool> OnTrashGrabbed;
@@ -92,6 +93,7 @@ public class PlayerWrist : MonoBehaviour
     void GrabTrash(GameObject trash)
     {
         _grabbedTrash = trash;
+        _originalTrashParent = _grabbedTrash.transform.parent;
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
         OnTrashGrabbed?.Invoke(true);
@@ -101,7 +103,7 @@ public class PlayerWrist : MonoBehaviour
     {
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = false;
         _grabbedTrash.GetComponent<Rigidbody>().linearVelocity = _trashVelocity * _thrownTrashSpeedMultiplier + Vector3.up * _thrownTrashBonusUpwardsVelocity;
-        _grabbedTrash.transform.parent = null;
+        _grabbedTrash.transform.parent = _originalTrashParent;
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
         OnTrashGrabbed?.Invoke(false);
         _grabbedTrash = null;
