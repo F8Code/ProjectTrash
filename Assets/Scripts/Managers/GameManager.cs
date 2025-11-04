@@ -67,8 +67,6 @@ public class GameManager : MonoBehaviour
 
     public void ModifyScore(int scoreAward)
     {
-        Debug.LogWarning("AWARD: " + scoreAward);
-
         if (scoreAward > 0)
             _score += (uint)scoreAward;
             
