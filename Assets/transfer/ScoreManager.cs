@@ -9,14 +9,14 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager I;
 
-    [Header("Score")]
+
     public int TotalScore { get; private set; }
 
-    [Header("Countdown & Multiplier")]
+
     [SerializeField] private float countdownDuration = 5f;
     [SerializeField] private int startMultiplierAtStreak = 3;
 
-    [Header("UI (opsiyonel—birini ata)")]
+
     [SerializeField] private TMP_Text scoreTMP;
     [SerializeField] private Text scoreText;
     [Space(4)]

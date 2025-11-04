@@ -4,21 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ScoreZone : MonoBehaviour
 {
-    [Header("Checking Mode")]
-    [Tooltip("Açıksa, tag ile doğrular. Kapalıysa enum ile doğrular.")]
+
     [SerializeField] private bool useTagCheck = true;
 
-    [Header("Tag Mode")]
-    [Tooltip("Karşılaştırılacak tag (Tag Manager'da oluşturulmuş olmalı).")]
+
     public string AcceptsTag = "Plastic";
 
-    [Tooltip("Tag'i item'ın root GameObject'inden mi oku? (Önerilir)")]
     [SerializeField] private bool compareOnItemRoot = true;
 
-    [Header("Enum Mode")]
     public BinType AcceptsBin = BinType.None;
 
-    [Header("Options")]
     [SerializeField] private bool consumeOnDeposit = true;
 
     private void Reset()
@@ -34,7 +29,7 @@ public class ScoreZone : MonoBehaviour
 
         if (ScoreManager.I == null)
         {
-            Debug.LogWarning("[ScoreZone] ScoreManager yok.");
+            Debug.LogWarning("[ScoreZone] No ScoreManager.");
             return;
         }
 
@@ -51,7 +46,7 @@ public class ScoreZone : MonoBehaviour
            
             if (string.IsNullOrWhiteSpace(AcceptsTag))
             {
-                Debug.LogWarning($"[ScoreZone] AcceptsTag boş. '{name}' doğru eşleşmeyecek.");
+                Debug.LogWarning($"[ScoreZone] AcceptsTag is empty. '{name}' wont match.");
                 return;
             }
 
