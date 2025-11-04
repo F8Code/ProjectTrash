@@ -23,7 +23,9 @@ public class PlayerArm : MonoBehaviour
     [Tooltip("Total angle of the circular slice in degrees")]
     [SerializeField] float _circleSliceAngle = 120f;
     [Tooltip("Maximum distance you can reach from the circular slice center")]
-    [SerializeField] float _circleSliceRadius = 1f;
+    [SerializeField] float _circleSliceMaxRadius = 1f;
+    [Tooltip("Minimum distance you can reach from the circular slice center")]
+    [SerializeField] float _circleSliceMinRadius = 1f;
 
     [Header("Arm movement settings")]
     [Tooltip("Strength of the arm movement relative to mouse input")]
@@ -137,8 +139,8 @@ public class PlayerArm : MonoBehaviour
         }
 
         //Distance clamping
-        if (distanceFromCenter > _circleSliceRadius)
-            centerToTarget = centerToTarget.normalized * _circleSliceRadius;
+        if (distanceFromCenter > _circleSliceMaxRadius || distanceFromCenter < _circleSliceMinRadius)
+            centerToTarget = centerToTarget.normalized * Mathf.Clamp(distanceFromCenter, _circleSliceMinRadius, _circleSliceMaxRadius);
 
         Vector2 clampedXZ = centerXZ + centerToTarget;
         targetLocalPosition = new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
