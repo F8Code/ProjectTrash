@@ -32,7 +32,7 @@ public class PlayerWrist : MonoBehaviour
     Transform _originalTrashParent;
     Vector3 _lastTrashPosition, _trashVelocity;
 
-    public event Action<bool> OnTrashGrabbed;
+    public event Action<bool, Vector3> OnTrashGrabbed;
 
     void Awake()
     {
@@ -96,16 +96,17 @@ public class PlayerWrist : MonoBehaviour
         _originalTrashParent = _grabbedTrash.transform.parent;
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
-        OnTrashGrabbed?.Invoke(true);
+        OnTrashGrabbed?.Invoke(true, Vector3.zero);
     }
     
     void ReleaseTrash()
     {
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = false;
-        _grabbedTrash.GetComponent<Rigidbody>().linearVelocity = _trashVelocity * _thrownTrashSpeedMultiplier + Vector3.up * _thrownTrashBonusUpwardsVelocity;
+        Vector3 appliedVelocity = _trashVelocity * _thrownTrashSpeedMultiplier + Vector3.up * _thrownTrashBonusUpwardsVelocity;
+        _grabbedTrash.GetComponent<Rigidbody>().linearVelocity = appliedVelocity;
         _grabbedTrash.transform.parent = _originalTrashParent;
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
-        OnTrashGrabbed?.Invoke(false);
+        OnTrashGrabbed?.Invoke(false, appliedVelocity);
         _grabbedTrash = null;
     }
 
