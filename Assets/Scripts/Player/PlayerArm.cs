@@ -41,9 +41,9 @@ public class PlayerArm : MonoBehaviour
 
     [Header("Hand lifting settings")]
     [Tooltip("Lift angle of the arm in degrees when trash is grabbed")]
-    [SerializeField] uint _armLiftDegrees = 30;
+    [SerializeField, Range(0, 60)] uint _armLiftDegrees = 30;
     [Tooltip("Speed at which the arm lifts or lowers in degrees per second")]
-    [SerializeField] float _armDegreesPerSecond = 30f;
+    [SerializeField, Range(10f, 120f)] float _armDegreesPerSecond = 30f;
 
     public PlayerWrist Wrist => _wrist;
 

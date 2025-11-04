@@ -12,7 +12,7 @@ public class TrashFactory
         _trashPool = new ObjectPool<Trash>(trashPrefab, initialPoolSize, poolParent.transform);
     }
 
-    public Trash SpawnEnemy(TrashData data, Vector2 position)
+    public Trash SpawnTrash(TrashData data, Vector3 position)
     {
         Trash trash = _trashPool.Get();
         trash.transform.position = position;
@@ -22,7 +22,7 @@ public class TrashFactory
         return trash;
     }
 
-    public void DespawnEnemy(Trash trash)
+    public void DespawnTrash(Trash trash)
     {
         _trashPool.ReturnToPool(trash);
     }

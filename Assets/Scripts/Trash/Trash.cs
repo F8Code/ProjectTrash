@@ -1,12 +1,28 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Trash : MonoBehaviour
 {
+    [Header("Audio settings")]
+    [Tooltip("Minimum angle of the thrash throw trajectory for the throw sound to play")]
+    [SerializeField, Range(0, 80)] uint _minimumGroundAngleToPlayThrowSound = 45;
+    [Tooltip("Grab sound volume multiplier")]
+    [SerializeField, Range(0f, 2f)] float _grabSoundVolume = 1f;
+    [Tooltip("Throw sound volume multiplier")]
+    [SerializeField, Range(0f, 2f)] float _throwSoundVolume = 1f;
+
     TrashData _data;
     Renderer _renderer;
     MeshFilter _meshFilter;
     Rigidbody _rb;
     MeshCollider _collider;
+
+    public string Name => _data.Name;
+    public TrashType Type => _data.Type;
+    public uint Score => 1 + _data.MassScore + _data.SizeScore;
+
+    public event Action<Trash, int> OnTrashCollected;
 
     void Awake()
     {
@@ -34,27 +50,27 @@ public class Trash : MonoBehaviour
         _collider.sharedMesh = data.Mesh;
         _collider.material = data.PhysicsMaterial;
         _rb.mass = data.RigidBodyMass;
-        _rb.linearDamping = _rb.angularDamping = data.RigidBodyFriction;
 
         //Visual variety data
         transform.localScale = Vector3.one * Random.Range(data.RandomSizeMultiplierRange.x, data.RandomSizeMultiplierRange.y);
-        _renderer.material.color = GetMaterialColor(data);
-    }
-
-    Color GetMaterialColor(TrashData data)
-    {
-        Color tint = data.RandomColorTintRange.Evaluate(Random.value);
-        float brightness = Random.Range(data.RandomColorBrightnessMultiplierRange.x, data.RandomColorBrightnessMultiplierRange.y);
-        float vibrancy = Random.Range(data.RandomColorVibrancyMultiplierRange.x, data.RandomColorVibrancyMultiplierRange.y);
-
-        Color.RGBToHSV(tint, out float h, out float s, out float v);
-
-        return Color.HSVToRGB(h, Mathf.Clamp01(s * vibrancy), Mathf.Clamp01(v * brightness));
+        Color modifiedColor = data.RandomColorTintRange.Evaluate(Random.value);
+        modifiedColor.a *= Random.Range(data.RandomColorBrightnessMultiplierRange.x, data.RandomColorBrightnessMultiplierRange.y);
+        _renderer.material.color = modifiedColor;
     }
 
     void PlayFeedbackActions(bool isGrabbed)
     {
-        
+
+    }
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != GameConstants.Layer.TrashDespawnPlane)
+            return;
+
+        OnTrashCollected?.Invoke(this, -(int)Score);
+
+        Debug.Log($"Trash {Name} fell to the floor. Score: {-(int)Score}");
     }
     
     void OnDisable()
