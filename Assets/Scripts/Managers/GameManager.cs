@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public IGameState CurrentState => _stateMachine.CurrentState;
     public IGameState PreviousState => _stateMachine.PreviousState;
     public float GameTime => _activeGameTime;
+    public uint Score => _score;
     public int FPS => (int)(1.0f / _roundedDeltaTime);
 
     void Awake()

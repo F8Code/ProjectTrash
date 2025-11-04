@@ -26,6 +26,8 @@ public class PlayerArm : MonoBehaviour
     [SerializeField] Vector2 _armZPositionRange = new Vector2(-0.03f, 0.4f);
     [Tooltip("Sideways arm rotation range in degrees")]
     [SerializeField] Vector2 _armSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
+    [Tooltip("Sideways camera rotation range in degrees")]
+    [SerializeField] Vector2 _cameraSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
 
     [Header("Wrist rotation settings")]
     [Tooltip("Speed multiplier for arm rotation when rotating the hand around")]
@@ -52,6 +54,9 @@ public class PlayerArm : MonoBehaviour
     float _currentElbowZ, _currentWristX;
     float _currentLiftDegrees = 0f;
     bool _shouldLift = false;
+
+    float _armSpeedDebuf = 1f;
+    public void SetArmSpeedDebuf(float debuf) => _armSpeedDebuf = debuf;
 
     void Awake()
     {
@@ -81,7 +86,7 @@ public class PlayerArm : MonoBehaviour
         if (Time.time < 0.5f) return; //Prevent weird mouseInput readings at the very start of the game
 
         //Reading movement
-        Vector2 mouseInput = InputManager.Instance.PlayerActions.MoveHand.ReadValue<Vector2>() * ARM_MOVEMENT_SCALING;
+        Vector2 mouseInput = InputManager.Instance.PlayerActions.MoveHand.ReadValue<Vector2>() * ARM_MOVEMENT_SCALING * _armSpeedDebuf;
         Vector3 movementVector = new Vector3(mouseInput.x, 0, mouseInput.y);
 
         //Limiting movement
@@ -95,8 +100,11 @@ public class PlayerArm : MonoBehaviour
 
         //Y axis Rotation based on movement
         float inverseLerp = Mathf.InverseLerp(_armXPositionRange.x, _armXPositionRange.y, transform.localPosition.x);
-        float rotationY = Mathf.Lerp(_armSidewaysRotationRangeDegrees.x, _armSidewaysRotationRangeDegrees.y, inverseLerp);
-        _elbowJoint.localRotation = _baseElbowRotation * Quaternion.Euler(_elbowJoint.localEulerAngles.x, rotationY, _elbowJoint.localEulerAngles.z);
+        float armRotationY = Mathf.Lerp(_armSidewaysRotationRangeDegrees.x, _armSidewaysRotationRangeDegrees.y, inverseLerp);
+        _elbowJoint.localRotation = _baseElbowRotation * Quaternion.Euler(_elbowJoint.localEulerAngles.x, armRotationY, _elbowJoint.localEulerAngles.z);
+
+        float cameraRotationY = Mathf.Lerp(_cameraSidewaysRotationRangeDegrees.x, _cameraSidewaysRotationRangeDegrees.y, inverseLerp);
+        _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
     }
 
     void RotateHand()
