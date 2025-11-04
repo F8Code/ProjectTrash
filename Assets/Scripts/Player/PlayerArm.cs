@@ -82,7 +82,7 @@ public class PlayerArm : MonoBehaviour
         else
             RotateHand();
 
-        LiftHand();
+        SetHandHeightAndGrab();
 
         _wrist.CustomUpdate();
     }
@@ -161,15 +161,30 @@ public class PlayerArm : MonoBehaviour
         _wrist.transform.localRotation = _baseWristRotation * Quaternion.Euler(_currentWristX, 0f, 0f);
     }
 
-    void LiftHand()
+    void SetHandHeightAndGrab()
     {
-        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (_shouldLift ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, _armLiftDegrees);
+        bool isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
+        _wrist.ShouldGrab(isGrabbing && (_shouldLift || ShouldGrab()));
+        bool butShouldItActuallyLift = _shouldLift || !isGrabbing;
+
+        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (butShouldItActuallyLift ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, _armLiftDegrees);
         _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z);
+
+        
     }
 
-    void SwitchHeight(bool isGrabbing)
+    bool ShouldGrab()
     {
-        _shouldLift = isGrabbing;
+        int layerMask = ~((1 << GameConstants.Layer.Default) | (1 << GameConstants.Layer.Player));
+        bool isHit = Physics.SphereCast(_wrist.Position + Vector3.up * 0.25f, 0.2f, Vector3.down, out RaycastHit hit, 0.1f, layerMask);
+        if(isHit && hit.collider.gameObject != null)
+            Debug.Log(hit.collider.gameObject.name);
+        return isHit;
+    }
+
+    void SwitchHeight(bool isGrabbed)
+    {
+        _shouldLift = isGrabbed;
     }
 
     void OnDisable()
