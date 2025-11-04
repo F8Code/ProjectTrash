@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class TrashCan : MonoBehaviour
 {
-    [Header("References")]
-    [Tooltip("Trigger collider used to detect trash that fell inside of the bin")]
-    [SerializeField] Collider _trashDetectionCollider;
-
     [Header("Core settings")]
     [Tooltip("Type of trash that is accepted by this can")]
     [SerializeField] TrashType _acceptedTrash;
