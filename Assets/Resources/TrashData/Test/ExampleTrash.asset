@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExampleTrash
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Example1
-  Type: 0
+  Type: 2
   Mesh: {fileID: -2265175041773621152, guid: 2db6e81215e6f3e42894caad00508863, type: 3}
   Material: {fileID: 2100000, guid: fde2c47d2f5cde048a196eb65d1352dd, type: 2}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
@@ -21,11 +21,11 @@ MonoBehaviour:
   HandSpeedMultiplier: 0.5
   PickupSound: {fileID: 8300000, guid: 8a1519f7a059bc8488949f14a121aed4, type: 3}
   ThrowSound: {fileID: 8300000, guid: 149310087bd2b384da0ae202b5b04924, type: 3}
-  RandomSizeMultiplierRange: {x: 0.9, y: 1.1}
+  RandomSizeMultiplierRange: {x: 0.2, y: 0.25}
   RandomColorTintRange:
     serializedVersion: 2
-    key0: {r: 0.78054047, g: 0.7830189, b: 0.63897294, a: 1}
-    key1: {r: 0.9433962, g: 0.79120815, b: 0.734247, a: 1}
+    key0: {r: 0.7178026, g: 0.7264151, b: 0.40775186, a: 1}
+    key1: {r: 0.7169812, g: 0.4988943, b: 0.3754005, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -52,7 +52,6 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  RandomColorBrightnessMultiplierRange: {x: 0.5, y: 1}
-  MassValue: 4
-  SizeValue: 4
-  Score: 8
+  RandomColorBrightnessMultiplierRange: {x: 0.25, y: 1}
+  MassScore: 4
+  SizeScore: 4

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerFingertip : MonoBehaviour
 {
+    [Header("Core settings")]
+    [Tooltip("Animator variable that controls this specific finger movement")]
     [SerializeField] string _animatorVariable;
+    [Tooltip("Trigger collider used for detecting trash in this finger")]
     [SerializeField] Collider _detectionCollider;
 
     void Awake()
