@@ -142,5 +142,5 @@ MonoBehaviour:
   - {fileID: 8858547910054948953, guid: f6ca4fe4d7df08d43a2e4991567e42b6, type: 3}
   - {fileID: 1978353920474322709, guid: ba6e5a11a79e6c4448c8c3abeabc234b, type: 3}
   - {fileID: 555027039461909803, guid: df7176df32e61ab478a9dbfe32f03a1e, type: 3}
-  spawnPosition: {x: -2, y: 1, z: 10}
+  spawnPosition: {x: -3.038, y: 1.327, z: 4.18}
   spawnInterval: 2
