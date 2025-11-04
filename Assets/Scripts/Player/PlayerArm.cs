@@ -81,6 +81,11 @@ public class PlayerArm : MonoBehaviour
         _wrist.CustomUpdate();
     }
 
+    [SerializeField] Transform _sliceCenter;
+    [SerializeField] float _sliceYRotationDegrees = 15f;
+    [SerializeField] float _sliceAngle = 45f;
+    [SerializeField] float _sliceLength = 3f;
+
     void MoveSelfAndCamera()
     {
         if (Time.time < 0.5f) return; //Prevent weird mouseInput readings at the very start of the game
@@ -91,8 +96,10 @@ public class PlayerArm : MonoBehaviour
 
         //Limiting movement
         Vector3 targetLocalPosition = transform.localPosition + movementVector * _armMovementStrength;
-        if (targetLocalPosition.x < _armXPositionRange.x || targetLocalPosition.x > _armXPositionRange.y) movementVector.x = 0f;
-        if (targetLocalPosition.z < _armZPositionRange.x || targetLocalPosition.z > _armZPositionRange.y) movementVector.z = 0f;
+
+        //IS ISNIDE CIRCLE?
+        targetLocalPosition = ClampInsideCircle(targetLocalPosition);
+        movementVector = (targetLocalPosition - transform.localPosition) / _armMovementStrength;
 
         //Movement
         transform.position += movementVector * _armMovementStrength;
@@ -105,6 +112,35 @@ public class PlayerArm : MonoBehaviour
 
         float cameraRotationY = Mathf.Lerp(_cameraSidewaysRotationRangeDegrees.x, _cameraSidewaysRotationRangeDegrees.y, inverseLerp);
         _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
+    }
+
+    Vector3 ClampInsideCircle(Vector3 targetLocalPosition)
+    {
+        Vector3 centerLocalPos = transform.parent.InverseTransformPoint(_sliceCenter.position);
+        Vector2 targetXZ = new Vector2(targetLocalPosition.x, targetLocalPosition.z);
+        Vector2 centerXZ = new Vector2(centerLocalPos.x, centerLocalPos.z);
+        Vector2 toTarget = targetXZ - centerXZ;
+
+        float distance = toTarget.magnitude;
+
+        float alphaRad = _sliceYRotationDegrees * Mathf.Deg2Rad;
+        float halfAngleRad = _sliceAngle * 0.5f * Mathf.Deg2Rad;
+
+        float pointAngle = Mathf.Atan2(toTarget.x, toTarget.y);
+        float delta = Mathf.DeltaAngle(alphaRad * Mathf.Rad2Deg, pointAngle * Mathf.Rad2Deg) * Mathf.Deg2Rad;
+
+        if (Mathf.Abs(delta) > halfAngleRad)
+        {
+            float clampedAngle = alphaRad + Mathf.Sign(delta) * halfAngleRad;
+            Vector2 dir = new Vector2(Mathf.Sin(clampedAngle), Mathf.Cos(clampedAngle));
+            toTarget = dir * distance;
+        }
+
+        if (distance > _sliceLength)
+            toTarget = toTarget.normalized * _sliceLength;
+
+        Vector2 clampedXZ = centerXZ + toTarget;
+        return new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
     }
 
     void RotateHand()
