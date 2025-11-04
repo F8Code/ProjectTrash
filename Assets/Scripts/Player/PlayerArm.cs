@@ -15,15 +15,21 @@ public class PlayerArm : MonoBehaviour
     [Tooltip("Transform to the elbow joint of the arm")]
     [SerializeField] Transform _elbowJoint;
 
+    [Header("Arm movement area settings")]
+    [Tooltip("Center point of the circular slice that defines the arm's allowed movement area")]
+    [SerializeField] Transform _circleSliceCenter;
+    [Tooltip("Rotation of the circular slice around the Y axis in degrees (defines the slice's facing direction)")]
+    [SerializeField] float _circleSliceYRotationDegrees = 0f;
+    [Tooltip("Total angle of the circular slice in degrees")]
+    [SerializeField] float _circleSliceAngle = 120f;
+    [Tooltip("Maximum distance you can reach from the circular slice center")]
+    [SerializeField] float _circleSliceRadius = 1f;
+
     [Header("Arm movement settings")]
     [Tooltip("Strength of the arm movement relative to mouse input")]
     [SerializeField, Range(0.1f, 2f)] float _armMovementStrength = 1f;
     [Tooltip("Strength of the camera movement relative to the arm")]
     [SerializeField, Range(0f, 2f)] float _cameraMovementStrength = 0.5f;
-    [Tooltip("Allowed X-axis movement range of the arm (local position)")]
-    [SerializeField] Vector2 _armXPositionRange = new Vector2(-0.4f, 0.4f);
-    [Tooltip("Allowed Z-axis movement range of the arm (local position)")]
-    [SerializeField] Vector2 _armZPositionRange = new Vector2(-0.03f, 0.4f);
     [Tooltip("Sideways arm rotation range in degrees")]
     [SerializeField] Vector2 _armSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
     [Tooltip("Sideways camera rotation range in degrees")]
@@ -81,11 +87,6 @@ public class PlayerArm : MonoBehaviour
         _wrist.CustomUpdate();
     }
 
-    [SerializeField] Transform _sliceCenter;
-    [SerializeField] float _sliceYRotationDegrees = 15f;
-    [SerializeField] float _sliceAngle = 45f;
-    [SerializeField] float _sliceLength = 3f;
-
     void MoveSelfAndCamera()
     {
         if (Time.time < 0.5f) return; //Prevent weird mouseInput readings at the very start of the game
@@ -97,8 +98,7 @@ public class PlayerArm : MonoBehaviour
         //Limiting movement
         Vector3 targetLocalPosition = transform.localPosition + movementVector * _armMovementStrength;
 
-        //IS ISNIDE CIRCLE?
-        targetLocalPosition = ClampInsideCircle(targetLocalPosition);
+        ClampInsideCircleSlice(ref targetLocalPosition, out float angleInverseLerp);
         movementVector = (targetLocalPosition - transform.localPosition) / _armMovementStrength;
 
         //Movement
@@ -106,41 +106,43 @@ public class PlayerArm : MonoBehaviour
         _camera.transform.position += movementVector * _cameraMovementStrength;
 
         //Y axis Rotation based on movement
-        float inverseLerp = Mathf.InverseLerp(_armXPositionRange.x, _armXPositionRange.y, transform.localPosition.x);
-        float armRotationY = Mathf.Lerp(_armSidewaysRotationRangeDegrees.x, _armSidewaysRotationRangeDegrees.y, inverseLerp);
+        float armRotationY = Mathf.Lerp(_armSidewaysRotationRangeDegrees.x, _armSidewaysRotationRangeDegrees.y, angleInverseLerp);
         _elbowJoint.localRotation = _baseElbowRotation * Quaternion.Euler(_elbowJoint.localEulerAngles.x, armRotationY, _elbowJoint.localEulerAngles.z);
 
-        float cameraRotationY = Mathf.Lerp(_cameraSidewaysRotationRangeDegrees.x, _cameraSidewaysRotationRangeDegrees.y, inverseLerp);
+        float cameraRotationY = Mathf.Lerp(_cameraSidewaysRotationRangeDegrees.x, _cameraSidewaysRotationRangeDegrees.y, angleInverseLerp);
         _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
     }
 
-    Vector3 ClampInsideCircle(Vector3 targetLocalPosition)
+    void ClampInsideCircleSlice(ref Vector3 targetLocalPosition, out float angleInverseLerp)
     {
-        Vector3 centerLocalPos = transform.parent.InverseTransformPoint(_sliceCenter.position);
+        Vector3 sliceCenterLocal = transform.parent.InverseTransformPoint(_circleSliceCenter.position);
+
         Vector2 targetXZ = new Vector2(targetLocalPosition.x, targetLocalPosition.z);
-        Vector2 centerXZ = new Vector2(centerLocalPos.x, centerLocalPos.z);
-        Vector2 toTarget = targetXZ - centerXZ;
+        Vector2 centerXZ = new Vector2(sliceCenterLocal.x, sliceCenterLocal.z);
+        Vector2 centerToTarget = targetXZ - centerXZ;
 
-        float distance = toTarget.magnitude;
+        float distanceFromCenter = centerToTarget.magnitude;
+        float sliceDirection = _circleSliceYRotationDegrees * Mathf.Deg2Rad;
+        float sliceHalfAngle = _circleSliceAngle * 0.5f * Mathf.Deg2Rad;
 
-        float alphaRad = _sliceYRotationDegrees * Mathf.Deg2Rad;
-        float halfAngleRad = _sliceAngle * 0.5f * Mathf.Deg2Rad;
+        float currentAngle = Mathf.Atan2(centerToTarget.x, centerToTarget.y);
+        float currentAngleOffset = Mathf.DeltaAngle(sliceDirection * Mathf.Rad2Deg, currentAngle * Mathf.Rad2Deg) * Mathf.Deg2Rad;
 
-        float pointAngle = Mathf.Atan2(toTarget.x, toTarget.y);
-        float delta = Mathf.DeltaAngle(alphaRad * Mathf.Rad2Deg, pointAngle * Mathf.Rad2Deg) * Mathf.Deg2Rad;
-
-        if (Mathf.Abs(delta) > halfAngleRad)
+        //Angle clamping
+        if (Mathf.Abs(currentAngleOffset) > sliceHalfAngle)
         {
-            float clampedAngle = alphaRad + Mathf.Sign(delta) * halfAngleRad;
-            Vector2 dir = new Vector2(Mathf.Sin(clampedAngle), Mathf.Cos(clampedAngle));
-            toTarget = dir * distance;
+            float clampedAngle = sliceDirection + Mathf.Sign(currentAngleOffset) * sliceHalfAngle;
+            Vector2 clampedDirection = new Vector2(Mathf.Sin(clampedAngle), Mathf.Cos(clampedAngle));
+            centerToTarget = clampedDirection * distanceFromCenter;
         }
 
-        if (distance > _sliceLength)
-            toTarget = toTarget.normalized * _sliceLength;
+        //Distance clamping
+        if (distanceFromCenter > _circleSliceRadius)
+            centerToTarget = centerToTarget.normalized * _circleSliceRadius;
 
-        Vector2 clampedXZ = centerXZ + toTarget;
-        return new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
+        Vector2 clampedXZ = centerXZ + centerToTarget;
+        targetLocalPosition = new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
+        angleInverseLerp = ((currentAngleOffset / sliceHalfAngle) + 1f) * 0.5f;
     }
 
     void RotateHand()

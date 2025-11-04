@@ -1644,7 +1644,7 @@ Transform:
   m_GameObject: {fileID: 828194128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.423, y: 0.5599, z: -0.132}
+  m_LocalPosition: {x: -0.304, y: 0.5599, z: -0.037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2298,7 +2298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1057179103}
   _acceptedTrash: 2
 --- !u!65 &1057179103
 BoxCollider:
@@ -2520,7 +2519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1139753013}
   _acceptedTrash: 4
 --- !u!65 &1139753013
 BoxCollider:
@@ -2846,6 +2844,18 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceAngle
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceCenter
+      value: 
+      objectReference: {fileID: 828194129}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceRadius
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armDegreesPerSecond
       value: 90
       objectReference: {fileID: 0}
@@ -2875,7 +2885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _cameraMovementStrength
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_EditorClassIdentifier
@@ -2895,15 +2905,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armSidewaysRotationRangeDegrees.x
-      value: -30
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armSidewaysRotationRangeDegrees.y
-      value: 30
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _cameraSidewaysRotationRangeDegrees.x
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _cameraSidewaysRotationRangeDegrees.y
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2786969979788076392, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Height
@@ -4090,7 +4104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1654491146}
   _acceptedTrash: 0
 --- !u!65 &1654491146
 BoxCollider:
@@ -4444,7 +4457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1819693784}
   _acceptedTrash: 3
 --- !u!65 &1819693784
 BoxCollider:
@@ -4522,7 +4534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1857714166}
   _acceptedTrash: 1
 --- !u!65 &1857714166
 BoxCollider:
@@ -4578,7 +4589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1964296973}
   _acceptedTrash: 5
 --- !u!65 &1964296973
 BoxCollider:
