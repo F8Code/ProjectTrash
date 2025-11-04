@@ -521,10 +521,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1466541270968092113, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 7285276770112252081, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
       propertyPath: m_Name
       value: BinHazardous
       objectReference: {fileID: 0}
+    - target: {fileID: 8315758533143119723, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1797,6 +1805,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2661147542246088920, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
+    - target: {fileID: 3954209348704435813, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 6941059146072714778, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
       propertyPath: m_Name
       value: BinPaper
@@ -2984,6 +3000,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657540193}
     m_Modifications:
+    - target: {fileID: 353556813768884052, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
+    - target: {fileID: 1488294155921635688, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 3514706527779826845, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: m_Name
       value: BinGlass
@@ -4923,6 +4947,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3037465867443576819, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
+    - target: {fileID: 5730067544956554007, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 8388922689324386835, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_Name
       value: BinWaste
@@ -5434,6 +5466,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657540193}
     m_Modifications:
+    - target: {fileID: 954836878455544843, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
+    - target: {fileID: 1113343137362241040, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 7835597966009718293, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: m_Name
       value: BinMetal
@@ -5859,6 +5899,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3278719775165812109, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
+    - target: {fileID: 3869894301029148662, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 9004717247053562256, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
       propertyPath: m_Name
       value: BinPlastic

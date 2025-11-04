@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashConveyor
   _trashMovementSpeed: 5
-  _disableTrashGravity: 1
+  _disableTrashGravity: 0
   _trashFlingSpeed: 1.5
 --- !u!1 &5607149971999937533
 GameObject:
