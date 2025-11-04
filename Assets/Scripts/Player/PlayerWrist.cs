@@ -35,6 +35,8 @@ public class PlayerWrist : MonoBehaviour
     Transform _originalTrashParent;
     Vector3 _lastTrashPosition, _trashVelocity;
 
+    public Vector3 Position => GetCenterPosition();
+
     public event Action<bool> OnTrashGrabbed;
 
     void Awake()
@@ -78,7 +80,7 @@ public class PlayerWrist : MonoBehaviour
 
     public void CustomUpdate()
     {
-        _isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
+        //_isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
         _currentGrab01 = Mathf.Clamp(_currentGrab01 + (_isGrabbing ? 1f : -1f) * _grabSpeed * Time.deltaTime, 0f, 1f);
 
         foreach (PlayerFingertip finger in _allFingers)
@@ -134,4 +136,14 @@ public class PlayerWrist : MonoBehaviour
         foreach (PlayerFingertip finger in _allFingers)
             finger.OnFingerContact -= HandleFingerContact;
     }
+
+    Vector3 GetCenterPosition()
+    {
+        Vector3 position = Vector3.zero;
+        foreach (PlayerFingertip finger in _allFingers)
+            position += finger.transform.position;
+        return position / _allFingers.Length;
+    }
+
+    public void SetGrab(bool shouldGrab) => _isGrabbing = shouldGrab;
 }

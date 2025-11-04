@@ -166,7 +166,7 @@ public class PlayerArm : MonoBehaviour
     void SetHandHeightAndGrab()
     {
         bool isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
-        _wrist.ShouldGrab(isGrabbing && (_shouldLift || ShouldGrab()));
+        _wrist.SetGrab(isGrabbing && (_shouldLift || ShouldGrab()));
         bool butShouldItActuallyLift = _shouldLift || !isGrabbing;
 
         _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (butShouldItActuallyLift ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, _armLiftDegrees);
