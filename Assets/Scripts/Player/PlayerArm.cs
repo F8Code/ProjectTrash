@@ -6,6 +6,8 @@ public class PlayerArm : MonoBehaviour
 {
     const float ARM_MOVEMENT_SCALING = 0.001f;
     const float ARM_ROTATION_SCALING = 0.5f;
+    const float DEFAULT_SPHERECAST_RADIUS = 0.2f;
+    const float DEFAULT_SPHERECAST_RANGE = 0.1f;
 
     [Header("References")]
     [Tooltip("Reference to the wrist joint of the arm")]
@@ -50,10 +52,18 @@ public class PlayerArm : MonoBehaviour
     [SerializeField] bool _reverseWristAxis = false;
 
     [Header("Hand lifting settings")]
-    [Tooltip("Lift angle of the arm in degrees when trash is grabbed")]
-    [SerializeField, Range(0, 60)] uint _armLiftDegrees = 30;
+    [Tooltip("Lift angle of the arm in degrees when trash is not being grabbed")]
+    [SerializeField, Range(0, 60)] uint _emptyHandLiftDegrees = 20;
+    [Tooltip("Lift angle of the arm in degrees when trash is being held")]
+    [SerializeField, Range(0, 60)] uint _grabbingHandLiftDegrees = 45;
     [Tooltip("Speed at which the arm lifts or lowers in degrees per second")]
     [SerializeField, Range(10f, 120f)] float _armDegreesPerSecond = 30f;
+
+    [Header("Trash detection settings")]
+    [Tooltip("Modifier of the size of the area around the hand in which trash is detected")]
+    [SerializeField, Range(0.1f, 2f)] float _trashDetectionRadiusMultiplier = 1f;
+    [Tooltip("Modifier of the height of the area scanned bellow the hand for trash")]
+    [SerializeField, Range(0.5f, 2f)] float _trashDetectionHeightMultiplier = 1f;
 
     public PlayerWrist Wrist => _wrist;
 
@@ -61,7 +71,7 @@ public class PlayerArm : MonoBehaviour
     Quaternion _baseWristRotation;
     float _currentElbowZ, _currentWristX;
     float _currentLiftDegrees = 0f;
-    bool _shouldLift = false;
+    bool _isGrabbing = false;
 
     float _armSpeedDebuf = 1f;
     public void SetArmSpeedDebuf(float debuf) => _armSpeedDebuf = debuf;
@@ -165,29 +175,26 @@ public class PlayerArm : MonoBehaviour
 
     void SetHandHeightAndGrab()
     {
-        bool isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
-        _wrist.SetGrab(isGrabbing && (_shouldLift || ShouldGrab()));
-        bool butShouldItActuallyLift = _shouldLift || !isGrabbing;
+        bool isTryingToGrab = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
 
-        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (butShouldItActuallyLift ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, _armLiftDegrees);
-        _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z);
+        _wrist.SetGrab(isTryingToGrab && (_isGrabbing || TrashInProximity()));
+        bool shouldBeLifted = _isGrabbing || !isTryingToGrab;
+        float targetLiftAngle = _isGrabbing ? _grabbingHandLiftDegrees : _emptyHandLiftDegrees;
 
-        
+        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (shouldBeLifted ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, targetLiftAngle);
+        _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z); 
     }
 
-    bool ShouldGrab()
+    bool TrashInProximity()
     {
+        float radius = DEFAULT_SPHERECAST_RADIUS * _trashDetectionRadiusMultiplier;
+        float range = DEFAULT_SPHERECAST_RANGE * _trashDetectionHeightMultiplier;
         int layerMask = ~((1 << GameConstants.Layer.Default) | (1 << GameConstants.Layer.Player));
-        bool isHit = Physics.SphereCast(_wrist.Position + Vector3.up * 0.25f, 0.2f, Vector3.down, out RaycastHit hit, 0.1f, layerMask);
-        //if(isHit && hit.collider.gameObject != null)
-        //    Debug.Log(hit.collider.gameObject.name);
-        return isHit;
+            
+        return Physics.SphereCast(_wrist.Position + Vector3.up * (0.05f + radius), radius, Vector3.down, out RaycastHit hit, range, layerMask);
     }
 
-    void SwitchHeight(bool isGrabbed)
-    {
-        _shouldLift = isGrabbed;
-    }
+    void SwitchHeight(bool isGrabbed, Vector3 velocity) => _isGrabbing = isGrabbed;
 
     void OnDisable()
     {
