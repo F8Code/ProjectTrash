@@ -806,8 +806,10 @@ MonoBehaviour:
   - {fileID: 4619659319179851960}
   - {fileID: 3519710649070591389}
   _armAnimator: {fileID: 4644124295607104602}
-  _grabSpeed: 2
+  _grabSpeed: 1.5
   _thrownTrashSpeedMultiplier: 1
+  _thrownTrashVelocityLimit: 3
+  _displayDebugLogTrashVelocityOnRelease: 1
   _thrownTrashBonusUpwardsVelocity: 1
   PickupSound: {fileID: 8300000, guid: a0052050134ef4542b1b6fcebad6e006, type: 3}
   ThrowSound: {fileID: 8300000, guid: 3c7a2c34432a18e4da6a794254018095, type: 3}
@@ -885,18 +887,25 @@ MonoBehaviour:
   _wrist: {fileID: 2243372871294262134}
   _camera: {fileID: 0}
   _elbowJoint: {fileID: 367308837537172332}
+  _circleSliceCenter: {fileID: 0}
+  _circleSliceYRotationDegrees: 0
+  _circleSliceAngle: 90
+  _circleSliceMaxRadius: 0.9
+  _circleSliceMinRadius: 0.3
   _armMovementStrength: 1
-  _cameraMovementStrength: 0.3
-  _armXPositionRange: {x: -0.5, y: 0.6}
-  _armZPositionRange: {x: -0.2, y: 0.75}
-  _armSidewaysRotationRangeDegrees: {x: -30, y: 5}
+  _cameraMovementStrength: 1
+  _armSidewaysRotationRangeDegrees: {x: -20, y: 20}
+  _cameraSidewaysRotationRangeDegrees: {x: -5, y: 5}
   _armRotationSpeed: 0.8
   _elbowRotationRangeDegrees: {x: -60, y: 180}
   _wristRotationRangeDegrees: {x: -15, y: 60}
   _reverseElbowAxis: 0
   _reverseWristAxis: 0
-  _armLiftDegrees: 40
-  _armDegreesPerSecond: 80
+  _emptyHandLiftDegrees: 20
+  _grabbingHandLiftDegrees: 50
+  _armDegreesPerSecond: 100
+  _trashDetectionRadiusMultiplier: 1
+  _trashDetectionHeightMultiplier: 1
 --- !u!1 &3546064979460370875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1077,7 @@ GameObject:
   - component: {fileID: 6366440574968856968}
   - component: {fileID: 6461890401214403398}
   - component: {fileID: 5830229166012726615}
+  - component: {fileID: 1000517385618143473}
   m_Layer: 3
   m_Name: hand
   m_TagString: Untagged
@@ -1168,6 +1178,28 @@ SkinnedMeshRenderer:
     m_Extent: {x: 0.23948613, y: 0.17104751, z: 0.2768236}
   m_DirtyAABB: 0
 --- !u!64 &5830229166012726615
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317006999457710596}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!64 &1000517385618143473
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
