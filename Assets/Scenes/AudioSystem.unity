@@ -1952,10 +1952,10 @@ MonoBehaviour:
     - 1.5
     - 1.75
     - 2
-    _scoreMultiplierRequiredComboInclusive: 3
+    _scoreMultiplierRequiredComboInclusiveSeconds: 3
     _scoreMultiplierDuration: 5
-    _mistakesAllowed: 5
     _displayScoreInformation: 1
+    _mistakesAllowed: 5
 --- !u!4 &1001758217
 Transform:
   m_ObjectHideFlags: 0
@@ -2785,6 +2785,10 @@ PrefabInstance:
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _circleSliceMinRadius
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _emptyHandLiftDegrees
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _cameraMovementStrength
