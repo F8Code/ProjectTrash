@@ -35,7 +35,7 @@ public class PlayerWrist : MonoBehaviour
     Transform _originalTrashParent;
     Vector3 _lastTrashPosition, _trashVelocity;
 
-    public event Action<bool> OnTrashGrabbed;
+    public event Action<bool, Vector3> OnTrashGrabbed;
 
     void Awake()
     {
@@ -99,7 +99,7 @@ public class PlayerWrist : MonoBehaviour
         _originalTrashParent = _grabbedTrash.transform.parent;
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
-        OnTrashGrabbed?.Invoke(true);
+        OnTrashGrabbed?.Invoke(true, Vector3.zero);
     }
     
     void ReleaseTrash()
@@ -110,7 +110,7 @@ public class PlayerWrist : MonoBehaviour
         if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
         _grabbedTrash.transform.parent = _originalTrashParent;
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
-        OnTrashGrabbed?.Invoke(false);
+        OnTrashGrabbed?.Invoke(false, appliedVelocity);
         _grabbedTrash = null;
     }
 
