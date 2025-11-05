@@ -5,22 +5,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField, Range(0, 10)] uint _scoreMultiplierLevels = 5;
-    [SerializeField, Range(0.1f, 2f)] float _scoreMultiplierPerLevel = 1f;
+    //Scoring logic
+    public ScoreSystem ScoreSystem;
 
     //State machine
     StateMachine _stateMachine;
+    public IGameState CurrentState => _stateMachine.CurrentState;
+    public IGameState PreviousState => _stateMachine.PreviousState;
 
     //Game Statistics
     float _activeGameTime = 0f;
     float _roundedDeltaTime = 0.01666f; //60FPS
-
-    //Score and score multiplier related
-    uint _score = 0, consecutiveScoreCount;
-    float _lastScoreTime = 0f;
-
-    public IGameState CurrentState => _stateMachine.CurrentState;
-    public IGameState PreviousState => _stateMachine.PreviousState;
     public float GameTime => _activeGameTime;
     public int FPS => (int)(1.0f / _roundedDeltaTime);
 
@@ -32,6 +27,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
         _stateMachine = new();
     }
 
@@ -47,29 +43,27 @@ public class GameManager : MonoBehaviour
         if (CurrentState is GameTutorialState or GamePlayingState)
         {
             _activeGameTime += Time.deltaTime;
+            ScoreSystem.CustomUpdate();
         }
 
         _roundedDeltaTime += (Time.unscaledDeltaTime - _roundedDeltaTime) * 0.01f;
     }
 
-    public void ToggleGamePause()
-    {
-        _stateMachine.ChangeState(CurrentState is not GamePausedState ? new GamePausedState() : PreviousState);
-    }
+    public void ToggleGamePause() => SetState(new GamePausedState());
 
-    public void EndTutorialStage()
-    {
-        if (CurrentState is GamePausedState)
-            _stateMachine.SetPreviousState(new GamePlayingState());
-        else
-            _stateMachine.ChangeState(new GamePlayingState());
-    }
+    public void EndTutorialStage()  => SetState(new GamePlayingState());
 
-    public void ModifyScore(int scoreAward)
+    public void EndGame()
     {
-        if (scoreAward > 0)
-            _score += (uint)scoreAward;
-            
-        Debug.Log("Current score: " + _score);
+        SetState(new GameOverState());
+        Debug.Log("GAME OVER");
+    } 
+
+    void SetState(IGameState state)
+    {
+        if (CurrentState is not GamePausedState)
+            _stateMachine.ChangeState(state);
+        else if (state is not GamePausedState)
+            _stateMachine.SetPreviousState(state);
     }
 }
