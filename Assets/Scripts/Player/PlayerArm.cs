@@ -179,8 +179,8 @@ public class PlayerArm : MonoBehaviour
     {
         int layerMask = ~((1 << GameConstants.Layer.Default) | (1 << GameConstants.Layer.Player));
         bool isHit = Physics.SphereCast(_wrist.Position + Vector3.up * 0.25f, 0.2f, Vector3.down, out RaycastHit hit, 0.1f, layerMask);
-        if(isHit && hit.collider.gameObject != null)
-            Debug.Log(hit.collider.gameObject.name);
+        //if(isHit && hit.collider.gameObject != null)
+        //    Debug.Log(hit.collider.gameObject.name);
         return isHit;
     }
 
