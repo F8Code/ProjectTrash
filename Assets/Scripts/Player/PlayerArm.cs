@@ -102,10 +102,10 @@ public class PlayerArm : MonoBehaviour
         Vector3 movementVector = _movementTransform[0] * mouseInput.x + _movementTransform[1] * mouseInput.y;
 
         //Limiting movement
-        Vector3 targetLocalPosition = transform.position + movementVector * _armMovementStrength;
+        Vector3 targetPosition = transform.position + movementVector * _armMovementStrength;
 
-        ClampInsideCircleSlice(ref targetLocalPosition, out float angleInverseLerp);
-        movementVector = (targetLocalPosition - transform.position) / _armMovementStrength;
+        ClampInsideCircleSlice(ref targetPosition, out float angleInverseLerp);
+        movementVector = (targetPosition - transform.position) / _armMovementStrength;
 
         //Movement
         transform.position += movementVector * _armMovementStrength;
@@ -119,11 +119,11 @@ public class PlayerArm : MonoBehaviour
         _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
     }
 
-    void ClampInsideCircleSlice(ref Vector3 targetLocalPosition, out float angleInverseLerp)
+    void ClampInsideCircleSlice(ref Vector3 targetPosition, out float angleInverseLerp)
     {
-        Vector3 sliceCenter= _circleSliceCenter.position;
+        Vector3 sliceCenter = _circleSliceCenter.position;
 
-        Vector2 targetXZ = new Vector2(targetLocalPosition.x, targetLocalPosition.z);
+        Vector2 targetXZ = new Vector2(targetPosition.x, targetPosition.z);
         Vector2 centerXZ = new Vector2(sliceCenter.x, sliceCenter.z);
         Vector2 centerToTarget = targetXZ - centerXZ;
 
@@ -147,7 +147,7 @@ public class PlayerArm : MonoBehaviour
             centerToTarget = centerToTarget.normalized * Mathf.Clamp(distanceFromCenter, _circleSliceMinRadius, _circleSliceMaxRadius);
 
         Vector2 clampedXZ = centerXZ + centerToTarget;
-        targetLocalPosition = new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
+        targetPosition = new Vector3(clampedXZ.x, targetPosition.y, clampedXZ.y);
         angleInverseLerp = ((currentAngleOffset / sliceHalfAngle) + 1f) * 0.5f;
     }
 
