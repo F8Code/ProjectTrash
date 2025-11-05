@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerArm : MonoBehaviour
@@ -67,6 +68,7 @@ public class PlayerArm : MonoBehaviour
 
     public PlayerWrist Wrist => _wrist;
 
+    Vector3[] _movementTransform;
     Quaternion _baseElbowRotation;
     Quaternion _baseWristRotation;
     float _currentElbowZ, _currentWristX;
@@ -80,6 +82,8 @@ public class PlayerArm : MonoBehaviour
     {
         _baseElbowRotation = _elbowJoint.localRotation;
         _baseWristRotation = _wrist.transform.localRotation;
+
+        _movementTransform = new Vector3[2] { new Vector3(transform.right.x, 0f, transform.right.z), new Vector3(transform.forward.x, 0f, transform.forward.z) };
     }
 
     void OnEnable()
@@ -105,13 +109,13 @@ public class PlayerArm : MonoBehaviour
 
         //Reading movement
         Vector2 mouseInput = InputManager.Instance.PlayerActions.MoveHand.ReadValue<Vector2>() * ARM_MOVEMENT_SCALING * _armSpeedDebuf;
-        Vector3 movementVector = new Vector3(mouseInput.x, 0, mouseInput.y);
+        Vector3 movementVector = _movementTransform[0] * mouseInput.x + _movementTransform[1] * mouseInput.y;
 
         //Limiting movement
-        Vector3 targetLocalPosition = transform.localPosition + movementVector * _armMovementStrength;
+        Vector3 targetPosition = transform.position + movementVector * _armMovementStrength;
 
-        ClampInsideCircleSlice(ref targetLocalPosition, out float angleInverseLerp);
-        movementVector = (targetLocalPosition - transform.localPosition) / _armMovementStrength;
+        ClampInsideCircleSlice(ref targetPosition, out float angleInverseLerp);
+        movementVector = (targetPosition - transform.position) / _armMovementStrength;
 
         //Movement
         transform.position += movementVector * _armMovementStrength;
@@ -125,12 +129,12 @@ public class PlayerArm : MonoBehaviour
         _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
     }
 
-    void ClampInsideCircleSlice(ref Vector3 targetLocalPosition, out float angleInverseLerp)
+    void ClampInsideCircleSlice(ref Vector3 targetPosition, out float angleInverseLerp)
     {
-        Vector3 sliceCenterLocal = transform.parent.InverseTransformPoint(_circleSliceCenter.position);
+        Vector3 sliceCenter = _circleSliceCenter.position;
 
-        Vector2 targetXZ = new Vector2(targetLocalPosition.x, targetLocalPosition.z);
-        Vector2 centerXZ = new Vector2(sliceCenterLocal.x, sliceCenterLocal.z);
+        Vector2 targetXZ = new Vector2(targetPosition.x, targetPosition.z);
+        Vector2 centerXZ = new Vector2(sliceCenter.x, sliceCenter.z);
         Vector2 centerToTarget = targetXZ - centerXZ;
 
         float distanceFromCenter = centerToTarget.magnitude;
@@ -153,7 +157,7 @@ public class PlayerArm : MonoBehaviour
             centerToTarget = centerToTarget.normalized * Mathf.Clamp(distanceFromCenter, _circleSliceMinRadius, _circleSliceMaxRadius);
 
         Vector2 clampedXZ = centerXZ + centerToTarget;
-        targetLocalPosition = new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
+        targetPosition = new Vector3(clampedXZ.x, targetPosition.y, clampedXZ.y);
         angleInverseLerp = ((currentAngleOffset / sliceHalfAngle) + 1f) * 0.5f;
     }
 
