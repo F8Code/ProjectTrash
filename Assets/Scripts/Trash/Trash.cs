@@ -5,18 +5,20 @@ using Random = UnityEngine.Random;
 public class Trash : MonoBehaviour
 {
     [Header("Audio settings")]
-    [Tooltip("Minimum angle of the thrash throw trajectory for the throw sound to play")]
-    [SerializeField, Range(0, 80)] uint _minimumGroundAngleToPlayThrowSound = 45;
-    [Tooltip("Grab sound volume multiplier")]
-    [SerializeField, Range(0f, 2f)] float _grabSoundVolume = 1f;
-    [Tooltip("Throw sound volume multiplier")]
-    [SerializeField, Range(0f, 2f)] float _throwSoundVolume = 1f;
+    [Tooltip("Minimum velocity magnitude required for the throw sound to play")]
+    [SerializeField, Range(0f, 10f)] private float _minimumThrowVelocity = 2f;
 
-    TrashData _data;
-    Renderer _renderer;
-    MeshFilter _meshFilter;
-    Rigidbody _rb;
-    MeshCollider _collider;
+    [Tooltip("Grab sound volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _grabSoundVolume = 1f;
+
+    [Tooltip("Throw sound volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _throwSoundVolume = 1f;
+
+    private TrashData _data;
+    private Renderer _renderer;
+    private MeshFilter _meshFilter;
+    private Rigidbody _rb;
+    private MeshCollider _collider;
 
     public string Name => _data.Name;
     public TrashType Type => _data.Type;
@@ -24,7 +26,7 @@ public class Trash : MonoBehaviour
 
     public event Action<Trash, int> OnTrashCollected;
 
-    void Awake()
+    private void Awake()
     {
         _renderer = GetComponentInChildren<Renderer>();
         _meshFilter = GetComponentInChildren<MeshFilter>();
@@ -32,7 +34,7 @@ public class Trash : MonoBehaviour
         _collider = GetComponent<MeshCollider>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += PlayFeedbackActions;
     }
@@ -58,12 +60,28 @@ public class Trash : MonoBehaviour
         _renderer.material.color = modifiedColor;
     }
 
-    void PlayFeedbackActions(bool isGrabbed)
+    private void PlayFeedbackActions(bool isGrabbed, Vector3 handVelocity)
     {
         PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
+        if (isGrabbed && _data.PickupSound != null)
+        {
+            AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
+        }
+        else if (!isGrabbed && _data.ThrowSound != null)
+        {
+            float velocityMagnitude = handVelocity.magnitude;
+
+            Debug.Log($"Trash {Name} thrown. Hand velocity: {velocityMagnitude:F2} m/s (Vector: {handVelocity})");
+
+            // Only play sound if velocity threshold are met
+            if (velocityMagnitude >= _minimumThrowVelocity)
+            {
+                AudioManager.Instance.PlayAudio(_data.ThrowSound, _throwSoundVolume * Mathf.Clamp01(velocityMagnitude / 10f), AudioPlaybackContext.PlaybackPriority.Low, transform.position);
+            }
+        }
     }
-    
-    void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != GameConstants.Layer.TrashDespawnPlane)
             return;
@@ -72,8 +90,8 @@ public class Trash : MonoBehaviour
 
         Debug.Log($"Trash {Name} fell to the floor. Score: {-(int)Score}");
     }
-    
-    void OnDisable()
+
+    private void OnDisable()
     {
         PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed -= PlayFeedbackActions;
     }

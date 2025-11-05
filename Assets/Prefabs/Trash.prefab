@@ -153,6 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b69fa2a521309845a3ba2e88480df9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trash
-  _minimumGroundAngleToPlayThrowSound: 45
-  _grabSoundVolume: 1
-  _throwSoundVolume: 1
+  _minimumThrowVelocity: 1
+  _grabSoundVolume: 0.5
+  _throwSoundVolume: 0.5

@@ -184,7 +184,7 @@ public class PlayerArm : MonoBehaviour
         return isHit;
     }
 
-    void SwitchHeight(bool isGrabbed)
+    void SwitchHeight(bool isGrabbed, Vector3 velocity)
     {
         _shouldLift = isGrabbed;
     }
