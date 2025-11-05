@@ -2315,7 +2315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1057179103}
   _acceptedTrash: 2
 --- !u!65 &1057179103
 BoxCollider:
@@ -2537,7 +2536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1139753013}
   _acceptedTrash: 4
 --- !u!65 &1139753013
 BoxCollider:
@@ -2659,13 +2657,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301192046}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7154782, z: -0, w: 0.6986351}
-  m_LocalPosition: {x: -2.256, y: 1.427, z: 0.484}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.23, y: 1.457, z: 0.481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 91.365, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1327438934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2851,6 +2849,14 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceAngle
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceCenter
+      value: 
+      objectReference: {fileID: 1846891169}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armDegreesPerSecond
       value: 90
       objectReference: {fileID: 0}
@@ -2875,12 +2881,24 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceMaxRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceMinRadius
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _cameraMovementStrength
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_EditorClassIdentifier
       value: Assembly-CSharp::Arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceYRotationDegrees
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _elbowRotationRangeDegrees.y
@@ -3927,6 +3945,7 @@ Transform:
   m_Children:
   - {fileID: 961739753}
   - {fileID: 1327438935}
+  - {fileID: 1846891169}
   m_Father: {fileID: 1032658932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1620549185
@@ -4086,7 +4105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1654491146}
   _acceptedTrash: 0
 --- !u!65 &1654491146
 BoxCollider:
@@ -4440,7 +4458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1819693784}
   _acceptedTrash: 3
 --- !u!65 &1819693784
 BoxCollider:
@@ -4463,6 +4480,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.45, y: 0.25, z: 0.45}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!1 &1846891168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1846891169}
+  m_Layer: 0
+  m_Name: MovementAreaCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1846891169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846891168}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.333, y: 0.496, z: -0.074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1614460037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1854847313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,7 +4566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1857714166}
   _acceptedTrash: 1
 --- !u!65 &1857714166
 BoxCollider:
@@ -4703,7 +4750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1964296973}
   _acceptedTrash: 5
 --- !u!65 &1964296973
 BoxCollider:
@@ -4991,7 +5037,6 @@ SceneRoots:
   - {fileID: 1032658932}
   - {fileID: 790951262}
   - {fileID: 4874634226577411209}
-  - {fileID: 1301192047}
   - {fileID: 3289300501779440256}
   - {fileID: 894365217}
   - {fileID: 633371045}
@@ -4999,3 +5044,4 @@ SceneRoots:
   - {fileID: 1001758217}
   - {fileID: 14960072}
   - {fileID: 586412184}
+  - {fileID: 1301192047}

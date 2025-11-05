@@ -110,7 +110,7 @@ public class PlayerWrist : MonoBehaviour
         if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
         _grabbedTrash.transform.parent = _originalTrashParent;
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
-        OnTrashGrabbed?.Invoke(false, appliedVelocity);
+        OnTrashGrabbed?.Invoke(false, trashRB.linearVelocity);
         _grabbedTrash = null;
     }
 
