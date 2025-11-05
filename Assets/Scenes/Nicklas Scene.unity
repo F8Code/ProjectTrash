@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 1.2584534}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3194,7 +3194,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -53.066895, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.022705078, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8508,7 +8508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380.60956, y: -151.6}
+  m_AnchoredPosition: {x: -381.9, y: -151.6}
   m_SizeDelta: {x: 32.7809, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1326795890
@@ -12101,6 +12101,8 @@ MonoBehaviour:
   - {fileID: 1085521267}
   _armAnimator: {fileID: 1909911534}
   _grabSpeed: 1
+  _thrownTrashSpeedMultiplier: 1
+  _thrownTrashBonusUpwardsVelocity: 1
 --- !u!1 &1771640254
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,6 +12577,8 @@ MonoBehaviour:
   _wristRotationRangeDegrees: {x: -45, y: 45}
   _reverseElbowAxis: 0
   _reverseWristAxis: 0
+  _armLiftDegrees: 30
+  _armDegreesPerSecond: 30
 --- !u!95 &1909911534 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4644124295607104602, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
@@ -13757,7 +13761,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 32.7809, y: 50}
+  m_SizeDelta: {x: 32.7809, y: 38.404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2083415635
 MonoBehaviour:
