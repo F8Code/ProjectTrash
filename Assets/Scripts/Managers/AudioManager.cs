@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void PlayAudio(AudioClip clip, float volumeMultiplier = 1f,
         AudioPlaybackContext.PlaybackPriority priority = AudioPlaybackContext.PlaybackPriority.Medium,
-        Vector3? spatialPosition = null)
+        Vector3? spatialPosition = null, bool loopAudioClip = false)
     {
         if (clip == null) return;
 
@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
             spatialPosition ?? Vector3.zero
         );
 
-        _orchestrator.ExecutePlaybackRequest(context);
+        _orchestrator.ExecutePlaybackRequest(context, loopAudioClip);
     }
 
     private void OnDestroy()
@@ -305,9 +305,11 @@ public class AudioPlaybackOrchestrator : IDisposable
         _activePlaybacks = new Dictionary<AudioSource, AudioPlaybackMonitor>();
     }
 
-    public void ExecutePlaybackRequest(AudioPlaybackContext context)
+    public void ExecutePlaybackRequest(AudioPlaybackContext context, bool loopAudioClip)
     {
         var source = _poolStrategy.AcquireAudioSource();
+        source.loop = loopAudioClip;
+
         var behavior = _behaviorRegistry[context.Priority];
 
         behavior.ExecutePlayback(source, context, _volumeStrategy);

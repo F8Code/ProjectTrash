@@ -4,15 +4,14 @@ using Random = UnityEngine.Random;
 
 public class Trash : MonoBehaviour
 {
-    [Header("Audio settings")]
     [Tooltip("Minimum velocity magnitude required for the throw sound to play")]
     [SerializeField, Range(0f, 10f)] private float _minimumThrowVelocity = 2f;
 
+    [Header("Audio Settings")]
     [Tooltip("Grab sound volume multiplier")]
-    [SerializeField, Range(0f, 1f)] private float _grabSoundVolume = 1f;
-
+    [SerializeField, Range(0f, 1f)] private float _grabSoundVolume = 0.5f;
     [Tooltip("Throw sound volume multiplier")]
-    [SerializeField, Range(0f, 1f)] private float _throwSoundVolume = 1f;
+    [SerializeField, Range(0f, 1f)] private float _throwSoundVolume = 0.5f;
 
     private TrashData _data;
     private Renderer _renderer;
@@ -67,7 +66,7 @@ public class Trash : MonoBehaviour
             AudioManager.Instance.PlayAudio(
          _data.PickupSound,
              _grabSoundVolume,
-             AudioPlaybackContext.PlaybackPriority.Medium,
+             AudioPlaybackContext.PlaybackPriority.Low,
           transform.position
    );
         }

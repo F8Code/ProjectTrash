@@ -29,9 +29,9 @@ public class TrashData : ScriptableObject
     [Range(0.1f, 1f)]
     public float HandSpeedMultiplier = 1f;
 
+    [Header("Audio Settings")]
     [Tooltip("Sound played when picking up the trash")]
     public AudioClip PickupSound;
-
     [Tooltip("Sound played when throwing the trash")]
     public AudioClip ThrowSound;
 

@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c785a7143d51dc42af735165422f8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashConveyor
-  _trashMovementSpeed: 5
+  _trashMovementSpeed: 4
   _disableTrashGravity: 0
-  _trashFlingSpeed: 1.5
+  _trashFlingSpeed: 0.5
 --- !u!1 &5607149971999937533
 GameObject:
   m_ObjectHideFlags: 0

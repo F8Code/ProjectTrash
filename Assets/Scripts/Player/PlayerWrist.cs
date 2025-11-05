@@ -25,6 +25,16 @@ public class PlayerWrist : MonoBehaviour
     [Tooltip("Additional upward velocity applied when releasing a grabbed object")]
     [SerializeField, Range(0.1f, 2f)] float _thrownTrashBonusUpwardsVelocity = 1f;
 
+    [Header("Audio Settings")]
+    [Tooltip("Sound played when picking up the trash")]
+    public AudioClip PickupSound;
+    [Tooltip("Sound played when throwing the trash")]
+    public AudioClip ThrowSound;
+    [Tooltip("Grab sound volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _grabSoundVolume = 0.75f;
+    [Tooltip("Throw sound volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _throwSoundVolume = 0.75f;
+
     bool _isGrabbing = false;
     float _currentGrab01;
     PlayerFingertip[] _allFingers;
@@ -97,6 +107,11 @@ public class PlayerWrist : MonoBehaviour
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
         OnTrashGrabbed?.Invoke(true, Vector3.zero);
+        AudioManager.Instance.PlayAudio(
+            PickupSound,
+            _grabSoundVolume,
+            AudioPlaybackContext.PlaybackPriority.Medium,
+            transform.position);
     }
     
     void ReleaseTrash()
@@ -108,6 +123,11 @@ public class PlayerWrist : MonoBehaviour
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
         OnTrashGrabbed?.Invoke(false, appliedVelocity);
         _grabbedTrash = null;
+        AudioManager.Instance.PlayAudio(
+            ThrowSound,
+            _throwSoundVolume,
+            AudioPlaybackContext.PlaybackPriority.Medium,
+            transform.position);
     }
 
     IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject)
