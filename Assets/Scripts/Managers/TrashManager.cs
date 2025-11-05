@@ -64,7 +64,6 @@ public class TrashManager : MonoBehaviour
 
     //Tutorial stage related
     uint _trashDespawned = 0;
-    float _tutorialEndTime;
 
     bool _isTutorial => GameManager.Instance.CurrentState is GameTutorialState || (GameManager.Instance.CurrentState is GamePausedState && GameManager.Instance.PreviousState is GameTutorialState);
 
@@ -184,14 +183,9 @@ public class TrashManager : MonoBehaviour
     void ProgressTutorial()
     {
         if (_trashDespawned >= _trashToEndTutorial)
-        {
             GameManager.Instance.EndTutorialStage();
-            _tutorialEndTime = GameManager.Instance.GameTime;
-        }
         else
-        {
             SpawnTrash();
-        }
     }
 
     void OnDisable()

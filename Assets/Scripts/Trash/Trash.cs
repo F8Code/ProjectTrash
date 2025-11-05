@@ -60,7 +60,7 @@ public class Trash : MonoBehaviour
 
     void PlayFeedbackActions(bool isGrabbed)
     {
-
+        PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
     }
     
     void OnTriggerEnter(Collider other)

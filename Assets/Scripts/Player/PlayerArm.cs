@@ -15,17 +15,27 @@ public class PlayerArm : MonoBehaviour
     [Tooltip("Transform to the elbow joint of the arm")]
     [SerializeField] Transform _elbowJoint;
 
+    [Header("Arm movement area settings")]
+    [Tooltip("Center point of the circular slice that defines the arm's allowed movement area")]
+    [SerializeField] Transform _circleSliceCenter;
+    [Tooltip("Rotation of the circular slice around the Y axis in degrees (defines the slice's facing direction)")]
+    [SerializeField] float _circleSliceYRotationDegrees = 0f;
+    [Tooltip("Total angle of the circular slice in degrees")]
+    [SerializeField] float _circleSliceAngle = 120f;
+    [Tooltip("Maximum distance you can reach from the circular slice center")]
+    [SerializeField] float _circleSliceMaxRadius = 1f;
+    [Tooltip("Minimum distance you can reach from the circular slice center")]
+    [SerializeField] float _circleSliceMinRadius = 1f;
+
     [Header("Arm movement settings")]
     [Tooltip("Strength of the arm movement relative to mouse input")]
     [SerializeField, Range(0.1f, 2f)] float _armMovementStrength = 1f;
     [Tooltip("Strength of the camera movement relative to the arm")]
     [SerializeField, Range(0f, 2f)] float _cameraMovementStrength = 0.5f;
-    [Tooltip("Allowed X-axis movement range of the arm (local position)")]
-    [SerializeField] Vector2 _armXPositionRange = new Vector2(-0.4f, 0.4f);
-    [Tooltip("Allowed Z-axis movement range of the arm (local position)")]
-    [SerializeField] Vector2 _armZPositionRange = new Vector2(-0.03f, 0.4f);
     [Tooltip("Sideways arm rotation range in degrees")]
     [SerializeField] Vector2 _armSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
+    [Tooltip("Sideways camera rotation range in degrees")]
+    [SerializeField] Vector2 _cameraSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
 
     [Header("Wrist rotation settings")]
     [Tooltip("Speed multiplier for arm rotation when rotating the hand around")]
@@ -53,6 +63,9 @@ public class PlayerArm : MonoBehaviour
     float _currentLiftDegrees = 0f;
     bool _shouldLift = false;
 
+    float _armSpeedDebuf = 1f;
+    public void SetArmSpeedDebuf(float debuf) => _armSpeedDebuf = debuf;
+
     void Awake()
     {
         _baseElbowRotation = _elbowJoint.localRotation;
@@ -71,7 +84,7 @@ public class PlayerArm : MonoBehaviour
         else
             RotateHand();
 
-        LiftHand();
+        SetHandHeightAndGrab();
 
         _wrist.CustomUpdate();
     }
@@ -81,22 +94,57 @@ public class PlayerArm : MonoBehaviour
         if (Time.time < 0.5f) return; //Prevent weird mouseInput readings at the very start of the game
 
         //Reading movement
-        Vector2 mouseInput = InputManager.Instance.PlayerActions.MoveHand.ReadValue<Vector2>() * ARM_MOVEMENT_SCALING;
+        Vector2 mouseInput = InputManager.Instance.PlayerActions.MoveHand.ReadValue<Vector2>() * ARM_MOVEMENT_SCALING * _armSpeedDebuf;
         Vector3 movementVector = new Vector3(mouseInput.x, 0, mouseInput.y);
 
         //Limiting movement
         Vector3 targetLocalPosition = transform.localPosition + movementVector * _armMovementStrength;
-        if (targetLocalPosition.x < _armXPositionRange.x || targetLocalPosition.x > _armXPositionRange.y) movementVector.x = 0f;
-        if (targetLocalPosition.z < _armZPositionRange.x || targetLocalPosition.z > _armZPositionRange.y) movementVector.z = 0f;
+
+        ClampInsideCircleSlice(ref targetLocalPosition, out float angleInverseLerp);
+        movementVector = (targetLocalPosition - transform.localPosition) / _armMovementStrength;
 
         //Movement
         transform.position += movementVector * _armMovementStrength;
         _camera.transform.position += movementVector * _cameraMovementStrength;
 
         //Y axis Rotation based on movement
-        float inverseLerp = Mathf.InverseLerp(_armXPositionRange.x, _armXPositionRange.y, transform.localPosition.x);
-        float rotationY = Mathf.Lerp(_armSidewaysRotationRangeDegrees.x, _armSidewaysRotationRangeDegrees.y, inverseLerp);
-        _elbowJoint.localRotation = _baseElbowRotation * Quaternion.Euler(_elbowJoint.localEulerAngles.x, rotationY, _elbowJoint.localEulerAngles.z);
+        float armRotationY = Mathf.Lerp(_armSidewaysRotationRangeDegrees.x, _armSidewaysRotationRangeDegrees.y, angleInverseLerp);
+        _elbowJoint.localRotation = _baseElbowRotation * Quaternion.Euler(_elbowJoint.localEulerAngles.x, armRotationY, _elbowJoint.localEulerAngles.z);
+
+        float cameraRotationY = Mathf.Lerp(_cameraSidewaysRotationRangeDegrees.x, _cameraSidewaysRotationRangeDegrees.y, angleInverseLerp);
+        _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
+    }
+
+    void ClampInsideCircleSlice(ref Vector3 targetLocalPosition, out float angleInverseLerp)
+    {
+        Vector3 sliceCenterLocal = transform.parent.InverseTransformPoint(_circleSliceCenter.position);
+
+        Vector2 targetXZ = new Vector2(targetLocalPosition.x, targetLocalPosition.z);
+        Vector2 centerXZ = new Vector2(sliceCenterLocal.x, sliceCenterLocal.z);
+        Vector2 centerToTarget = targetXZ - centerXZ;
+
+        float distanceFromCenter = centerToTarget.magnitude;
+        float sliceDirection = _circleSliceYRotationDegrees * Mathf.Deg2Rad;
+        float sliceHalfAngle = _circleSliceAngle * 0.5f * Mathf.Deg2Rad;
+
+        float currentAngle = Mathf.Atan2(centerToTarget.x, centerToTarget.y);
+        float currentAngleOffset = Mathf.DeltaAngle(sliceDirection * Mathf.Rad2Deg, currentAngle * Mathf.Rad2Deg) * Mathf.Deg2Rad;
+
+        //Angle clamping
+        if (Mathf.Abs(currentAngleOffset) > sliceHalfAngle)
+        {
+            float clampedAngle = sliceDirection + Mathf.Sign(currentAngleOffset) * sliceHalfAngle;
+            Vector2 clampedDirection = new Vector2(Mathf.Sin(clampedAngle), Mathf.Cos(clampedAngle));
+            centerToTarget = clampedDirection * distanceFromCenter;
+        }
+
+        //Distance clamping
+        if (distanceFromCenter > _circleSliceMaxRadius || distanceFromCenter < _circleSliceMinRadius)
+            centerToTarget = centerToTarget.normalized * Mathf.Clamp(distanceFromCenter, _circleSliceMinRadius, _circleSliceMaxRadius);
+
+        Vector2 clampedXZ = centerXZ + centerToTarget;
+        targetLocalPosition = new Vector3(clampedXZ.x, targetLocalPosition.y, clampedXZ.y);
+        angleInverseLerp = ((currentAngleOffset / sliceHalfAngle) + 1f) * 0.5f;
     }
 
     void RotateHand()
@@ -115,15 +163,30 @@ public class PlayerArm : MonoBehaviour
         _wrist.transform.localRotation = _baseWristRotation * Quaternion.Euler(_currentWristX, 0f, 0f);
     }
 
-    void LiftHand()
+    void SetHandHeightAndGrab()
     {
-        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (_shouldLift ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, _armLiftDegrees);
+        bool isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
+        _wrist.SetGrab(isGrabbing && (_shouldLift || ShouldGrab()));
+        bool butShouldItActuallyLift = _shouldLift || !isGrabbing;
+
+        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (butShouldItActuallyLift ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, _armLiftDegrees);
         _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z);
+
+        
     }
 
-    void SwitchHeight(bool isGrabbing)
+    bool ShouldGrab()
     {
-        _shouldLift = isGrabbing;
+        int layerMask = ~((1 << GameConstants.Layer.Default) | (1 << GameConstants.Layer.Player));
+        bool isHit = Physics.SphereCast(_wrist.Position + Vector3.up * 0.25f, 0.2f, Vector3.down, out RaycastHit hit, 0.1f, layerMask);
+        if(isHit && hit.collider.gameObject != null)
+            Debug.Log(hit.collider.gameObject.name);
+        return isHit;
+    }
+
+    void SwitchHeight(bool isGrabbed)
+    {
+        _shouldLift = isGrabbed;
     }
 
     void OnDisable()

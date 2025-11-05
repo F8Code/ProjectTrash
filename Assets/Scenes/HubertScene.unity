@@ -1619,6 +1619,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1957617086595822576, guid: e7fbf958abcf1f14584a692b41fd84f6, type: 3}
   m_PrefabInstance: {fileID: 771067934}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &828194128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828194129}
+  m_Layer: 0
+  m_Name: MovementSlicePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828194129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828194128}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.304, y: 0.5599, z: -0.037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1614460037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &894365216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,7 +1935,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 80
   orthographic: 0
@@ -2267,7 +2298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1057179103}
   _acceptedTrash: 2
 --- !u!65 &1057179103
 BoxCollider:
@@ -2489,7 +2519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1139753013}
   _acceptedTrash: 4
 --- !u!65 &1139753013
 BoxCollider:
@@ -2755,6 +2784,10 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2243372871294262134, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _thrownTrashVelocityLimit
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243372871294262134, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: '_otherFingers.Array.data[0]'
       value: 
       objectReference: {fileID: 1220310334}
@@ -2778,6 +2811,10 @@ PrefabInstance:
       propertyPath: _thrownTrashBonusUpwardsVelocity
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2243372871294262134, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _displayDebugLogTrashVelocityOnRelease
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2442642718195707633, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -2799,8 +2836,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1327438953}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _sliceAngle
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _sliceCenter
+      value: 
+      objectReference: {fileID: 828194129}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _sliceLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armLiftDegrees
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceAngle
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceCenter
+      value: 
+      objectReference: {fileID: 828194129}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceRadius
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armDegreesPerSecond
@@ -2827,12 +2888,24 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceMinRadius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _sliceYRotationDegrees
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _cameraMovementStrength
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_EditorClassIdentifier
       value: Assembly-CSharp::Arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceYRotationDegrees
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _elbowRotationRangeDegrees.y
@@ -2848,11 +2921,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armSidewaysRotationRangeDegrees.x
-      value: -30
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _armSidewaysRotationRangeDegrees.y
-      value: 30
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _cameraSidewaysRotationRangeDegrees.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _cameraSidewaysRotationRangeDegrees.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2786969979788076392, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Height
@@ -3879,6 +3960,7 @@ Transform:
   m_Children:
   - {fileID: 961739753}
   - {fileID: 1327438935}
+  - {fileID: 828194129}
   m_Father: {fileID: 1032658932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1620549185
@@ -4038,7 +4120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1654491146}
   _acceptedTrash: 0
 --- !u!65 &1654491146
 BoxCollider:
@@ -4074,7 +4155,6 @@ GameObject:
   - component: {fileID: 1710730551}
   - component: {fileID: 1710730550}
   - component: {fileID: 1710730553}
-  - component: {fileID: 1710730554}
   m_Layer: 0
   m_Name: Side
   m_TagString: Untagged
@@ -4201,29 +4281,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &1710730554
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710730548}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0.0000038146973, y: -0.0000009536743, z: 0}
 --- !u!1 &1758949389
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,7 +4449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1819693784}
   _acceptedTrash: 3
 --- !u!65 &1819693784
 BoxCollider:
@@ -4470,7 +4526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1857714166}
   _acceptedTrash: 1
 --- !u!65 &1857714166
 BoxCollider:
@@ -4526,7 +4581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _trashDetectionCollider: {fileID: 1964296973}
   _acceptedTrash: 5
 --- !u!65 &1964296973
 BoxCollider:
