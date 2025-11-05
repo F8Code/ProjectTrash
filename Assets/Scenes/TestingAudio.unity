@@ -1273,11 +1273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MusicSound: {fileID: 8300000, guid: bd5fda6a6e18914468cf780ab6a7aa14, type: 3}
   _musicVolume: 0.5
---- !u!4 &473939097 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3718186983265836112, guid: b5775f64b6263a741af44e093b254c09, type: 3}
-  m_PrefabInstance: {fileID: 712902276210639033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &476750178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7394478528251609237, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
@@ -2305,6 +2300,11 @@ Transform:
   - {fileID: 612040533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &760207488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8270046011833153289, guid: b5775f64b6263a741af44e093b254c09, type: 3}
+  m_PrefabInstance: {fileID: 712902276210639033}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &775418838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 724379290600633807, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
@@ -2735,6 +2735,14 @@ PrefabInstance:
     - target: {fileID: 2298198345723317666, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Name
       value: TrashConveyor (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394478528251609237, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394478528251609237, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7394478528251609237, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3728,7 +3736,7 @@ MonoBehaviour:
   - TrashData/Hazard
   - TrashData/Mixed
   _trashPrefab: {fileID: 7904490154343748611, guid: bde7187e0ed8aa443b3e36a076f066d0, type: 3}
-  _trashSpawnPosition: {fileID: 473939097}
+  _trashSpawnPosition: {fileID: 760207488}
   _trashCans:
   - {fileID: 988811595}
   - {fileID: 775418839}
@@ -6476,7 +6484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718186983265836112, guid: b5775f64b6263a741af44e093b254c09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.32
+      value: 1.217
       objectReference: {fileID: 0}
     - target: {fileID: 3718186983265836112, guid: b5775f64b6263a741af44e093b254c09, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6513,6 +6521,22 @@ PrefabInstance:
     - target: {fileID: 8167407207170151223, guid: b5775f64b6263a741af44e093b254c09, type: 3}
       propertyPath: m_Name
       value: TrashSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270046011833153289, guid: b5775f64b6263a741af44e093b254c09, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270046011833153289, guid: b5775f64b6263a741af44e093b254c09, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270046011833153289, guid: b5775f64b6263a741af44e093b254c09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.296
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270046011833153289, guid: b5775f64b6263a741af44e093b254c09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
