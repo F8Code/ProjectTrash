@@ -121,7 +121,7 @@ public class PlayerArm : MonoBehaviour
         _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z);
     }
 
-    void SwitchHeight(bool isGrabbing)
+    void SwitchHeight(bool isGrabbing, Vector3 velocity)
     {
         _shouldLift = isGrabbing;
     }
