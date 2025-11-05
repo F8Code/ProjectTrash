@@ -4,11 +4,19 @@ using UnityEngine;
 [System.Serializable]
 public class ScoreSystem
 {
+    [Header("Score settings")]
+    [Tooltip("Score multipliers applied when combo thresholds are reached")]
     [SerializeField] float[] _scoreMultiplierLevels = { 1.25f, 1.5f, 1.75f, 2f };
-    [SerializeField, Range(1, 5)] uint _scoreMultiplierRequiredComboInclusive = 3;
+    [Tooltip("Minimum combo count required to activate the score multiplier")]
+    [SerializeField, Range(1, 5)] uint _scoreMultiplierRequiredComboInclusiveSeconds = 3;
+    [Tooltip("How long the multiplier stays active for after a successful combo in seconds")]
     [SerializeField, Range(0.1f, 10f)] float _scoreMultiplierDuration = 5f;
-    [SerializeField, Range(1, 10)] uint _mistakesAllowed = 5;
+    [Tooltip("If enabled, logs score info to the console every frame")]
     [SerializeField] bool _displayScoreInformation = false;
+
+    [Header("Mistakes settings")]
+    [Tooltip("How many mistakes are allowed before the game ends")]
+    [SerializeField, Range(1, 10)] uint _mistakesAllowed = 5;
 
     uint _score = 0;
     float _scoreMultiplier = 0f;
@@ -59,14 +67,14 @@ public class ScoreSystem
     
     uint GetCurrentlyMultipliedScore()
     {
-        if (_scores.Count < _scoreMultiplierRequiredComboInclusive) 
+        if (_scores.Count < _scoreMultiplierRequiredComboInclusiveSeconds) 
             return 0;
 
         int pendingScore = 0;
-        for (int i = (int)_scoreMultiplierRequiredComboInclusive - 1; i < _scores.Count; i++)
+        for (int i = (int)_scoreMultiplierRequiredComboInclusiveSeconds - 1; i < _scores.Count; i++)
             pendingScore += _scores[i];
 
-        _scoreMultiplier = _scoreMultiplierLevels[(int)Mathf.Min(_scores.Count - _scoreMultiplierRequiredComboInclusive, _scoreMultiplierLevels.Length - 1)];
+        _scoreMultiplier = _scoreMultiplierLevels[(int)Mathf.Min(_scores.Count - _scoreMultiplierRequiredComboInclusiveSeconds, _scoreMultiplierLevels.Length - 1)];
         return (uint)(pendingScore * _scoreMultiplier);
     }
 }
