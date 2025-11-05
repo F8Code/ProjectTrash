@@ -1946,8 +1946,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c9693201afe414a8f811e0c81c7874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  _scoreMultiplierLevels: 5
-  _scoreMultiplierPerLevel: 1
+  ScoreSystem:
+    _scoreMultiplierLevels:
+    - 1.25
+    - 1.5
+    - 1.75
+    - 2
+    _scoreMultiplierRequiredComboInclusive: 3
+    _scoreMultiplierDuration: 5
+    _mistakesAllowed: 5
+    _displayScoreInformation: 1
 --- !u!4 &1001758217
 Transform:
   m_ObjectHideFlags: 0
@@ -2233,7 +2241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _acceptedTrash: 0
+  _acceptedTrash: 2
 --- !u!65 &1057179103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2454,7 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _acceptedTrash: 0
+  _acceptedTrash: 4
 --- !u!65 &1139753013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4284,7 +4292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _acceptedTrash: 0
+  _acceptedTrash: 3
 --- !u!65 &1819693784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4392,7 +4400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _acceptedTrash: 0
+  _acceptedTrash: 1
 --- !u!65 &1857714166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4576,7 +4584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
-  _acceptedTrash: 0
+  _acceptedTrash: 5
 --- !u!65 &1964296973
 BoxCollider:
   m_ObjectHideFlags: 0

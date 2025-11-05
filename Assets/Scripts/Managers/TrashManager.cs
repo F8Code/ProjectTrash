@@ -155,7 +155,7 @@ public class TrashManager : MonoBehaviour
 
     void CollectTrash(Trash trash, int score)
     {
-        GameManager.Instance.ModifyScore(score);
+        GameManager.Instance.ScoreSystem.AddScore(score);
         MarkTrashForDespawn(trash);
     }
 
