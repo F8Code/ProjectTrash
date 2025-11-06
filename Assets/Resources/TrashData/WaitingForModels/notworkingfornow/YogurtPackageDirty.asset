@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: SodaCan
+  m_Name: YogurtPackageDirty
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Soda Can
-  Type: 3
-  Mesh: {fileID: 3216614367884850740, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
-  Material: {fileID: 2100000, guid: 65e085cc3f03eb6439e433bd6b379543, type: 2}
+  Name: Yogurt Package Dirty
+  Type: 5
+  Mesh: {fileID: 8186104333223141496, guid: 3d54dc3937a9b2540918cd212ca6cbb7, type: 3}
+  Material: {fileID: 2100000, guid: ce4a3ff8cbe5fae408b0661eedc06ef3, type: 2}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
-  PickupSound: {fileID: 8300000, guid: 19fe68ab12241a04cb42b89e3048d194, type: 3}
-  ThrowSound: {fileID: 8300000, guid: 19fe68ab12241a04cb42b89e3048d194, type: 3}
-  RandomSizeMultiplierRange: {x: 100, y: 100}
+  PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
+  ThrowSound: {fileID: 0}
+  RandomSizeMultiplierRange: {x: 150, y: 150}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -53,5 +53,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 0
+  MassScore: 1
   SizeScore: 1
