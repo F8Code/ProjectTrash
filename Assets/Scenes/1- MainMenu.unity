@@ -7693,6 +7693,7 @@ MonoBehaviour:
     _scoreMultiplierDuration: 5
     _displayScoreInformation: 0
     _mistakesAllowed: 5
+  _leaderboardUI: {fileID: 0}
 --- !u!4 &1877837266
 Transform:
   m_ObjectHideFlags: 0
@@ -7742,7 +7743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005493954019568781, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3005493954019568781, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7754,11 +7755,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005493954019568781, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowPanel
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 3005493954019568781, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005493954019568781, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3005493954019568781, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
