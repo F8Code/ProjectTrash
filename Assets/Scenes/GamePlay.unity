@@ -4193,7 +4193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   MusicSound: {fileID: 8300000, guid: bd5fda6a6e18914468cf780ab6a7aa14, type: 3}
-  _musicVolume: 0.5
+  _musicVolume: 0.05
 --- !u!43 &451635916
 Mesh:
   m_ObjectHideFlags: 0
@@ -10658,7 +10658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   AmbianceSound: {fileID: 8300000, guid: 74360489cb1c0aa43aea34d217fbea0f, type: 3}
-  _ambianceVolume: 1
+  _ambianceVolume: 0.5
 --- !u!43 &1017231647
 Mesh:
   m_ObjectHideFlags: 0
