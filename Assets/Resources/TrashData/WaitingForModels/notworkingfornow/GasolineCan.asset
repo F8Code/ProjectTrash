@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: GasolineCan
   Type: 4
-  Mesh: {fileID: 4305739764153617606, guid: 1f3af29ccea31514799bbe5d8b8d2c94, type: 3}
+  Mesh: {fileID: 4305739764153617606, guid: 09f13c4b598c94242ad896ee2d48eb2b, type: 3}
   Material: {fileID: 2100000, guid: aaa3fe3fe135caa449ed274fc0c01e93, type: 2}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
