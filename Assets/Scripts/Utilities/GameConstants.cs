@@ -11,6 +11,7 @@ public static class GameConstants
         public const int Water = 4;
         public const int UI = 5;
         public const int Trash = 6;
+        public const int TrashDespawnPlane = 7;
         public const int Obstcale = 29;
         public const int Interaction = 31;
     }

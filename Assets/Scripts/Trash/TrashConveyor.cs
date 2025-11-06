@@ -30,10 +30,10 @@ public class TrashConveyor : MonoBehaviour
         _trash.Add(trash);
     }
 
-    void FixedUpdate()
+    public void CustomUpdate()
     {
         foreach(Rigidbody trash in _trash)
-            trash.MovePosition(trash.position + transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER);
+            trash.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
     }
 
     void OnTriggerExit(Collider other)
@@ -43,9 +43,7 @@ public class TrashConveyor : MonoBehaviour
 
         Rigidbody trash = other.GetComponent<Rigidbody>();
 
-        if (_disableTrashGravity)
-            trash.isKinematic = false;
-
+        trash.isKinematic = false;
         trash.linearVelocity += transform.forward * _trashFlingSpeed;
 
         _trash.Remove(trash);

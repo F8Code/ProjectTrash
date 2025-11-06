@@ -4,6 +4,8 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
+    [Header("References")]
+    [Tooltip("The player arm prefab")]
     [SerializeField] PlayerArm _arm;
 
     public PlayerArm Arm => _arm;
@@ -24,12 +26,7 @@ public class PlayerManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update() //Remove this function when state machine is implemented
-    {
-        CustomUpdate();
-    }
-
-    void CustomUpdate()
+    public void CustomUpdate()
     {
         _arm.CustomUpdate();
     }
