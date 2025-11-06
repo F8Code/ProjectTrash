@@ -47,7 +47,7 @@ public class PlayerWrist : MonoBehaviour
     
     public Vector3 Position => GetCenterPosition();
 
-    public event Action<bool, Vector3> OnTrashGrabbed;
+    public event Action<Trash, bool, Vector3> OnTrashGrabbed;
 
     void Awake()
     {
@@ -111,7 +111,7 @@ public class PlayerWrist : MonoBehaviour
         _originalTrashParent = _grabbedTrash.transform.parent;
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
-        OnTrashGrabbed?.Invoke(true, Vector3.zero);
+        OnTrashGrabbed?.Invoke(_grabbedTrash.GetComponent<Trash>(), true, Vector3.zero);
         AudioManager.Instance.PlayAudio(
             PickupSound,
             _grabSoundVolume,
@@ -127,7 +127,7 @@ public class PlayerWrist : MonoBehaviour
         if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
         _grabbedTrash.transform.parent = _originalTrashParent;
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
-        OnTrashGrabbed?.Invoke(false, trashRB.linearVelocity);
+        OnTrashGrabbed?.Invoke(_grabbedTrash.GetComponent<Trash>(), false, trashRB.linearVelocity);
         _grabbedTrash = null;
         AudioManager.Instance.PlayAudio(
             ThrowSound,

@@ -198,7 +198,7 @@ public class PlayerArm : MonoBehaviour
         return Physics.SphereCast(_wrist.Position + Vector3.up * (0.05f + radius), radius, Vector3.down, out RaycastHit hit, range, layerMask);
     }
 
-    void SwitchHeight(bool isGrabbed, Vector3 velocity) => _isGrabbing = isGrabbed;
+    void SwitchHeight(Trash trash, bool isGrabbed, Vector3 velocity) => _isGrabbing = isGrabbed;
 
     void OnDisable()
     {

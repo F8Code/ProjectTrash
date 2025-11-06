@@ -527,8 +527,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c9693201afe414a8f811e0c81c7874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  _scoreMultiplierLevels: 5
-  _scoreMultiplierPerLevel: 1
+  ScoreSystem:
+    _scoreMultiplierLevels:
+    - 1.25
+    - 1.5
+    - 1.75
+    - 2
+    _scoreMultiplierRequiredComboInclusiveSeconds: 3
+    _scoreMultiplierDuration: 5
+    _displayScoreInformation: 0
+    _mistakesAllowed: 5
 --- !u!4 &78860713
 Transform:
   m_ObjectHideFlags: 0
@@ -1196,6 +1204,37 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &345161279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345161280}
+  m_Layer: 0
+  m_Name: CircleSliceCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &345161280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345161279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.436, y: 0.566, z: -0.152}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1614460037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &409091968
 GameObject:
   m_ObjectHideFlags: 0
@@ -4155,6 +4194,18 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 961739754}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceAngle
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceCenter
+      value: 
+      objectReference: {fileID: 345161280}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _circleSliceYRotationDegrees
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3296429521139650845, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Name
       value: Arm
@@ -4910,6 +4961,7 @@ Transform:
   m_Children:
   - {fileID: 961739753}
   - {fileID: 1327438935}
+  - {fileID: 345161280}
   m_Father: {fileID: 1032658932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1622550900
