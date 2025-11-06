@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,17 +8,23 @@ public class GameManager : MonoBehaviour
     public ScoreSystem ScoreSystem;
 
     //State machine
-    StateMachine _stateMachine;
+    private StateMachine _stateMachine;
+
     public IGameState CurrentState => _stateMachine.CurrentState;
     public IGameState PreviousState => _stateMachine.PreviousState;
 
     //Game Statistics
-    float _activeGameTime = 0f;
-    float _roundedDeltaTime = 0.01666f; //60FPS
+    private float _activeGameTime = 0f;
+
+    private float _roundedDeltaTime = 0.01666f; //60FPS
     public float GameTime => _activeGameTime;
     public int FPS => (int)(1.0f / _roundedDeltaTime);
 
-    void Awake()
+    //Leaderboard UI
+    [Header("UI References")]
+    [SerializeField] private LeaderboardUI _leaderboardUI;
+
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -31,15 +36,16 @@ public class GameManager : MonoBehaviour
         _stateMachine = new();
     }
 
-    void Start()
+    private void Start()
     {
         _stateMachine.ChangeState(new GameTutorialState());
     }
 
-    void Update()
+    private void Update()
     {
         _stateMachine.Update();
 
+        // Only update game logic during Tutorial and Playing states, NOT during Game Over
         if (CurrentState is GameTutorialState or GamePlayingState)
         {
             _activeGameTime += Time.deltaTime;
@@ -51,15 +57,28 @@ public class GameManager : MonoBehaviour
 
     public void ToggleGamePause() => SetState(new GamePausedState());
 
-    public void EndTutorialStage()  => SetState(new GamePlayingState());
+    public void EndTutorialStage() => SetState(new GamePlayingState());
 
     public void EndGame()
     {
-        SetState(new GameOverState());
-        Debug.Log("GAME OVER");
-    } 
+        Debug.Log($"<color=red>GAME OVER - Final Score: {ScoreSystem.Score}, Game Time: {_activeGameTime:F2}s</color>");
 
-    void SetState(IGameState state)
+        // Change state first
+        SetState(new GameOverState());
+
+        // Show Game Over panel with final score
+        if (_leaderboardUI != null)
+        {
+            Debug.Log($"<color=green>[GameManager] Showing game over screen with score: {ScoreSystem.Score}</color>");
+            _leaderboardUI.ShowGameOver(ScoreSystem.Score);
+        }
+        else
+        {
+            Debug.LogError("<color=red>[GameManager] LeaderboardUI reference is missing! Please assign it in the Inspector.</color>");
+        }
+    }
+
+    private void SetState(IGameState state)
     {
         if (CurrentState is not GamePausedState)
             _stateMachine.ChangeState(state);
