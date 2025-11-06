@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
+  m_Name: Box
+  m_EditorClassIdentifier: Assembly-CSharp::TrashData
+  Name: Box
+  Type: 1
+  Mesh: {fileID: -3262789968867269347, guid: 9e4b4721f295f644b85b365d4db2abb0, type: 3}
+  Material: {fileID: 2100000, guid: aaa3fe3fe135caa449ed274fc0c01e93, type: 2}
+  PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
+  RigidBodyMass: 1
+  HandSpeedMultiplier: 1
+  PickupSound: {fileID: 8300000, guid: d4328ba8dff89c84888bdd0adca32c9c, type: 3}
+  ThrowSound: {fileID: 8300000, guid: cd2a1d3ed4fb93b47b8679d01aa9dac1, type: 3}
+  RandomSizeMultiplierRange: {x: 100, y: 100}
+  RandomColorTintRange:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
+  MassScore: 0
+  SizeScore: 2
