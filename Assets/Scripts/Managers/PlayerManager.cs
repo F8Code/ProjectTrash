@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
     }
 
-    private void OnEnable() => CursorManager.Instance.SetGameplayCursor();
+    private void Start() => CursorManager.Instance.SetGameplayCursor();
 
     private void OnDisable() => CursorManager.Instance.SetUICursor();
 

@@ -168,13 +168,7 @@ public class TrashManager : MonoBehaviour
         GameManager.Instance.ScoreSystem.AddScore(score);
         MarkTrashForDespawn(trash);
 
-        if (score > 0)
-            AudioManager.Instance.PlayAudio(
-                CorrectBin,
-                _correctVolume,
-                AudioPlaybackContext.PlaybackPriority.Medium,
-                transform.position);
-        else
+        if (score < 0)
             AudioManager.Instance.PlayAudio(
                 WrongBin,
                 _wrongVolume,

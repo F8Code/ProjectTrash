@@ -27,6 +27,7 @@ public class CursorManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.Log(this.name);
             Destroy(gameObject);
             return;
         }
