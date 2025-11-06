@@ -16,9 +16,10 @@ MonoBehaviour:
   Type: 2
   Mesh: {fileID: -2265175041773621152, guid: 2db6e81215e6f3e42894caad00508863, type: 3}
   Material: {fileID: 2100000, guid: fde2c47d2f5cde048a196eb65d1352dd, type: 2}
+  ColliderPrefab: {fileID: 8188489580121542060, guid: fbc9c07621fde0041b43849c9abc137f, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 10
-  HandSpeedMultiplier: 0.4
+  RigidBodyMass: 1
+  HandSpeedMultiplier: 1
   PickupSound: {fileID: 8300000, guid: 8a1519f7a059bc8488949f14a121aed4, type: 3}
   ThrowSound: {fileID: 8300000, guid: 149310087bd2b384da0ae202b5b04924, type: 3}
   RandomSizeMultiplierRange: {x: 0.2, y: 0.25}

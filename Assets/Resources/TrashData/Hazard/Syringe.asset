@@ -16,6 +16,7 @@ MonoBehaviour:
   Type: 4
   Mesh: {fileID: 4309010749960864949, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
   Material: {fileID: 2100000, guid: f5995b11a7d432e489cdd207e2ca9717, type: 2}
+  ColliderPrefab: {fileID: 4928700368368387107, guid: 97a2e9af38ac8614f8981145168917f1, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1

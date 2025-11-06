@@ -20,7 +20,7 @@ public class TrashConveyor : MonoBehaviour
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        Rigidbody trash = other.GetComponent<Rigidbody>();
+        Rigidbody trash = other.GetComponentInParent<Rigidbody>();
 
         if (_disableTrashGravity)
             trash.isKinematic = true;
@@ -41,7 +41,7 @@ public class TrashConveyor : MonoBehaviour
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        Rigidbody trash = other.GetComponent<Rigidbody>();
+        Rigidbody trash = other.GetComponentInParent<Rigidbody>();
 
         trash.isKinematic = false;
         trash.linearVelocity += transform.forward * _trashFlingSpeed;
