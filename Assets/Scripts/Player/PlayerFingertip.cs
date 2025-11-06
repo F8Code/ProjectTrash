@@ -15,20 +15,20 @@ public class PlayerFingertip : MonoBehaviour
         _detectionCollider.isTrigger = true;
     }
 
-    readonly HashSet<GameObject> _contacts = new();
+    readonly HashSet<Trash> _contacts = new();
 
     public string AnimatorVariable => _animatorVariable;
-    public IReadOnlyCollection<GameObject> Contacts => _contacts;
+    public IReadOnlyCollection<Trash> Contacts => _contacts;
 
-    public event Action<PlayerFingertip, GameObject> OnFingerContact;
+    public event Action<PlayerFingertip, Trash> OnFingerContact;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        if (_contacts.Add(other.gameObject))
-            OnFingerContact?.Invoke(this, other.gameObject);
+        if (_contacts.Add(other.GetComponentInParent<Trash>()))
+            OnFingerContact?.Invoke(this, other.GetComponentInParent<Trash>());
     }
 
     void OnTriggerExit(Collider other)
@@ -36,6 +36,6 @@ public class PlayerFingertip : MonoBehaviour
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        _contacts.Remove(other.gameObject);
+        _contacts.Remove(other.GetComponentInParent<Trash>());
     }
 }

@@ -17,6 +17,9 @@ public class TrashData : ScriptableObject
     public Material Material;
 
     [Header("Physics data")]
+    [Tooltip("Prefab with a uniform scale 1 containing only colliders for this trash type")]
+    public GameObject ColliderPrefab;
+
     [Tooltip("Physics material assigned to the collider")]
     public PhysicsMaterial PhysicsMaterial;
 
