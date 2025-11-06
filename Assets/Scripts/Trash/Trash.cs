@@ -49,6 +49,7 @@ public class Trash : MonoBehaviour
         //Physics data
         ReplaceColliders(data);
         _rb.mass = data.RigidBodyMass;
+        _rb.linearVelocity = Vector3.zero;
 
         //Visual variety data
         transform.localScale = Vector3.one * Random.Range(data.RandomSizeMultiplierRange.x, data.RandomSizeMultiplierRange.y);
