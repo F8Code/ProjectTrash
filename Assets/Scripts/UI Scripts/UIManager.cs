@@ -1,13 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Centralized UI panel manager with animation support
+/// Singleton pattern for easy access throughout the game
+/// </summary>
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+
     [Header("Panel Management")]
     [SerializeField] private List<UIPanel> panels = new();
 
     private UIPanel currentPanel;
     private readonly Dictionary<string, UIPanel> panelDictionary = new();
+
+    private void Awake()
+    {
+        // Singleton pattern
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Start() => InitializePanels();
 
@@ -25,6 +42,8 @@ public class UIManager : MonoBehaviour
             if (panel.startActive && panel.panelObject != null)
                 currentPanel = panel;
         }
+
+        Debug.Log($"<color=green>[UIManager] Initialized {panelDictionary.Count} panels</color>");
     }
 
     /// <summary>
@@ -34,8 +53,6 @@ public class UIManager : MonoBehaviour
     {
         if (panelDictionary.TryGetValue(panelName, out UIPanel panel))
             ShowPanel(panel);
-        else
-            Debug.LogWarning($"Panel '{panelName}' not found!");
     }
 
     /// <summary>
@@ -45,16 +62,20 @@ public class UIManager : MonoBehaviour
     {
         if (panel == null || panel.panelObject == null) return;
 
+        Debug.Log($"<color=cyan>[UIManager] Showing panel: {panel.panelName}</color>");
+
         // Hide current panel if exists
         if (currentPanel != null && currentPanel != panel)
         {
             HidePanel(currentPanel, () =>
-                       {
-                           DisplayPanel(panel);
-                       });
+            {
+                DisplayPanel(panel);
+            });
         }
         else
+        {
             DisplayPanel(panel);
+        }
     }
 
     private void DisplayPanel(UIPanel panel)
@@ -85,14 +106,9 @@ public class UIManager : MonoBehaviour
     public void HidePanel(string panelName, System.Action onComplete = null)
     {
         if (panelDictionary.TryGetValue(panelName, out UIPanel panel))
-        {
             HidePanel(panel, onComplete);
-        }
         else
-        {
-            Debug.LogWarning($"Panel '{panelName}' not found!");
             onComplete?.Invoke();
-        }
     }
 
     /// <summary>
@@ -115,15 +131,15 @@ public class UIManager : MonoBehaviour
 
             UITweenAnimator.Instance.AnimatePanelExit(
                  panel.animatedTransform,
-                 panel.exitDirection,  // Use panel-specific direction
-           panel.animationDuration,
-                      curve,
-                   () =>
+                 panel.exitDirection,
+                 panel.animationDuration,
+                 curve,
+                 () =>
                  {
-                     panel.SetActive(false);  // Only disables Canvas, not GameObject
+                     panel.SetActive(false);
                      onComplete?.Invoke();
                  }
-                      );
+            );
         }
         else
         {
@@ -143,9 +159,12 @@ public class UIManager : MonoBehaviour
                 panel.SetActive(false);
         }
         currentPanel = null;
+        Debug.Log("<color=cyan>[UIManager] All panels hidden</color>");
     }
 
     public void LoadScene(string _sceneName) => UnityEngine.SceneManagement.SceneManager.LoadScene(_sceneName);
 
     public void LoadScene(int _sceneIndex) => UnityEngine.SceneManagement.SceneManager.LoadScene(_sceneIndex);
+
+    public void QuitGame() => Application.Quit();
 }

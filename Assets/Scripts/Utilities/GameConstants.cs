@@ -16,13 +16,6 @@ public static class GameConstants
         public const int Interaction = 31;
     }
 
-    public static class Tag
-    {
-        public const string Player = "EventHandlers";
-        public const string Enemy = "Obstcale";
-        public const string Interactable = "Interactable";
-    }
-
     public static class Scene
     {
         public const string Bootstrapper = "0- Bootstrapper";
@@ -30,62 +23,17 @@ public static class GameConstants
         public const string Game = "2- Gameplay";
     }
 
-    public static class PlayerAnimation
-    {
-        public const string OnGround = "OnGround";
-        public const string Slide = "Slide";
-        public const string Forward = "Forward";
-        public const string Turn = "Turn";
-        public const string Die = "Die";
-        public const string VerticalSpeed = "VerticalSpeed";
-
-        public static class StringToHash
-        {
-            public static readonly int OnGroundHash = Animator.StringToHash(OnGround);
-            public static readonly int SlideHash = Animator.StringToHash(Slide);
-            public static readonly int ForwardHash = Animator.StringToHash(Forward);
-            public static readonly int TurnHash = Animator.StringToHash(Turn);
-            public static readonly int DieHash = Animator.StringToHash(Die);
-            public static readonly int VerticalSpeedHash = Animator.StringToHash(VerticalSpeed);
-        }
-    }
-
-    public static class ShaderProperties
-    {
-        public const string Alpha = "_Alpha";
-    }
-
-    public static class Event
-    {
-        public static class Name
-        {
-            public const string Gameover = "Gameover";
-        }
-
-        public static class Channel
-        {
-            public const string GameStarts = "GameStarts";
-            public const string Coin = "Coin";
-            public const string Interact = "Interact";
-            public const string Die = "Die";
-
-            public const string Pause = "Pause";
-            public const string Resume = "Resume";
-            public const string Restart = "Restart";
-
-            public const string LoadingProgress = "LoadingProgress";
-            public const string SceneLoaded = "SceneLoaded";
-            public const string SceneUnloaded = "SceneUnloaded";
-            public const string SceneGroupLoaded = "SceneGroupLoaded";
-
-            public const string MainmenuLoaded = "MainmenuLoaded";
-        }
-    }
-
     public static class AudioMixer
     {
         public const string Master = "Master";
         public const string Background = "Background";
         public const string SFX = "SFX";
+    }
+
+    public static class Canvas
+    {
+        public const string GameOverPanel = "GameOverPanel_Canvas";
+        public const string LeaderboardPanel = "Leaderboard_Canvas";
+        public const string PauseMenu = "UICanvas_PauseMenu";
     }
 }

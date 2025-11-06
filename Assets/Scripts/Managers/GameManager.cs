@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private LeaderboardUI _leaderboardUI;
 
+    // Pause state
+    private bool _isPaused = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -36,17 +39,17 @@ public class GameManager : MonoBehaviour
         _stateMachine = new();
     }
 
-    private void Start()
-    {
-        _stateMachine.ChangeState(new GameTutorialState());
-    }
+    private void Start() => _stateMachine.ChangeState(new GameTutorialState());
 
     private void Update()
     {
+        // Handle pause input
+        HandlePauseInput();
+
         _stateMachine.Update();
 
-        // Only update game logic during Tutorial and Playing states, NOT during Game Over
-        if (CurrentState is GameTutorialState or GamePlayingState)
+        // Only update game logic during Tutorial and Playing states, NOT during Game Over or Pause
+        if (!_isPaused && CurrentState is GameTutorialState or GamePlayingState)
         {
             _activeGameTime += Time.deltaTime;
             ScoreSystem.CustomUpdate();
@@ -55,7 +58,57 @@ public class GameManager : MonoBehaviour
         _roundedDeltaTime += (Time.unscaledDeltaTime - _roundedDeltaTime) * 0.01f;
     }
 
-    public void ToggleGamePause() => SetState(new GamePausedState());
+    private void HandlePauseInput()
+    {
+        if (CurrentState is not (GameTutorialState or GamePlayingState))
+            return;
+
+        if (InputManager.Instance != null && InputManager.Instance.UIActions.Cancel.WasPressedThisFrame())
+            ToggleGamePause();
+    }
+
+    public void ToggleGamePause()
+    {
+        // Only allow pausing during Tutorial or Playing states
+        if (CurrentState is not (GameTutorialState or GamePlayingState) && !_isPaused)
+            return;
+
+        if (_isPaused)
+            ResumeGame();
+        else
+            PauseGame();
+    }
+
+    private void PauseGame()
+    {
+        _isPaused = true;
+
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowPanel(GameConstants.Canvas.PauseMenu);
+
+        // Show cursor for UI interaction
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.ShowCursorForUI();
+
+        // Change to paused state
+        SetState(new GamePausedState());
+    }
+
+    public void ResumeGame()
+    {
+        _isPaused = false;
+
+        // Hide pause menu via UIManager
+        if (UIManager.Instance != null)
+            UIManager.Instance.HidePanel(GameConstants.Canvas.PauseMenu);
+
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.HideCursorForUI();
+
+        // Return to previous state (Tutorial or Playing)
+        if (PreviousState != null)
+            _stateMachine.ChangeState(PreviousState);
+    }
 
     public void EndTutorialStage() => SetState(new GamePlayingState());
 
@@ -63,19 +116,16 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"<color=red>GAME OVER - Final Score: {ScoreSystem.Score}, Game Time: {_activeGameTime:F2}s</color>");
 
+        // Ensure game is not paused
+        _isPaused = false;
+        Time.timeScale = 1f;
+
         // Change state first
         SetState(new GameOverState());
 
         // Show Game Over panel with final score
         if (_leaderboardUI != null)
-        {
-            Debug.Log($"<color=green>[GameManager] Showing game over screen with score: {ScoreSystem.Score}</color>");
             _leaderboardUI.ShowGameOver(ScoreSystem.Score);
-        }
-        else
-        {
-            Debug.LogError("<color=red>[GameManager] LeaderboardUI reference is missing! Please assign it in the Inspector.</color>");
-        }
     }
 
     private void SetState(IGameState state)
