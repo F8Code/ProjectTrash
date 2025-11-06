@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Graffiti Can
   Type: 2
-  Mesh: {fileID: 807079015669808685, guid: da7cb8f11c24d364faf705eb29a91213, type: 3}
-  Material: {fileID: 2100000, guid: 9b7365b695bbdb642983eceb7ccd70ec, type: 2}
+  Mesh: {fileID: 2201384559433555942, guid: 99f2c2a59200fd44ba53bf208c8b24a3, type: 3}
+  Material: {fileID: 2100000, guid: 047911e7eed0a2341aa6bff71477c843, type: 2}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
@@ -53,5 +53,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 2
-  SizeScore: 3
+  MassScore: 1
+  SizeScore: 1

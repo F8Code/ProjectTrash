@@ -54,4 +54,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
   MassScore: 1
-  SizeScore: 2
+  SizeScore: 1

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Honey Jar
   Type: 3
-  Mesh: {fileID: -7225152924895110974, guid: 24b062749156bd54dbb7c628eb269221, type: 3}
-  Material: {fileID: 2100000, guid: 9b7365b695bbdb642983eceb7ccd70ec, type: 2}
+  Mesh: {fileID: -4075583863338167294, guid: cf89bc76d41227141bc4e56fe8e95814, type: 3}
+  Material: {fileID: 2100000, guid: 3df24a8c8a64b86499a8baf3a9832a87, type: 2}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
@@ -53,5 +53,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 1
+  MassScore: 2
   SizeScore: 2
