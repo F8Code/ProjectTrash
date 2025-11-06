@@ -49,16 +49,6 @@ public class TrashManager : MonoBehaviour
     [Tooltip("Trash conveyors that move trash from A to B")]
     [SerializeField] List<TrashConveyor> _trashConveyors = new();
 
-    [Header("Audio Settings")]
-    [Tooltip("Sound played when sorting correctly")]
-    public AudioClip CorrectBin;
-    [Tooltip("Sound played when making a mistake")]
-    public AudioClip WrongBin;
-    [Tooltip("Correct sort volume multiplier")]
-    [SerializeField, Range(0f, 1f)] private float _correctVolume = 0.75f;
-    [Tooltip("Mistake sound volume multiplier")]
-    [SerializeField, Range(0f, 1f)] private float _wrongVolume = 0.75f;
-
     [Header("Trash spawn settings")]
     [Tooltip("Ammount of trash that needs to be despawned for the tutorial stage to finish")]
     [SerializeField] uint _trashToEndTutorial = 3;
@@ -167,13 +157,6 @@ public class TrashManager : MonoBehaviour
     {
         GameManager.Instance.ScoreSystem.AddScore(score);
         MarkTrashForDespawn(trash);
-
-        if (score < 0)
-            AudioManager.Instance.PlayAudio(
-                WrongBin,
-                _wrongVolume,
-                AudioPlaybackContext.PlaybackPriority.Medium,
-                transform.position);
     }
 
     void MarkTrashForDespawn(Trash trash)

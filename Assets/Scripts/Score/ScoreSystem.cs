@@ -18,6 +18,18 @@ public class ScoreSystem
     [Tooltip("How many mistakes are allowed before the game ends")]
     [SerializeField, Range(1, 10)] uint _mistakesAllowed = 5;
 
+    [Header("Audio Settings")]
+    [Tooltip("Sound played when sorting correctly")]
+    public AudioClip SuccessSound;
+    [Tooltip("Sound played when making a mistake")]
+    public AudioClip MistakeSound;
+    [Tooltip("Correct sort volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _successVolume = 0.75f;
+    [Tooltip("Mistake sound volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _mistakeVolume = 0.75f;
+    [Tooltip("Score multiplier pitch strength multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _multiplierPitchStrength = 1f;
+
     uint _score = 0;
     float _scoreMultiplier = 0f;
     float _multiplierDurationLeft = 0f;
@@ -52,8 +64,11 @@ public class ScoreSystem
         {
             _scores.Add(score);
             _multiplierDurationLeft = _scoreMultiplierDuration;
-            if(GetCurrentlyMultipliedScore() == 0)
+            if (GetCurrentlyMultipliedScore() == 0)
                 _score += (uint)score;
+
+            float audioPitch01 = Mathf.InverseLerp(_scoreMultiplierLevels[_scoreMultiplierLevels.Length - 1], 0f, _scoreMultiplier) * _multiplierPitchStrength;
+            AudioManager.Instance.PlayAudio(SuccessSound, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, audioPitch01);
         }
         else //Mistake
         {
@@ -62,6 +77,8 @@ public class ScoreSystem
             _scoreMultiplier = 0f;
             if (--_mistakesAllowed == 0)
                 GameManager.Instance.EndGame();
+
+            AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position);
         }
     }
     
