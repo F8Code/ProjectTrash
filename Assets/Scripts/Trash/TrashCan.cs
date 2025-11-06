@@ -14,7 +14,7 @@ public class TrashCan : MonoBehaviour
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        Trash trash = other.GetComponent<Trash>();
+        Trash trash = other.GetComponentInParent<Trash>();
 
         OnTrashCollected?.Invoke(trash, (trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score);
 

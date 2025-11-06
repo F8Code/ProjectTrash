@@ -13,11 +13,11 @@ public class Trash : MonoBehaviour
     [Tooltip("Throw sound volume multiplier")]
     [SerializeField, Range(0f, 1f)] private float _throwSoundVolume = 0.5f;
 
-    private TrashData _data;
-    private Renderer _renderer;
-    private MeshFilter _meshFilter;
-    private Rigidbody _rb;
-    private MeshCollider _collider;
+    TrashData _data;
+    Renderer _renderer;
+    MeshFilter _meshFilter;
+    Rigidbody _rb;
+    GameObject _activeColliderSet;
 
     public string Name => _data.Name;
     public TrashType Type => _data.Type;
@@ -27,10 +27,9 @@ public class Trash : MonoBehaviour
 
     private void Awake()
     {
-        _renderer = GetComponentInChildren<Renderer>();
-        _meshFilter = GetComponentInChildren<MeshFilter>();
+        _renderer = GetComponent<Renderer>();
+        _meshFilter = GetComponent<MeshFilter>();
         _rb = GetComponent<Rigidbody>();
-        _collider = GetComponent<MeshCollider>();
     }
 
     private void OnEnable()
@@ -48,8 +47,7 @@ public class Trash : MonoBehaviour
         _renderer.material = data.Material;
 
         //Physics data
-        _collider.sharedMesh = data.Mesh;
-        _collider.material = data.PhysicsMaterial;
+        ReplaceColliders(data);
         _rb.mass = data.RigidBodyMass;
 
         //Visual variety data
@@ -57,6 +55,31 @@ public class Trash : MonoBehaviour
         Color modifiedColor = data.RandomColorTintRange.Evaluate(Random.value);
         modifiedColor.a *= Random.Range(data.RandomColorBrightnessMultiplierRange.x, data.RandomColorBrightnessMultiplierRange.y);
         _renderer.material.color = modifiedColor;
+    }
+
+    void ReplaceColliders(TrashData data)
+    {
+        //Disable the old colliders
+        if (_activeColliderSet != null)
+            _activeColliderSet.SetActive(false);
+
+        //If data holds colliders that have already been attached, enable them
+        Transform newSet = transform.Find(data.Name + "_ColliderSet");
+        if (newSet != null)
+        {
+            _activeColliderSet = newSet.gameObject;
+            _activeColliderSet.SetActive(true);
+            return;
+        }
+
+        //If data holds new colliders, attach them
+        GameObject colliders = Instantiate(data.ColliderPrefab, transform);
+        colliders.name = data.Name + "_ColliderSet";
+        colliders.transform.localPosition = Vector3.zero;
+        colliders.transform.localRotation = Quaternion.identity;
+        colliders.transform.localScale = Vector3.one;
+
+        _activeColliderSet = colliders;
     }
 
     private void PlayFeedbackActions(Trash trash, bool isGrabbed, Vector3 handVelocity)

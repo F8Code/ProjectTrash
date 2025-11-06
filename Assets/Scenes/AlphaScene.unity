@@ -14971,12 +14971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashManager
   _trashDataFolders:
-  - TrashData/Plastic
-  - TrashData/Paper
-  - TrashData/Metal
-  - TrashData/Glass
-  - TrashData/Hazard
-  - TrashData/Mixed
+  - TrashData/Test
   _trashPrefab: {fileID: 7904490154343748611, guid: bde7187e0ed8aa443b3e36a076f066d0, type: 3}
   _trashSpawnPosition: {fileID: 473939097}
   _trashCans:
@@ -15895,17 +15890,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1614460037}
     m_Modifications:
+    - target: {fileID: 81492863951979403, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 753279735176529812, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3382
       objectReference: {fileID: 0}
     - target: {fileID: 753279735176529812, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5599
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 753279735176529812, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0005
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: 753279735176529812, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15943,9 +15942,53 @@ PrefabInstance:
       propertyPath: _circleSliceCenter
       value: 
       objectReference: {fileID: 828194129}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _trashDetectionHeightMultiplier
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _trashDetectionRadiusMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786969979788076392, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007515442481025355, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 3296429521139650845, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Name
       value: Arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315307154823093497, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454700674181900515, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411896516646783995, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158913895375076652, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260521116120272261, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602800419444116824, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139559269589475195, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: m_Radius
+      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23830,6 +23873,10 @@ PrefabInstance:
     - target: {fileID: 2298198345723317666, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Name
       value: TrashConveyor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677488733820534403, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
+      propertyPath: _trashFlingSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7394478528251609237, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_LocalPosition.x

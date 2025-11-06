@@ -69,7 +69,7 @@ public class PlayerWrist : MonoBehaviour
         _lastTrashPosition = _grabbedTrash.transform.position;
     }
 
-    void HandleFingerContact(PlayerFingertip finger, GameObject trash)
+    void HandleFingerContact(PlayerFingertip finger, Trash trash)
     {
         if (!_isGrabbing)
             return;
@@ -105,13 +105,13 @@ public class PlayerWrist : MonoBehaviour
             ReleaseTrash();
     }
 
-    void GrabTrash(GameObject trash)
+    void GrabTrash(Trash trash)
     {
-        _grabbedTrash = trash;
+        _grabbedTrash = trash.gameObject;
         _originalTrashParent = _grabbedTrash.transform.parent;
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
-        OnTrashGrabbed?.Invoke(_grabbedTrash.GetComponent<Trash>(), true, Vector3.zero);
+        OnTrashGrabbed?.Invoke(trash, true, Vector3.zero);
         AudioManager.Instance.PlayAudio(
             PickupSound,
             _grabSoundVolume,
@@ -139,16 +139,27 @@ public class PlayerWrist : MonoBehaviour
     IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject)
     {
         Collider[] handColliders = GetComponentsInChildren<Collider>();
-        Collider objectCollider = releasedObject.GetComponent<Collider>();
+        Collider[] objectColliders = releasedObject.GetComponentsInChildren<Collider>();
 
         foreach (Collider handCol in handColliders)
-            Physics.IgnoreCollision(handCol, objectCollider, true);
+        {
+            foreach (Collider objCol in objectColliders)
+            {
+                if (handCol && objCol)
+                    Physics.IgnoreCollision(handCol, objCol, true);
+            }
+        }
 
         yield return new WaitForSeconds(0.25f);
 
         foreach (Collider handCol in handColliders)
-            if (handCol && objectCollider)
-                Physics.IgnoreCollision(handCol, objectCollider, false);
+        {
+            foreach (Collider objCol in objectColliders)
+            {
+                if (handCol && objCol)
+                    Physics.IgnoreCollision(handCol, objCol, false);
+            }
+        }
     }
 
     void OnDisable()
