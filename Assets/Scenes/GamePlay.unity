@@ -14419,6 +14419,14 @@ PrefabInstance:
       propertyPath: _circleSliceCenter
       value: 
       objectReference: {fileID: 828194129}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _armSidewaysRotationRangeDegrees.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
+      propertyPath: _cameraSidewaysRotationRangeDegrees.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3296429521139650845, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Name
       value: Arm
@@ -17836,6 +17844,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 22268467315374039, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: _trashFlingSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22268467315374039, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: _trashMovementSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 22268467315374039, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: _disableTrashGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 920120408885625298, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Name
       value: ConveyorLine
@@ -17879,6 +17899,14 @@ PrefabInstance:
     - target: {fileID: 1741678305334571004, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631787153223492791, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: _disableTrashGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7712503714554771604, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
