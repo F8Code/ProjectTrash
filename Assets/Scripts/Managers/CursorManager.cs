@@ -30,8 +30,8 @@ public class CursorManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
 
