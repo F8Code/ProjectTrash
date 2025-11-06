@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Yogurt Package Dirty
   Type: 5
-  Mesh: {fileID: 1636278447586535312, guid: c81409b8e59ad7b4f835f0917f377283, type: 3}
+  Mesh: {fileID: 8186104333223141496, guid: 3d54dc3937a9b2540918cd212ca6cbb7, type: 3}
   Material: {fileID: 2100000, guid: ce4a3ff8cbe5fae408b0661eedc06ef3, type: 2}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
