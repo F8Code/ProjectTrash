@@ -64,7 +64,7 @@ public class Trash : MonoBehaviour
         if (trash != this)
             return;
 
-        Debug.Log(gameObject.name + " played sound!");
+        //Debug.Log(gameObject.name + " played sound!");
 
         PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
         if (isGrabbed && _data.PickupSound != null)
