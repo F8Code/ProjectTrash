@@ -807,10 +807,10 @@ MonoBehaviour:
   - {fileID: 3519710649070591389}
   _armAnimator: {fileID: 4644124295607104602}
   _grabSpeed: 1.5
-  _thrownTrashSpeedMultiplier: 1
+  _thrownTrashSpeedMultiplier: 1.2
   _thrownTrashVelocityLimit: 3
   _displayDebugLogTrashVelocityOnRelease: 1
-  _thrownTrashBonusUpwardsVelocity: 1
+  _thrownTrashBonusUpwardsVelocity: 1.2
   PickupSound: {fileID: 8300000, guid: a0052050134ef4542b1b6fcebad6e006, type: 3}
   ThrowSound: {fileID: 8300000, guid: 3c7a2c34432a18e4da6a794254018095, type: 3}
   _grabSoundVolume: 1
