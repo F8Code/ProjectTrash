@@ -20,7 +20,7 @@ MonoBehaviour:
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
   PickupSound: {fileID: 8300000, guid: 426e47acca7406b49a5709335af0a3e1, type: 3}
-  ThrowSound: {fileID: 8300000, guid: 426e47acca7406b49a5709335af0a3e1, type: 3}
+  ThrowSound: {fileID: 0}
   RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
