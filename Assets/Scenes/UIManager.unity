@@ -1842,7 +1842,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider SFX
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3309653819240145176, guid: 208bc031e78d64b40aee5e096e85554b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4375,7 +4376,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider Music
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3309653819240145176, guid: 208bc031e78d64b40aee5e096e85554b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8256,7 +8258,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider Master
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3309653819240145176, guid: 208bc031e78d64b40aee5e096e85554b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
