@@ -7654,61 +7654,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6204349081609592139, guid: 22fe8be9d34271a4b905d37c55502eed, type: 3}
   m_PrefabInstance: {fileID: 1873484009}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1877837264
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1877837266}
-  - component: {fileID: 1877837265}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1877837265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877837264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20c9693201afe414a8f811e0c81c7874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  ScoreSystem:
-    _scoreMultiplierLevels:
-    - 1.25
-    - 1.5
-    - 1.75
-    - 2
-    _scoreMultiplierRequiredComboInclusiveSeconds: 3
-    _scoreMultiplierDuration: 5
-    _displayScoreInformation: 0
-    _mistakesAllowed: 5
-  _leaderboardUI: {fileID: 0}
---- !u!4 &1877837266
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877837264}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1615.3174, y: 570.7241, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1924575859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11695,4 +11640,3 @@ SceneRoots:
   - {fileID: 91387437}
   - {fileID: 1374008752}
   - {fileID: 1712884237}
-  - {fileID: 1877837266}
