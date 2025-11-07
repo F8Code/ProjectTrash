@@ -28,10 +28,10 @@ public class InputManager : MonoBehaviour
         _input?.Enable();
     }
 
-    void OnDisable()
-    {
-        _input?.Disable();
-    }
+    //void OnDisable()
+    //{
+    //    _input?.Disable();
+    //}
 
     void InitializeActions()
     {
