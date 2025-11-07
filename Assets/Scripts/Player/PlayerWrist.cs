@@ -40,7 +40,7 @@ public class PlayerWrist : MonoBehaviour
 
     bool _isGrabbing = false;
     float _currentGrab01;
-    PlayerFingertip[] _allFingers;
+    public PlayerFingertip[] _allFingers;
     GameObject _grabbedTrash = null;
     Transform _originalTrashParent;
     Vector3 _lastTrashPosition, _trashVelocity;
