@@ -96,7 +96,7 @@ public class TrashManager : MonoBehaviour
 
     void Start()
     {
-        _trashFactory = new(_trashPrefab, 5, transform);
+        _trashFactory = new(_trashPrefab, 10, transform);
         SpawnTrash();
     }
 

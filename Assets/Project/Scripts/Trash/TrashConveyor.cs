@@ -25,20 +25,16 @@ public class TrashConveyor : MonoBehaviour
         if (_disableTrashGravity)
             trash.isKinematic = true;
 
-        trash.MovePosition(trash.position);
-
         _trash.Add(trash);
     }
 
     public void CustomUpdate()
     {
-        Debug.Log(name + " " + _trash.Count);
         foreach(Rigidbody trash in _trash)
         {
             trash.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
-            if (!trash.isKinematic) trash.angularVelocity = Vector3.zero;
+            if (!trash.isKinematic) trash.angularVelocity *= 0.9f;
         }
-            
     }
 
     void OnTriggerExit(Collider other)
