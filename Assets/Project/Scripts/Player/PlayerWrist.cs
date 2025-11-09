@@ -112,11 +112,7 @@ public class PlayerWrist : MonoBehaviour
         _grabbedTrash.transform.SetParent(transform);
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
         OnTrashGrabbed?.Invoke(trash, true, Vector3.zero);
-        AudioManager.Instance.PlayAudio(
-            PickupSound,
-            _grabSoundVolume,
-            AudioPlaybackContext.PlaybackPriority.Medium,
-            transform.position);
+        AudioManager.Instance.PlayAudio(PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
     }
     
     void ReleaseTrash()
@@ -129,11 +125,7 @@ public class PlayerWrist : MonoBehaviour
         StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
         OnTrashGrabbed?.Invoke(_grabbedTrash.GetComponent<Trash>(), false, trashRB.linearVelocity);
         _grabbedTrash = null;
-        AudioManager.Instance.PlayAudio(
-            ThrowSound,
-            _throwSoundVolume,
-            AudioPlaybackContext.PlaybackPriority.Medium,
-            transform.position);
+        AudioManager.Instance.PlayAudio(ThrowSound, _throwSoundVolume,AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
     }
 
     IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject)

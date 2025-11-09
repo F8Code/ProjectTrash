@@ -32,8 +32,13 @@ public class TrashConveyor : MonoBehaviour
 
     public void CustomUpdate()
     {
+        Debug.Log(name + " " + _trash.Count);
         foreach(Rigidbody trash in _trash)
+        {
             trash.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
+            if (!trash.isKinematic) trash.angularVelocity = Vector3.zero;
+        }
+            
     }
 
     void OnTriggerExit(Collider other)

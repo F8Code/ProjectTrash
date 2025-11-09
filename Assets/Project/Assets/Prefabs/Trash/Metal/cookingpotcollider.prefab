@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3197832744044017891}
   - component: {fileID: 1758917139900547398}
   - component: {fileID: 8830045864842542204}
-  - component: {fileID: 5324707816160893910}
+  - component: {fileID: 1017840586787952740}
   m_Layer: 6
   m_Name: cookingpotcollider
   m_TagString: Untagged
@@ -90,8 +90,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5324707816160893910
-SphereCollider:
+--- !u!136 &1017840586787952740
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +108,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.002480507
-  m_Center: {x: 0.0000054836273, y: -0.00014321506, z: 0.0012294669}
+  serializedVersion: 2
+  m_Radius: 0.0023602967
+  m_Height: 0.001
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.0012}

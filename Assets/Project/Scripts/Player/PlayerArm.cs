@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PlayerArm : MonoBehaviour
 {
@@ -68,7 +71,6 @@ public class PlayerArm : MonoBehaviour
 
     public PlayerWrist Wrist => _wrist;
 
-    Vector3[] _movementTransform;
     Quaternion _baseElbowRotation;
     Quaternion _baseWristRotation;
     float _currentElbowZ, _currentWristX;
@@ -82,8 +84,6 @@ public class PlayerArm : MonoBehaviour
     {
         _baseElbowRotation = _elbowJoint.localRotation;
         _baseWristRotation = _wrist.transform.localRotation;
-
-        _movementTransform = new Vector3[2] { new Vector3(transform.right.x, 0f, transform.right.z), new Vector3(transform.forward.x, 0f, transform.forward.z) };
     }
 
     void OnEnable()
@@ -109,7 +109,7 @@ public class PlayerArm : MonoBehaviour
 
         //Reading movement
         Vector2 mouseInput = InputManager.Instance.PlayerActions.MoveHand.ReadValue<Vector2>() * ARM_MOVEMENT_SCALING * _armSpeedDebuf;
-        Vector3 movementVector = _movementTransform[0] * mouseInput.x + _movementTransform[1] * mouseInput.y;
+        Vector3 movementVector = new Vector3(_camera.transform.right.x, 0f, _camera.transform.right.z) * mouseInput.x + new Vector3(_camera.transform.forward.x, 0f, _camera.transform.forward.z) * mouseInput.y;
 
         //Limiting movement
         Vector3 targetPosition = transform.position + movementVector * _armMovementStrength;
@@ -204,4 +204,31 @@ public class PlayerArm : MonoBehaviour
     {
         _wrist.OnTrashGrabbed -= SwitchHeight;
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmos()
+    {
+        if (_circleSliceCenter == null)
+            return;
+
+        Vector3 center = _circleSliceCenter.position;
+        Quaternion rotation = Quaternion.Euler(0f, _circleSliceYRotationDegrees, 0f);
+        Vector3 forward = rotation * Vector3.forward;
+        float halfAngle = _circleSliceAngle * 0.5f;
+
+        Handles.color = new Color(0f, 0.8f, 1f, 1f);
+
+        //Outer and inner ring
+        Handles.DrawWireArc(center, Vector3.up, Quaternion.Euler(0f, -halfAngle, 0f) * forward, _circleSliceAngle, _circleSliceMaxRadius);
+        Handles.DrawWireArc(center, Vector3.up, Quaternion.Euler(0f, -halfAngle, 0f) * forward, _circleSliceAngle, _circleSliceMinRadius);
+
+        //Left side
+        Vector3 leftDir = Quaternion.Euler(0f, -halfAngle, 0f) * forward;
+        Handles.DrawLine(center + leftDir * _circleSliceMinRadius, center + leftDir * _circleSliceMaxRadius);
+
+        //Right side
+        Vector3 rightDir = Quaternion.Euler(0f, halfAngle, 0f) * forward;
+        Handles.DrawLine(center + rightDir * _circleSliceMinRadius, center + rightDir * _circleSliceMaxRadius);
+    }
+#endif
 }

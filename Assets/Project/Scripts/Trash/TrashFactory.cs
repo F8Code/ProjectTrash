@@ -4,7 +4,7 @@ public class TrashFactory
 {
     ObjectPool<Trash> _trashPool;
 
-    public TrashFactory(Trash trashPrefab, int initialPoolSize = 20, Transform parentTransform = null)
+    public TrashFactory(Trash trashPrefab, int initialPoolSize = 5, Transform parentTransform = null)
     {
         GameObject poolParent = new GameObject(trashPrefab.name + "Pool");
         poolParent.transform.SetParent(parentTransform, false);
