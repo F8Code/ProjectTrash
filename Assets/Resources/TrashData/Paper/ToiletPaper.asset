@@ -16,12 +16,13 @@ MonoBehaviour:
   Type: 1
   Mesh: {fileID: 4318015328312620044, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
   Material: {fileID: 2100000, guid: 1792f3e08fb347c48a69ec8e63a089f0, type: 2}
+  ColliderPrefab: {fileID: 315669384938602634, guid: 9c2489f03949a4a4ca136ee007c1ac40, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
   PickupSound: {fileID: 8300000, guid: 1f9c327e7abed34479e95608ec5d1386, type: 3}
-  ThrowSound: {fileID: 8300000, guid: 1f9c327e7abed34479e95608ec5d1386, type: 3}
-  RandomSizeMultiplierRange: {x: 100, y: 100}
+  ThrowSound: {fileID: 0}
+  RandomSizeMultiplierRange: {x: 5, y: 5}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
