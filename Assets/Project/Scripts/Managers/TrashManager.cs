@@ -83,7 +83,7 @@ public class TrashManager : MonoBehaviour
         {
             TrashData[] datas = Resources.LoadAll<TrashData>(folder);
             Debug.Log($"TrashManager: Loaded {datas.Length} TrashData scriptible objects from " + folder);
-            foreach (var data in datas)
+            foreach (TrashData data in datas)
                 _trashDatas.Add(data);
         }
     }
@@ -172,6 +172,12 @@ public class TrashManager : MonoBehaviour
             _trashFactory.DespawnTrash(trash);
             trash.OnTrashCollected -= CollectTrash;
 
+            foreach (TrashConveyor conveyor in _trashConveyors)
+                conveyor.StopIgnoringTrash(trash);
+
+            foreach (TrashCan trashCan in _trashCans)
+                trashCan.StopIgnoringTrash(trash);
+
             _trashDespawned++;
             if(_isTutorial)
                 ProgressTutorial();
@@ -184,8 +190,8 @@ public class TrashManager : MonoBehaviour
     {
         if (_trashDespawned >= _trashToEndTutorial)
             GameManager.Instance.EndTutorialStage();
-        else
-            SpawnTrash();
+
+        SpawnTrash();
     }
 
     void OnDisable()

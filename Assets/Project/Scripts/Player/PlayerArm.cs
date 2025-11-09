@@ -71,12 +71,10 @@ public class PlayerArm : MonoBehaviour
 
     public PlayerWrist Wrist => _wrist;
 
-    Vector3[] _movementTransform;
     Quaternion _baseElbowRotation;
     Quaternion _baseWristRotation;
     float _currentElbowZ, _currentWristX;
     float _currentLiftDegrees = 0f;
-    bool _isGrabbing = false;
 
     float _armSpeedDebuf = 1f;
     public void SetArmSpeedDebuf(float debuf) => _armSpeedDebuf = debuf;
@@ -85,13 +83,6 @@ public class PlayerArm : MonoBehaviour
     {
         _baseElbowRotation = _elbowJoint.localRotation;
         _baseWristRotation = _wrist.transform.localRotation;
-
-        _movementTransform = new Vector3[2] { new Vector3(transform.right.x, 0f, transform.right.z), new Vector3(transform.forward.x, 0f, transform.forward.z) };
-    }
-
-    void OnEnable()
-    {
-        _wrist.OnTrashGrabbed += SwitchHeight;
     }
 
     public void CustomUpdate()
@@ -184,9 +175,14 @@ public class PlayerArm : MonoBehaviour
     {
         bool isTryingToGrab = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
 
-        _wrist.SetGrab(isTryingToGrab && (_isGrabbing || TrashInProximity()));
-        bool shouldBeLifted = _isGrabbing || !isTryingToGrab;
-        float targetLiftAngle = _isGrabbing ? _grabbingHandLiftDegrees : _emptyHandLiftDegrees;
+        bool shouldWristGrab = isTryingToGrab && (_wrist.IsGrabbing || TrashInProximity());
+        _wrist.ShouldGrab(shouldWristGrab);
+
+        if(shouldWristGrab && _wrist.IsTouching && !_wrist.IsGrabbing)
+            return;
+
+        bool shouldBeLifted = _wrist.IsGrabbing || !isTryingToGrab;
+        float targetLiftAngle = _wrist.IsGrabbing ? _grabbingHandLiftDegrees : _emptyHandLiftDegrees;
 
         _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (shouldBeLifted ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, targetLiftAngle);
         _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z); 
@@ -199,13 +195,6 @@ public class PlayerArm : MonoBehaviour
         int layerMask = ~((1 << GameConstants.Layer.Default) | (1 << GameConstants.Layer.Player));
             
         return Physics.SphereCast(_wrist.Position + Vector3.up * (0.05f + radius), radius, Vector3.down, out RaycastHit hit, range, layerMask);
-    }
-
-    void SwitchHeight(Trash trash, bool isGrabbed, Vector3 velocity) => _isGrabbing = isGrabbed;
-
-    void OnDisable()
-    {
-        _wrist.OnTrashGrabbed -= SwitchHeight;
     }
 
 #if UNITY_EDITOR

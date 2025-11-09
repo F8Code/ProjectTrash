@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3197832744044017891}
   - component: {fileID: 1758917139900547398}
   - component: {fileID: 8830045864842542204}
-  - component: {fileID: 7710682920032579860}
+  - component: {fileID: 4183303339235893597}
+  - component: {fileID: 3265112720149215438}
   m_Layer: 6
   m_Name: grafiticancollider
   m_TagString: Untagged
@@ -90,7 +91,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7710682920032579860
+--- !u!136 &4183303339235893597
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315669384938602634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0004
+  m_Height: 0.002
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.001032168}
+--- !u!65 &3265112720149215438
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,5 +133,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0009622574, y: 0.0007252991, z: 0.0021629333}
-  m_Center: {x: -0.000022888184, y: 0.000013448298, z: 0.00097084045}
+  m_Size: {x: 0.00055861473, y: 0.0006165281, z: 0.00036986195}
+  m_Center: {x: 0.000008702278, y: -0.000011909753, z: 0.00018127996}

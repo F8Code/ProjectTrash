@@ -38,14 +38,18 @@ public class PlayerWrist : MonoBehaviour
     [Tooltip("Throw sound volume multiplier")]
     [SerializeField, Range(0f, 1f)] private float _throwSoundVolume = 0.75f;
 
-    bool _isGrabbing = false;
+    public bool _isGrabbing = false;
+    public bool _isTouching = false;
+    bool _shouldGrab = false;
     float _currentGrab01;
     public PlayerFingertip[] _allFingers;
     GameObject _grabbedTrash = null;
     Transform _originalTrashParent;
     Vector3 _lastTrashPosition, _trashVelocity;
-    
+
     public Vector3 Position => GetCenterPosition();
+    public bool IsGrabbing => _isGrabbing;
+    public bool IsTouching => _isTouching;
 
     public event Action<Trash, bool, Vector3> OnTrashGrabbed;
 
@@ -71,7 +75,7 @@ public class PlayerWrist : MonoBehaviour
 
     void HandleFingerContact(PlayerFingertip finger, Trash trash)
     {
-        if (!_isGrabbing)
+        if (!_shouldGrab)
             return;
 
         if (_grabbedTrash != null)
@@ -90,42 +94,66 @@ public class PlayerWrist : MonoBehaviour
 
     public void CustomUpdate()
     {
-        //_isGrabbing = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
-        _currentGrab01 = Mathf.Clamp(_currentGrab01 + (_isGrabbing ? 1f : -1f) * _grabSpeed * Time.deltaTime, 0f, 1f);
+        _currentGrab01 = Mathf.Clamp(_currentGrab01 + (_shouldGrab ? 1f : -1f) * _grabSpeed * Time.deltaTime, 0f, 1f);
 
+        _isTouching = false;
         foreach (PlayerFingertip finger in _allFingers)
         {
-            if (_isGrabbing && finger.Contacts.Any())
-                continue;
-
-            _armAnimator.SetFloat(finger.AnimatorVariable, _currentGrab01);
+            if (_shouldGrab && finger.Contacts.Any())
+                _isTouching = true;
+            else  
+                _armAnimator.SetFloat(finger.AnimatorVariable, _currentGrab01);
         }
 
-        if (!_isGrabbing && _grabbedTrash != null)
+        if (!_shouldGrab && _grabbedTrash != null)
             ReleaseTrash();
     }
 
     void GrabTrash(Trash trash)
     {
+        //Internal logic
+        _isGrabbing = true;
         _grabbedTrash = trash.gameObject;
+
+        //Parenting
         _originalTrashParent = _grabbedTrash.transform.parent;
         _grabbedTrash.transform.SetParent(transform);
+
+        //Physics
         _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
+
+        //Broadcast event
         OnTrashGrabbed?.Invoke(trash, true, Vector3.zero);
+
+        //Audio
         AudioManager.Instance.PlayAudio(PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
     }
     
     void ReleaseTrash()
     {
+        //Parenting
+        _grabbedTrash.transform.parent = _originalTrashParent;
+
+        //Disable trash-hand collision for a moment
+        StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
+        
+        //Physics and velocity
         Rigidbody trashRB = _grabbedTrash.GetComponent<Rigidbody>();
         trashRB.isKinematic = false;
         trashRB.linearVelocity = Vector3.ClampMagnitude(_trashVelocity * _thrownTrashSpeedMultiplier, _thrownTrashVelocityLimit) + Vector3.up * _thrownTrashBonusUpwardsVelocity;
-        if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
-        _grabbedTrash.transform.parent = _originalTrashParent;
-        StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
+
+        //Broadcast event
         OnTrashGrabbed?.Invoke(_grabbedTrash.GetComponent<Trash>(), false, trashRB.linearVelocity);
+
+        //Internal logic
+        _isGrabbing = false;
         _grabbedTrash = null;
-        AudioManager.Instance.PlayAudio(ThrowSound, _throwSoundVolume,AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
+
+        //Audio
+        AudioManager.Instance.PlayAudio(ThrowSound, _throwSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
+        
+        //DEBUG
+        if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
     }
 
     IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject)
@@ -134,24 +162,14 @@ public class PlayerWrist : MonoBehaviour
         Collider[] objectColliders = releasedObject.GetComponentsInChildren<Collider>();
 
         foreach (Collider handCol in handColliders)
-        {
             foreach (Collider objCol in objectColliders)
-            {
-                if (handCol && objCol)
-                    Physics.IgnoreCollision(handCol, objCol, true);
-            }
-        }
+                if (handCol && objCol) Physics.IgnoreCollision(handCol, objCol, true);
 
         yield return new WaitForSeconds(0.25f);
 
         foreach (Collider handCol in handColliders)
-        {
             foreach (Collider objCol in objectColliders)
-            {
-                if (handCol && objCol)
-                    Physics.IgnoreCollision(handCol, objCol, false);
-            }
-        }
+                if (handCol && objCol) Physics.IgnoreCollision(handCol, objCol, false);
     }
 
     void OnDisable()
@@ -168,5 +186,5 @@ public class PlayerWrist : MonoBehaviour
         return position / _allFingers.Length;
     }
 
-    public void SetGrab(bool shouldGrab) => _isGrabbing = shouldGrab;
+    public void ShouldGrab(bool shouldGrab) => _shouldGrab = shouldGrab;
 }

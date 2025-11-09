@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3197832744044017891}
   - component: {fileID: 1758917139900547398}
   - component: {fileID: 8830045864842542204}
-  - component: {fileID: 7710682920032579860}
+  - component: {fileID: 455240763823620361}
+  - component: {fileID: 4106114576349129048}
   m_Layer: 6
   m_Name: screwdrivercollider
   m_TagString: Untagged
@@ -90,8 +91,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7710682920032579860
-BoxCollider:
+--- !u!136 &455240763823620361
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +109,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.000518322, y: 0.0024484098, z: 0.0004196167}
-  m_Center: {x: 0.00003385544, y: -0.000053741038, z: 0.0000076293945}
+  serializedVersion: 2
+  m_Radius: 0.00020928084
+  m_Height: 0.001
+  m_Direction: 1
+  m_Center: {x: -0.0000000017898856, y: -0.0007, z: 0.000000023646862}
+--- !u!136 &4106114576349129048
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315669384938602634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0001
+  m_Height: 0.0014
+  m_Direction: 1
+  m_Center: {x: -0.0000000017898856, y: 0.0005, z: 0.000000023646862}

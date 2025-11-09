@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 62242457808230414}
   - component: {fileID: 1921458877504720259}
   - component: {fileID: 6741051308311019236}
-  - component: {fileID: 5569208789022084445}
+  - component: {fileID: 8688832543525594990}
+  - component: {fileID: 843312696885209079}
   m_Layer: 6
   m_Name: catbubucollider
   m_TagString: Untagged
@@ -90,8 +91,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5569208789022084445
-BoxCollider:
+--- !u!135 &8688832543525594990
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,5 +110,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0005896911, y: 0.0004670024, z: 0.0010244846}
-  m_Center: {x: -0.001863353, y: 0.000030070543, z: 0.0005184412}
+  m_Radius: 0.00029182434
+  m_Center: {x: -0.001862003, y: 0.000019301777, z: 0.0007414818}
+--- !u!135 &843312696885209079
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263041457031562787}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.00020742416
+  m_Center: {x: -0.001862003, y: 0.000019301777, z: 0.00027418137}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7954025093097969455}
   - component: {fileID: 3369165220165045700}
   - component: {fileID: 3848999283257295193}
+  - component: {fileID: 4637130976188158057}
   m_Layer: 6
   m_Name: Carbatterycollider
   m_TagString: Untagged
@@ -109,5 +110,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0030457862, y: 0.0018982291, z: 0.0021808147}
-  m_Center: {x: 0.000020215288, y: -0.000002115965, z: 0.0010467768}
+  m_Size: {x: 0.0027039088, y: 0.0017270446, z: 0.0017576218}
+  m_Center: {x: -0.000008417293, y: 0.0000065267086, z: 0.000852108}
+--- !u!65 &4637130976188158057
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168955095813108849}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0030000007, y: 0.0018741961, z: 0.00021195412}
+  m_Center: {x: -5.820766e-10, y: -1.1641532e-10, z: 0.001401782}

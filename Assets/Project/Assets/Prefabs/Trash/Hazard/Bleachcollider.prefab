@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 62242457808230414}
   - component: {fileID: 1921458877504720259}
   - component: {fileID: 6741051308311019236}
-  - component: {fileID: 5569208789022084445}
+  - component: {fileID: 843593173485966539}
+  - component: {fileID: 2785916227022642508}
+  - component: {fileID: 1817151064018681276}
   m_Layer: 6
   m_Name: Bleachcollider
   m_TagString: Untagged
@@ -90,8 +92,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5569208789022084445
-BoxCollider:
+--- !u!136 &843593173485966539
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +110,54 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0016899258, y: 0.0009598732, z: 0.0027985573}
-  m_Center: {x: 0.000022735447, y: 0.00001603365, z: 0.0014054775}
+  serializedVersion: 2
+  m_Radius: 0.00025
+  m_Height: 0.003
+  m_Direction: 2
+  m_Center: {x: 0.0006, y: -0.000006227492, z: 0.001501733}
+--- !u!136 &2785916227022642508
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263041457031562787}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00055
+  m_Height: 0.0028
+  m_Direction: 2
+  m_Center: {x: -0.0002, y: -0.000006227492, z: 0.0013}
+--- !u!136 &1817151064018681276
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263041457031562787}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00055
+  m_Height: 0.0028
+  m_Direction: 2
+  m_Center: {x: 0.0002, y: -0.000006227492, z: 0.0013}

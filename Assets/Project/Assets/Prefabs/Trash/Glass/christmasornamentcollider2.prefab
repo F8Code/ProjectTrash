@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1555252574198092531}
   - component: {fileID: 3101036111886301674}
   - component: {fileID: 6044335455228598999}
-  - component: {fileID: 7198691086695464344}
+  - component: {fileID: 6978425136985345043}
+  - component: {fileID: 1229364672185393113}
   m_Layer: 6
   m_Name: christmasornamentcollider2
   m_TagString: Untagged
@@ -90,8 +91,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7198691086695464344
-BoxCollider:
+--- !u!136 &6978425136985345043
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +109,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.00037529692, y: 0.0003542304, z: 0.0008854866}
-  m_Center: {x: -0.000015897676, y: -0.000018686056, z: -0.00008249283}
+  serializedVersion: 2
+  m_Radius: 0.0002
+  m_Height: 0.00065
+  m_Direction: 2
+  m_Center: {x: -3.0559022e-10, y: 0, z: 0}
+--- !u!136 &1229364672185393113
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7679913557787629859}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00005
+  m_Height: 0.0009824213
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.00010316685}

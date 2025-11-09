@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TrashConveyor : MonoBehaviour
 {
     const float CONVEYOR_SPEED_MODIFIER = 0.1f;
+    const float CONVEYOR_FLING_MODIFIER = 1.5f;
 
     [Header("Conveyor settings")]
     [Tooltip("Speed at which trash moves in the conveyor local forward direction")]
@@ -14,6 +16,7 @@ public class TrashConveyor : MonoBehaviour
     [SerializeField, Range(0f, 2f)] float _trashFlingSpeed = 2f;
 
     HashSet<Rigidbody> _trash = new();
+    HashSet<Rigidbody> _ignoredTrash = new();
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,6 +25,9 @@ public class TrashConveyor : MonoBehaviour
 
         Rigidbody trash = other.GetComponentInParent<Rigidbody>();
 
+        if (_ignoredTrash.Contains(trash))
+            return;
+            
         if (_disableTrashGravity)
             trash.isKinematic = true;
 
@@ -30,10 +36,10 @@ public class TrashConveyor : MonoBehaviour
 
     public void CustomUpdate()
     {
-        foreach(Rigidbody trash in _trash)
+        foreach (Rigidbody trashRB in _trash)
         {
-            trash.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
-            if (!trash.isKinematic) trash.angularVelocity *= 0.9f;
+            trashRB.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
+            if (!trashRB.isKinematic) trashRB.angularVelocity *= 0.9f;
         }
     }
 
@@ -42,11 +48,22 @@ public class TrashConveyor : MonoBehaviour
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        Rigidbody trash = other.GetComponentInParent<Rigidbody>();
+        Rigidbody trashRB = other.GetComponentInParent<Rigidbody>();
 
-        trash.isKinematic = false;
-        trash.linearVelocity += transform.forward * _trashFlingSpeed;
+        if (_ignoredTrash.Contains(trashRB))
+            return;
 
-        _trash.Remove(trash);
+        trashRB.isKinematic = false;
+        trashRB.linearVelocity += transform.forward * _trashFlingSpeed * CONVEYOR_FLING_MODIFIER;
+
+        _trash.Remove(trashRB);
+
+        _ignoredTrash.Add(trashRB);
+    }
+
+    public void StopIgnoringTrash(Trash trash)
+    {
+        Rigidbody trashRB = trash.gameObject.GetComponent<Rigidbody>();
+        _ignoredTrash.Remove(trashRB);
     }
 }

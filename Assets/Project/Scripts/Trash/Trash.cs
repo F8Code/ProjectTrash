@@ -18,6 +18,7 @@ public class Trash : MonoBehaviour
     MeshFilter _meshFilter;
     Rigidbody _rb;
     GameObject _activeColliderSet;
+    bool _markedForDespawn = true;
 
     public string Name => _data.Name;
     public TrashType Type => _data.Type;
@@ -56,6 +57,9 @@ public class Trash : MonoBehaviour
         Color modifiedColor = data.RandomColorTintRange.Evaluate(Random.value);
         modifiedColor.a *= Random.Range(data.RandomColorBrightnessMultiplierRange.x, data.RandomColorBrightnessMultiplierRange.y);
         _renderer.material.color = modifiedColor;
+
+        //Logic
+        _markedForDespawn = false;
     }
 
     void ReplaceColliders(TrashData data)
@@ -75,12 +79,23 @@ public class Trash : MonoBehaviour
 
         //If data holds new colliders, attach them
         GameObject colliders = Instantiate(data.ColliderPrefab, transform);
+        Destroy(colliders.GetComponent<MeshRenderer>());
+        Destroy(colliders.GetComponent<MeshFilter>());
         colliders.name = data.Name + "_ColliderSet";
         colliders.transform.localPosition = Vector3.zero;
         colliders.transform.localRotation = Quaternion.identity;
         colliders.transform.localScale = Vector3.one;
 
+        SetLayerRecursively(colliders, GameConstants.Layer.Trash);
+
         _activeColliderSet = colliders;
+    }
+
+    void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+        foreach (Transform child in obj.transform)
+            SetLayerRecursively(child.gameObject, layer);
     }
 
     private void PlayFeedbackActions(Trash trash, bool isGrabbed, Vector3 handVelocity)
@@ -114,6 +129,9 @@ public class Trash : MonoBehaviour
         if (other.gameObject.layer != GameConstants.Layer.TrashDespawnPlane)
             return;
 
+        if (_markedForDespawn) return;
+        
+        _markedForDespawn = true;
         OnTrashCollected?.Invoke(this, -(int)Score);
 
         Debug.Log($"Trash {Name} fell to the floor. Score: {-(int)Score}");
