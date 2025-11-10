@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: ToxicBarrel
+  m_Name: RubikCube
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Toxic Barrel
-  Type: 4
-  Mesh: {fileID: 1636278447586535312, guid: c81409b8e59ad7b4f835f0917f377283, type: 3}
-  Material: {fileID: 2100000, guid: 9b7365b695bbdb642983eceb7ccd70ec, type: 2}
+  Name: RubikCube
+  Type: 0
+  Mesh: {fileID: -5495902117074765545, guid: f22bee2603d00b94a950689a89b1c4bf, type: 3}
+  Material: {fileID: 2100000, guid: 699b4069cf1a39448892df966b6f09a1, type: 2}
+  ColliderPrefab: {fileID: 7584441265952648627, guid: 4a9a66eb0c390814c9647f3940b66868, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
-  PickupSound: {fileID: 8300000, guid: 2179d5b03d03d1b48b9f1a7334a146d7, type: 3}
+  PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 100, y: 100}
+  RandomSizeMultiplierRange: {x: 10, y: 10}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -53,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 4
-  SizeScore: 4
+  MassScore: 1
+  SizeScore: 1
