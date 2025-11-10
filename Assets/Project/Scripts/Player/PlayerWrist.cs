@@ -70,7 +70,12 @@ public class PlayerWrist : MonoBehaviour
             return;
 
         Vector3 newVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.fixedDeltaTime;
-        _trashVelocity = newVelocity.magnitude > _trashVelocity.magnitude ? newVelocity : _trashVelocity * 0.9f;
+
+        if (newVelocity.magnitude > _trashVelocity.magnitude || Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.9f)
+            _trashVelocity = newVelocity;
+        else
+            _trashVelocity *= 0.9f;
+
         _lastTrashPosition = _grabbedTrash.transform.position;
     }
 
