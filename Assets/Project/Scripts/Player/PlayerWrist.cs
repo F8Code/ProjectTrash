@@ -69,7 +69,8 @@ public class PlayerWrist : MonoBehaviour
         if (_grabbedTrash == null)
             return;
 
-        _trashVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.fixedDeltaTime;
+        Vector3 newVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.fixedDeltaTime;
+        _trashVelocity = newVelocity.magnitude > _trashVelocity.magnitude ? newVelocity : _trashVelocity * 0.9f;
         _lastTrashPosition = _grabbedTrash.transform.position;
     }
 
