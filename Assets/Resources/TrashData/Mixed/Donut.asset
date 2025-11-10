@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: Bolt
+  m_Name: Donut
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Bolt
-  Type: 2
-  Mesh: {fileID: -6354990686709976031, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
-  Material: {fileID: 2100000, guid: 50939702179da404b8d14e569230cc29, type: 2}
-  ColliderPrefab: {fileID: 315669384938602634, guid: 88834b81124727343b22846e04484d4d, type: 3}
+  Name: HalfEatenBurger
+  Type: 5
+  Mesh: {fileID: 4264615624355059789, guid: 56bad155e1369a941a961c7acaf08b76, type: 3}
+  Material: {fileID: 2100000, guid: d72127fac3ca1a844a7cc888c2de295b, type: 2}
+  ColliderPrefab: {fileID: 315669384938602634, guid: 6393887398a9ede4fa87a43782224b36, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
-  PickupSound: {fileID: 8300000, guid: b8ba4c9e7f055b245846c32be5afffc5, type: 3}
-  ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 300, y: 300}
+  PickupSound: {fileID: 8300000, guid: 0af6cb7087b3b0c41a1514d812be0cd6, type: 3}
+  ThrowSound: {fileID: 8300000, guid: 0e4ebadf9f052a44eb83a75ea14260f3, type: 3}
+  RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -55,4 +55,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
   MassScore: 1
-  SizeScore: 0
+  SizeScore: 2

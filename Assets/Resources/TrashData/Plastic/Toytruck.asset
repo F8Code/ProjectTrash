@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: CarBattery
+  m_Name: Toytruck
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Car Battery
-  Type: 5
-  Mesh: {fileID: -1148737532897001896, guid: 704980da98f0a174ebd459e5d25171b1, type: 3}
-  Material: {fileID: 2100000, guid: aaa3fe3fe135caa449ed274fc0c01e93, type: 2}
-  ColliderPrefab: {fileID: 3168955095813108849, guid: 814e960c8076c954cb15412df6fe5e91, type: 3}
+  Name: Yogurt Package
+  Type: 0
+  Mesh: {fileID: 7673246021391805175, guid: 4b17fbbb93b9b77498dcccc88976aad1, type: 3}
+  Material: {fileID: 2100000, guid: 673fde5fc75299f499e150d813f4f7ab, type: 2}
+  ColliderPrefab: {fileID: 4607315249630408340, guid: c24bc5c80a09d374fbbd79ffb53a4237, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
   PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 85, y: 85}
+  RandomSizeMultiplierRange: {x: 6, y: 6}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 3
-  SizeScore: 3
+  MassScore: 0
+  SizeScore: 1

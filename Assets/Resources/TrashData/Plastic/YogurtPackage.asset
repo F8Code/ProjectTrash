@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Yogurt Package
   Type: 0
   Mesh: {fileID: 8186104333223141496, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
-  Material: {fileID: 2100000, guid: 41e7c990afef48d438e530b1df07c715, type: 2}
+  Material: {fileID: 2100000, guid: 0b8860d5b2c0a484ba309a31da5eb0a7, type: 2}
   ColliderPrefab: {fileID: 4607315249630408340, guid: 51a9b18a53da18a4cb0dc0596bc6040c, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1

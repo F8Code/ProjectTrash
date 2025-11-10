@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Yogurt Package Dirty
   Type: 5
   Mesh: {fileID: 8186104333223141496, guid: 3d54dc3937a9b2540918cd212ca6cbb7, type: 3}
-  Material: {fileID: 2100000, guid: ce4a3ff8cbe5fae408b0661eedc06ef3, type: 2}
+  Material: {fileID: 2100000, guid: a177e8944d8eaca48b4f8eebc2dc2765, type: 2}
+  ColliderPrefab: {fileID: 4607315249630408340, guid: 51a9b18a53da18a4cb0dc0596bc6040c, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1

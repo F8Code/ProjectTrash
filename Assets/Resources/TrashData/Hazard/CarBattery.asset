@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: Bolt
+  m_Name: CarBattery
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Bolt
-  Type: 2
-  Mesh: {fileID: -6354990686709976031, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
-  Material: {fileID: 2100000, guid: 50939702179da404b8d14e569230cc29, type: 2}
-  ColliderPrefab: {fileID: 315669384938602634, guid: 88834b81124727343b22846e04484d4d, type: 3}
+  Name: Car Battery
+  Type: 4
+  Mesh: {fileID: -1148737532897001896, guid: 704980da98f0a174ebd459e5d25171b1, type: 3}
+  Material: {fileID: 2100000, guid: aaa3fe3fe135caa449ed274fc0c01e93, type: 2}
+  ColliderPrefab: {fileID: 3168955095813108849, guid: 814e960c8076c954cb15412df6fe5e91, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
-  PickupSound: {fileID: 8300000, guid: b8ba4c9e7f055b245846c32be5afffc5, type: 3}
+  PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 300, y: 300}
+  RandomSizeMultiplierRange: {x: 85, y: 85}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 1
-  SizeScore: 0
+  MassScore: 3
+  SizeScore: 3
