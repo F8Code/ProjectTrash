@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrashConveyor : MonoBehaviour
 {
-    const float CONVEYOR_SPEED_MODIFIER = 0.1f;
     const float CONVEYOR_FLING_MODIFIER = 1.5f;
 
     [Header("Conveyor settings")]
@@ -38,7 +37,7 @@ public class TrashConveyor : MonoBehaviour
     {
         foreach (Rigidbody trashRB in _trash)
         {
-            trashRB.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
+            trashRB.position += transform.forward * _trashMovementSpeed * Time.deltaTime;
             if (!trashRB.isKinematic) trashRB.angularVelocity *= 0.9f;
         }
     }
