@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerWrist : MonoBehaviour
 {
+    const float WRIST_VELOCITY_DECAY_SPEED = 0.9f;
+
     [Header("References")]
     [Tooltip("Reference to the player's thumb fingertip joint")]
     [SerializeField] PlayerFingertip _thumb;
@@ -64,17 +66,17 @@ public class PlayerWrist : MonoBehaviour
             finger.OnFingerContact += HandleFingerContact;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (_grabbedTrash == null)
             return;
 
-        Vector3 newVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.fixedDeltaTime;
+        Vector3 newVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.deltaTime;
 
-        if (newVelocity.magnitude > _trashVelocity.magnitude || Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.9f)
+        if (newVelocity.magnitude > _trashVelocity.magnitude || (newVelocity.magnitude > 0 && Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.9f))
             _trashVelocity = newVelocity;
         else
-            _trashVelocity *= 0.9f;
+            _trashVelocity *= WRIST_VELOCITY_DECAY_SPEED;
 
         _lastTrashPosition = _grabbedTrash.transform.position;
     }
