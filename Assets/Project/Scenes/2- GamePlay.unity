@@ -9612,7 +9612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7631787153223492791, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 1.25
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7631787153223492791, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashMovementSpeed

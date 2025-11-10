@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
   m_Name: Toytruck
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Yogurt Package
+  Name: Truck
   Type: 0
   Mesh: {fileID: 7673246021391805175, guid: 4b17fbbb93b9b77498dcccc88976aad1, type: 3}
   Material: {fileID: 2100000, guid: 673fde5fc75299f499e150d813f4f7ab, type: 2}
