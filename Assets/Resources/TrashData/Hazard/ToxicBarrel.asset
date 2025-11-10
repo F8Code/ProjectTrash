@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Toxic Barrel
   Type: 4
-  Mesh: {fileID: -7387706064836869012, guid: d5bf9a4855c6812418f494ff04a07638, type: 3}
-  Material: {fileID: 2100000, guid: e492197a340d45a4c8d890c625dcf589, type: 2}
+  Mesh: {fileID: -7387706064836869012, guid: 61d5d2f913a9e7646bb8e2e1389e7952, type: 3}
+  Material: {fileID: -876546973899608171, guid: 61d5d2f913a9e7646bb8e2e1389e7952, type: 3}
   ColliderPrefab: {fileID: 315669384938602634, guid: a0d5f9371a1156246884663da3ed9ee4, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
