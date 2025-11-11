@@ -127,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 1888960924720279114}
   serializedVersion: 2
   m_LocalRotation: {x: 0.39817756, y: 0.5977003, z: 0.41997203, w: -0.55482656}
-  m_LocalPosition: {x: -0.00106, y: 0.00119, z: 0.00139}
+  m_LocalPosition: {x: -0.00169, y: 0.0029, z: 0.00188}
   m_LocalScale: {x: 0.29258028, y: 0.29258028, z: 0.29258028}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,7 +208,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.018
+  m_Radius: 0.03
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.00000047823414, y: -1.6956922e-16, z: 0.000000013038516}
@@ -371,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 2442642718195707633}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4776659, y: -0.5322167, z: -0.39553422, w: 0.5763101}
-  m_LocalPosition: {x: 0.00531, y: 0.00171, z: 0.00319}
+  m_LocalPosition: {x: 0.0051, y: 0.002, z: 0.0023}
   m_LocalScale: {x: 0.29258028, y: 0.29258028, z: 0.29258028}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -452,7 +452,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.02
+  m_Radius: 0.03
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.00000047823414, y: -0.00000047683716, z: -0.0000000018626451}
@@ -632,7 +632,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.016
+  m_Radius: 0.03
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.0000000013969834, y: 1.2172456e-16, z: 0.000000027939677}
@@ -806,7 +806,7 @@ MonoBehaviour:
   - {fileID: 4619659319179851960}
   - {fileID: 3519710649070591389}
   _armAnimator: {fileID: 4644124295607104602}
-  _grabSpeed: 1.5
+  _grabSpeed: 2
   _thrownTrashSpeedMultiplier: 1.2
   _thrownTrashVelocityLimit: 3
   _displayDebugLogTrashVelocityOnRelease: 1
@@ -815,6 +815,9 @@ MonoBehaviour:
   ThrowSound: {fileID: 8300000, guid: 3c7a2c34432a18e4da6a794254018095, type: 3}
   _grabSoundVolume: 1
   _throwSoundVolume: 1
+  _isGrabbing: 0
+  _isTouching: 0
+  _allFingers: []
 --- !u!1 &3296429521139650845
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,22 +893,22 @@ MonoBehaviour:
   _circleSliceCenter: {fileID: 0}
   _circleSliceYRotationDegrees: 0
   _circleSliceAngle: 90
-  _circleSliceMaxRadius: 0.9
+  _circleSliceMaxRadius: 1
   _circleSliceMinRadius: 0.3
   _armMovementStrength: 1
-  _cameraMovementStrength: 1
-  _armSidewaysRotationRangeDegrees: {x: -10, y: 40}
-  _cameraSidewaysRotationRangeDegrees: {x: -5, y: 15}
+  _cameraMovementStrength: 0.9
+  _armSidewaysRotationRangeDegrees: {x: -20, y: 20}
+  _cameraSidewaysRotationRangeDegrees: {x: 0, y: 0}
   _armRotationSpeed: 0.8
   _elbowRotationRangeDegrees: {x: -60, y: 180}
   _wristRotationRangeDegrees: {x: -15, y: 60}
   _reverseElbowAxis: 0
   _reverseWristAxis: 0
-  _emptyHandLiftDegrees: 20
-  _grabbingHandLiftDegrees: 50
-  _armDegreesPerSecond: 100
-  _trashDetectionRadiusMultiplier: 1
-  _trashDetectionHeightMultiplier: 1
+  _emptyHandLiftDegrees: 40
+  _grabbingHandLiftDegrees: 60
+  _armDegreesPerSecond: 120
+  _trashDetectionRadiusMultiplier: 1.5
+  _trashDetectionHeightMultiplier: 1.5
 --- !u!1 &3546064979460370875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1337,7 @@ Transform:
   m_GameObject: {fileID: 7280639175589363019}
   serializedVersion: 2
   m_LocalRotation: {x: 0.43801633, y: 0.5767042, z: 0.417892, w: -0.54856205}
-  m_LocalPosition: {x: 0.00152, y: 0.00204, z: 0.00154}
+  m_LocalPosition: {x: 0.00134, y: 0.00269, z: 0.00176}
   m_LocalScale: {x: 0.29258028, y: 0.29258028, z: 0.29258028}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1415,7 +1418,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.018
+  m_Radius: 0.03
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.0000000013969839, y: -2.4437917e-16, z: -0.0000000018626454}
@@ -1546,7 +1549,7 @@ Transform:
   m_GameObject: {fileID: 7319781884543663483}
   serializedVersion: 2
   m_LocalRotation: {x: 0.37954575, y: 0.595773, z: 0.41737145, w: -0.57166487}
-  m_LocalPosition: {x: -0.00299, y: -0.00076, z: 0.00247}
+  m_LocalPosition: {x: -0.00312, y: -0.00044, z: 0.00335}
   m_LocalScale: {x: 0.29258028, y: 0.29258028, z: 0.29258028}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1627,7 +1630,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.018
+  m_Radius: 0.03
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.0000000013969842, y: -4.4052853e-17, z: -0.000000031664968}
