@@ -57,9 +57,9 @@ public class PlayerArm : MonoBehaviour
 
     [Header("Hand lifting settings")]
     [Tooltip("Lift angle of the arm in degrees when trash is not being grabbed")]
-    [SerializeField, Range(0, 60)] uint _emptyHandLiftDegrees = 20;
+    [SerializeField, Range(0, 80)] uint _emptyHandLiftDegrees = 20;
     [Tooltip("Lift angle of the arm in degrees when trash is being held")]
-    [SerializeField, Range(0, 60)] uint _grabbingHandLiftDegrees = 45;
+    [SerializeField, Range(0, 80)] uint _grabbingHandLiftDegrees = 45;
     [Tooltip("Speed at which the arm lifts or lowers in degrees per second")]
     [SerializeField, Range(10f, 120f)] float _armDegreesPerSecond = 30f;
 

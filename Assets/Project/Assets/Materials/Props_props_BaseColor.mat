@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1034899699430802294
+--- !u!114 &-1359244386037185932
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: props2_Crowbar_BaseColor
+  m_Name: Props_props_BaseColor
   m_Shader: {fileID: -6465566751694194690, guid: 57ba3020df7b6914da8f1f507c9167b1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: ee71ee0eab03bfa46b3e312842888876, type: 3}
+        m_Texture: {fileID: 2800000, guid: ff3b2e9c4f6cef9429987a9fc707c9f5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ee71ee0eab03bfa46b3e312842888876, type: 3}
+        m_Texture: {fileID: 2800000, guid: ff3b2e9c4f6cef9429987a9fc707c9f5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: ee71ee0eab03bfa46b3e312842888876, type: 3}
+        m_Texture: {fileID: 2800000, guid: ff3b2e9c4f6cef9429987a9fc707c9f5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:

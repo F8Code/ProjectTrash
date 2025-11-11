@@ -807,7 +807,7 @@ MonoBehaviour:
   - {fileID: 3519710649070591389}
   _armAnimator: {fileID: 4644124295607104602}
   _grabSpeed: 2
-  _thrownTrashSpeedMultiplier: 1.2
+  _thrownTrashSpeedMultiplier: 1.5
   _thrownTrashVelocityLimit: 3
   _displayDebugLogTrashVelocityOnRelease: 1
   _thrownTrashBonusUpwardsVelocity: 1.2
@@ -891,10 +891,10 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _elbowJoint: {fileID: 367308837537172332}
   _circleSliceCenter: {fileID: 0}
-  _circleSliceYRotationDegrees: 0
-  _circleSliceAngle: 90
+  _circleSliceYRotationDegrees: 10
+  _circleSliceAngle: 100
   _circleSliceMaxRadius: 1
-  _circleSliceMinRadius: 0.3
+  _circleSliceMinRadius: 0.35
   _armMovementStrength: 1
   _cameraMovementStrength: 0.9
   _armSidewaysRotationRangeDegrees: {x: -50, y: 35}
@@ -904,7 +904,7 @@ MonoBehaviour:
   _wristRotationRangeDegrees: {x: -15, y: 60}
   _reverseElbowAxis: 0
   _reverseWristAxis: 0
-  _emptyHandLiftDegrees: 40
+  _emptyHandLiftDegrees: 45
   _grabbingHandLiftDegrees: 60
   _armDegreesPerSecond: 120
   _trashDetectionRadiusMultiplier: 1.5

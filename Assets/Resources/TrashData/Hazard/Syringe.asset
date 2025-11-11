@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Syringe
   Type: 4
   Mesh: {fileID: 4309010749960864949, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
-  Material: {fileID: 2100000, guid: 0b8860d5b2c0a484ba309a31da5eb0a7, type: 2}
+  Material: {fileID: 2100000, guid: 2f75b7f65a3c7c94eb2380572a2c7d40, type: 2}
   ColliderPrefab: {fileID: 4928700368368387107, guid: 97a2e9af38ac8614f8981145168917f1, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 2

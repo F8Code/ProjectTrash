@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SodaCan
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Soda Can
-  Type: 3
+  Type: 2
   Mesh: {fileID: 3216614367884850740, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
-  Material: {fileID: 2100000, guid: 0b8860d5b2c0a484ba309a31da5eb0a7, type: 2}
+  Material: {fileID: 2100000, guid: 1184f67662d9112469a7ab7ca19403c4, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: 9f69eb62675196741a989fa08e54ed34, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
