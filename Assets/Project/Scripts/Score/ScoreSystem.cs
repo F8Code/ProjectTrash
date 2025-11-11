@@ -103,9 +103,14 @@ public class ScoreSystem
         _scoreMultiplier = _scoreMultiplierLevels[(int)Mathf.Min(_scores.Count - _scoreMultiplierRequiredComboInclusiveSeconds, _scoreMultiplierLevels.Length - 1)].MultiplierValue;
         return (uint)(pendingScore * _scoreMultiplier);
     }
-    
+
     uint GetMultiplierIndex()
     {
         return (uint)Mathf.Clamp(_scores.Count - _scoreMultiplierRequiredComboInclusiveSeconds, 0, _scoreMultiplierLevels.Length - 1);
+    }
+    
+    public void RestoreLife()
+    {
+        _mistakesAllowed++;
     }
 }

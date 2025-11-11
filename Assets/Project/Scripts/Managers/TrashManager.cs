@@ -69,6 +69,7 @@ public class TrashManager : MonoBehaviour
 
     int _currentSpawnStageIndex = 0;
     float _spawnTimer = 0f, _lastStageDelayReduceTimer = 0f;
+    TrashData _lastSpawnedTrash;
 
     void Awake()
     {
@@ -96,6 +97,7 @@ public class TrashManager : MonoBehaviour
 
     void Start()
     {
+        _lastSpawnedTrash = _trashDatas.RandomElement();
         _trashFactory = new(_trashPrefab, 10, transform);
         SpawnTrash();
     }
@@ -142,6 +144,14 @@ public class TrashManager : MonoBehaviour
             return;
 
         TrashData trashData = _trashDatas.RandomElement();
+        if (_trashDatas.Count > 1)
+        {
+            while (_lastSpawnedTrash.Name == trashData.Name)
+                trashData = _trashDatas.RandomElement();
+
+            _lastSpawnedTrash = trashData;
+        }
+        
         Trash trash = _trashFactory.SpawnTrash(trashData, _trashSpawnPosition.position);
         trash.OnTrashCollected += CollectTrash;
         _trash.Add(trash);
