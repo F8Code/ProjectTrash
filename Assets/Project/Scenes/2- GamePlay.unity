@@ -1126,6 +1126,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5151508044188041273, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: f0ebac68d2e0f7d49a0019395f345aa1, type: 3}
+    - target: {fileID: 7232531617683031526, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232531617683031526, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232531617683031526, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8388922689324386835, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_Name
       value: BinWaste
@@ -11657,9 +11673,25 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3951492341956379313, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 155cc49d4d3f9a340ade2990337a9ca7, type: 3}
     - target: {fileID: 6941059146072714778, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
       propertyPath: m_Name
       value: BinPaper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281047081114524641, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281047081114524641, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281047081114524641, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13124,6 +13156,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1520208328}
     m_Modifications:
+    - target: {fileID: 40487735188567793, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 31e835b81962a884c9b5fa4ec73076c4, type: 3}
     - target: {fileID: 3514706527779826845, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: m_Name
       value: BinGlass
@@ -13183,6 +13219,18 @@ PrefabInstance:
     - target: {fileID: 5122372853490141978, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799067048070587314, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799067048070587314, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799067048070587314, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16173,6 +16221,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1778655800647310594, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778655800647310594, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778655800647310594, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052234062710916017, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: c5537c63179c62a4889bb50275cb1636, type: 3}
     - target: {fileID: 3277793005818546020, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
       propertyPath: m_Size.x
       value: 0.42
@@ -22613,6 +22677,22 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5312875782543415147, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312875782543415147, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312875782543415147, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437083546850305263, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: e889d898c6f9f8a4884a2fcecacf40da, type: 3}
     - target: {fileID: 9004717247053562256, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
       propertyPath: m_Name
       value: BinPlastic
@@ -26062,6 +26142,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1520208328}
     m_Modifications:
+    - target: {fileID: 365574292303690012, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 365574292303690012, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 365574292303690012, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1863042024374808176, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: m_Size.x
       value: 0.42
@@ -26082,6 +26174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BinMetal
       objectReference: {fileID: 0}
+    - target: {fileID: 8468303278671215874, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: dd5c400024b1a2346ae65366b573c183, type: 3}
     - target: {fileID: 9033895085851588674, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.507
