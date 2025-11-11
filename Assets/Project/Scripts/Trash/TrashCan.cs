@@ -11,16 +11,27 @@ public class TrashCan : MonoBehaviour
 
     [Header("Light Settings")]
     [SerializeField] Light _highlightLight;
-    [SerializeField] Color _highlightColor;
+    [SerializeField] Color _highlightColor = Color.yellow;
 
-    [Header("VFX Success - ΝΕΟ!")]
-    [SerializeField] ParticleSystem successVFXPrefab; // Σύρε το Particle System prefab εδώ
+    [Header("VFX Success")]
+    [SerializeField] ParticleSystem successVFXPrefab;
 
     [Header("References")]
     [SerializeField] PlayerWrist _playerWrist;
 
     HashSet<Trash> _ignoredTrash = new();
     public event Action<Trash, int> OnTrashCollected;
+
+    private bool _isHighlighted = false; // Track αν είναι ενεργό
+
+    void Awake()
+    {
+        // **ΒΗΜΑ 1: Σβήσε το φως από την αρχή**
+        if (_highlightLight != null)
+        {
+            _highlightLight.enabled = false;
+        }
+    }
 
     void OnEnable()
     {
@@ -51,16 +62,15 @@ public class TrashCan : MonoBehaviour
 
         _ignoredTrash.Add(trash);
 
-        // **VFX TRIGGER: Μόνο αν ΣΩΣΤΟ match!**
+        // **VFX: Μόνο αν σωστός κάδος**
         if (trash.Type == _acceptedTrash && successVFXPrefab != null)
         {
-            // Instantiate VFX στο bin position + λίγο πάνω
             ParticleSystem vfx = Instantiate(successVFXPrefab,
                                            transform.position + Vector3.up * 0.5f,
                                            Quaternion.identity);
             vfx.Play();
-            Destroy(vfx.gameObject, vfx.main.duration); // Auto-destroy
-            Debug.Log("🎉 SUCCESS VFX PLAYED!");
+            Destroy(vfx.gameObject, vfx.main.duration);
+            Debug.Log("SUCCESS VFX PLAYED!");
         }
 
         OnTrashCollected?.Invoke(trash, (trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score);
@@ -69,33 +79,58 @@ public class TrashCan : MonoBehaviour
 
     public void StopIgnoringTrash(Trash trash) => _ignoredTrash.Remove(trash);
 
+    // **ΒΗΜΑ 2: Ενεργοποίηση/Απενεργοποίηση φωτός**
     private void HandleTrashGrabbed(Trash grabbedTrash, bool isGrabbed, Vector3 velocity)
     {
-        if (isGrabbed && grabbedTrash.Type == _acceptedTrash)
+        if (grabbedTrash.Type == _acceptedTrash)
         {
-            StartCoroutine(HighlightLightCoroutine(_highlightColor));
+            if (isGrabbed && !_isHighlighted)
+            {
+                TurnOnLight();
+            }
+            else if (!isGrabbed && _isHighlighted)
+            {
+                TurnOffLight();
+            }
         }
     }
 
-    private IEnumerator HighlightLightCoroutine(Color color)
+    private void TurnOnLight()
     {
-        if (_highlightLight == null)
+        if (_highlightLight == null) return;
+
+        _highlightLight.enabled = true;
+        _highlightLight.color = _highlightColor;
+        _highlightLight.intensity = 8f; // Φωτεινό
+        _isHighlighted = true;
+
+        StopAllCoroutines(); // Ακύρωσε fade αν τρέχει
+        StartCoroutine(FadeLight(8f, 0.2f));
+    }
+
+    private void TurnOffLight()
+    {
+        if (_highlightLight == null) return;
+
+        StopAllCoroutines();
+        StartCoroutine(FadeLight(0f, 0.3f, () => _highlightLight.enabled = false));
+        _isHighlighted = false;
+    }
+
+    // **Ομαλό fade (Lerp)**
+    private IEnumerator FadeLight(float targetIntensity, float duration, System.Action onComplete = null)
+    {
+        float startIntensity = _highlightLight.intensity;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
-            Debug.LogWarning("No light assigned!");
-            yield break;
+            elapsed += Time.deltaTime;
+            _highlightLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / duration);
+            yield return null;
         }
 
-        float originalIntensity = _highlightLight.intensity;
-        Color originalColor = _highlightLight.color;
-
-        _highlightLight.intensity *= 8f;
-        //_highlightLight.color = color;
-
-        yield return new WaitForSeconds(0.5f);
-
-        _highlightLight.intensity = originalIntensity;
-        //_highlightLight.color = originalColor;
-
-        yield break;
+        _highlightLight.intensity = targetIntensity;
+        onComplete?.Invoke();
     }
 }
