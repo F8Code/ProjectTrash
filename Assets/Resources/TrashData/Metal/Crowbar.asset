@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Crowbar
   Type: 2
   Mesh: {fileID: 2165947640806648972, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
-  Material: {fileID: 2100000, guid: e74e5a3375b80d94190dadb617827481, type: 2}
+  Material: {fileID: 2100000, guid: 0b8860d5b2c0a484ba309a31da5eb0a7, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: 29261322e4d7b4746a14b180670c6571, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
