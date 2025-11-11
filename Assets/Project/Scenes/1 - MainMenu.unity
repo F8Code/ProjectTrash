@@ -17483,7 +17483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   panels:
   - panelName: UICanvas_Tutorial
-    panelObject: {fileID: 0}
+    panelObject: {fileID: 6736448443103658636}
     startActive: 0
     useAnimation: 1
     animationDuration: 0.1
@@ -17541,7 +17541,7 @@ MonoBehaviour:
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
   - panelName: UICanvas_GameOver
-    panelObject: {fileID: 0}
+    panelObject: {fileID: 1042048615352739591}
     startActive: 0
     useAnimation: 0
     animationDuration: 0.1
@@ -17675,7 +17675,7 @@ MonoBehaviour:
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
   - panelName: UICanvas_Credits
-    panelObject: {fileID: 0}
+    panelObject: {fileID: 4249914299216090522}
     startActive: 0
     useAnimation: 0
     animationDuration: 0.5
@@ -17751,7 +17751,7 @@ MonoBehaviour:
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
   - panelName: UICanvas_Leaderboard
-    panelObject: {fileID: 0}
+    panelObject: {fileID: 1953589474728461041}
     startActive: 0
     useAnimation: 0
     animationDuration: 0.5
@@ -28467,10 +28467,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5453207379725606743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 540}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2029403344
 MonoBehaviour:
@@ -32217,7 +32217,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8044913453937303135}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -33917,7 +33917,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953589474728461041}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
