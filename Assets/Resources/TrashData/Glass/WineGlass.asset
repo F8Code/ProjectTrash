@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: PlasticBottle
+  m_Name: WineGlass
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: PlasticBottle
-  Type: 0
-  Mesh: {fileID: 2534964839176971238, guid: 7614926fb69d3c443ae53935aec5bcf9, type: 3}
-  Material: {fileID: 2100000, guid: 313490e07b16ebf44913fbb5cb99b72e, type: 2}
-  ColliderPrefab: {fileID: 315669384938602634, guid: 1c79bce7a4e5cfb47b70b78f5abde721, type: 3}
+  Name: Wine Glass
+  Type: 3
+  Mesh: {fileID: 2534964839176971238, guid: eb9b7646d7c3da543b181755f68b5886, type: 3}
+  Material: {fileID: 2100000, guid: 2f75b7f65a3c7c94eb2380572a2c7d40, type: 2}
+  ColliderPrefab: {fileID: 7679913557787629859, guid: fcef7d1d2774bbd4cb61c7721c6d564c, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
-  PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
+  PickupSound: {fileID: 8300000, guid: 19fe68ab12241a04cb42b89e3048d194, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 4, y: 4}
+  RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
