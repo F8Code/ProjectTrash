@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class UITweenAnimator : MonoBehaviour
 {
@@ -64,6 +64,36 @@ public class UITweenAnimator : MonoBehaviour
         StartCoroutine(AnimatePanelCoroutine(rectTransform, direction, duration, curve, false, onComplete));
     }
 
+    /// <summary>
+    /// Animates fade in effect
+    /// </summary>
+    public void AnimateFadeIn(CanvasGroup canvasGroup, float duration, AnimationCurve curve, System.Action onComplete = null)
+    {
+        if (canvasGroup == null)
+        {
+            Debug.LogWarning("CanvasGroup is null!");
+            onComplete?.Invoke();
+            return;
+        }
+
+        StartCoroutine(AnimateFadeCoroutine(canvasGroup, duration, curve, true, onComplete));
+    }
+
+    /// <summary>
+    /// Animates fade out effect
+    /// </summary>
+    public void AnimateFadeOut(CanvasGroup canvasGroup, float duration, AnimationCurve curve, System.Action onComplete = null)
+    {
+        if (canvasGroup == null)
+        {
+            Debug.LogWarning("CanvasGroup is null!");
+            onComplete?.Invoke();
+            return;
+        }
+
+        StartCoroutine(AnimateFadeCoroutine(canvasGroup, duration, curve, false, onComplete));
+    }
+
     private IEnumerator AnimatePanelCoroutine(RectTransform rectTransform, AnimationDirection direction, float duration, AnimationCurve curve, bool isEntry, System.Action onComplete)
     {
         Vector2 startPos;
@@ -100,6 +130,32 @@ public class UITweenAnimator : MonoBehaviour
         }
 
         rectTransform.anchoredPosition = endPos;
+        onComplete?.Invoke();
+    }
+
+    private IEnumerator AnimateFadeCoroutine(CanvasGroup canvasGroup, float duration, AnimationCurve curve, bool isFadeIn, System.Action onComplete)
+    {
+        float startAlpha = isFadeIn ? 0f : 1f;
+        float endAlpha = isFadeIn ? 1f : 0f;
+
+        canvasGroup.alpha = startAlpha;
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            // Apply the curve
+            float curveValue = curve.Evaluate(t);
+
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, curveValue);
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = endAlpha;
         onComplete?.Invoke();
     }
 
