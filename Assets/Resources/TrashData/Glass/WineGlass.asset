@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: ShadowBook
+  m_Name: WineGlass
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: ShadowBook
-  Type: 4
-  Mesh: {fileID: 4124220575725056293, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
+  Name: Wine Glass
+  Type: 3
+  Mesh: {fileID: 2534964839176971238, guid: eb9b7646d7c3da543b181755f68b5886, type: 3}
   Material: {fileID: 2100000, guid: 2f75b7f65a3c7c94eb2380572a2c7d40, type: 2}
-  ColliderPrefab: {fileID: 5263041457031562787, guid: 3ecb5303bcb560d40aacbdfe05eb6dac, type: 3}
+  ColliderPrefab: {fileID: 7679913557787629859, guid: fcef7d1d2774bbd4cb61c7721c6d564c, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 4
-  HandSpeedMultiplier: 0.625
-  PickupSound: {fileID: 8300000, guid: d4328ba8dff89c84888bdd0adca32c9c, type: 3}
-  ThrowSound: {fileID: 8300000, guid: cd2a1d3ed4fb93b47b8679d01aa9dac1, type: 3}
+  RigidBodyMass: 1
+  HandSpeedMultiplier: 1
+  PickupSound: {fileID: 8300000, guid: 19fe68ab12241a04cb42b89e3048d194, type: 3}
+  ThrowSound: {fileID: 0}
   RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 3
+  MassScore: 1
   SizeScore: 2

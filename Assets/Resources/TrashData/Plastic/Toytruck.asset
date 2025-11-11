@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Truck
   Type: 0
-  Mesh: {fileID: 7673246021391805175, guid: 4b17fbbb93b9b77498dcccc88976aad1, type: 3}
-  Material: {fileID: 2100000, guid: 673fde5fc75299f499e150d813f4f7ab, type: 2}
+  Mesh: {fileID: 7673246021391805175, guid: eb9b7646d7c3da543b181755f68b5886, type: 3}
+  Material: {fileID: 2100000, guid: 2f75b7f65a3c7c94eb2380572a2c7d40, type: 2}
   ColliderPrefab: {fileID: 4607315249630408340, guid: c24bc5c80a09d374fbbd79ffb53a4237, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 3
   HandSpeedMultiplier: 0.75
   PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 6, y: 6}
+  RandomSizeMultiplierRange: {x: 120, y: 120}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
