@@ -1151,6 +1151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+--- !u!1 &101225101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6675886380520855646, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+  m_PrefabInstance: {fileID: 101225098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &123129802
 Mesh:
   m_ObjectHideFlags: 0
@@ -9979,7 +9984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   panels:
   - panelName: Leaderboard_Canvas
-    panelObject: {fileID: 549633773}
+    panelObject: {fileID: 1646245085731701140, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
     startActive: 0
     useAnimation: 1
     animationType: 0
@@ -10093,7 +10098,7 @@ MonoBehaviour:
     animatedTransform: {fileID: 0}
     canvasGroup: {fileID: 0}
   - panelName: UICanvas_PauseMenu
-    panelObject: {fileID: 1323405878}
+    panelObject: {fileID: 3802109380818064165, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
     startActive: 0
     useAnimation: 1
     animationType: 0
@@ -10207,8 +10212,806 @@ MonoBehaviour:
     animatedTransform: {fileID: 0}
     canvasGroup: {fileID: 0}
   - panelName: GameOverPanel_Canvas
-    panelObject: {fileID: 811560246}
+    panelObject: {fileID: 7511529400094926914, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
     startActive: 0
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 1648852805}
+    startActive: 1
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 1835871905}
+    startActive: 1
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 1088658634}
+    startActive: 1
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 101225101}
+    startActive: 1
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 1823555906}
+    startActive: 1
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 800288126}
+    startActive: 1
+    useAnimation: 1
+    animationType: 0
+    animationDuration: 0.5
+    entryDirection: 0
+    exitDirection: 1
+    entryCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    exitCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
+    rectTransform: {fileID: 0}
+    canvas: {fileID: 0}
+    animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
+  - panelName: Canvas
+    panelObject: {fileID: 881453605}
+    startActive: 1
     useAnimation: 1
     animationType: 0
     animationDuration: 0.5
@@ -11850,6 +12653,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+--- !u!1 &800288126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3735361293046050336, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+  m_PrefabInstance: {fileID: 800288123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &811560246
 GameObject:
   m_ObjectHideFlags: 0
@@ -13373,6 +14181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+--- !u!1 &881453605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9175434213876026985, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+  m_PrefabInstance: {fileID: 881453602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &894217253
 Mesh:
   m_ObjectHideFlags: 0
@@ -16382,6 +17195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+--- !u!1 &1088658634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7464217878467871957, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+  m_PrefabInstance: {fileID: 1088658631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1100239468
 GameObject:
   m_ObjectHideFlags: 0
@@ -22806,6 +23624,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+--- !u!1 &1648852805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3823092502977751180, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+  m_PrefabInstance: {fileID: 1648852802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1666938912
 Mesh:
   m_ObjectHideFlags: 0
@@ -25905,6 +26728,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1395255608}
   m_SourcePrefab: {fileID: 100100000, guid: 844f794f7a69a0a4d8ba5b9792874415, type: 3}
+--- !u!1 &1823555906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3731488146177548603, guid: 844f794f7a69a0a4d8ba5b9792874415, type: 3}
+  m_PrefabInstance: {fileID: 1823555905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1827334898
 Mesh:
   m_ObjectHideFlags: 0
@@ -26311,6 +27139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0550e7190c3a74280fa7c26ad82b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+--- !u!1 &1835871905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8329065864103959123, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+  m_PrefabInstance: {fileID: 1835871902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1850937222
 GameObject:
   m_ObjectHideFlags: 0
