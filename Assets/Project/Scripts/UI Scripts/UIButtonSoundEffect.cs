@@ -44,8 +44,8 @@ public class UIButtonSoundEffect : MonoBehaviour, IPointerEnterHandler, IPointer
             AudioManager.Instance.PlayAudio(
                    hoverSoundClip,
          hoverSoundVolume,
-        soundPriority
-               );
+        soundPriority,
+        mixerType: AudioManager.AudioMixerType.SFX);
         }
     }
 
@@ -62,8 +62,8 @@ public class UIButtonSoundEffect : MonoBehaviour, IPointerEnterHandler, IPointer
             AudioManager.Instance.PlayAudio(
            clickSoundClip,
           clickSoundVolume,
-                    soundPriority
-           );
+                    soundPriority,
+        mixerType: AudioManager.AudioMixerType.SFX);
         }
     }
 
@@ -77,8 +77,8 @@ public class UIButtonSoundEffect : MonoBehaviour, IPointerEnterHandler, IPointer
             AudioManager.Instance.PlayAudio(
                     hoverSoundClip,
             hoverSoundVolume,
-                 soundPriority
-                      );
+                 soundPriority,
+        mixerType: AudioManager.AudioMixerType.SFX);
         }
     }
 
@@ -92,8 +92,8 @@ public class UIButtonSoundEffect : MonoBehaviour, IPointerEnterHandler, IPointer
             AudioManager.Instance.PlayAudio(
             clickSoundClip,
           clickSoundVolume,
-             soundPriority
-           );
+             soundPriority,
+        mixerType: AudioManager.AudioMixerType.SFX);
         }
     }
 }

@@ -77,7 +77,7 @@ public class ScoreSystem
                 _score += (uint)score;
 
             AudioClip clip = _scoreMultiplier == 0f ? SuccessSound : _scoreMultiplierLevels[GetMultiplierIndex()].MultiplierSound;
-            AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position);
+            AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
         else //Mistake
         {
@@ -87,7 +87,7 @@ public class ScoreSystem
             if (--_mistakesAllowed == 0)
                 GameManager.Instance.EndGame();
 
-            AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position);
+            AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
     }
 

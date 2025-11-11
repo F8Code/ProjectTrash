@@ -16,6 +16,8 @@ public class AmbiancePlayer : MonoBehaviour
             _ambianceVolume,
             AudioPlaybackContext.PlaybackPriority.Medium,
             transform.position,
-            true);
+            true,
+            1,
+            AudioManager.AudioMixerType.SFX);
     }
 }

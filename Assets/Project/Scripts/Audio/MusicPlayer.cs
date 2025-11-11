@@ -16,6 +16,8 @@ public class MusicPlayer : MonoBehaviour
             _musicVolume,
             AudioPlaybackContext.PlaybackPriority.Low,
             transform.position,
-            true);
+            true,
+            1,
+            AudioManager.AudioMixerType.Music);
     }
 }

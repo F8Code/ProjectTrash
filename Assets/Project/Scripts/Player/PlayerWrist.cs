@@ -134,7 +134,7 @@ public class PlayerWrist : MonoBehaviour
         OnTrashGrabbed?.Invoke(trash, true, Vector3.zero);
 
         //Audio
-        AudioManager.Instance.PlayAudio(PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
+        AudioManager.Instance.PlayAudio(PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
     }
     
     void ReleaseTrash()
@@ -158,8 +158,8 @@ public class PlayerWrist : MonoBehaviour
         _grabbedTrash = null;
 
         //Audio
-        AudioManager.Instance.PlayAudio(ThrowSound, _throwSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
-        
+        AudioManager.Instance.PlayAudio(ThrowSound, _throwSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
+
         //DEBUG
         if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
     }

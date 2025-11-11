@@ -90,8 +90,8 @@ public class UIManager : MonoBehaviour
             AudioManager.Instance.PlayAudio(
                 panel.entrySoundClip,
                 panel.entrySoundVolume,
-                panel.soundPriority
-            );
+                panel.soundPriority,
+                mixerType: AudioManager.AudioMixerType.SFX);
         }
 
         if (panel.useAnimation)
@@ -154,8 +154,8 @@ public class UIManager : MonoBehaviour
             AudioManager.Instance.PlayAudio(
                 panel.exitSoundClip,
                 panel.exitSoundVolume,
-                panel.soundPriority
-            );
+                panel.soundPriority,
+                mixerType: AudioManager.AudioMixerType.SFX);
         }
 
         if (panel.useAnimation)

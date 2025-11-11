@@ -108,7 +108,7 @@ public class Trash : MonoBehaviour
         PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
         if (isGrabbed && _data.PickupSound != null)
         {
-			AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position);
+			AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
         else if (!isGrabbed && _data.ThrowSound != null)
         {
@@ -119,7 +119,7 @@ public class Trash : MonoBehaviour
             // Only play sound if velocity threshold are met
             if (velocityMagnitude >= _minimumThrowVelocity)
             {
-                AudioManager.Instance.PlayAudio(_data.ThrowSound, _throwSoundVolume * Mathf.Clamp01(velocityMagnitude / 10f), AudioPlaybackContext.PlaybackPriority.Low, transform.position);
+                AudioManager.Instance.PlayAudio(_data.ThrowSound, _throwSoundVolume * Mathf.Clamp01(velocityMagnitude / 10f), AudioPlaybackContext.PlaybackPriority.Low, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
             }
         }
     }
