@@ -15,31 +15,31 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 80
+    m_Value: 29.9
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 58.7
   redOutBlueIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 11.4
   greenOutRedIn:
     m_OverrideState: 1
-    m_Value: 25.833
+    m_Value: 29.9
   greenOutGreenIn:
     m_OverrideState: 1
-    m_Value: 74.167
+    m_Value: 58.7
   greenOutBlueIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 11.4
   blueOutRedIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 29.9
   blueOutGreenIn:
     m_OverrideState: 1
-    m_Value: 14.167
+    m_Value: 58.7
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 85.833
+    m_Value: 11.4
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: 4_CVD_Deuteranomaly 1
+  m_Name: Achromatopsia
   m_EditorClassIdentifier: 
   components:
   - {fileID: -1905257190973824039}

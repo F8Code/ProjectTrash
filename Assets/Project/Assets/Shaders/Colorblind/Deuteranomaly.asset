@@ -15,19 +15,19 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 62.5
+    m_Value: 80
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: 37.5
+    m_Value: 20
   redOutBlueIn:
     m_OverrideState: 1
     m_Value: 0
   greenOutRedIn:
     m_OverrideState: 1
-    m_Value: 70
+    m_Value: 25.833
   greenOutGreenIn:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 74.167
   greenOutBlueIn:
     m_OverrideState: 1
     m_Value: 0
@@ -36,10 +36,10 @@ MonoBehaviour:
     m_Value: 0
   blueOutGreenIn:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 14.167
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 70
+    m_Value: 85.833
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: 3_CVD_Deuteranopia 1
+  m_Name: Deuteranomaly
   m_EditorClassIdentifier: 
   components:
   - {fileID: -1905257190973824039}

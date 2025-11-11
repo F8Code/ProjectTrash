@@ -15,31 +15,31 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 95
+    m_Value: 81.667
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 18.333
   redOutBlueIn:
     m_OverrideState: 1
     m_Value: 0
   greenOutRedIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 33.333
   greenOutGreenIn:
     m_OverrideState: 1
-    m_Value: 43.333
+    m_Value: 66.667
   greenOutBlueIn:
     m_OverrideState: 1
-    m_Value: 56.667
+    m_Value: 0
   blueOutRedIn:
     m_OverrideState: 1
     m_Value: 0
   blueOutGreenIn:
     m_OverrideState: 1
-    m_Value: 47.5
+    m_Value: 12.5
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 52.5
+    m_Value: 87.5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: 5_CVD_Tritanopia 1
+  m_Name: Protanomaly
   m_EditorClassIdentifier: 
   components:
   - {fileID: -1905257190973824039}
