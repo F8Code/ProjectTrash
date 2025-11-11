@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(UIManager))]
 public class UIManagerEditor : Editor
@@ -86,11 +86,22 @@ public class UIManagerEditor : Editor
         SerializedProperty objectProp = panelProp.FindPropertyRelative("panelObject");
         SerializedProperty startActiveProp = panelProp.FindPropertyRelative("startActive");
         SerializedProperty useAnimationProp = panelProp.FindPropertyRelative("useAnimation");
+        SerializedProperty animationTypeProp = panelProp.FindPropertyRelative("animationType");
         SerializedProperty durationProp = panelProp.FindPropertyRelative("animationDuration");
         SerializedProperty entryDirectionProp = panelProp.FindPropertyRelative("entryDirection");
         SerializedProperty exitDirectionProp = panelProp.FindPropertyRelative("exitDirection");
         SerializedProperty entryCurveProp = panelProp.FindPropertyRelative("entryCurve");
         SerializedProperty exitCurveProp = panelProp.FindPropertyRelative("exitCurve");
+        SerializedProperty fadeInCurveProp = panelProp.FindPropertyRelative("fadeInCurve");
+        SerializedProperty fadeOutCurveProp = panelProp.FindPropertyRelative("fadeOutCurve");
+
+        // Sound properties
+        SerializedProperty playSoundProp = panelProp.FindPropertyRelative("playSound");
+        SerializedProperty entrySoundClipProp = panelProp.FindPropertyRelative("entrySoundClip");
+        SerializedProperty entrySoundVolumeProp = panelProp.FindPropertyRelative("entrySoundVolume");
+        SerializedProperty exitSoundClipProp = panelProp.FindPropertyRelative("exitSoundClip");
+        SerializedProperty exitSoundVolumeProp = panelProp.FindPropertyRelative("exitSoundVolume");
+        SerializedProperty soundPriorityProp = panelProp.FindPropertyRelative("soundPriority");
 
         // Initialize foldout state
         if (!panelFoldouts.ContainsKey(index))
@@ -163,18 +174,76 @@ public class UIManagerEditor : Editor
             if (useAnimationProp.boolValue)
             {
                 EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(animationTypeProp, new GUIContent("Animation Type"));
                 EditorGUILayout.PropertyField(durationProp, new GUIContent("Duration"));
 
-                // Animation Direction Controls
                 EditorGUILayout.Space(3);
-                EditorGUILayout.LabelField("Entry Animation", EditorStyles.miniBoldLabel);
-                EditorGUILayout.PropertyField(entryDirectionProp, new GUIContent("Entry Direction", "Direction from which the panel enters (to center)"));
-                EditorGUILayout.PropertyField(entryCurveProp, new GUIContent("Entry Curve"));
+
+                // Show settings based on animation type
+                if (animationTypeProp.enumValueIndex == 0) // Slide
+                {
+                    EditorGUILayout.LabelField("Slide Animation Settings", EditorStyles.miniBoldLabel);
+
+                    EditorGUILayout.Space(3);
+                    EditorGUILayout.LabelField("Entry Animation", EditorStyles.miniBoldLabel);
+                    EditorGUILayout.PropertyField(entryDirectionProp, new GUIContent("Entry Direction", "Direction from which the panel enters (to center)"));
+                    EditorGUILayout.PropertyField(entryCurveProp, new GUIContent("Entry Curve"));
+
+                    EditorGUILayout.Space(3);
+                    EditorGUILayout.LabelField("Exit Animation", EditorStyles.miniBoldLabel);
+                    EditorGUILayout.PropertyField(exitDirectionProp, new GUIContent("Exit Direction", "Direction to which the panel exits (from center)"));
+                    EditorGUILayout.PropertyField(exitCurveProp, new GUIContent("Exit Curve"));
+                }
+                else if (animationTypeProp.enumValueIndex == 1) // Fade
+                {
+                    EditorGUILayout.LabelField("Fade Animation Settings", EditorStyles.miniBoldLabel);
+
+                    // Check for CanvasGroup
+                    if (objectProp.objectReferenceValue != null)
+                    {
+                        GameObject panelObj = objectProp.objectReferenceValue as GameObject;
+                        if (panelObj.GetComponent<CanvasGroup>() == null)
+                        {
+                            EditorGUILayout.HelpBox("Fade animation requires a CanvasGroup component. It will be added automatically at runtime.", MessageType.Info);
+                        }
+                    }
+
+                    EditorGUILayout.Space(3);
+                    EditorGUILayout.PropertyField(fadeInCurveProp, new GUIContent("Fade In Curve", "Controls the fade in alpha animation"));
+
+                    EditorGUILayout.Space(3);
+                    EditorGUILayout.PropertyField(fadeOutCurveProp, new GUIContent("Fade Out Curve", "Controls the fade out alpha animation"));
+                }
+
+                EditorGUI.indentLevel--;
+            }
+
+            // Sound Settings Section
+            EditorGUILayout.Space(5);
+            EditorGUILayout.PropertyField(playSoundProp, new GUIContent("Play Sound"));
+
+            if (playSoundProp.boolValue)
+            {
+                EditorGUI.indentLevel++;
+
+                EditorGUILayout.LabelField("Sound Settings", EditorStyles.miniBoldLabel);
+                EditorGUILayout.PropertyField(soundPriorityProp, new GUIContent("Sound Priority"));
 
                 EditorGUILayout.Space(3);
-                EditorGUILayout.LabelField("Exit Animation", EditorStyles.miniBoldLabel);
-                EditorGUILayout.PropertyField(exitDirectionProp, new GUIContent("Exit Direction", "Direction to which the panel exits (from center)"));
-                EditorGUILayout.PropertyField(exitCurveProp, new GUIContent("Exit Curve"));
+                EditorGUILayout.LabelField("Entry Sound", EditorStyles.miniBoldLabel);
+                EditorGUILayout.PropertyField(entrySoundClipProp, new GUIContent("Entry Sound Clip", "Sound to play when panel appears"));
+                if (entrySoundClipProp.objectReferenceValue != null)
+                {
+                    EditorGUILayout.PropertyField(entrySoundVolumeProp, new GUIContent("Entry Volume"));
+                }
+
+                EditorGUILayout.Space(3);
+                EditorGUILayout.LabelField("Exit Sound", EditorStyles.miniBoldLabel);
+                EditorGUILayout.PropertyField(exitSoundClipProp, new GUIContent("Exit Sound Clip", "Sound to play when panel disappears"));
+                if (exitSoundClipProp.objectReferenceValue != null)
+                {
+                    EditorGUILayout.PropertyField(exitSoundVolumeProp, new GUIContent("Exit Volume"));
+                }
 
                 EditorGUI.indentLevel--;
             }
@@ -249,11 +318,22 @@ public class UIManagerEditor : Editor
         newPanel.FindPropertyRelative("panelObject").objectReferenceValue = null;
         newPanel.FindPropertyRelative("startActive").boolValue = false;
         newPanel.FindPropertyRelative("useAnimation").boolValue = true;
+        newPanel.FindPropertyRelative("animationType").enumValueIndex = 0; // Slide
         newPanel.FindPropertyRelative("animationDuration").floatValue = 0.5f;
         newPanel.FindPropertyRelative("entryDirection").enumValueIndex = 0; // Left
         newPanel.FindPropertyRelative("exitDirection").enumValueIndex = 1;  // Right
         newPanel.FindPropertyRelative("entryCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
         newPanel.FindPropertyRelative("exitCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        newPanel.FindPropertyRelative("fadeInCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        newPanel.FindPropertyRelative("fadeOutCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+        // Initialize sound settings
+        newPanel.FindPropertyRelative("playSound").boolValue = false;
+        newPanel.FindPropertyRelative("entrySoundClip").objectReferenceValue = null;
+        newPanel.FindPropertyRelative("entrySoundVolume").floatValue = 1f;
+        newPanel.FindPropertyRelative("exitSoundClip").objectReferenceValue = null;
+        newPanel.FindPropertyRelative("exitSoundVolume").floatValue = 1f;
+        newPanel.FindPropertyRelative("soundPriority").enumValueIndex = 1; // Medium
 
         panelFoldouts[panelsProperty.arraySize - 1] = true;
     }
@@ -295,11 +375,22 @@ public class UIManagerEditor : Editor
                 newPanel.FindPropertyRelative("panelObject").objectReferenceValue = canvas.gameObject;
                 newPanel.FindPropertyRelative("startActive").boolValue = canvas.enabled;
                 newPanel.FindPropertyRelative("useAnimation").boolValue = true;
+                newPanel.FindPropertyRelative("animationType").enumValueIndex = 0; // Slide
                 newPanel.FindPropertyRelative("animationDuration").floatValue = 0.5f;
                 newPanel.FindPropertyRelative("entryDirection").enumValueIndex = 0; // Left
                 newPanel.FindPropertyRelative("exitDirection").enumValueIndex = 1;  // Right
                 newPanel.FindPropertyRelative("entryCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
                 newPanel.FindPropertyRelative("exitCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
+                newPanel.FindPropertyRelative("fadeInCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
+                newPanel.FindPropertyRelative("fadeOutCurve").animationCurveValue = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+                // Initialize sound settings
+                newPanel.FindPropertyRelative("playSound").boolValue = false;
+                newPanel.FindPropertyRelative("entrySoundClip").objectReferenceValue = null;
+                newPanel.FindPropertyRelative("entrySoundVolume").floatValue = 1f;
+                newPanel.FindPropertyRelative("exitSoundClip").objectReferenceValue = null;
+                newPanel.FindPropertyRelative("exitSoundVolume").floatValue = 1f;
+                newPanel.FindPropertyRelative("soundPriority").enumValueIndex = 1; // Medium
 
                 addedCount++;
             }
