@@ -7752,6 +7752,103 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1001 &868590513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1447411755977271805, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_Name
+      value: UICanvas_Opacity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
 --- !u!43 &875083151
 Mesh:
   m_ObjectHideFlags: 0
@@ -13043,6 +13140,7 @@ MonoBehaviour:
     panelObject: {fileID: 6736448443103658636}
     startActive: 0
     useAnimation: 1
+    animationType: 1
     animationDuration: 0.1
     entryDirection: 2
     exitDirection: 3
@@ -13094,13 +13192,69 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_GameOver
     panelObject: {fileID: 1042048615352739591}
     startActive: 0
-    useAnimation: 0
+    useAnimation: 1
+    animationType: 1
     animationDuration: 0.1
     entryDirection: 2
     exitDirection: 3
@@ -13170,13 +13324,69 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_Settings
     panelObject: {fileID: 7086929092075930030}
     startActive: 0
-    useAnimation: 0
+    useAnimation: 1
+    animationType: 1
     animationDuration: 0.1
     entryDirection: 2
     exitDirection: 3
@@ -13228,14 +13438,70 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_Credits
     panelObject: {fileID: 4249914299216090522}
     startActive: 0
-    useAnimation: 0
-    animationDuration: 0.5
+    useAnimation: 1
+    animationType: 1
+    animationDuration: 0.1
     entryDirection: 2
     exitDirection: 3
     entryCurve:
@@ -13304,14 +13570,70 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_Leaderboard
     panelObject: {fileID: 1953589474728461041}
     startActive: 0
-    useAnimation: 0
-    animationDuration: 0.5
+    useAnimation: 1
+    animationType: 1
+    animationDuration: 0.1
     entryDirection: 2
     exitDirection: 3
     entryCurve:
@@ -13362,14 +13684,70 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_PauseMenu
     panelObject: {fileID: 4837379973433477589}
     startActive: 0
     useAnimation: 1
-    animationDuration: 0.5
+    animationType: 1
+    animationDuration: 0.1
     entryDirection: 2
     exitDirection: 3
     entryCurve:
@@ -13420,14 +13798,70 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_Startscreen
     panelObject: {fileID: 8044913453937303135}
     startActive: 1
-    useAnimation: 0
-    animationDuration: 0.5
+    useAnimation: 1
+    animationType: 1
+    animationDuration: 0.1
     entryDirection: 0
     exitDirection: 1
     entryCurve:
@@ -13478,9 +13912,64 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
 --- !u!4 &1374008752
 Transform:
   m_ObjectHideFlags: 0
@@ -24015,10 +24504,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5410271002868053980, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5995249576488151671, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -24217,158 +24702,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 172168848070242683, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 172168848070242683, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 172168848070242683, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 507610417480351587, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 507610417480351587, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 507610417480351587, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1092333713240467355, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_Name
       value: UICanvas_Credits
-      objectReference: {fileID: 0}
-    - target: {fileID: 2596629562966647461, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2596629562966647461, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2596629562966647461, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2773003299683423414, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2773003299683423414, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2773003299683423414, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3566680500237516702, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3566680500237516702, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3566680500237516702, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906570357797205563, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906570357797205563, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906570357797205563, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651281187940493655, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651281187940493655, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651281187940493655, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5431477176482221939, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5431477176482221939, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5431477176482221939, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133440160689869923, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133440160689869923, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133440160689869923, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025910264023333201, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025910264023333201, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025910264023333201, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400347012004732008, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400347012004732008, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400347012004732008, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7866871727542168199, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
-    - target: {fileID: 8019735037167230673, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019735037167230673, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019735037167230673, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9074416832591942630, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -24734,6 +25075,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1824027849350980765, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824027849350980765, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824027849350980765, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824027849350980765, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2807717032231532454, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -24747,6 +25104,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2807717032231532454, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052371047619299468, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052371047619299468, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052371047619299468, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052371047619299468, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -25287,10 +25660,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6643572623558903273, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6925119852531984624, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -25452,6 +25821,7 @@ SceneRoots:
   - {fileID: 737450965}
   - {fileID: 2030835242}
   - {fileID: 2004085442}
+  - {fileID: 868590513}
   - {fileID: 1878393785382908742}
   - {fileID: 8730920474212595282}
   - {fileID: 8918339506089610442}
