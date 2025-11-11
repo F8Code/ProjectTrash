@@ -84,19 +84,45 @@ public class UIManager : MonoBehaviour
         panel.SetActive(true);
         currentPanel = panel;
 
-        if (panel.useAnimation && panel.animatedTransform != null)
+        // Play entry sound if enabled
+        if (panel.playSound && panel.entrySoundClip != null && AudioManager.Instance != null)
         {
-            // Ensure curve is valid
-            AnimationCurve curve = panel.entryCurve;
-            if (curve == null || curve.keys.Length == 0)
-                curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
-            UITweenAnimator.Instance.AnimatePanelEntry(
-                  panel.animatedTransform,
-                  panel.entryDirection,
-                  panel.animationDuration,
-                  curve
+            AudioManager.Instance.PlayAudio(
+                panel.entrySoundClip,
+                panel.entrySoundVolume,
+                panel.soundPriority
             );
+        }
+
+        if (panel.useAnimation)
+        {
+            if (panel.animationType == UIPanel.AnimationType.Slide && panel.animatedTransform != null)
+            {
+                // Ensure curve is valid
+                AnimationCurve curve = panel.entryCurve;
+                if (curve == null || curve.keys.Length == 0)
+                    curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+                UITweenAnimator.Instance.AnimatePanelEntry(
+                    panel.animatedTransform,
+                    panel.entryDirection,
+                    panel.animationDuration,
+                    curve
+                );
+            }
+            else if (panel.animationType == UIPanel.AnimationType.Fade && panel.canvasGroup != null)
+            {
+                // Ensure curve is valid
+                AnimationCurve curve = panel.fadeInCurve;
+                if (curve == null || curve.keys.Length == 0)
+                    curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+                UITweenAnimator.Instance.AnimateFadeIn(
+                    panel.canvasGroup,
+                    panel.animationDuration,
+                    curve
+                );
+            }
         }
     }
 
@@ -122,24 +148,55 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (panel.useAnimation && panel.animatedTransform != null)
+        // Play exit sound if enabled
+        if (panel.playSound && panel.exitSoundClip != null && AudioManager.Instance != null)
         {
-            // Ensure curve is valid
-            AnimationCurve curve = panel.exitCurve;
-            if (curve == null || curve.keys.Length == 0)
-                curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
-            UITweenAnimator.Instance.AnimatePanelExit(
-                 panel.animatedTransform,
-                 panel.exitDirection,
-                 panel.animationDuration,
-                 curve,
-                 () =>
-                 {
-                     panel.SetActive(false);
-                     onComplete?.Invoke();
-                 }
+            AudioManager.Instance.PlayAudio(
+                panel.exitSoundClip,
+                panel.exitSoundVolume,
+                panel.soundPriority
             );
+        }
+
+        if (panel.useAnimation)
+        {
+            if (panel.animationType == UIPanel.AnimationType.Slide && panel.animatedTransform != null)
+            {
+                // Ensure curve is valid
+                AnimationCurve curve = panel.exitCurve;
+                if (curve == null || curve.keys.Length == 0)
+                    curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+                UITweenAnimator.Instance.AnimatePanelExit(
+                    panel.animatedTransform,
+                    panel.exitDirection,
+                    panel.animationDuration,
+                    curve,
+                    () =>
+                    {
+                        panel.SetActive(false);
+                        onComplete?.Invoke();
+                    }
+                );
+            }
+            else if (panel.animationType == UIPanel.AnimationType.Fade && panel.canvasGroup != null)
+            {
+                // Ensure curve is valid
+                AnimationCurve curve = panel.fadeOutCurve;
+                if (curve == null || curve.keys.Length == 0)
+                    curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+                UITweenAnimator.Instance.AnimateFadeOut(
+                    panel.canvasGroup,
+                    panel.animationDuration,
+                    curve,
+                    () =>
+                    {
+                        panel.SetActive(false);
+                        onComplete?.Invoke();
+                    }
+                );
+            }
         }
         else
         {

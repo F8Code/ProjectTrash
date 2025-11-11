@@ -9771,6 +9771,7 @@ MonoBehaviour:
     panelObject: {fileID: 549633773}
     startActive: 0
     useAnimation: 1
+    animationType: 0
     animationDuration: 0.5
     entryDirection: 0
     exitDirection: 1
@@ -9822,13 +9823,69 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: UICanvas_PauseMenu
     panelObject: {fileID: 1323405878}
     startActive: 0
     useAnimation: 1
+    animationType: 0
     animationDuration: 0.5
     entryDirection: 0
     exitDirection: 1
@@ -9880,13 +9937,69 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
   - panelName: GameOverPanel_Canvas
     panelObject: {fileID: 811560246}
     startActive: 0
     useAnimation: 1
+    animationType: 0
     animationDuration: 0.5
     entryDirection: 0
     exitDirection: 1
@@ -9938,9 +10051,64 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    playSound: 0
+    entrySoundClip: {fileID: 0}
+    entrySoundVolume: 1
+    exitSoundClip: {fileID: 0}
+    exitSoundVolume: 1
+    soundPriority: 1
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
+    canvasGroup: {fileID: 0}
 --- !u!4 &663380191
 Transform:
   m_ObjectHideFlags: 0
@@ -27366,7 +27534,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

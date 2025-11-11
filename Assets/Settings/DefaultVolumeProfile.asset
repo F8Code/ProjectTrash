@@ -455,7 +455,6 @@ MonoBehaviour:
   - {fileID: -5520245016509672950}
   - {fileID: 7173750748008157695}
   - {fileID: 1666464333004379222}
-  - {fileID: 9001657382290151224}
   - {fileID: -6335409530604852063}
   - {fileID: -1216621516061285780}
   - {fileID: 3959858460715838825}
@@ -755,6 +754,28 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+--- !u!114 &1669499028050592491
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42ddeb767a86eb4b8090cd2434a194c, type: 3}
+  m_Name: ColorBlindVolume
+  m_EditorClassIdentifier: Assembly-CSharp::Project.Colorblind.ColorBlindVolume
+  active: 1
+  <displayName>k__BackingField: 
+  mode:
+    <fieldHash>k__BackingField: 1208286064
+    m_OverrideState: 1
+    m_Value: 2
+  intensity:
+    <fieldHash>k__BackingField: 1926337240
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &1918650496244738858
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -808,16 +829,16 @@ MonoBehaviour:
     m_Value: 10
   aperture:
     m_OverrideState: 1
-    m_Value: 5.6
+    m_Value: 1
   focalLength:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 300
   bladeCount:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 3
   bladeCurvature:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   bladeRotation:
     m_OverrideState: 1
     m_Value: 0
@@ -890,7 +911,7 @@ MonoBehaviour:
     m_Value: 0
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 1
   rounded:
     m_OverrideState: 1
     m_Value: 0
@@ -922,46 +943,6 @@ MonoBehaviour:
   scale:
     m_OverrideState: 1
     m_Value: 1
---- !u!114 &9001657382290151224
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
-  m_Name: ChannelMixer
-  m_EditorClassIdentifier: 
-  active: 1
-  redOutRedIn:
-    m_OverrideState: 1
-    m_Value: 100
-  redOutGreenIn:
-    m_OverrideState: 1
-    m_Value: 0
-  redOutBlueIn:
-    m_OverrideState: 1
-    m_Value: 0
-  greenOutRedIn:
-    m_OverrideState: 1
-    m_Value: 0
-  greenOutGreenIn:
-    m_OverrideState: 1
-    m_Value: 100
-  greenOutBlueIn:
-    m_OverrideState: 1
-    m_Value: 0
-  blueOutRedIn:
-    m_OverrideState: 1
-    m_Value: 0
-  blueOutGreenIn:
-    m_OverrideState: 1
-    m_Value: 0
-  blueOutBlueIn:
-    m_OverrideState: 1
-    m_Value: 100
 --- !u!114 &9122958982931076880
 MonoBehaviour:
   m_ObjectHideFlags: 3
