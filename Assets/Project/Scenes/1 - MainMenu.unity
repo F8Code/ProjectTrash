@@ -24640,6 +24640,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5410271002868053980, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5784512441330291583, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -24835,6 +24839,10 @@ PrefabInstance:
     - target: {fileID: 3178729114474037934, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086023807193849704, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8347384905709997138, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
       propertyPath: m_Name
@@ -25231,6 +25239,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617708525093734444, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7382460788558893924, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -25370,6 +25382,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
+    - target: {fileID: 3905633522088569458, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6088446292129552651, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
       propertyPath: m_Name
       value: UICanvas_Tutorial
@@ -25417,6 +25433,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2807717032231532454, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846312991437898655, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4052371047619299468, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
