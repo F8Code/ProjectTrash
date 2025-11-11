@@ -16,7 +16,7 @@ public class ColorblindSettingsManager : MonoBehaviour
 
     [Header("Colorblind Filter Profiles")]
     [Tooltip("List of available colorblind filters")]
-    [SerializeField] private List<ColorblindFilter> colorblindFilters = new List<ColorblindFilter>();
+    [SerializeField] private List<ColorblindFilter> colorblindFilters = new();
 
     // PlayerPrefs key for saving settings
     private const string COLORBLIND_MODE_KEY = "ColorblindMode";
@@ -75,13 +75,8 @@ public class ColorblindSettingsManager : MonoBehaviour
             HashSet<string> uniqueNames = new();
             foreach (var filter in colorblindFilters)
             {
-                if (!string.IsNullOrEmpty(filter.filterName))
-                {
-                    if (!uniqueNames.Add(filter.filterName))
-                    {
-                        Debug.LogWarning($"[ColorblindSettingsManager] Duplicate filter name detected: '{filter.filterName}'");
-                    }
-                }
+                if (!string.IsNullOrEmpty(filter.filterName) && !uniqueNames.Add(filter.filterName))
+                    Debug.LogWarning($"[ColorblindSettingsManager] Duplicate filter name detected: '{filter.filterName}'");
             }
         }
     }
@@ -168,23 +163,6 @@ public class ColorblindSettingsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Apply colorblind mode by filter name
-    /// </summary>
-    public void ApplyColorblindModeByName(string filterName, bool save = true)
-    {
-        int index = colorblindFilters.FindIndex(f => f.filterName == filterName);
-
-        if (index >= 0)
-        {
-            ApplyColorblindModeByIndex(index, save);
-        }
-        else
-        {
-            Debug.LogWarning($"[ColorblindSettingsManager] Filter '{filterName}' not found!");
-        }
-    }
-
-    /// <summary>
     /// Get all colorblind filter names as strings (for dropdown options)
     /// </summary>
     public string[] GetColorblindFilterNames()
@@ -214,14 +192,6 @@ public class ColorblindSettingsManager : MonoBehaviour
             return "Unknown";
         }
         return colorblindFilters[currentModeIndex].filterName;
-    }
-
-    /// <summary>
-    /// Get the total number of available filters
-    /// </summary>
-    public int GetFilterCount()
-    {
-        return colorblindFilters?.Count ?? 0;
     }
 
     /// <summary>

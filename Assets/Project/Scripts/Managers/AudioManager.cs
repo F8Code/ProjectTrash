@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,21 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
+    public enum AudioMixerType
+    {
+        Master,
+        Music,
+        SFX
+    }
+
     [SerializeField] private AudioSource _audioSourcePrefab;
     [SerializeField, Range(1, 50)] private int _audioSourcePoolInitialCapacity = 10;
     [SerializeField, Range(0f, 1f)] private float _masterVolumeMultiplier = 1f;
+    
+    [Header("Audio Mixer Groups")]
+    [SerializeField] private AudioMixerGroup _masterMixerGroup;
+    [SerializeField] private AudioMixerGroup _musicMixerGroup;
+    [SerializeField] private AudioMixerGroup _sfxMixerGroup;
 
     private AudioPlaybackOrchestrator _orchestrator;
     private IAudioSourcePoolStrategy _poolStrategy;
@@ -52,9 +65,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Executes audio playback through the stratified orchestration pipeline
     /// </summary>
-    public void PlayAudio(AudioClip clip, float volumeMultiplier = 1f,
-        AudioPlaybackContext.PlaybackPriority priority = AudioPlaybackContext.PlaybackPriority.Medium,
-        Vector3? spatialPosition = null, bool loopAudioClip = false, float pitch = 1f)
+    public void PlayAudio(AudioClip clip, float volumeMultiplier = 1f, AudioPlaybackContext.PlaybackPriority priority = AudioPlaybackContext.PlaybackPriority.Medium, Vector3? spatialPosition = null, bool loopAudioClip = false, float pitch = 1f, AudioMixerType mixerType = AudioMixerType.SFX)
     {
         if (clip == null) return;
 
@@ -63,10 +74,22 @@ public class AudioManager : MonoBehaviour
             volumeMultiplier,
             priority,
             spatialPosition.HasValue,
-            spatialPosition ?? Vector3.zero
+            spatialPosition ?? Vector3.zero,
+            GetMixerGroup(mixerType)
         );
 
         _orchestrator.ExecutePlaybackRequest(context, loopAudioClip, pitch);
+    }
+
+    private AudioMixerGroup GetMixerGroup(AudioMixerType mixerType)
+    {
+        return mixerType switch
+        {
+            AudioMixerType.Master => _masterMixerGroup,
+            AudioMixerType.Music => _musicMixerGroup,
+            AudioMixerType.SFX => _sfxMixerGroup,
+            _ => _sfxMixerGroup
+        };
     }
 
     private void OnDestroy()
@@ -88,9 +111,10 @@ public class AudioPlaybackContext
     public bool IsSpatial { get; }
     public Vector3 SpatialPosition { get; }
     public float Timestamp { get; }
+    public UnityEngine.Audio.AudioMixerGroup MixerGroup { get; }
 
     private AudioPlaybackContext(AudioClip clip, float volumeMultiplier, PlaybackPriority priority,
-        bool isSpatial, Vector3 spatialPosition)
+        bool isSpatial, Vector3 spatialPosition, UnityEngine.Audio.AudioMixerGroup mixerGroup)
     {
         Clip = clip;
         VolumeMultiplier = volumeMultiplier;
@@ -98,21 +122,22 @@ public class AudioPlaybackContext
         IsSpatial = isSpatial;
         SpatialPosition = spatialPosition;
         Timestamp = Time.time;
+        MixerGroup = mixerGroup;
     }
 
     public static class Builder
     {
         public static AudioPlaybackContext Build(AudioClip clip, float volumeMultiplier,
-            PlaybackPriority priority, bool isSpatial, Vector3 spatialPosition)
-            => new(clip, volumeMultiplier, priority, isSpatial, spatialPosition);
+PlaybackPriority priority, bool isSpatial, Vector3 spatialPosition, UnityEngine.Audio.AudioMixerGroup mixerGroup)
+  => new(clip, volumeMultiplier, priority, isSpatial, spatialPosition, mixerGroup);
     }
 }
 
 public static class AudioPlaybackContextFactory
 {
     public static AudioPlaybackContext CreateContext(AudioClip clip, float volumeMultiplier,
-        AudioPlaybackContext.PlaybackPriority priority, bool isSpatial, Vector3 spatialPosition)
-        => AudioPlaybackContext.Builder.Build(clip, volumeMultiplier, priority, isSpatial, spatialPosition);
+        AudioPlaybackContext.PlaybackPriority priority, bool isSpatial, Vector3 spatialPosition, UnityEngine.Audio.AudioMixerGroup mixerGroup)
+=> AudioPlaybackContext.Builder.Build(clip, volumeMultiplier, priority, isSpatial, spatialPosition, mixerGroup);
 }
 
 #endregion Audio Playback Context System
@@ -227,12 +252,13 @@ public class StandardAudioPlaybackBehavior : IAudioPlaybackBehavior
     protected void ConfigureAudioSource(AudioSource source, AudioPlaybackContext context,
         IAudioVolumeModulationStrategy volumeStrategy)
     {
-        source.clip = context.Clip;
+      source.clip = context.Clip;
         source.volume = volumeStrategy.CalculateModulatedVolume(context.VolumeMultiplier);
         source.spatialBlend = context.IsSpatial ? 1f : 0f;
+        source.outputAudioMixerGroup = context.MixerGroup;
 
         if (context.IsSpatial)
-            source.transform.position = context.SpatialPosition;
+source.transform.position = context.SpatialPosition;
     }
 }
 
