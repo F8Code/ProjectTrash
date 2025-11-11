@@ -897,7 +897,7 @@ MonoBehaviour:
   _circleSliceMinRadius: 0.3
   _armMovementStrength: 1
   _cameraMovementStrength: 0.9
-  _armSidewaysRotationRangeDegrees: {x: -20, y: 20}
+  _armSidewaysRotationRangeDegrees: {x: -50, y: 35}
   _cameraSidewaysRotationRangeDegrees: {x: 0, y: 0}
   _armRotationSpeed: 0.8
   _elbowRotationRangeDegrees: {x: -60, y: 180}
