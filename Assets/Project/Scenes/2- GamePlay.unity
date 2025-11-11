@@ -1097,15 +1097,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   ScoreSystem:
     _scoreMultiplierLevels:
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
-    - 6
-    - 7
-    - 8
-    - 9
+    - _multiplierValue: 2
+      _multiplierSound: {fileID: 8300000, guid: 75d7b7c5e5e10a743bf39bc6d0f55655, type: 3}
+    - _multiplierValue: 3
+      _multiplierSound: {fileID: 8300000, guid: 097a6e45153518845a58f63aad021555, type: 3}
+    - _multiplierValue: 4
+      _multiplierSound: {fileID: 8300000, guid: 9b318eac21b24e244b808d80ddf78284, type: 3}
+    - _multiplierValue: 6
+      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+    - _multiplierValue: 7
+      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+    - _multiplierValue: 8
+      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+    - _multiplierValue: 9
+      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
     _scoreMultiplierRequiredComboInclusiveSeconds: 3
     _scoreMultiplierDuration: 5
     _displayScoreInformation: 0
@@ -1114,7 +1119,6 @@ MonoBehaviour:
     MistakeSound: {fileID: 8300000, guid: ee3d8c8315555ad40a200d6a98be64e4, type: 3}
     _successVolume: 1
     _mistakeVolume: 0.5
-    _multiplierPitchStrength: 0.5
   _leaderboardUI: {fileID: 1087726222}
 --- !u!4 &78860713
 Transform:
