@@ -6835,10 +6835,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 466388648586839105, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 466388648586839105, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 550469881083416048, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 550469881083416048, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 776377464750751382, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 776377464750751382, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789457265814614058, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789457265814614058, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018809619044907849, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: bb8dd11ce4f24764a81fd09e2c0fce7f, type: 3}
+    - target: {fileID: 4992694195860904362, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 300a8d0e9c161884c8e3918b49febdac, type: 3}
+    - target: {fileID: 5549770214101968252, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: a4373af7d9288f94dba2c35491d07f60, type: 3}
     - target: {fileID: 5720030862485772642, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: m_Name
       value: TrashBins
       objectReference: {fileID: 0}
+    - target: {fileID: 6172079842300865070, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172079842300865070, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446724078977177779, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2be518c93c08ca84d984628305115ae9, type: 3}
+    - target: {fileID: 6696809548679637370, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 36ed3963fbce9d44dab97ba7dce82a7d, type: 3}
     - target: {fileID: 7875063354683616444, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6878,6 +6938,18 @@ PrefabInstance:
     - target: {fileID: 7875063354683616444, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570140187226832991, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b70c7627cb0dce349813a068919cef8a, type: 3}
+    - target: {fileID: 9218875208594193359, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218875208594193359, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25654,6 +25726,9 @@ MonoBehaviour:
   _audioSourcePrefab: {fileID: 1083933375}
   _audioSourcePoolInitialCapacity: 10
   _masterVolumeMultiplier: 1
+  _masterMixerGroup: {fileID: 0}
+  _musicMixerGroup: {fileID: 0}
+  _sfxMixerGroup: {fileID: 0}
 --- !u!4 &1638787116
 Transform:
   m_ObjectHideFlags: 0
