@@ -7523,8 +7523,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.009999977, y: 0.363851, z: 1.741986}
-  m_Center: {x: -0.20441549, y: 0.051155113, z: 0.7485638}
+  m_Size: {x: 0.009999977, y: 0.4115756, z: 1.7419862}
+  m_Center: {x: -0.20441554, y: 0.07501746, z: 0.7485464}
 --- !u!43 &501870313
 Mesh:
   m_ObjectHideFlags: 0
@@ -9328,7 +9328,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 22268467315374039, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22268467315374039, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashMovementSpeed
@@ -9468,7 +9468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2681077947987263934, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2681077947987263934, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashMovementSpeed
@@ -9488,24 +9488,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2870137181220265373, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2870137181220265373, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.z
-      value: 2.3493052
+      value: 2.2571619
       objectReference: {fileID: 0}
     - target: {fileID: 2870137181220265373, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Center.x
-      value: 0.000000004255676
+      value: 1.28668595e-11
       objectReference: {fileID: 0}
     - target: {fileID: 2870137181220265373, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Center.y
-      value: 0.099999994
+      value: 2.743336e-11
       objectReference: {fileID: 0}
     - target: {fileID: 2870137181220265373, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Center.z
-      value: 0.0496512
+      value: 0.0035794976
       objectReference: {fileID: 0}
+    - target: {fileID: 2870137181220265373, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 3223257287976029704, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -9526,6 +9530,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5652675563450961661, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 5940524657300712645, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.y
       value: 5
@@ -9612,7 +9620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7631787153223492791, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 1.4
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 7631787153223492791, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashMovementSpeed
@@ -9646,6 +9654,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.08255711
       objectReference: {fileID: 0}
+    - target: {fileID: 7712503714554771604, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.x
       value: 0.35
@@ -9658,6 +9670,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58d521ec5288bfe4d8727c85099738bf, type: 2}
     - target: {fileID: 7806223937663131348, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.x
       value: 0.009999988

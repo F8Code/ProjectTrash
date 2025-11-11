@@ -172,9 +172,6 @@ public class TrashManager : MonoBehaviour
             _trashFactory.DespawnTrash(trash);
             trash.OnTrashCollected -= CollectTrash;
 
-            foreach (TrashConveyor conveyor in _trashConveyors)
-                conveyor.StopIgnoringTrash(trash);
-
             foreach (TrashCan trashCan in _trashCans)
                 trashCan.StopIgnoringTrash(trash);
 

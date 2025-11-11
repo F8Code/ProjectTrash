@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TrashConveyor : MonoBehaviour
 {
-    const float CONVEYOR_FLING_MODIFIER = 1.5f;
-    const float CONVEYOR_ANGULAR_VELOCITY_DEBUF = 0.8f;
+    const float MAXIMUM_TRASH_ANGULAR_VELOCITY = 3f;
 
     [Header("Conveyor settings")]
     [Tooltip("Speed at which trash moves in the conveyor local forward direction")]
@@ -15,32 +14,45 @@ public class TrashConveyor : MonoBehaviour
     [Tooltip("Extra fling speed applied to trash when it leaves the conveyor")]
     [SerializeField, Range(0f, 2f)] float _trashFlingSpeed = 2f;
 
-    HashSet<Rigidbody> _trash = new();
+    Dictionary<Rigidbody, float> _trash = new();
     HashSet<Rigidbody> _ignoredTrash = new();
+
+    void OnEnable()
+    {
+        PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != GameConstants.Layer.Trash)
             return;
 
-        Rigidbody trash = other.GetComponentInParent<Rigidbody>();
+        Rigidbody trasRB = other.GetComponentInParent<Rigidbody>();
 
-        if (_ignoredTrash.Contains(trash))
+        if (_ignoredTrash.Contains(trasRB))
             return;
             
         if (_disableTrashGravity)
-            trash.isKinematic = true;
+            trasRB.isKinematic = true;
 
-        _trash.Add(trash);
+        if (!_trash.ContainsKey(trasRB))
+            _trash.Add(trasRB, 0f);
     }
 
     public void CustomUpdate()
     {
-        foreach (Rigidbody trashRB in _trash)
+        foreach (Rigidbody trashRB in _trash.Keys.ToList())
         {
-            trashRB.position += transform.forward * _trashMovementSpeed * Time.deltaTime;
-            if (!trashRB.isKinematic) trashRB.angularVelocity *= CONVEYOR_ANGULAR_VELOCITY_DEBUF;
-;
+            trashRB.position += transform.forward * (_trashMovementSpeed + _trash[trashRB]) * Time.deltaTime;
+
+            if (trashRB.isKinematic) continue;
+
+            if (Vector3.Dot(trashRB.linearVelocity, transform.forward) <= 0f)
+                _trash[trashRB] += Time.deltaTime * _trashMovementSpeed;
+            else
+                _trash[trashRB] = 0f;
+
+            trashRB.angularVelocity = Vector3.ClampMagnitude(trashRB.angularVelocity, MAXIMUM_TRASH_ANGULAR_VELOCITY);
         }
     }
 
@@ -51,20 +63,32 @@ public class TrashConveyor : MonoBehaviour
 
         Rigidbody trashRB = other.GetComponentInParent<Rigidbody>();
 
-        if (_ignoredTrash.Contains(trashRB))
+        if (!_trash.ContainsKey(trashRB))
             return;
 
         trashRB.isKinematic = false;
-        trashRB.linearVelocity += transform.forward * _trashFlingSpeed * CONVEYOR_FLING_MODIFIER;
+        trashRB.linearVelocity += transform.forward * _trashFlingSpeed;
 
         _trash.Remove(trashRB);
-
-        _ignoredTrash.Add(trashRB);
     }
 
-    public void StopIgnoringTrash(Trash trash)
+    void ManageIgnoredTrash(Trash trash, bool isGrabbed, Vector3 velocity)
     {
         Rigidbody trashRB = trash.gameObject.GetComponent<Rigidbody>();
-        _ignoredTrash.Remove(trashRB);
+
+        if (isGrabbed)
+        {
+            _ignoredTrash.Add(trashRB);
+            _trash.Remove(trashRB);
+        }
+        else
+        {
+            _ignoredTrash.Remove(trashRB);
+        }      
+    }
+    
+    void OnDisable()
+    {
+        PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
     }
 }
