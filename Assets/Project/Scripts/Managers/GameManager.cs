@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     // Pause state
     private bool _isPaused = false;
 
+    // Internal logic
+    int _initialMistakesAllowed;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,7 +42,11 @@ public class GameManager : MonoBehaviour
         _stateMachine = new();
     }
 
-    private void Start() => _stateMachine.ChangeState(new GameTutorialState());
+    private void Start()
+    {
+        _initialMistakesAllowed = ScoreSystem.LivesRemaining;
+        _stateMachine.ChangeState(new GameTutorialState());
+    } 
 
     private void Update()
     {
@@ -110,7 +117,13 @@ public class GameManager : MonoBehaviour
             _stateMachine.ChangeState(PreviousState);
     }
 
-    public void EndTutorialStage() => SetState(new GamePlayingState());
+    public void EndTutorialStage()
+    {
+        while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
+            ScoreSystem.RestoreLife();
+
+        SetState(new GamePlayingState());
+    } 
 
     public void EndGame()
     {
