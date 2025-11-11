@@ -1744,11 +1744,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143393708}
   m_CullTransparentMesh: 1
---- !u!1 &145279667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8329065864103959123, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
-  m_PrefabInstance: {fileID: 777180205}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &145299497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2254,6 +2249,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+--- !u!1 &243464934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243464935}
+  - component: {fileID: 243464937}
+  - component: {fileID: 243464936}
+  m_Layer: 5
+  m_Name: Opacity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &243464935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243464934}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2284909520373240386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &243464936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243464934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9411765}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &243464937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243464934}
+  m_CullTransparentMesh: 1
 --- !u!43 &244979521
 Mesh:
   m_ObjectHideFlags: 0
@@ -2998,11 +3068,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 0.9999999, z: 0.16637467}
   m_Center: {x: -0.0000004172134, y: -2.9999933, z: 0.46681187}
---- !u!1 &272799339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3823092502977751180, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
-  m_PrefabInstance: {fileID: 1968886016}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &279590475
 GameObject:
   m_ObjectHideFlags: 0
@@ -16217,10 +16282,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 689296909243875028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317709735
 MonoBehaviour:
@@ -17801,586 +17866,6 @@ MonoBehaviour:
     rectTransform: {fileID: 0}
     canvas: {fileID: 0}
     animatedTransform: {fileID: 0}
-  - panelName: Canvas
-    panelObject: {fileID: 272799339}
-    startActive: 1
-    useAnimation: 1
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: Canvas
-    panelObject: {fileID: 2058304996}
-    startActive: 1
-    useAnimation: 1
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: Canvas
-    panelObject: {fileID: 2085953645}
-    startActive: 1
-    useAnimation: 1
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: Canvas
-    panelObject: {fileID: 1857037520}
-    startActive: 1
-    useAnimation: 1
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: Canvas
-    panelObject: {fileID: 145279667}
-    startActive: 1
-    useAnimation: 1
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: UICanvas_GameOver
-    panelObject: {fileID: 1042048615352739591}
-    startActive: 0
-    useAnimation: 0
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: Canvas
-    panelObject: {fileID: 1440393021}
-    startActive: 1
-    useAnimation: 1
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: UICanvas_Tutorial
-    panelObject: {fileID: 6736448443103658636}
-    startActive: 0
-    useAnimation: 0
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: UICanvas_Leaderboard
-    panelObject: {fileID: 1953589474728461041}
-    startActive: 0
-    useAnimation: 0
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
-  - panelName: UICanvas_Credits
-    panelObject: {fileID: 4249914299216090522}
-    startActive: 0
-    useAnimation: 0
-    animationDuration: 0.5
-    entryDirection: 0
-    exitDirection: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rectTransform: {fileID: 0}
-    canvas: {fileID: 0}
-    animatedTransform: {fileID: 0}
   - panelName: UICanvas_Startscreen
     panelObject: {fileID: 8044913453937303135}
     startActive: 1
@@ -18964,11 +18449,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!1 &1440393021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3735361293046050336, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
-  m_PrefabInstance: {fileID: 714842644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1443894466
 Mesh:
   m_ObjectHideFlags: 0
@@ -21201,10 +20681,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3868317800479888131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570213028
 MonoBehaviour:
@@ -21718,7 +21198,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -24551,11 +24031,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832691478}
   m_CullTransparentMesh: 1
---- !u!1 &1857037520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6675886380520855646, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
-  m_PrefabInstance: {fileID: 2055198285}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1864327385
 Mesh:
   m_ObjectHideFlags: 0
@@ -29480,11 +28955,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!1 &2058304996 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9175434213876026985, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
-  m_PrefabInstance: {fileID: 228841032}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &2066787657
 Mesh:
   m_ObjectHideFlags: 0
@@ -30427,11 +29897,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!1 &2085953645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7464217878467871957, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
-  m_PrefabInstance: {fileID: 285161995}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2094812926
 GameObject:
   m_ObjectHideFlags: 0
@@ -31482,6 +30947,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 243464935}
   - {fileID: 9127776338146054897}
   - {fileID: 156699003}
   m_Father: {fileID: 0}
@@ -31797,6 +31263,38 @@ PrefabInstance:
     - target: {fileID: 4638796296989742253, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1374008751}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873170133435200410, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6184648464306958779, guid: a4f960d74b50e764692fe9ad3e685351, type: 3}
       propertyPath: m_Name
