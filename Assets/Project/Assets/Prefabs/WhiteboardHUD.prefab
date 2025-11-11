@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 6048696873787906969}
   - component: {fileID: 2821196096433000132}
   m_Layer: 0
-  m_Name: 'Spot Light '
+  m_Name: 'ScoreboardSpot Light '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,13 +434,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241574487539094223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.8040874, y: 0.41813564, z: -0.19497983, w: 0.37495208}
-  m_LocalPosition: {x: -1.345, y: 2.336, z: 3.253}
+  m_LocalRotation: {x: 0.1464466, y: 0.8535535, z: -0.35355338, w: 0.35355338}
+  m_LocalPosition: {x: -2.935, y: 2.105, z: 2.854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 502545469683270251}
-  m_LocalEulerAnglesHint: {x: 50, y: 180, z: 125.05}
+  m_LocalEulerAnglesHint: {x: 45, y: 135, z: 0}
 --- !u!108 &6048696873787906969
 Light:
   m_ObjectHideFlags: 0
