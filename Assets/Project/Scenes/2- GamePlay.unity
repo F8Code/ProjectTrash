@@ -1127,6 +1127,8 @@ MonoBehaviour:
       _multiplierSound: {fileID: 8300000, guid: 097a6e45153518845a58f63aad021555, type: 3}
     - _multiplierValue: 4
       _multiplierSound: {fileID: 8300000, guid: 9b318eac21b24e244b808d80ddf78284, type: 3}
+    - _multiplierValue: 5
+      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
     - _multiplierValue: 6
       _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
     - _multiplierValue: 7
