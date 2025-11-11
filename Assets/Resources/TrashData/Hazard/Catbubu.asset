@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Catbubu
   Type: 4
-  Mesh: {fileID: 6135390898806840620, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
-  Material: {fileID: 2100000, guid: cd015957f39502544a00ca26e5ab7b91, type: 2}
+  Mesh: {fileID: 6135390898806840620, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
+  Material: {fileID: 2100000, guid: 0b8860d5b2c0a484ba309a31da5eb0a7, type: 2}
   ColliderPrefab: {fileID: 5263041457031562787, guid: a94984a212edd6545b311a72e01ba858, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
   PickupSound: {fileID: 8300000, guid: 137e71ab425f17b45bc2eaefbdd90d05, type: 3}
   ThrowSound: {fileID: 8300000, guid: 174094df03dcdf24d807c5a9f200d3cd, type: 3}
-  RandomSizeMultiplierRange: {x: 300, y: 300}
+  RandomSizeMultiplierRange: {x: 200, y: 200}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}

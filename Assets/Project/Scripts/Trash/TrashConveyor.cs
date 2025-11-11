@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TrashConveyor : MonoBehaviour
 {
-    const float CONVEYOR_SPEED_MODIFIER = 0.1f;
     const float CONVEYOR_FLING_MODIFIER = 1.5f;
+    const float CONVEYOR_ANGULAR_VELOCITY_DEBUF = 0.8f;
 
     [Header("Conveyor settings")]
     [Tooltip("Speed at which trash moves in the conveyor local forward direction")]
@@ -38,8 +38,9 @@ public class TrashConveyor : MonoBehaviour
     {
         foreach (Rigidbody trashRB in _trash)
         {
-            trashRB.position += transform.forward * _trashMovementSpeed * Time.fixedDeltaTime * CONVEYOR_SPEED_MODIFIER;
-            if (!trashRB.isKinematic) trashRB.angularVelocity *= 0.9f;
+            trashRB.position += transform.forward * _trashMovementSpeed * Time.deltaTime;
+            if (!trashRB.isKinematic) trashRB.angularVelocity *= CONVEYOR_ANGULAR_VELOCITY_DEBUF;
+;
         }
     }
 

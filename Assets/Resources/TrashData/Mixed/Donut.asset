@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: RubikCube
+  m_Name: Donut
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: RubikCube
-  Type: 0
-  Mesh: {fileID: 1636278447586535312, guid: c81409b8e59ad7b4f835f0917f377283, type: 3}
-  Material: {fileID: 2100000, guid: 9b7365b695bbdb642983eceb7ccd70ec, type: 2}
+  Name: HalfEatenBurger
+  Type: 5
+  Mesh: {fileID: 4264615624355059789, guid: 56bad155e1369a941a961c7acaf08b76, type: 3}
+  Material: {fileID: 2100000, guid: d72127fac3ca1a844a7cc888c2de295b, type: 2}
+  ColliderPrefab: {fileID: 315669384938602634, guid: 6393887398a9ede4fa87a43782224b36, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 1
   HandSpeedMultiplier: 1
-  PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
-  ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 100, y: 100}
+  PickupSound: {fileID: 8300000, guid: 0af6cb7087b3b0c41a1514d812be0cd6, type: 3}
+  ThrowSound: {fileID: 8300000, guid: 0e4ebadf9f052a44eb83a75ea14260f3, type: 3}
+  RandomSizeMultiplierRange: {x: 5, y: 5}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -54,4 +55,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
   MassScore: 1
-  SizeScore: 1
+  SizeScore: 2
