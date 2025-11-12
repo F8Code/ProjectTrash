@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: Wine Glass
   Type: 3
-  Mesh: {fileID: 2534964839176971238, guid: eb9b7646d7c3da543b181755f68b5886, type: 3}
+  Mesh: {fileID: 2534964839176971238, guid: ccbf451b774006f45a82ae8b5121117f, type: 3}
   Material: {fileID: 2100000, guid: 370a4199f0bbddc4094437ed8264ebd7, type: 2}
   ColliderPrefab: {fileID: 7679913557787629859, guid: fcef7d1d2774bbd4cb61c7721c6d564c, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
