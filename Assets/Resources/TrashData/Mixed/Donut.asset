@@ -22,7 +22,7 @@ MonoBehaviour:
   HandSpeedMultiplier: 0.875
   PickupSound: {fileID: 8300000, guid: 0af6cb7087b3b0c41a1514d812be0cd6, type: 3}
   ThrowSound: {fileID: 8300000, guid: 0e4ebadf9f052a44eb83a75ea14260f3, type: 3}
-  RandomSizeMultiplierRange: {x: 5, y: 5}
+  RandomSizeMultiplierRange: {x: 10, y: 10}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
