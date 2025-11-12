@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private bool _isPaused = false;
 
     // Internal logic
-    int _initialMistakesAllowed;
+    private int _initialMistakesAllowed;
 
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         _initialMistakesAllowed = ScoreSystem.LivesRemaining;
         _stateMachine.ChangeState(new GameTutorialState());
-    } 
+    }
 
     private void Update()
     {
@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
         _stateMachine.Update();
 
-        // Only update game logic during Tutorial and Playing states, NOT during Game Over or Pause
         if (!_isPaused && CurrentState is GameTutorialState or GamePlayingState)
         {
             _activeGameTime += Time.deltaTime;
@@ -67,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     private void HandlePauseInput()
     {
-        if (CurrentState is not (GameTutorialState or GamePlayingState))
+        if (CurrentState is not (GameTutorialState or GamePlayingState or GamePausedState))
             return;
 
         if (InputManager.Instance != null && InputManager.Instance.UIActions.Cancel.WasPressedThisFrame())
@@ -123,7 +122,7 @@ public class GameManager : MonoBehaviour
             ScoreSystem.RestoreLife();
 
         SetState(new GamePlayingState());
-    } 
+    }
 
     public void EndGame()
     {

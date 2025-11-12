@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 6048696873787906969}
   - component: {fileID: 2821196096433000132}
   m_Layer: 0
-  m_Name: 'ScoreboardSpot Light '
+  m_Name: 'Spot Light '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,13 +434,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241574487539094223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16111305, y: 0.8308919, z: -0.43437982, w: 0.30818084}
-  m_LocalPosition: {x: -2.983, y: 2.435, z: 2.971}
+  m_LocalRotation: {x: 0.8215955, y: 0.4268684, z: -0.1736042, w: 0.33559766}
+  m_LocalPosition: {x: -1.345, y: 2.336, z: 3.253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 502545469683270251}
-  m_LocalEulerAnglesHint: {x: 55.2, y: 139.3, z: 0}
+  m_LocalEulerAnglesHint: {x: 44.4, y: 179.9, z: 125.05}
 --- !u!108 &6048696873787906969
 Light:
   m_ObjectHideFlags: 0
@@ -452,10 +452,10 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.9372549, g: 0.92156863, b: 0.8352941, a: 1}
-  m_Intensity: 30
-  m_Range: 5
+  m_Intensity: 26.83
+  m_Range: 4.44
   m_SpotAngle: 50
-  m_InnerSpotAngle: 10
+  m_InnerSpotAngle: 5
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0017719901, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0018378677, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1014,7 +1014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2673129027251499266}
   - component: {fileID: 179124091271316391}
-  - component: {fileID: 7575613896074044925}
+  - component: {fileID: 4705567641248658346}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -1050,7 +1050,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3502059951494091403}
   m_CullTransparentMesh: 1
---- !u!114 &7575613896074044925
+--- !u!114 &4705567641248658346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.000027497881, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Multiplier timer:'
+  m_text: 'Multiplier countdown:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f35263c755aa1934b814ad7b382c7857, type: 2}
   m_sharedMaterial: {fileID: -1217826505094410988, guid: f35263c755aa1934b814ad7b382c7857, type: 2}
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0.0016995056, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.001913005, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1895,7 +1895,7 @@ MonoBehaviour:
   m_fontSizeMin: 1
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1942,11 +1942,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b69754abff1a6b14088b8e5ce85e6278, type: 3}
       propertyPath: m_LocalScale.x
-      value: 150
+      value: 107.7945
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69754abff1a6b14088b8e5ce85e6278, type: 3}
       propertyPath: m_LocalScale.z
-      value: 125
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69754abff1a6b14088b8e5ce85e6278, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2016,7 +2016,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalScale.x
-      value: 150
+      value: 111.5985
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalScale.y
@@ -2024,19 +2024,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalScale.z
-      value: 125
+      value: 132.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.007
+      value: 0.053
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.005
+      value: -0.188
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eca0393815679a64b902e019ee67b968, type: 3}
       propertyPath: m_LocalRotation.w

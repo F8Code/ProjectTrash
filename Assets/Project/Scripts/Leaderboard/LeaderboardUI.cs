@@ -5,26 +5,16 @@ using TMPro;
 
 public class LeaderboardUI : MonoBehaviour
 {
-    [Header("Panel References")]
-    [SerializeField] private GameObject _gameOverPanel;
-
-    [SerializeField] private GameObject _leaderboardPanel;
-
     [Header("Game Over Panel UI")]
     [SerializeField] private TextMeshProUGUI _gameOverScoreText;
 
     [SerializeField] private TMP_InputField _playerNameInput;
     [SerializeField] private Button _saveButton;
-    [SerializeField] private Button _viewLeaderboardButton;
-    [SerializeField] private Button _restartFromGameOverButton;
-    [SerializeField] private Button _mainMenuFromGameOverButton;
 
     [Header("Leaderboard Panel UI")]
     [SerializeField] private Transform _entriesContainer;
 
     [SerializeField] private GameObject _entryPrefab;
-    [SerializeField] private Button _restartFromLeaderboardButton;
-    [SerializeField] private Button _backFromLeaderboardButton;
 
     [Header("Display Settings")]
     [SerializeField] private int _maxVisibleEntries = 10;
@@ -44,21 +34,6 @@ public class LeaderboardUI : MonoBehaviour
     {
         if (_saveButton != null)
             _saveButton.onClick.AddListener(OnSaveButtonClicked);
-
-        if (_viewLeaderboardButton != null)
-            _viewLeaderboardButton.onClick.AddListener(OnViewLeaderboardClicked);
-
-        if (_restartFromGameOverButton != null)
-            _restartFromGameOverButton.onClick.AddListener(OnRestartClicked);
-
-        if (_mainMenuFromGameOverButton != null)
-            _mainMenuFromGameOverButton.onClick.AddListener(OnMainMenuClicked);
-
-        if (_restartFromLeaderboardButton != null)
-            _restartFromLeaderboardButton.onClick.AddListener(OnRestartClicked);
-
-        if (_backFromLeaderboardButton != null)
-            _backFromLeaderboardButton.onClick.AddListener(OnBackFromLeaderboardClicked);
     }
 
     private void Start() => HideAllPanels();
@@ -68,16 +43,6 @@ public class LeaderboardUI : MonoBehaviour
         // Clean up listeners
         if (_saveButton != null)
             _saveButton.onClick.RemoveListener(OnSaveButtonClicked);
-        if (_viewLeaderboardButton != null)
-            _viewLeaderboardButton.onClick.RemoveListener(OnViewLeaderboardClicked);
-        if (_restartFromGameOverButton != null)
-            _restartFromGameOverButton.onClick.RemoveListener(OnRestartClicked);
-        if (_mainMenuFromGameOverButton != null)
-            _mainMenuFromGameOverButton.onClick.RemoveListener(OnMainMenuClicked);
-        if (_restartFromLeaderboardButton != null)
-            _restartFromLeaderboardButton.onClick.RemoveListener(OnRestartClicked);
-        if (_backFromLeaderboardButton != null)
-            _backFromLeaderboardButton.onClick.RemoveListener(OnBackFromLeaderboardClicked);
     }
 
     /// <summary>
@@ -203,31 +168,15 @@ public class LeaderboardUI : MonoBehaviour
             }
         }
 
-        UpdateSaveButtonState();
+        ViewLeaderboard();
     }
 
-    private void OnViewLeaderboardClicked()
+    private void ViewLeaderboard()
     {
         if (!_scoreSaved)
             OnSaveButtonClicked();
 
         ShowLeaderboard();
-    }
-
-    private void OnBackFromLeaderboardClicked() => ShowGameOver(_currentScore);
-
-    private void OnRestartClicked()
-    {
-        Debug.Log("<color=cyan>[LeaderboardUI] Restart button clicked</color>");
-        HideAllPanels();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(GameConstants.Scene.Game);
-    }
-
-    private void OnMainMenuClicked()
-    {
-        Debug.Log("<color=cyan>[LeaderboardUI] Main Menu button clicked</color>");
-        HideAllPanels();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(GameConstants.Scene.MainMenu);
     }
 
     private void RefreshLeaderboardDisplay()

@@ -35,7 +35,8 @@ public class Trash : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += PlayFeedbackActions;
+        if(PlayerManager.Instance != null)
+            PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += PlayFeedbackActions;
     }
 
     public void Initialize(TrashData data)
@@ -139,6 +140,7 @@ public class Trash : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed -= PlayFeedbackActions;
+        if(PlayerManager.Instance != null)
+            PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed -= PlayFeedbackActions;
     }
 }
