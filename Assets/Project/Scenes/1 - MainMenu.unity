@@ -23757,7 +23757,7 @@ MonoBehaviour:
     animatedTransform: {fileID: 0}
     canvasGroup: {fileID: 0}
   - panelName: UICanvas_PauseMenu
-    panelObject: {fileID: 4837379973433477589}
+    panelObject: {fileID: 0}
     startActive: 0
     useAnimation: 1
     animationType: 1
@@ -39146,9 +39146,17 @@ PrefabInstance:
       value: UICanvas_Startscreen
       objectReference: {fileID: 0}
     - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
+    - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39163,11 +39171,6 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1092333713240467355, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
   m_PrefabInstance: {fileID: 6927269755634850880}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4837379973433477589 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3802109380818064165, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-  m_PrefabInstance: {fileID: 6978215671429623477}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4977933343869089382
 PrefabInstance:
@@ -39532,103 +39535,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
---- !u!1001 &6978215671429623477
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3802109380818064165, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_Name
-      value: UICanvas_PauseMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327312711526299401, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8dc957e6a64647849a19c5978039b318, type: 3}
 --- !u!1 &7086929092075930030 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8347384905709997138, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
@@ -39647,10 +39553,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 221949625167426258, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1374008751}
     - target: {fileID: 2792970995493785662, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -40318,7 +40220,6 @@ SceneRoots:
   - {fileID: 1878393785382908742}
   - {fileID: 8730920474212595282}
   - {fileID: 8918339506089610442}
-  - {fileID: 6978215671429623477}
   - {fileID: 4977933343869089382}
   - {fileID: 6927269755634850880}
   - {fileID: 8995873434697521558}
