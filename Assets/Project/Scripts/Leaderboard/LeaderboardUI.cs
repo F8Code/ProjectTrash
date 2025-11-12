@@ -36,7 +36,13 @@ public class LeaderboardUI : MonoBehaviour
             _saveButton.onClick.AddListener(OnSaveButtonClicked);
     }
 
-    private void Start() => HideAllPanels();
+    private void Start()
+    {
+        HideAllPanels();
+
+        // Refresh leaderboard display
+        RefreshLeaderboardDisplay();
+    }
 
     private void OnDestroy()
     {

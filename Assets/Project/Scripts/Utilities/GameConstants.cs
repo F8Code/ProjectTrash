@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public static class GameConstants
 {
     public static class Layer
@@ -19,8 +17,8 @@ public static class GameConstants
     public static class Scene
     {
         public const string Bootstrapper = "0- Bootstrapper";
-        public const string MainMenu = "1- Mainmenu";
-        public const string Game = "2- Gameplay";
+        public const string MainMenu = "1- MainMenu";
+        public const string Game = "2- GamePlay";
     }
 
     public static class AudioMixer
