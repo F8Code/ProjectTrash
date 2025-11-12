@@ -20,7 +20,7 @@ public class LeaderboardManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        DontDestroyOnLoad(gameObject);
         Instance = this;
 
         LoadLeaderboard();
