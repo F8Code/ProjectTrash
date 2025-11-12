@@ -346,6 +346,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeltLegs
       objectReference: {fileID: 0}
+    - target: {fileID: 8898510844345832663, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898510844345832663, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898510844345832663, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1187,6 +1199,18 @@ PrefabInstance:
     - target: {fileID: 4297107788163807998, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
       propertyPath: m_Name
       value: BeltLegs
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898510844345832663, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898510844345832663, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898510844345832663, guid: bb5eb1280e1e9174bb2efdc53b5cfa9d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

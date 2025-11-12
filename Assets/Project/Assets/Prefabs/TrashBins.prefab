@@ -553,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6919420638526353700, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_Intensity
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6919420638526353700, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_SpotAngle
@@ -561,7 +561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6919420638526353700, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_InnerSpotAngle
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8388922689324386835, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_Name
