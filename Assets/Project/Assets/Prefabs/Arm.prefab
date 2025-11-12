@@ -891,8 +891,8 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _elbowJoint: {fileID: 367308837537172332}
   _circleSliceCenter: {fileID: 0}
-  _circleSliceYRotationDegrees: 10
-  _circleSliceAngle: 100
+  _circleSliceYRotationDegrees: 15
+  _circleSliceAngle: 60
   _circleSliceMaxRadius: 1
   _circleSliceMinRadius: 0.35
   _armMovementStrength: 1
@@ -905,7 +905,7 @@ MonoBehaviour:
   _reverseElbowAxis: 0
   _reverseWristAxis: 0
   _emptyHandLiftDegrees: 45
-  _grabbingHandLiftDegrees: 60
+  _grabbingHandLiftDegrees: 75
   _armDegreesPerSecond: 120
   _trashDetectionRadiusMultiplier: 1.5
   _trashDetectionHeightMultiplier: 1.5
