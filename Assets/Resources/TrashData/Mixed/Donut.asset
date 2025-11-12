@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: HalfEatenBurger
   Type: 5
-  Mesh: {fileID: 4264615624355059789, guid: 56bad155e1369a941a961c7acaf08b76, type: 3}
-  Material: {fileID: 2100000, guid: d72127fac3ca1a844a7cc888c2de295b, type: 2}
+  Mesh: {fileID: 7262078514411320927, guid: ba971bedbed011749ae4ab7e958fe808, type: 3}
+  Material: {fileID: 2100000, guid: 304bf31d452a14244abbeb89c7b2c6a9, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: 6393887398a9ede4fa87a43782224b36, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 2
