@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: YogurtPackage
+  m_Name: YoghurtPackage
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Yogurt Package
+  Name: yoghurt
   Type: 0
-  Mesh: {fileID: 8186104333223141496, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
-  Material: {fileID: 2100000, guid: 41e7c990afef48d438e530b1df07c715, type: 2}
+  Mesh: {fileID: 8186104333223141496, guid: ccbf451b774006f45a82ae8b5121117f, type: 3}
+  Material: {fileID: 2100000, guid: 370a4199f0bbddc4094437ed8264ebd7, type: 2}
   ColliderPrefab: {fileID: 4607315249630408340, guid: 51a9b18a53da18a4cb0dc0596bc6040c, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 1
-  HandSpeedMultiplier: 1
+  RigidBodyMass: 3
+  HandSpeedMultiplier: 0.75
   PickupSound: {fileID: 8300000, guid: 1e483d0e1237d4a4a8485c80c699c5ee, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 150, y: 150}
+  RandomSizeMultiplierRange: {x: 120, y: 120}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 0
-  SizeScore: 1
+  MassScore: 2
+  SizeScore: 3
