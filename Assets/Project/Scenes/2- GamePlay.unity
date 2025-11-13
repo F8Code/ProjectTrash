@@ -6526,7 +6526,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2708327844896997086, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 1
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.y
+      value: 0.24956375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.z
+      value: 2.2428155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000000026812224
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.y
+      value: -0.07521818
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.z
+      value: -0.01609262
       objectReference: {fileID: 0}
     - target: {fileID: 8941283293755765516, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.z

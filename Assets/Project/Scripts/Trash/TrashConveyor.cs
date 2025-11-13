@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrashConveyor : MonoBehaviour
 {
     const float MAXIMUM_TRASH_ANGULAR_VELOCITY = 3f;
+    const float STUCK_TRASH_SPEED_INCREASE_MODIFIER = 0.1f;
 
     [Header("Conveyor settings")]
     [Tooltip("Speed at which trash moves in the conveyor local forward direction")]
@@ -48,7 +49,7 @@ public class TrashConveyor : MonoBehaviour
             if (trashRB.isKinematic) continue;
 
             if (Vector3.Dot(trashRB.linearVelocity, transform.forward) <= 0f)
-                _trash[trashRB] += Time.deltaTime * _trashMovementSpeed;
+                _trash[trashRB] += Time.deltaTime * _trashMovementSpeed * STUCK_TRASH_SPEED_INCREASE_MODIFIER;
             else
                 _trash[trashRB] = 0f;
 
