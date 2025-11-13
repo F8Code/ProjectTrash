@@ -30,6 +30,22 @@ public class GameManager : MonoBehaviour
     // Internal logic
     private int _initialMistakesAllowed;
 
+    [Header("Music Settings")]
+
+    [Tooltip("Intro Music AudioClip")]
+    public AudioClip IntroMusicSound;
+
+    [Tooltip("Music AudioClip")]
+    public AudioClip MusicSound;
+
+    [Tooltip("Game Over Music AudioClip")]
+    public AudioClip GameOverMusicSound;
+
+    [Tooltip("Music volume multiplier")]
+    [SerializeField, Range(0f, 1f)] private float _musicVolume = 0.5f;
+
+    AudioSource _audioSource;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,6 +62,10 @@ public class GameManager : MonoBehaviour
     {
         _initialMistakesAllowed = ScoreSystem.LivesRemaining;
         _stateMachine.ChangeState(new GameTutorialState());
+
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = IntroMusicSound;
+        _audioSource.Play();
     }
 
     private void Update()
@@ -59,6 +79,12 @@ public class GameManager : MonoBehaviour
         {
             _activeGameTime += Time.deltaTime;
             ScoreSystem.CustomUpdate();
+
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.clip = MusicSound;
+                _audioSource.Play();
+            }
         }
 
         _roundedDeltaTime += (Time.unscaledDeltaTime - _roundedDeltaTime) * 0.01f;
@@ -134,6 +160,10 @@ public class GameManager : MonoBehaviour
 
         // Change state first
         SetState(new GameOverState());
+
+        _audioSource.Stop();
+        _audioSource.clip = GameOverMusicSound;
+        _audioSource.Play();
 
         // Show Game Over panel with final score
         if (_leaderboardUI != null)
