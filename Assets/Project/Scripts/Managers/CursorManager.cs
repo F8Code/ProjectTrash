@@ -32,8 +32,6 @@ public class CursorManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;

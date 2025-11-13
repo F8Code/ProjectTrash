@@ -33,14 +33,9 @@ public class FPSCounter : MonoBehaviour
         _timeLeft = _updateInterval;
 
         if (_fpsText == null)
-        {
             Debug.LogWarning("FPSCounter: TMP_Text component is not assigned!");
-        }
         else
-        {
-            // Set initial visibility based on enabled state
             _fpsText.gameObject.SetActive(enabled);
-        }
     }
 
     private void OnEnable()
