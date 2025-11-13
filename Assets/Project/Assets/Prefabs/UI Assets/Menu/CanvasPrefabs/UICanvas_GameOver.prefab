@@ -1316,10 +1316,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundEffect
   playHoverSound: 1
   hoverSoundClip: {fileID: 8300000, guid: e79b9c3563b63fe49a3e3e25cabbb0cc, type: 3}
-  hoverSoundVolume: 0.5
+  hoverSoundVolume: 0.25
   playClickSound: 1
   clickSoundClip: {fileID: 8300000, guid: b1b92a1ba5b230c42ab0d99f2e515a2b, type: 3}
-  clickSoundVolume: 1
+  clickSoundVolume: 0.25
   soundPriority: 0
 --- !u!1001 &3928199998588220360
 PrefabInstance:
@@ -1549,10 +1549,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundEffect
   playHoverSound: 1
   hoverSoundClip: {fileID: 8300000, guid: e79b9c3563b63fe49a3e3e25cabbb0cc, type: 3}
-  hoverSoundVolume: 0.5
+  hoverSoundVolume: 0.25
   playClickSound: 1
   clickSoundClip: {fileID: 8300000, guid: b1b92a1ba5b230c42ab0d99f2e515a2b, type: 3}
-  clickSoundVolume: 1
+  clickSoundVolume: 0.25
   soundPriority: 0
 --- !u!1001 &6070959273983789005
 PrefabInstance:
@@ -1678,10 +1678,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundEffect
   playHoverSound: 1
   hoverSoundClip: {fileID: 8300000, guid: e79b9c3563b63fe49a3e3e25cabbb0cc, type: 3}
-  hoverSoundVolume: 0.5
+  hoverSoundVolume: 0.25
   playClickSound: 1
   clickSoundClip: {fileID: 8300000, guid: b1b92a1ba5b230c42ab0d99f2e515a2b, type: 3}
-  clickSoundVolume: 1
+  clickSoundVolume: 0.25
   soundPriority: 0
 --- !u!1001 &6442660695372010755
 PrefabInstance:
@@ -2030,10 +2030,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundEffect
   playHoverSound: 1
   hoverSoundClip: {fileID: 8300000, guid: e79b9c3563b63fe49a3e3e25cabbb0cc, type: 3}
-  hoverSoundVolume: 0.5
+  hoverSoundVolume: 0.25
   playClickSound: 1
   clickSoundClip: {fileID: 8300000, guid: b1b92a1ba5b230c42ab0d99f2e515a2b, type: 3}
-  clickSoundVolume: 1
+  clickSoundVolume: 0.25
   soundPriority: 0
 --- !u!224 &7214588337630984607 stripped
 RectTransform:

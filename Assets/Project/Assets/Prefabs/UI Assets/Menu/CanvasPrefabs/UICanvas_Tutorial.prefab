@@ -585,7 +585,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6088446292129552651}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1069,11 +1069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5872145515118948050, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1820
+      value: 1777.3
       objectReference: {fileID: 0}
     - target: {fileID: 5872145515118948050, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50
+      value: 75.3
       objectReference: {fileID: 0}
     - target: {fileID: 5872145515118948050, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1101,7 +1101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7971074301621849585, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: UICanvas_Tutorial
+      value: UICanvas_Startscreen
       objectReference: {fileID: 0}
     - target: {fileID: 7971074301621849585, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1110,8 +1110,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2512009896529383523, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8469960314185170344}
   m_SourcePrefab: {fileID: 100100000, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
+--- !u!1 &2796435673890585073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2512009896529383523, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}
+  m_PrefabInstance: {fileID: 293469398492785042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8469960314185170344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796435673890585073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c95ea725d358243ba0ac830ab33795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundEffect
+  playHoverSound: 1
+  hoverSoundClip: {fileID: 8300000, guid: e79b9c3563b63fe49a3e3e25cabbb0cc, type: 3}
+  hoverSoundVolume: 0.25
+  playClickSound: 1
+  clickSoundClip: {fileID: 8300000, guid: b1b92a1ba5b230c42ab0d99f2e515a2b, type: 3}
+  clickSoundVolume: 0.25
+  soundPriority: 0
 --- !u!224 &6155455212494341952 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5872145515118948050, guid: fbe85e8bd3dd641409130f3a668da954, type: 3}

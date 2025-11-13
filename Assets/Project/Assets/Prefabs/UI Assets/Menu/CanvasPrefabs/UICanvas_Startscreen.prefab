@@ -533,10 +533,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundEffect
   playHoverSound: 1
   hoverSoundClip: {fileID: 8300000, guid: e79b9c3563b63fe49a3e3e25cabbb0cc, type: 3}
-  hoverSoundVolume: 0.5
+  hoverSoundVolume: 0.25
   playClickSound: 1
   clickSoundClip: {fileID: 8300000, guid: b1b92a1ba5b230c42ab0d99f2e515a2b, type: 3}
-  clickSoundVolume: 1
+  clickSoundVolume: 0.25
   soundPriority: 0
 --- !u!1001 &9205581727647540545
 PrefabInstance:
@@ -586,9 +586,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 830091814073005156, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: clickSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 830091814073005156, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: hoverSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316658821568061535, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1316658821568061535, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316658821568061535, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1316658821568061535, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -774,6 +790,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3374862163642568235, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: clickSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374862163642568235, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: hoverSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3424561611201050174, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.15625
@@ -805,6 +829,14 @@ PrefabInstance:
     - target: {fileID: 3424561611201050174, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644809602103203976, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: clickSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644809602103203976, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: hoverSoundVolume
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3742469393070310855, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -966,6 +998,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6067880923579482940, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: clickSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067880923579482940, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: hoverSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6110580914442052118, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_AnchorMax.x
       value: -0.10510002
@@ -1025,6 +1065,14 @@ PrefabInstance:
     - target: {fileID: 6330571923080777712, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492602991483602800, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: clickSoundVolume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492602991483602800, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
+      propertyPath: hoverSoundVolume
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6591218461628934463, guid: 492bb4769f85bbc49b7042fc9dce146b, type: 3}
       propertyPath: m_AnchorMax.x
