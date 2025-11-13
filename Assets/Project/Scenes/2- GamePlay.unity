@@ -1732,12 +1732,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 663380190}
+    - target: {fileID: 1436182488082912096, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: UICanvas_PauseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1536246477686413978, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2472864619800177533, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086023807193849704, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8347384905709997138, guid: 8ce63378b30eab74db32ade62c01a94a, type: 3}

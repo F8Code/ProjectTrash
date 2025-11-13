@@ -212,9 +212,15 @@ public class UIManager : MonoBehaviour
     {
         foreach (var panel in panels)
         {
-            if (panel.panelObject != null)
-                panel.SetActive(false);
+            if (panel.panelObject != null && panel.IsActive())
+            {
+                if (panel.useAnimation)
+                    HidePanel(panel);
+                else
+                    panel.SetActive(false);
+            }
         }
+
         currentPanel = null;
         Debug.Log("<color=cyan>[UIManager] All panels hidden</color>");
     }

@@ -27,11 +27,12 @@ public class GameManager : MonoBehaviour
     // Pause state
     private bool _isPaused = false;
 
+    private bool _inPauseContext = false; // Track if we're in pause menu navigation
+
     // Internal logic
     private int _initialMistakesAllowed;
 
     [Header("Music Settings")]
-
     [Tooltip("Intro Music AudioClip")]
     public AudioClip IntroMusicSound;
 
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("Music volume multiplier")]
     [SerializeField, Range(0f, 1f)] private float _musicVolume = 0.5f;
 
-    AudioSource _audioSource;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
     private void PauseGame()
     {
         _isPaused = true;
+        _inPauseContext = true;
 
         if (UIManager.Instance != null)
             UIManager.Instance.ShowPanel(GameConstants.Canvas.PauseMenu);
@@ -129,10 +131,11 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         _isPaused = false;
+        _inPauseContext = false;
 
-        // Hide pause menu via UIManager
+        // Hide all UI panels before resuming
         if (UIManager.Instance != null)
-            UIManager.Instance.HidePanel(GameConstants.Canvas.PauseMenu);
+            UIManager.Instance.HideAllPanels();
 
         if (CursorManager.Instance != null)
             CursorManager.Instance.HideCursorForUI();
