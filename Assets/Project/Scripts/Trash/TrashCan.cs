@@ -13,8 +13,9 @@ public class TrashCan : MonoBehaviour
     [SerializeField] Light _highlightLight;
     [SerializeField] Color _highlightColor = Color.yellow;
 
-    [Header("VFX Success")]
+    [Header("VFX")]
     [SerializeField] ParticleSystem successVFXPrefab;
+    [SerializeField] ParticleSystem failVFXPrefab;
 
     [Header("References")]
     [SerializeField] PlayerWrist _playerWrist;
@@ -70,8 +71,17 @@ public class TrashCan : MonoBehaviour
             Destroy(vfx.gameObject, vfx.main.duration);
             Debug.Log("SUCCESS VFX PLAYED!");
         }
+        else if (trash.Type != _acceptedTrash && failVFXPrefab != null)
+        {
+            ParticleSystem vfx = Instantiate(failVFXPrefab,
+                                           transform.position + Vector3.up * 0.5f,
+                                           Quaternion.identity);
+            vfx.Play();
+            Destroy(vfx.gameObject, vfx.main.duration);
+            Debug.Log("FAILED VFX PLAYED!");
+        }
 
-        OnTrashCollected?.Invoke(trash, (trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score);
+            OnTrashCollected?.Invoke(trash, (trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score);
         Debug.Log($"Trash {trash.Name} collected. Score: {(trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score}");
     }
 

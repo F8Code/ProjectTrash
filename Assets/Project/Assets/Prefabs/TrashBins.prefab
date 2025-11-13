@@ -46,6 +46,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7875063354683616444}
     m_Modifications:
     - target: {fileID: -2055858736464597407, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+    - target: {fileID: -2055858736464597407, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: successVFXPrefab
       value: 
       objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
@@ -220,6 +224,10 @@ PrefabInstance:
       value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 7537534755599725086, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+    - target: {fileID: 7537534755599725086, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
       propertyPath: successVFXPrefab
       value: 
       objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
@@ -273,6 +281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BinGlass
       objectReference: {fileID: 0}
+    - target: {fileID: 4709108286792160481, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
     - target: {fileID: 4709108286792160481, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: successVFXPrefab
       value: 
@@ -376,6 +388,10 @@ PrefabInstance:
       value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 1009876749381732781, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+    - target: {fileID: 1009876749381732781, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
       propertyPath: successVFXPrefab
       value: 
       objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
@@ -465,6 +481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7875063354683616444}
     m_Modifications:
+    - target: {fileID: -448950146190268607, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
     - target: {fileID: -448950146190268607, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
       propertyPath: successVFXPrefab
       value: 
@@ -568,6 +588,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7875063354683616444}
     m_Modifications:
     - target: {fileID: -7098169315685624605, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+    - target: {fileID: -7098169315685624605, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: successVFXPrefab
       value: 
       objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
@@ -601,7 +625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1957617086595822576, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.863
       objectReference: {fileID: 0}
     - target: {fileID: 1957617086595822576, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_LocalPosition.y

@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class PlayerWrist : MonoBehaviour
 {
-    const float WRIST_VELOCITY_DECAY_SPEED = 0.9f;
+    const float WRIST_VELOCITY_DECAY_SPEED = 0.97f;
+    const float ON_THROW_NO_COLLISION_DURATION = 1f;
 
     [Header("References")]
     [Tooltip("Reference to the player's thumb fingertip joint")]
@@ -72,13 +73,15 @@ public class PlayerWrist : MonoBehaviour
             return;
 
         Vector3 newVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.deltaTime;
+        Debug.Log(Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.925f);
 
-        if (newVelocity.magnitude > _trashVelocity.magnitude || (newVelocity.magnitude > 0 && Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.9f))
+        if (Vector3.Dot(newVelocity, transform.forward) < 0 && (newVelocity.magnitude > _trashVelocity.magnitude || (newVelocity.magnitude > 0 && Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.925f)))
             _trashVelocity = newVelocity;
         else
             _trashVelocity *= WRIST_VELOCITY_DECAY_SPEED;
 
         _lastTrashPosition = _grabbedTrash.transform.position;
+        //Debug.Log(_trashVelocity.magnitude);
     }
 
     void HandleFingerContact(PlayerFingertip finger, Trash trash)
@@ -139,16 +142,19 @@ public class PlayerWrist : MonoBehaviour
     
     void ReleaseTrash()
     {
+        //Internal logic
+        float velocityInverseLerp = Mathf.InverseLerp(0f, _thrownTrashVelocityLimit, _trashVelocity.magnitude * _thrownTrashSpeedMultiplier);
+
         //Parenting
         _grabbedTrash.transform.parent = _originalTrashParent;
 
         //Disable trash-hand collision for a moment
-        StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash));
+        StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash, velocityInverseLerp));
         
         //Physics and velocity
         Rigidbody trashRB = _grabbedTrash.GetComponent<Rigidbody>();
         trashRB.isKinematic = false;
-        trashRB.linearVelocity = Vector3.ClampMagnitude(_trashVelocity * _thrownTrashSpeedMultiplier, _thrownTrashVelocityLimit) + Vector3.up * _thrownTrashBonusUpwardsVelocity;
+        trashRB.linearVelocity = Vector3.ClampMagnitude(_trashVelocity * _thrownTrashSpeedMultiplier, _thrownTrashVelocityLimit) + Vector3.up * velocityInverseLerp * _thrownTrashBonusUpwardsVelocity;
 
         //Broadcast event
         OnTrashGrabbed?.Invoke(_grabbedTrash.GetComponent<Trash>(), false, trashRB.linearVelocity);
@@ -164,7 +170,7 @@ public class PlayerWrist : MonoBehaviour
         if (_displayDebugLogTrashVelocityOnRelease) Debug.Log("Released trash velocity: " + trashRB.linearVelocity.magnitude);
     }
 
-    IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject)
+    IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject, float collisionDurationModidier = 1f)
     {
         Collider[] handColliders = GetComponentsInChildren<Collider>();
         Collider[] objectColliders = releasedObject.GetComponentsInChildren<Collider>();
@@ -173,7 +179,7 @@ public class PlayerWrist : MonoBehaviour
             foreach (Collider objCol in objectColliders)
                 if (handCol && objCol) Physics.IgnoreCollision(handCol, objCol, true);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(ON_THROW_NO_COLLISION_DURATION);
 
         foreach (Collider handCol in handColliders)
             foreach (Collider objCol in objectColliders)
