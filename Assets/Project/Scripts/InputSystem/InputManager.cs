@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         _input = new();
 
