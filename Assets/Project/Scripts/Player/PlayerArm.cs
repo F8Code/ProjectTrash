@@ -186,9 +186,9 @@ public class PlayerArm : MonoBehaviour
             return;
 
         bool shouldBeLifted = _wrist.IsGrabbing || !isTryingToGrab;
-        float targetLiftAngle = _wrist.IsGrabbing ? _grabbingHandLiftDegrees : _emptyHandLiftDegrees;
+        float targetLiftAngle = shouldBeLifted ? (_wrist.IsGrabbing ? _grabbingHandLiftDegrees : _emptyHandLiftDegrees) : 0f;
 
-        _currentLiftDegrees = Mathf.Clamp(_currentLiftDegrees + (shouldBeLifted ? Time.deltaTime : -Time.deltaTime) * _armDegreesPerSecond, 0f, targetLiftAngle);
+        _currentLiftDegrees = Mathf.MoveTowards(_currentLiftDegrees, targetLiftAngle, _armDegreesPerSecond * Time.deltaTime);
         _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z); 
     }
 
