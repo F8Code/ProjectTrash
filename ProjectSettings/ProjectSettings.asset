@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Futuregames
   productName: ProjectTrash
-  defaultCursor: {fileID: 2800000, guid: a451942a415128644966c17c0892d027, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 673fc2422f735e4488150cd85ef36f3f, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

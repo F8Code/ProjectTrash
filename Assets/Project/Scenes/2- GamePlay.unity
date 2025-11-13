@@ -586,7 +586,7 @@ MonoBehaviour:
     _mistakesAllowed: 10
     SuccessSound: {fileID: 8300000, guid: 20c2bbb14c56e4f4bba435825258efdb, type: 3}
     MistakeSound: {fileID: 8300000, guid: ee3d8c8315555ad40a200d6a98be64e4, type: 3}
-    _successVolume: 1
+    _successVolume: 0.5
     _mistakeVolume: 0.5
   _leaderboardUI: {fileID: 1087726222}
   IntroMusicSound: {fileID: 8300000, guid: 1c6621445bab3db49a2f825d39e552e7, type: 3}
@@ -12911,7 +12911,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _image: {fileID: 851283281}
   _timeBeforeFadeOutStart: 0.25
+  _timeBeforeFadeInStart: 0.25
   _fadeOutTimeSeconds: 0.25
+  _fadeInTimeSeconds: 0.25
 --- !u!114 &1133350559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13453,6 +13455,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 663380190}
+    - target: {fileID: 2673907996357236417, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3371367863106450707, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -25448,6 +25454,18 @@ PrefabInstance:
     - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
       propertyPath: _cameraFollowSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: _armDegreesPerSecond
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: _trashDetectionHeightMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: _trashDetectionRadiusMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
       propertyPath: _armSidewaysRotationRangeDegrees.x
