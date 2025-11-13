@@ -928,13 +928,13 @@ MonoBehaviour:
     - _multiplierValue: 5
       _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
     - _multiplierValue: 6
-      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+      _multiplierSound: {fileID: 8300000, guid: fc661f5e5cbcbc64ba5533aa4dc6961a, type: 3}
     - _multiplierValue: 7
-      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+      _multiplierSound: {fileID: 8300000, guid: 1f0afb82b4d01a54c9eebbb64b91c1cc, type: 3}
     - _multiplierValue: 8
-      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+      _multiplierSound: {fileID: 8300000, guid: dde74640889df9e448898a52c35c11c3, type: 3}
     - _multiplierValue: 9
-      _multiplierSound: {fileID: 8300000, guid: 62f42e21370081141836c5b82858291e, type: 3}
+      _multiplierSound: {fileID: 8300000, guid: b1bb2832b0c32e54f8896ca122c19bb3, type: 3}
     _scoreMultiplierRequiredComboInclusiveSeconds: 3
     _scoreMultiplierDuration: 5
     _displayScoreInformation: 0
