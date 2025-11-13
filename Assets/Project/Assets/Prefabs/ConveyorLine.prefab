@@ -1410,19 +1410,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1068633273099569065, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.24956377
       objectReference: {fileID: 0}
     - target: {fileID: 1068633273099569065, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Size.z
       value: 2.275
       objectReference: {fileID: 0}
     - target: {fileID: 1068633273099569065, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
+      propertyPath: m_Center.x
+      value: 3.9112227e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068633273099569065, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Center.y
-      value: 0.05
+      value: -0.07521817
       objectReference: {fileID: 0}
     - target: {fileID: 1068633273099569065, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: -2.6566865e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1068633273099569065, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: m_Material

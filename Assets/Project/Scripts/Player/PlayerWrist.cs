@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerWrist : MonoBehaviour
 {
     const float WRIST_VELOCITY_DECAY_SPEED = 0.97f;
-    const float ON_THROW_NO_COLLISION_DURATION = 0.75f;
+    const float ON_THROW_NO_COLLISION_DURATION = 1f;
 
     [Header("References")]
     [Tooltip("Reference to the player's thumb fingertip joint")]
