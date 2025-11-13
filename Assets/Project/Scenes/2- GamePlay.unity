@@ -25144,6 +25144,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: _cameraFollowSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: _cameraSidewaysRotationRangeDegrees.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488293304527952530, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: _cameraSidewaysRotationRangeDegrees.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8079055690295987772, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
