@@ -73,9 +73,9 @@ public class PlayerWrist : MonoBehaviour
             return;
 
         Vector3 newVelocity = (_grabbedTrash.transform.position - _lastTrashPosition) / Time.deltaTime;
-        Debug.Log(Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.925f);
+        //Debug.Log(Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.925f);
 
-        if (Vector3.Dot(newVelocity, transform.forward) < 0 && (newVelocity.magnitude > _trashVelocity.magnitude || (newVelocity.magnitude > 0 && Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.925f)))
+        if (newVelocity.magnitude > _trashVelocity.magnitude || (newVelocity.magnitude > 0 && Vector3.Dot(newVelocity.normalized, _trashVelocity.normalized) < 0.925f))
             _trashVelocity = newVelocity;
         else
             _trashVelocity *= WRIST_VELOCITY_DECAY_SPEED;
