@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TrashConveyor : MonoBehaviour
 {
-    const float MAXIMUM_TRASH_ANGULAR_VELOCITY = 3f;
-    const float STUCK_TRASH_SPEED_INCREASE_MODIFIER = 0.1f;
+    const float MAXIMUM_TRASH_ANGULAR_VELOCITY = 2f;
+    const float STUCK_TRASH_SPEED_INCREASE_MODIFIER = 0.25f;
+    const float L_VELOCITY_TO_TRASH_MOVEMENT_SPEED = 3f;
 
     [Header("Conveyor settings")]
     [Tooltip("Speed at which trash moves in the conveyor local forward direction")]
@@ -55,6 +56,8 @@ public class TrashConveyor : MonoBehaviour
                 _trash[trashRB] = 0f;
 
             trashRB.angularVelocity = Vector3.ClampMagnitude(trashRB.angularVelocity, MAXIMUM_TRASH_ANGULAR_VELOCITY);
+            trashRB.linearVelocity = Vector3.ClampMagnitude(trashRB.linearVelocity, _trashMovementSpeed / L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
+            Debug.Log(trashRB.linearVelocity.magnitude * L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
         }
     }
 

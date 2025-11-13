@@ -750,6 +750,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   _arm: {fileID: 1936382448}
+--- !u!1 &84662263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 84662265}
+  - component: {fileID: 84662264}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &84662264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84662263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5a9d6f4c146f04a93d631cb03f8379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputManager
+--- !u!4 &84662265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84662263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &106820839
 Mesh:
   m_ObjectHideFlags: 0
@@ -6534,7 +6578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2396606138778409593, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 0.6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2665777078739214362, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.y
@@ -6554,7 +6598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2708327844896997086, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 1.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 5043473280838591954, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6600,6 +6644,22 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.046514217
       objectReference: {fileID: 0}
+    - target: {fileID: 6244072611426437218, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.y
+      value: 5.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244072611426437218, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.z
+      value: 1.0831354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244072611426437218, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.x
+      value: 0.000000007539658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244072611426437218, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.z
+      value: -0.008432966
+      objectReference: {fileID: 0}
     - target: {fileID: 6374346443635079536, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6643,6 +6703,18 @@ PrefabInstance:
     - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Center.z
       value: -0.01609262
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034210498979865427, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.z
+      value: 2.2069077
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034210498979865427, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0000000121974875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034210498979865427, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.z
+      value: 0.09845342
       objectReference: {fileID: 0}
     - target: {fileID: 8941283293755765516, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.z
@@ -25651,3 +25723,4 @@ SceneRoots:
   - {fileID: 527251830237076556}
   - {fileID: 5132961374237629071}
   - {fileID: 259787407}
+  - {fileID: 84662265}
