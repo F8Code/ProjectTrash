@@ -20,7 +20,8 @@ public class TrashConveyor : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
+        if(PlayerManager.Instance != null)
+            PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
     }
 
     void OnTriggerEnter(Collider other)
@@ -90,6 +91,7 @@ public class TrashConveyor : MonoBehaviour
     
     void OnDisable()
     {
-        PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
+        if(PlayerManager.Instance != null)
+            PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
     }
 }
