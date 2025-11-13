@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +9,17 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+    FadeOutCanvas _fadeOutCanvas;
 
     [Header("Panel Management")]
     [SerializeField] private List<UIPanel> panels = new();
-
+    
     private UIPanel currentPanel;
     private readonly Dictionary<string, UIPanel> panelDictionary = new();
 
     private void Awake()
     {
+        _fadeOutCanvas = FindFirstObjectByType<FadeOutCanvas>();
         // Singleton pattern
         if (Instance != null && Instance != this)
         {
@@ -225,9 +228,27 @@ public class UIManager : MonoBehaviour
         Debug.Log("<color=cyan>[UIManager] All panels hidden</color>");
     }
 
-    public void LoadScene(string _sceneName) => UnityEngine.SceneManagement.SceneManager.LoadScene(_sceneName);
+    public void LoadScene(string sceneName)
+    {
+        StartCoroutine(LoadSceneCoroutine(sceneName));
+    }
 
-    public void LoadScene(int _sceneIndex) => UnityEngine.SceneManagement.SceneManager.LoadScene(_sceneIndex);
+    public void LoadScene(int sceneIndex)
+    {
+        StartCoroutine(LoadSceneCoroutine(sceneIndex));
+    }
 
+    private IEnumerator LoadSceneCoroutine(string sceneName)
+    {
+        yield return StartCoroutine(_fadeOutCanvas.FadeIn());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerator LoadSceneCoroutine(int sceneIndex)
+    {
+        yield return StartCoroutine(_fadeOutCanvas.FadeIn());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+    }
+    
     public void QuitGame() => Application.Quit();
 }
