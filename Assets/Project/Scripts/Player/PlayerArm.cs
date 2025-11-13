@@ -42,6 +42,8 @@ public class PlayerArm : MonoBehaviour
     [SerializeField] Vector2 _armSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
     [Tooltip("Sideways camera rotation range in degrees")]
     [SerializeField] Vector2 _cameraSidewaysRotationRangeDegrees = new Vector2(-30f, 5f);
+    [Tooltip("The speed at which the camera moves to its target degree rotation")]
+    [SerializeField, Range(0.1f, 10f)] float _cameraFollowSpeed = 5f;
 
     [Header("Wrist rotation settings")]
     [Tooltip("Speed multiplier for arm rotation when rotating the hand around")]
@@ -75,6 +77,7 @@ public class PlayerArm : MonoBehaviour
     Quaternion _baseWristRotation;
     float _currentElbowZ, _currentWristX;
     float _currentLiftDegrees = 0f;
+    float _currentCameraY;
 
     float _armSpeedDebuf = 1f;
     public void SetArmSpeedDebuf(float debuf) => _armSpeedDebuf = debuf;
@@ -120,7 +123,8 @@ public class PlayerArm : MonoBehaviour
         _elbowJoint.localRotation = _baseElbowRotation * Quaternion.Euler(_elbowJoint.localEulerAngles.x, armRotationY, _elbowJoint.localEulerAngles.z);
 
         float cameraRotationY = Mathf.Lerp(_cameraSidewaysRotationRangeDegrees.x, _cameraSidewaysRotationRangeDegrees.y, angleInverseLerp);
-        _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, cameraRotationY, _camera.transform.localEulerAngles.z);
+        _currentCameraY = Mathf.LerpAngle(_currentCameraY, cameraRotationY, Time.deltaTime * _cameraFollowSpeed);
+        _camera.transform.localRotation = Quaternion.Euler(_camera.transform.localEulerAngles.x, _currentCameraY, _camera.transform.localEulerAngles.z);
     }
 
     void ClampInsideCircleSlice(ref Vector3 targetPosition, out float angleInverseLerp)
