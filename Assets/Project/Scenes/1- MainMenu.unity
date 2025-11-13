@@ -12789,7 +12789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _image: {fileID: 2074071700}
   _timeBeforeFadeOutStart: 0
+  _timeBeforeFadeInStart: 0.25
   _fadeOutTimeSeconds: 0.25
+  _fadeInTimeSeconds: 0.25
 --- !u!114 &1191254831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27017,6 +27019,10 @@ PrefabInstance:
     - target: {fileID: 1092333713240467355, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_Name
       value: UICanvas_Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785665209213556993, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
+      propertyPath: m_text
+      value: "Yavuz Alp Bilen\nChris Moiras\nJuli\xE1n Perez Krohn (PO)"
       objectReference: {fileID: 0}
     - target: {fileID: 7866871727542168199, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
