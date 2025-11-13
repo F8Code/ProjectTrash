@@ -12789,9 +12789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _image: {fileID: 2074071700}
   _timeBeforeFadeOutStart: 0
-  _timeBeforeFadeInStart: 0.25
-  _fadeOutTimeSeconds: 0.25
-  _fadeInTimeSeconds: 0.25
+  _timeBeforeFadeInStart: 0.33
+  _fadeOutTimeSeconds: 0
+  _fadeInTimeSeconds: 0.33
 --- !u!114 &1191254831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27020,14 +27020,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas_Credits
       objectReference: {fileID: 0}
+    - target: {fileID: 4519532493502604579, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
+      propertyPath: m_text
+      value: 'Jasin Bajram
+
+        Didrik Wistedt (Sound)
+
+        Igor Bornebusch
+
+        Nicklas
+        Andersson
+
+        Charlie Alexandersson'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073431522647174431, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
+      propertyPath: _scrollSpeed
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 5785665209213556993, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_text
       value: "Yavuz Alp Bilen\nChris Moiras\nJuli\xE1n Perez Krohn (PO)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6503418926172870935, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
+      propertyPath: m_text
+      value: Designers
       objectReference: {fileID: 0}
     - target: {fileID: 7866871727542168199, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
+    - target: {fileID: 8093249447772507814, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
+      propertyPath: m_text
+      value: Artists
+      objectReference: {fileID: 0}
     - target: {fileID: 9074416832591942630, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27109,7 +27134,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4886934712363937656, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
+    - {fileID: 3797265709325123650, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5693fd04e599e05468d717cb5b3450b2, type: 3}

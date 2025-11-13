@@ -1695,8 +1695,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _image: {fileID: 1579601757}
-  _timeBeforeFadeOutStart: 0.25
-  _fadeOutTimeSeconds: 0.25
+  _timeBeforeFadeOutStart: 0.33
+  _timeBeforeFadeInStart: 0.33
+  _fadeOutTimeSeconds: 0
+  _fadeInTimeSeconds: 0.33
 --- !u!4 &124439079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 724379290600633807, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
