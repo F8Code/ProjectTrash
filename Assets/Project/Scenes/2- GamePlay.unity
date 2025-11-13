@@ -5147,10 +5147,18 @@ PrefabInstance:
       propertyPath: _playerWrist
       value: 
       objectReference: {fileID: 1936382449}
+    - target: {fileID: 1440131175438535818, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: 1ae199308d362274ca23e19910dc50c4, type: 3}
     - target: {fileID: 1775147284268366499, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: _playerWrist
       value: 
       objectReference: {fileID: 1936382449}
+    - target: {fileID: 1775147284268366499, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: 1ae199308d362274ca23e19910dc50c4, type: 3}
     - target: {fileID: 5720030862485772642, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: m_Name
       value: TrashBins
@@ -5159,10 +5167,18 @@ PrefabInstance:
       propertyPath: _playerWrist
       value: 
       objectReference: {fileID: 1936382449}
+    - target: {fileID: 6922642580692357948, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: 1ae199308d362274ca23e19910dc50c4, type: 3}
     - target: {fileID: 7592160379510140768, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: _playerWrist
       value: 
       objectReference: {fileID: 1936382449}
+    - target: {fileID: 7592160379510140768, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: 1ae199308d362274ca23e19910dc50c4, type: 3}
     - target: {fileID: 7875063354683616444, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5207,10 +5223,18 @@ PrefabInstance:
       propertyPath: _playerWrist
       value: 
       objectReference: {fileID: 1936382449}
+    - target: {fileID: 8351677579457621907, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: 1ae199308d362274ca23e19910dc50c4, type: 3}
     - target: {fileID: 8396453973012844379, guid: d8875874567dd014f83f726911072715, type: 3}
       propertyPath: _playerWrist
       value: 
       objectReference: {fileID: 1936382449}
+    - target: {fileID: 8396453973012844379, guid: d8875874567dd014f83f726911072715, type: 3}
+      propertyPath: failVFXPrefab
+      value: 
+      objectReference: {fileID: 7614292742687418803, guid: 1ae199308d362274ca23e19910dc50c4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6480,9 +6504,33 @@ PrefabInstance:
       propertyPath: _trashFlingSpeed
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 2665777078739214362, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.z
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2708327844896997086, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: _trashFlingSpeed
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179979648098326159, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.x
+      value: 0.050000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179979648098326159, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Size.z
+      value: 1.0840236
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179979648098326159, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.x
+      value: -0.20000112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179979648098326159, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.y
+      value: 0.15000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179979648098326159, guid: 9e68980124f0901478a9106113f51767, type: 3}
+      propertyPath: m_Center.z
+      value: 0.20798899
       objectReference: {fileID: 0}
     - target: {fileID: 7757629196295374836, guid: 9e68980124f0901478a9106113f51767, type: 3}
       propertyPath: m_Size.y
