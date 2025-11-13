@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
   m_Name: Donut
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: HalfEatenBurger
+  Name: Donut
   Type: 5
   Mesh: {fileID: 7262078514411320927, guid: ba971bedbed011749ae4ab7e958fe808, type: 3}
   Material: {fileID: 2100000, guid: 304bf31d452a14244abbeb89c7b2c6a9, type: 2}
