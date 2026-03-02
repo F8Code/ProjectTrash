@@ -12704,15 +12704,15 @@ MonoBehaviour:
   - {fileID: 635058314}
   _trashToEndTutorial: 3
   _trashSpawnStages:
-  - DurationSeconds: 20
-    SpawnDelaySeconds: 4
-  - DurationSeconds: 20
+  - DurationSeconds: 10
     SpawnDelaySeconds: 3
-  _lastSpawnStage:
+  - DurationSeconds: 10
     SpawnDelaySeconds: 2
-    TimeToReduceSpawnDelaySeconds: 30
+  _lastSpawnStage:
+    SpawnDelaySeconds: 1.5
+    TimeToReduceSpawnDelaySeconds: 10
     SpawnDelayReductionSeconds: 0.1
-    MinimumSpawnDelaySeconds: 0.2
+    MinimumSpawnDelaySeconds: 0.1
 --- !u!4 &1100239470
 Transform:
   m_ObjectHideFlags: 0
