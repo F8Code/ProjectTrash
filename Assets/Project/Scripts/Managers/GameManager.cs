@@ -117,6 +117,8 @@ public class GameManager : MonoBehaviour
         _isPaused = true;
         _inPauseContext = true;
 
+        Time.timeScale = 0;
+
         if (UIManager.Instance != null)
             UIManager.Instance.ShowPanel(GameConstants.Canvas.PauseMenu);
 
@@ -132,6 +134,8 @@ public class GameManager : MonoBehaviour
     {
         _isPaused = false;
         _inPauseContext = false;
+
+        Time.timeScale = 1;
 
         // Hide all UI panels before resuming
         if (UIManager.Instance != null)
