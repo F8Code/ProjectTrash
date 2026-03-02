@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: GasolineCan
+  m_Name: Book2
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: GasolineCan
-  Type: 4
-  Mesh: {fileID: 4305739764153617606, guid: 09f13c4b598c94242ad896ee2d48eb2b, type: 3}
-  Material: {fileID: 2100000, guid: 2c3427ad0d79f8e4f8c071476237b013, type: 2}
-  ColliderPrefab: {fileID: 5263041457031562787, guid: 68d7c037f0fd9c14b998d1c1ac079f4c, type: 3}
+  Name: Book2
+  Type: 1
+  Mesh: {fileID: -66333826979096818, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
+  Material: {fileID: 2100000, guid: b4c3645c79ca8974fb56cd6a39f4d53b, type: 2}
+  ColliderPrefab: {fileID: 315669384938602634, guid: 287a5cc9b5ad3234e8732ce39b6a6901, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 4
-  HandSpeedMultiplier: 0.625
-  PickupSound: {fileID: 8300000, guid: 2179d5b03d03d1b48b9f1a7334a146d7, type: 3}
-  ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 50, y: 50}
+  RigidBodyMass: 3
+  HandSpeedMultiplier: 0.75
+  PickupSound: {fileID: 8300000, guid: d4328ba8dff89c84888bdd0adca32c9c, type: 3}
+  ThrowSound: {fileID: 8300000, guid: cd2a1d3ed4fb93b47b8679d01aa9dac1, type: 3}
+  RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 3
-  SizeScore: 3
+  MassScore: 2
+  SizeScore: 2

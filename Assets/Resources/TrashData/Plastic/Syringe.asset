@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: Crowbar
+  m_Name: Syringe
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: Crowbar
-  Type: 2
-  Mesh: {fileID: 2165947640806648972, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
+  Name: Syringe
+  Type: 0
+  Mesh: {fileID: 4309010749960864949, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
   Material: {fileID: 2100000, guid: 370a4199f0bbddc4094437ed8264ebd7, type: 2}
-  ColliderPrefab: {fileID: 315669384938602634, guid: 29261322e4d7b4746a14b180670c6571, type: 3}
+  ColliderPrefab: {fileID: 4928700368368387107, guid: 97a2e9af38ac8614f8981145168917f1, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 4
-  HandSpeedMultiplier: 0.625
-  PickupSound: {fileID: 8300000, guid: 7d24b16f0e52fae4a8d9267530cc3852, type: 3}
+  RigidBodyMass: 2
+  HandSpeedMultiplier: 0.875
+  PickupSound: {fileID: 8300000, guid: 426e47acca7406b49a5709335af0a3e1, type: 3}
   ThrowSound: {fileID: 0}
   RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
-    key0: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+    key0: {r: 1, g: 1, b: 1, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 3
-  SizeScore: 3
+  MassScore: 1
+  SizeScore: 0

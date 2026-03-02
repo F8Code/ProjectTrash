@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: GasolineCan
+  m_Name: ToxicSyringe
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: GasolineCan
+  Name: ToxicSyringe
   Type: 4
-  Mesh: {fileID: 4305739764153617606, guid: 09f13c4b598c94242ad896ee2d48eb2b, type: 3}
-  Material: {fileID: 2100000, guid: 2c3427ad0d79f8e4f8c071476237b013, type: 2}
-  ColliderPrefab: {fileID: 5263041457031562787, guid: 68d7c037f0fd9c14b998d1c1ac079f4c, type: 3}
+  Mesh: {fileID: 4309010749960864949, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
+  Material: {fileID: 2100000, guid: 1806dfcf0e4af6b4786b300506359b27, type: 2}
+  ColliderPrefab: {fileID: 4928700368368387107, guid: 97a2e9af38ac8614f8981145168917f1, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 4
-  HandSpeedMultiplier: 0.625
-  PickupSound: {fileID: 8300000, guid: 2179d5b03d03d1b48b9f1a7334a146d7, type: 3}
+  RigidBodyMass: 2
+  HandSpeedMultiplier: 0.875
+  PickupSound: {fileID: 8300000, guid: 426e47acca7406b49a5709335af0a3e1, type: 3}
   ThrowSound: {fileID: 0}
-  RandomSizeMultiplierRange: {x: 50, y: 50}
+  RandomSizeMultiplierRange: {x: 100, y: 100}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -54,5 +54,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
-  MassScore: 3
-  SizeScore: 3
+  MassScore: 1
+  SizeScore: 0

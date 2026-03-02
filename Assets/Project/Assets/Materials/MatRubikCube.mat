@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rubic Cube_new_Material.001_AlbedoTransparency 1
+  m_Name: MatRubikCube
   m_Shader: {fileID: -6465566751694194690, guid: 57ba3020df7b6914da8f1f507c9167b1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -69,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: f84b28537a953784c8c96ed3f4842f1d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3a3f128f5d157334aba1a96e6a53ac97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
