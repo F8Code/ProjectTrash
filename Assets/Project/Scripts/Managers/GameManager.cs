@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
         switch (_gamemode)
         {
             case Gamemode.Tutorial:
-                UIManager.Instance.LoadScene(1);
+                _leaderboardUI.ShowGameover();
                 break;
             default:
                 if (_leaderboardUI != null)

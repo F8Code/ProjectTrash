@@ -109,6 +109,18 @@ public class LeaderboardUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Shows the Leaderboard panel - can be called from Game Over or directly
+    /// </summary>
+    public void ShowGameover()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowPanel(GameConstants.Canvas.GameOverPanel);
+
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.ShowCursorForUI();
+    }
+
+    /// <summary>
     /// Hides all panels
     /// </summary>
     public void HideAllPanels()

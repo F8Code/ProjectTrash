@@ -12703,7 +12703,7 @@ MonoBehaviour:
   - {fileID: 635058315}
   - {fileID: 1485585674}
   - {fileID: 635058314}
-  _trashToEndTutorial: 5
+  _trashToEndTutorial: 10
   _trashSpawnStages: []
   _lastSpawnStage:
     SpawnDelaySeconds: 1.5
