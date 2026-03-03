@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: RedApple
+  m_Name: RedApple 1
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
   Name: RedApple
   Type: 5

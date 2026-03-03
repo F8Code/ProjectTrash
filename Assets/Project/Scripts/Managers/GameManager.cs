@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] Gamemode _gamemode = Gamemode.Lifebased;
+
     //Scoring logic
     public ScoreSystem ScoreSystem;
 
@@ -62,7 +64,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _initialMistakesAllowed = ScoreSystem.LivesRemaining;
-        _stateMachine.ChangeState(new GameTutorialState());
+
+        switch (_gamemode)
+        {
+            case Gamemode.Tutorial:
+                _stateMachine.ChangeState(new GameTutorialState());
+                break;
+            default:
+                _stateMachine.ChangeState(new GamePlayingState());
+                break;
+        }
 
         _audioSource = GetComponent<AudioSource>();
         _audioSource.clip = IntroMusicSound;
@@ -152,9 +163,12 @@ public class GameManager : MonoBehaviour
     public void EndTutorialStage()
     {
         while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
-            ScoreSystem.RestoreLife();
+            EndGame();
 
-        SetState(new GamePlayingState());
+        //while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
+        //    ScoreSystem.RestoreLife();
+
+        //SetState(new GamePlayingState());
     }
 
     public void EndGame()
@@ -172,9 +186,17 @@ public class GameManager : MonoBehaviour
         _audioSource.clip = GameOverMusicSound;
         _audioSource.Play();
 
-        // Show Game Over panel with final score
-        if (_leaderboardUI != null)
-            _leaderboardUI.ShowGameOver(ScoreSystem.Score);
+
+        switch (_gamemode)
+        {
+            case Gamemode.Tutorial:
+                UIManager.Instance.LoadScene(1);
+                break;
+            default:
+                if (_leaderboardUI != null)
+                    _leaderboardUI.ShowGameOver(ScoreSystem.Score);
+                break;
+        }
     }
 
     private void SetState(IGameState state)
@@ -183,5 +205,12 @@ public class GameManager : MonoBehaviour
             _stateMachine.ChangeState(state);
         else if (state is not GamePausedState)
             _stateMachine.SetPreviousState(state);
+    }
+
+    enum Gamemode
+    {
+        Tutorial,
+        Lifebased,
+        Timebased
     }
 }
