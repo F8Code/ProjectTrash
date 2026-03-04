@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Gamemode settings")]
     [Tooltip("If Mistakebased, the game ends once player makes as many mistakes as configured. Otherwise on Timebased, the game ends once time runs out or the multiplier is interrupted")]
-    [SerializeField] Gamemode CurrentGamemode = Gamemode.Mistakebased;
+    [SerializeField] Gamemode _currentGamemode = Gamemode.Mistakebased;
     [Tooltip("How many mistakes are allowed before the game ends")]
     [SerializeField, Range(0, 20)] uint _mistakesAllowed = 10;
     [Tooltip("How many seconds the game lasts before it ends")]
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     private float _activeGameTime = 0f;
 
     private float _roundedDeltaTime = 0.01666f; //60FPS
+    public Gamemode CurrentGamemode => _currentGamemode;
+    public float GameDuration => _gameDuration;
     public float GameTime => _activeGameTime;
     public int FPS => (int)(1.0f / _roundedDeltaTime);
 
@@ -69,12 +71,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ScoreSystem.Gamemode = CurrentGamemode;
+        ScoreSystem.Gamemode = _currentGamemode;
 
-        switch (CurrentGamemode)
+        switch (_currentGamemode)
         {
             case Gamemode.Tutorial:
                 _stateMachine.ChangeState(new GameTutorialState());
+                ScoreSystem.LivesRemaining = (int)_mistakesAllowed;
                 break;
             case Gamemode.Mistakebased:
                 _stateMachine.ChangeState(new GamePlayingState());
@@ -110,7 +113,7 @@ public class GameManager : MonoBehaviour
                 _audioSource.Play();
             }
 
-            if (CurrentGamemode == Gamemode.Timebased)
+            if (_currentGamemode == Gamemode.Timebased)
                 if (_activeGameTime > _gameDuration && ScoreSystem.ScoreMultiplierRemainingDuration > 0)
                     EndGame();
         }
@@ -203,7 +206,7 @@ public class GameManager : MonoBehaviour
         _audioSource.Play();
 
 
-        switch (CurrentGamemode)
+        switch (_currentGamemode)
         {
             case Gamemode.Tutorial:
                 _leaderboardUI.ShowGameover();
