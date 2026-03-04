@@ -25,10 +25,6 @@ public class ScoreSystem
     [Tooltip("If enabled, logs score info to the console every frame")]
     [SerializeField] bool _displayScoreInformation = false;
 
-    [Header("Mistakes settings")]
-    [Tooltip("How many mistakes are allowed before the game ends")]
-    [SerializeField, Range(1, 10)] uint _mistakesAllowed = 5;
-
     [Header("Audio Settings")]
     [Tooltip("Sound played when sorting correctly")]
     public AudioClip SuccessSound;
@@ -48,7 +44,9 @@ public class ScoreSystem
     public float ScoreMultiplier => _scoreMultiplier;
     public float ScoreMultiplierRemainingDuration => _multiplierDurationLeft;
     public float ScoreCurrentlyMultiplied => GetCurrentlyMultipliedScore();
-    public int LivesRemaining => (int)_mistakesAllowed;
+
+    public GameManager.Gamemode Gamemode;
+    public int LivesRemaining;
 
     public void CustomUpdate()
     {
@@ -84,8 +82,10 @@ public class ScoreSystem
             _score += GetCurrentlyMultipliedScore();
             _scores.Clear();
             _scoreMultiplier = 0f;
-            if (--_mistakesAllowed == 0)
-                GameManager.Instance.EndGame();
+
+            if (Gamemode == GameManager.Gamemode.Mistakebased)
+                if (--LivesRemaining == 0)
+                    GameManager.Instance.EndGame();
 
             AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
@@ -109,8 +109,8 @@ public class ScoreSystem
         return (uint)Mathf.Clamp(_scores.Count - _scoreMultiplierRequiredComboInclusiveSeconds, 0, _scoreMultiplierLevels.Length - 1);
     }
     
-    public void RestoreLife()
-    {
-        _mistakesAllowed++;
-    }
+    //public void RestoreLife()
+    //{
+    //    _mistakesAllowed++;
+    //}
 }

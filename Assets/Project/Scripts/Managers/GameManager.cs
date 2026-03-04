@@ -4,7 +4,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] Gamemode _gamemode = Gamemode.Lifebased;
+    [Header("Gamemode settings")]
+    [Tooltip("If Mistakebased, the game ends once player makes as many mistakes as configured. Otherwise on Timebased, the game ends once time runs out or the multiplier is interrupted")]
+    [SerializeField] Gamemode CurrentGamemode = Gamemode.Mistakebased;
+    [Tooltip("How many mistakes are allowed before the game ends")]
+    [SerializeField, Range(0, 20)] uint _mistakesAllowed = 10;
+    [Tooltip("How many seconds the game lasts before it ends")]
+    [SerializeField, Range(0, 120)] uint _gameDuration = 60;
 
     //Scoring logic
     public ScoreSystem ScoreSystem;
@@ -32,7 +38,7 @@ public class GameManager : MonoBehaviour
     private bool _inPauseContext = false; // Track if we're in pause menu navigation
 
     // Internal logic
-    private int _initialMistakesAllowed;
+    //private int _initialMistakesAllowed;
 
     [Header("Music Settings")]
     [Tooltip("Intro Music AudioClip")]
@@ -63,15 +69,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _initialMistakesAllowed = ScoreSystem.LivesRemaining;
+        ScoreSystem.Gamemode = CurrentGamemode;
 
-        switch (_gamemode)
+        switch (CurrentGamemode)
         {
             case Gamemode.Tutorial:
                 _stateMachine.ChangeState(new GameTutorialState());
                 break;
-            default:
+            case Gamemode.Mistakebased:
                 _stateMachine.ChangeState(new GamePlayingState());
+                ScoreSystem.LivesRemaining = (int)_mistakesAllowed;
+                break;
+            case Gamemode.Timebased:
+                _stateMachine.ChangeState(new GamePlayingState());
+                break;
+            default:
                 break;
         }
 
@@ -97,6 +109,10 @@ public class GameManager : MonoBehaviour
                 _audioSource.clip = MusicSound;
                 _audioSource.Play();
             }
+
+            if (CurrentGamemode == Gamemode.Timebased)
+                if (_activeGameTime > _gameDuration && ScoreSystem.ScoreMultiplierRemainingDuration > 0)
+                    EndGame();
         }
 
         _roundedDeltaTime += (Time.unscaledDeltaTime - _roundedDeltaTime) * 0.01f;
@@ -162,7 +178,7 @@ public class GameManager : MonoBehaviour
 
     public void EndTutorialStage()
     {
-        while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
+        while (ScoreSystem.LivesRemaining < _mistakesAllowed)
             EndGame();
 
         //while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
@@ -187,7 +203,7 @@ public class GameManager : MonoBehaviour
         _audioSource.Play();
 
 
-        switch (_gamemode)
+        switch (CurrentGamemode)
         {
             case Gamemode.Tutorial:
                 _leaderboardUI.ShowGameover();
@@ -207,10 +223,10 @@ public class GameManager : MonoBehaviour
             _stateMachine.SetPreviousState(state);
     }
 
-    enum Gamemode
+    public enum Gamemode
     {
         Tutorial,
-        Lifebased,
+        Mistakebased,
         Timebased
     }
 }

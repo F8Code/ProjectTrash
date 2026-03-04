@@ -562,9 +562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c9693201afe414a8f811e0c81c7874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  CurrentGamemode: 1
-  _mistakesAllowed: 10
-  _gameDuration: 0
+  CurrentGamemode: 2
+  _mistakesAllowed: 0
+  _gameDuration: 60
   ScoreSystem:
     _scoreMultiplierLevels:
     - _multiplierValue: 2
