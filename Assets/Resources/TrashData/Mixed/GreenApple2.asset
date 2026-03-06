@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: GreenApple 1
+  m_Name: GreenApple2
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: GreenApple
+  Name: GreenApple2
   Type: 5
   Mesh: {fileID: -472147775963580301, guid: ccbf451b774006f45a82ae8b5121117f, type: 3}
   Material: {fileID: 2100000, guid: 8fd24467f8004f14fb8b9b13a760fdb8, type: 2}

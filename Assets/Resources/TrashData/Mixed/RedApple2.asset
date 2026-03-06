@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
-  m_Name: HalfEatenBurger 2
+  m_Name: RedApple2
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: HalfEatenBurger
+  Name: RedApple2
   Type: 5
-  Mesh: {fileID: 6239881831769578202, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
+  Mesh: {fileID: -472147775963580301, guid: ccbf451b774006f45a82ae8b5121117f, type: 3}
   Material: {fileID: 2100000, guid: 503f93c45cbbb3946877711c76adc32d, type: 2}
-  ColliderPrefab: {fileID: 3168955095813108849, guid: 9143114a4cba4434eb03b3d3fe2832ad, type: 3}
+  ColliderPrefab: {fileID: 3168955095813108849, guid: 3111a7ed843f96a43aad4459929e96ef, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
-  RigidBodyMass: 2
-  HandSpeedMultiplier: 0.875
+  RigidBodyMass: 1
+  HandSpeedMultiplier: 1
   PickupSound: {fileID: 8300000, guid: 0af6cb7087b3b0c41a1514d812be0cd6, type: 3}
-  ThrowSound: {fileID: 8300000, guid: 0e4ebadf9f052a44eb83a75ea14260f3, type: 3}
-  RandomSizeMultiplierRange: {x: 100, y: 100}
+  ThrowSound: {fileID: 0}
+  RandomSizeMultiplierRange: {x: 120, y: 120}
   RandomColorTintRange:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -55,4 +55,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   RandomColorBrightnessMultiplierRange: {x: 0.8, y: 1.2}
   MassScore: 1
-  SizeScore: 2
+  SizeScore: 1
