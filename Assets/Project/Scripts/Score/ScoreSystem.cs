@@ -81,9 +81,10 @@ public class ScoreSystem
         {
             _score += GetCurrentlyMultipliedScore();
             _scores.Clear();
-            _scoreMultiplier = 0f;
 
-            if (Gamemode == GameManager.Gamemode.Mistakebased)
+            _multiplierDurationLeft = _scoreMultiplier = 0f;
+
+            if (Gamemode != GameManager.Gamemode.Timebased)
                 if (--LivesRemaining == 0)
                     GameManager.Instance.EndGame();
 

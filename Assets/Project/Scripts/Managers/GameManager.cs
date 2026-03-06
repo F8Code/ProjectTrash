@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (_currentGamemode == Gamemode.Timebased)
-                if (_activeGameTime > _gameDuration && ScoreSystem.ScoreMultiplierRemainingDuration > 0)
+                if (_activeGameTime > _gameDuration && ScoreSystem.ScoreMultiplierRemainingDuration == 0)
                     EndGame();
         }
 
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
         _isPaused = true;
         _inPauseContext = true;
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         if (UIManager.Instance != null)
             UIManager.Instance.ShowPanel(GameConstants.Canvas.PauseMenu);
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
         _isPaused = false;
         _inPauseContext = false;
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
 
         // Hide all UI panels before resuming
         if (UIManager.Instance != null)

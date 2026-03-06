@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class WhiteboardHUD : MonoBehaviour
 {
-
     [SerializeField] private TMP_Text gamemodeCondition;
     [SerializeField] private TMP_Text gamemodeValue;
     [SerializeField] private TMP_Text scoreText;
@@ -24,7 +23,10 @@ public class WhiteboardHUD : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Timebased)
-            gamemodeValue.text = ((int)GameManager.Instance.GameDuration - (int)GameManager.Instance.GameTime).ToString();
+        {
+            if ((int)GameManager.Instance.GameDuration - (int)GameManager.Instance.GameTime >= 0)
+                gamemodeValue.text = ((int)GameManager.Instance.GameDuration - (int)GameManager.Instance.GameTime).ToString();
+        }
         else
             gamemodeValue.text = GameManager.Instance.ScoreSystem.LivesRemaining.ToString();
         scoreText.text = GameManager.Instance.ScoreSystem.Score.ToString();

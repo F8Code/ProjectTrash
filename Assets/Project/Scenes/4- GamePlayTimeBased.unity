@@ -12709,8 +12709,6 @@ MonoBehaviour:
   _trashToEndTutorial: 0
   _trashSpawnStages:
   - DurationSeconds: 10
-    SpawnDelaySeconds: 3
-  - DurationSeconds: 10
     SpawnDelaySeconds: 2
   _lastSpawnStage:
     SpawnDelaySeconds: 1.5
