@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Gamemode CurrentGamemode => _currentGamemode;
     public float GameDuration => _gameDuration;
     public float GameTime => _activeGameTime;
+    public uint MistakeLimit => _mistakesAllowed;
     public int FPS => (int)(1.0f / _roundedDeltaTime);
 
     //Leaderboard UI
@@ -205,17 +206,19 @@ public class GameManager : MonoBehaviour
         _audioSource.clip = GameOverMusicSound;
         _audioSource.Play();
 
+        if (_leaderboardUI != null)
+            _leaderboardUI.ShowGameOver(ScoreSystem.Score);
 
-        switch (_currentGamemode)
-        {
-            case Gamemode.Tutorial:
-                _leaderboardUI.ShowGameover();
-                break;
-            default:
-                if (_leaderboardUI != null)
-                    _leaderboardUI.ShowGameOver(ScoreSystem.Score);
-                break;
-        }
+        //switch (_currentGamemode)
+        //{
+        //    case Gamemode.Tutorial:
+        //        _leaderboardUI.ShowGameover();
+        //        break;
+        //    default:
+        //        if (_leaderboardUI != null)
+        //            _leaderboardUI.ShowGameOver(ScoreSystem.Score);
+        //        break;
+        //}
     }
 
     private void SetState(IGameState state)
