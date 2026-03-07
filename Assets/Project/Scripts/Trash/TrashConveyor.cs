@@ -16,12 +16,12 @@ public class TrashConveyor : MonoBehaviour
     [Tooltip("Extra fling speed applied to trash when it leaves the conveyor")]
     [SerializeField, Range(0f, 2f)] float _trashFlingSpeed = 2f;
 
-    Dictionary<Rigidbody, float> _trash = new();
-    HashSet<Rigidbody> _ignoredTrash = new();
+    private readonly Dictionary<Rigidbody, float> _trash = new();
+    private readonly HashSet<Rigidbody> _ignoredTrash = new();
 
     void OnEnable()
     {
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
     }
 
@@ -34,7 +34,7 @@ public class TrashConveyor : MonoBehaviour
 
         if (_ignoredTrash.Contains(trasRB))
             return;
-            
+
         if (_disableTrashGravity)
             trasRB.isKinematic = true;
 
@@ -46,7 +46,7 @@ public class TrashConveyor : MonoBehaviour
     {
         foreach (Rigidbody trashRB in _trash.Keys.ToList())
         {
-            trashRB.position += transform.forward * (_trashMovementSpeed + _trash[trashRB]) * Time.deltaTime;
+            trashRB.position += (_trashMovementSpeed + _trash[trashRB]) * Time.deltaTime * transform.forward;
 
             if (trashRB.isKinematic) continue;
 
@@ -57,7 +57,7 @@ public class TrashConveyor : MonoBehaviour
 
             trashRB.angularVelocity = Vector3.ClampMagnitude(trashRB.angularVelocity, MAXIMUM_TRASH_ANGULAR_VELOCITY);
             trashRB.linearVelocity = Vector3.ClampMagnitude(trashRB.linearVelocity, _trashMovementSpeed / L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
-            Debug.Log(trashRB.linearVelocity.magnitude * L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
+            //Debug.Log(trashRB.linearVelocity.magnitude * L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
         }
     }
 
@@ -89,12 +89,12 @@ public class TrashConveyor : MonoBehaviour
         else
         {
             _ignoredTrash.Remove(trashRB);
-        }      
+        }
     }
-    
+
     void OnDisable()
     {
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
     }
 }
