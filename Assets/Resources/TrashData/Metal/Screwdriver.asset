@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Screwdriver
   Type: 2
   Mesh: {fileID: 8791973035081861141, guid: 286d3c0c2fff7b14693f57361151a6ef, type: 3}
-  Material: {fileID: 2100000, guid: 9b7365b695bbdb642983eceb7ccd70ec, type: 2}
+  Material: {fileID: 2100000, guid: 1fc8cb3dde8ffc54b8e16451fbd86c6c, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: aa6ab62e23192924191e7c509e0ef4c9, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 2

@@ -50,8 +50,6 @@ public class TrashManager : MonoBehaviour
     [SerializeField] List<TrashConveyor> _trashConveyors = new();
 
     [Header("Trash spawn settings")]
-    [Tooltip("Ammount of trash that needs to be despawned for the tutorial stage to finish")]
-    [SerializeField] uint _trashToEndTutorial = 3;
     [Tooltip("Trash spawning stages that are processed one after another depending on their duration")]
     [SerializeField] List<TrashSpawnStage> _trashSpawnStages = new();
     [Tooltip("The final trash spawning stage that plays when all others have finished")]
@@ -185,9 +183,11 @@ public class TrashManager : MonoBehaviour
             foreach (TrashCan trashCan in _trashCans)
                 trashCan.StopIgnoringTrash(trash);
 
-            _trashDespawned++;
-            if(_isTutorial)
+            if (_isTutorial)
+            {
+                _trashDespawned++;
                 ProgressTutorial();
+            }
         }
 
         _trashToDespawn.Clear();
@@ -195,8 +195,8 @@ public class TrashManager : MonoBehaviour
 
     void ProgressTutorial()
     {
-        if (_trashDespawned >= _trashToEndTutorial)
-            GameManager.Instance.EndTutorialStage();
+        if (_trashDespawned > GameManager.Instance.MistakeLimit)
+            GameManager.Instance.EndGame();
 
         SpawnTrash();
     }

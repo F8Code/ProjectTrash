@@ -582,7 +582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2444c47146a137438fe51ecfc0ca9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WhiteboardHUD
-  mistakesText: {fileID: 7560485680194798878}
+  gamemodeCondition: {fileID: 3407100612421500661}
+  gamemodeValue: {fileID: 7560485680194798878}
   scoreText: {fileID: 1622929677832892816}
   multiplierText: {fileID: 902808595093849911}
   multiplierCountdownText: {fileID: 6010376656416561570}

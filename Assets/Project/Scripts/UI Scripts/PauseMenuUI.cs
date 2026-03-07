@@ -46,7 +46,7 @@ public class PauseMenuUI : MonoBehaviour
             GameManager.Instance.ResumeGame();
 
         // Load game scene
-        SceneManager.LoadScene(GameConstants.Scene.Game);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     /// <summary>

@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/2- GamePlay.unity
     guid: 465aa406c7c941045843993778730601
+  - enabled: 1
+    path: Assets/Project/Scenes/3- Tutorial.unity
+    guid: 0baf2d8ff3486e945bbe80d294d15c5b
+  - enabled: 1
+    path: Assets/Project/Scenes/4- GamePlayTimeBased.unity
+    guid: 9e27f0cd817a0454a8d30dd5880c3354
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e8951d867dbf55d448d84c778f427a00, type: 3}
   m_UseUCBPForAssetBundles: 0
