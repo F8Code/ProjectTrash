@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: PlayingCards
   Type: 1
   Mesh: {fileID: 454365309670244297, guid: 1022ddd51dbe0414885888fa6d3cf10b, type: 3}
-  Material: {fileID: 2100000, guid: 370a4199f0bbddc4094437ed8264ebd7, type: 2}
+  Material: {fileID: 2100000, guid: 503f93c45cbbb3946877711c76adc32d, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: 88c7436f20d756045b41dac91e7cdd51, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 2

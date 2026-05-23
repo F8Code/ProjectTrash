@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Box
   Type: 1
   Mesh: {fileID: -3262789968867269347, guid: 9e4b4721f295f644b85b365d4db2abb0, type: 3}
-  Material: {fileID: 2100000, guid: aaa3fe3fe135caa449ed274fc0c01e93, type: 2}
+  Material: {fileID: 2100000, guid: 2c3427ad0d79f8e4f8c071476237b013, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: 7e87ff8f0376fef42961e7cfa4d6b99d, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 2

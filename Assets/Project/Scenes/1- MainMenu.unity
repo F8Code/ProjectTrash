@@ -10742,6 +10742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas_Opacity
       objectReference: {fileID: 0}
+    - target: {fileID: 1447411755977271805, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5050259127352108541, guid: 16618854277cd1c4fbdc06ebf4610a53, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27574,6 +27578,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
+    - target: {fileID: 3548316463943836270, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1374008751}
     - target: {fileID: 4213762091195585342, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -27582,10 +27590,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
-    - target: {fileID: 4938268121725163248, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 5076762062585152825, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27671,21 +27675,9 @@ PrefabInstance:
       value: UICanvas_Startscreen
       objectReference: {fileID: 0}
     - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
-    - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28298,6 +28290,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 717004568014422546, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1374008751}
     - target: {fileID: 2792970995493785662, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -28378,10 +28374,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3905633522088569458, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6088446292129552651, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
       propertyPath: m_Name
       value: UICanvas_Tutorial
@@ -28390,14 +28382,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1374008751}
-    - target: {fileID: 7677631331726419043, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: UICanvas_Startscreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 8758768553693564974, guid: 412a77715b1cd9e4782cedb4a70cc73c, type: 3}
-      propertyPath: m_VideoClip
-      value: 
-      objectReference: {fileID: 32900000, guid: ce5cc1699e888a645bbd1b643aebb3de, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
