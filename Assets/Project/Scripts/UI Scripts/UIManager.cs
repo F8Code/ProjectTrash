@@ -247,6 +247,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator LoadSceneCoroutine(int sceneIndex)
     {
         yield return StartCoroutine(_fadeOutCanvas.FadeIn());
+        Debug.Log($"<color=yellow>[UIManager] Loading scene index: {sceneIndex}</color>");
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
     

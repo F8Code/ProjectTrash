@@ -57,7 +57,7 @@ public class TrashConveyor : MonoBehaviour
 
             trashRB.angularVelocity = Vector3.ClampMagnitude(trashRB.angularVelocity, MAXIMUM_TRASH_ANGULAR_VELOCITY);
             trashRB.linearVelocity = Vector3.ClampMagnitude(trashRB.linearVelocity, _trashMovementSpeed / L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
-            Debug.Log(trashRB.linearVelocity.magnitude * L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
+            //Debug.Log(trashRB.linearVelocity.magnitude * L_VELOCITY_TO_TRASH_MOVEMENT_SPEED);
         }
     }
 
