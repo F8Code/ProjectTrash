@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.ProBuilder.MeshOperations;
 
 [Serializable]
 public class LeaderboardEntry : IComparable<LeaderboardEntry>
@@ -7,11 +8,11 @@ public class LeaderboardEntry : IComparable<LeaderboardEntry>
     public int Score;
     public string Timestamp;
 
-    public LeaderboardEntry(string playerName, int score)
+    public LeaderboardEntry(string playerName, int score, string timestamp = "")
     {
         PlayerName = playerName;
         Score = score;
-        Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        Timestamp = string.IsNullOrWhiteSpace(timestamp) ? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : timestamp;
     }
 
     // Compare by score descending (higher scores first)
