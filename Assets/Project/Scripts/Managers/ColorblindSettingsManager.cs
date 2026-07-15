@@ -27,7 +27,7 @@ public class ColorblindSettingsManager : MonoBehaviour
     [System.Serializable]
     public class ColorblindFilter
     {
-        [Tooltip("Display name of the filter (e.g., 'Normal', 'Protanopia', etc.)")]
+        [Tooltip("Display name of the filter (e.g., 'Default', 'Protanopia', etc.)")]
         public string filterName;
 
         [Tooltip("The Volume Profile asset for this filter")]
