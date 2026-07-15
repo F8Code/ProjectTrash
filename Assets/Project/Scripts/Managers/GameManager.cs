@@ -113,8 +113,14 @@ public class GameManager : MonoBehaviour
             }
 
             if (_currentGamemode == Gamemode.Timebased)
+            {
+                AudioManager.Instance.UpdateEndingTimer(_gameDuration - _activeGameTime);
                 if (_activeGameTime > _gameDuration && ScoreSystem.ScoreMultiplierRemainingDuration == 0)
+                {
+                    AudioManager.Instance.StopEndingTimer();
                     EndGame();
+                }
+            }
         }
 
         _roundedDeltaTime += (Time.unscaledDeltaTime - _roundedDeltaTime) * 0.01f;
