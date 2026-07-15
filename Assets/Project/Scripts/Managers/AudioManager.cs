@@ -25,10 +25,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup _sfxMixerGroup;
 
 
-    [Header("Ending Timer (time based gamemode)")]
+    [Header("Ending Timer")]
     [SerializeField] private AudioSource _endingTimer;
-    [SerializeField] private float _fadeDuration = 2f;
-    [SerializeField, Range(0f, 10f)] private float _endTime = 7f;
+    [SerializeField, Range(0f, 5f)] private float _fadeDuration = 2f;
+    [Tooltip("For time based gamemode")]
+    [SerializeField, Range(0f, 10f)] private float _endOnTime = 7f;
+    [Tooltip("For mistake based gamemode")]
+    [SerializeField, Range(1, 3)] private uint _endOnMistakes = 2;
 
     private bool warningPlaying = false;
     private Coroutine fadeCoroutine;
@@ -102,9 +105,10 @@ public class AudioManager : MonoBehaviour
         };
     }
 
+    #region Ending Timer
     public void UpdateEndingTimer(float timeRemaining)
     {
-        if (timeRemaining <= _endTime && !warningPlaying)
+        if (timeRemaining <= _endOnTime && !warningPlaying)
         {
             warningPlaying = true;
 
@@ -116,7 +120,7 @@ public class AudioManager : MonoBehaviour
 
             fadeCoroutine = StartCoroutine(FadeAudio(1f));
         }
-        else if (timeRemaining > _endTime && warningPlaying)
+        else if (timeRemaining > _endOnTime && warningPlaying)
         {
             warningPlaying = false;
 
@@ -124,6 +128,22 @@ public class AudioManager : MonoBehaviour
                 StopCoroutine(fadeCoroutine);
 
             fadeCoroutine = StartCoroutine(FadeOutAndStop());
+        }
+    }
+
+    public void UpdateEndingTimer(uint mistakesRemaining)
+    {
+        if (mistakesRemaining <= _endOnMistakes && !warningPlaying)
+        {
+            warningPlaying = true;
+
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+
+            _endingTimer.volume = 0f;
+            _endingTimer.Play();
+
+            fadeCoroutine = StartCoroutine(FadeAudio(1f));
         }
     }
 
@@ -152,6 +172,7 @@ public class AudioManager : MonoBehaviour
         yield return FadeAudio(0f);
         _endingTimer.Stop();
     }
+    #endregion
 
     private void OnDestroy()
     {

@@ -91,12 +91,10 @@ public class ScoreSystem
 
             _pitch = 1f;
             _multiplierDurationLeft = _scoreMultiplier = 0f;
+            --LivesRemaining;
 
             if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Timebased && _scores.Count > _scoreMultiplierRequiredComboInclusiveSeconds)
                 GameManager.Instance.AddTimeBasedOnStreak(_scores.Count);
-            else if (GameManager.Instance.CurrentGamemode != GameManager.Gamemode.Timebased)
-                if (--LivesRemaining == 0)
-                    GameManager.Instance.EndGame();
 
             _scores.Clear();
 

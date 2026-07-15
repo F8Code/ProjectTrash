@@ -121,6 +121,17 @@ public class GameManager : MonoBehaviour
                     EndGame();
                 }
             }
+            else
+            {
+                if (_currentGamemode == Gamemode.Mistakebased)
+                    AudioManager.Instance.UpdateEndingTimer(ScoreSystem.LivesRemaining);
+
+                if (ScoreSystem.LivesRemaining == 0)
+                {
+                    AudioManager.Instance.StopEndingTimer();
+                    EndGame();
+                }
+            }
         }
 
         _roundedDeltaTime += (Time.unscaledDeltaTime - _roundedDeltaTime) * 0.01f;
