@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 
@@ -62,6 +64,7 @@ public class TrashManager : MonoBehaviour
 
     //Tutorial stage related
     uint _trashDespawned = 0;
+    public event EventHandler TrashSpawned;
 
     bool _isTutorial => GameManager.Instance.CurrentState is GameTutorialState || (GameManager.Instance.CurrentState is GamePausedState && GameManager.Instance.PreviousState is GameTutorialState);
 
@@ -199,6 +202,7 @@ public class TrashManager : MonoBehaviour
             GameManager.Instance.EndGame();
 
         SpawnTrash();
+        TrashSpawned.Invoke(null, null);
     }
 
     void OnDisable()
