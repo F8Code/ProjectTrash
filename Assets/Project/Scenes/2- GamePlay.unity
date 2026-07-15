@@ -587,11 +587,10 @@ MonoBehaviour:
     _scoreMultiplierDuration: 5
     _displayScoreInformation: 0
     SuccessSound: {fileID: 8300000, guid: 20c2bbb14c56e4f4bba435825258efdb, type: 3}
+    GreaterSuccessSound: {fileID: 0}
     MistakeSound: {fileID: 8300000, guid: ee3d8c8315555ad40a200d6a98be64e4, type: 3}
     _successVolume: 0.5
     _mistakeVolume: 0.5
-    Gamemode: 0
-    LivesRemaining: 0
   _leaderboardUI: {fileID: 1087726222}
   IntroMusicSound: {fileID: 8300000, guid: 1c6621445bab3db49a2f825d39e552e7, type: 3}
   MusicSound: {fileID: 8300000, guid: 90c5a760ef2a0654297afe8d93fe3dfc, type: 3}
@@ -6733,7 +6732,7 @@ MonoBehaviour:
   panels:
   - panelName: Leaderboard_Canvas
     panelObject: {fileID: 549633773}
-    startActive: 0
+    startActive: 1
     useAnimation: 1
     animationType: 1
     animationDuration: 0.5
@@ -12990,7 +12989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1133350558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13553,6 +13552,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2673907996357236417, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: GameOverPanel_Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3371367863106450707, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13631,6 +13634,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3371367863106450707, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423402646397478335, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643572623558903273, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20357,6 +20368,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 354016154821283773, guid: 844f794f7a69a0a4d8ba5b9792874415, type: 3}
+      propertyPath: m_text
+      value: 'Streak:'
+      objectReference: {fileID: 0}
     - target: {fileID: 502545469683270251, guid: 844f794f7a69a0a4d8ba5b9792874415, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.026
@@ -25552,6 +25567,10 @@ PrefabInstance:
     - target: {fileID: 3830986796412956909, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999021901604970135, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5214063826714354847, guid: 3f210ca6fe423f448b00ae39d8ef6bb0, type: 3}
       propertyPath: m_Name

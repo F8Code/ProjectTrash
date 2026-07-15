@@ -2255,6 +2255,21 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &146743514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979565684384422596, guid: 9e68980124f0901478a9106113f51767, type: 3}
+  m_PrefabInstance: {fileID: 737450965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &146743515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5334725724410628843, guid: 9e68980124f0901478a9106113f51767, type: 3}
+  m_PrefabInstance: {fileID: 737450965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &146743516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7976405491882856921, guid: 9e68980124f0901478a9106113f51767, type: 3}
+  m_PrefabInstance: {fileID: 737450965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &162526354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1957617086595822576, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
@@ -3157,6 +3172,7 @@ MonoBehaviour:
   _trashMovementSpeed: 2
   _disableTrashGravity: 0
   _trashFlingSpeed: 0
+  ConveyorObject: {fileID: 146743514}
 --- !u!1 &269294728
 GameObject:
   m_ObjectHideFlags: 0
@@ -9398,6 +9414,7 @@ MonoBehaviour:
   _trashMovementSpeed: 2
   _disableTrashGravity: 0
   _trashFlingSpeed: 0
+  ConveyorObject: {fileID: 146743515}
 --- !u!114 &737450970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9413,6 +9430,7 @@ MonoBehaviour:
   _trashMovementSpeed: 2
   _disableTrashGravity: 0
   _trashFlingSpeed: 0
+  ConveyorObject: {fileID: 146743516}
 --- !u!1 &760424149
 GameObject:
   m_ObjectHideFlags: 0
@@ -18487,7 +18505,7 @@ MonoBehaviour:
   - {fileID: 737450969}
   - {fileID: 262370998}
   _lastSpawnStage:
-    SpawnDelaySeconds: 0.5
+    SpawnDelaySeconds: 0.7
     TimeToReduceSpawnDelaySeconds: 60
     SpawnDelayReductionSeconds: 0.01
     MinimumSpawnDelaySeconds: 0.5
@@ -28744,6 +28762,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3371367863106450707, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643572623558903273, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

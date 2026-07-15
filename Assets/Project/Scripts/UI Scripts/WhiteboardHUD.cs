@@ -8,7 +8,9 @@ public class WhiteboardHUD : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text multiplierText;
     [SerializeField] private TMP_Text multiplierCountdownText;
-    private int _tutorialObjects = 10;
+
+    //Counter for tutorial
+    private uint _tutorialObjects = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +21,7 @@ public class WhiteboardHUD : MonoBehaviour
         {
             gamemodeCondition.text = "Trash left:";
             TrashManager.Instance.TrashSpawned += Instance_TrashSpawned;
+            _tutorialObjects = GameManager.Instance.MistakeLimit;
         }
         else
             gamemodeCondition.text = "Mistakes left:";
@@ -38,9 +41,7 @@ public class WhiteboardHUD : MonoBehaviour
                 gamemodeValue.text = ((int)GameManager.Instance.GameDuration - (int)GameManager.Instance.GameTime).ToString();
         }
         else if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Tutorial)
-        {
             gamemodeValue.text = _tutorialObjects.ToString();
-        }
         else
             gamemodeValue.text = GameManager.Instance.ScoreSystem.LivesRemaining.ToString();
 

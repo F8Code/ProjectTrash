@@ -72,17 +72,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ScoreSystem.Gamemode = _currentGamemode;
-
         switch (_currentGamemode)
         {
             case Gamemode.Tutorial:
                 _stateMachine.ChangeState(new GameTutorialState());
-                ScoreSystem.LivesRemaining = (int)_mistakesAllowed;
+                ScoreSystem.LivesRemaining = _mistakesAllowed;
                 break;
             case Gamemode.Mistakebased:
                 _stateMachine.ChangeState(new GamePlayingState());
-                ScoreSystem.LivesRemaining = (int)_mistakesAllowed;
+                ScoreSystem.LivesRemaining = _mistakesAllowed;
                 break;
             case Gamemode.Timebased:
                 _stateMachine.ChangeState(new GamePlayingState());
@@ -180,17 +178,6 @@ public class GameManager : MonoBehaviour
             _stateMachine.ChangeState(PreviousState);
     }
 
-    public void EndTutorialStage()
-    {
-        while (ScoreSystem.LivesRemaining < _mistakesAllowed)
-            EndGame();
-
-        //while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
-        //    ScoreSystem.RestoreLife();
-
-        //SetState(new GamePlayingState());
-    }
-
     public void EndGame()
     {
         Debug.Log($"<color=red>GAME OVER - Final Score: {ScoreSystem.Score}, Game Time: {_activeGameTime:F2}s</color>");
@@ -219,6 +206,11 @@ public class GameManager : MonoBehaviour
         //            _leaderboardUI.ShowGameOver(ScoreSystem.Score);
         //        break;
         //}
+    }
+
+    public void AddTimeBasedOnStreak(int extraSeconds)
+    {
+        _activeGameTime -= extraSeconds;
     }
 
     private void SetState(IGameState state)

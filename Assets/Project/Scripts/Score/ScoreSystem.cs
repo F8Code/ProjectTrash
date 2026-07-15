@@ -49,8 +49,8 @@ public class ScoreSystem
 
     float _pitch = 1;
 
-    public GameManager.Gamemode Gamemode;
-    public int LivesRemaining;
+    // Game ender
+    internal uint LivesRemaining;
 
     public void CustomUpdate()
     {
@@ -88,14 +88,17 @@ public class ScoreSystem
         else //Mistake
         {
             _score += GetCurrentlyMultipliedScore();
-            _scores.Clear();
 
             _pitch = 1f;
             _multiplierDurationLeft = _scoreMultiplier = 0f;
 
-            if (Gamemode != GameManager.Gamemode.Timebased)
+            if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Timebased && _scores.Count > _scoreMultiplierRequiredComboInclusiveSeconds)
+                GameManager.Instance.AddTimeBasedOnStreak(_scores.Count);
+            else if (GameManager.Instance.CurrentGamemode != GameManager.Gamemode.Timebased)
                 if (--LivesRemaining == 0)
                     GameManager.Instance.EndGame();
+
+            _scores.Clear();
 
             AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }

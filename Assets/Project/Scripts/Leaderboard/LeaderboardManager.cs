@@ -35,24 +35,12 @@ public class LeaderboardManager : MonoBehaviour
         {
             string json = PlayerPrefs.GetString(LEADERBOARD_KEY);
             LeaderboardData data = JsonUtility.FromJson<LeaderboardData>(json);
-            _leaderboardEntries = data.Entries ?? new List<LeaderboardEntry>();
+            _leaderboardEntries = data.Entries ?? ResetLeaderboard();
             Debug.Log($"Leaderboard loaded: {_leaderboardEntries.Count} entries");
         }
         else
         {
-            _leaderboardEntries = new List<LeaderboardEntry>()
-            {
-                new LeaderboardEntry("Trashbubu", 999, "2026-05-31 19:11:04"),
-                new LeaderboardEntry("Wall-I", 757, "2025-12-04 18:19:43"),
-                new LeaderboardEntry("xXx_Pr0_R3cycl3r_xXx", 666, "2026-06-18 07:47:20"),
-                new LeaderboardEntry("Trash Bandicoot", 484, "2026-04-13 20:35:47"),
-                new LeaderboardEntry("Dumpster diver", 353, "2025-11-13 08:14:09"),
-                new LeaderboardEntry("CyberScrap2077", 231, "2025-11-12 13:43:48"),
-                new LeaderboardEntry("Trashman", 165, "2025-12-07 09:18:10"),
-                new LeaderboardEntry("Klank", 117, "2026-01-24 21:51:13"),
-                new LeaderboardEntry("Bepsiman", 59, "2026-01-30 08:33:24"),
-                new LeaderboardEntry("6", 7, "2026-05-16 06:15:09")
-            };
+            _leaderboardEntries = ResetLeaderboard();
 
             Debug.Log("No saved leaderboard found, starting fresh");
         }
@@ -142,6 +130,23 @@ public class LeaderboardManager : MonoBehaviour
         PlayerPrefs.DeleteKey(LEADERBOARD_KEY);
         PlayerPrefs.Save();
         Debug.Log("Leaderboard cleared");
+    }
+
+    public List<LeaderboardEntry> ResetLeaderboard()
+    {
+        return new List<LeaderboardEntry>()
+            {
+                new LeaderboardEntry("Trashbubu", 999, "2026-05-31 19:11:04"),
+                new LeaderboardEntry("Wall-I", 757, "2025-12-04 18:19:43"),
+                new LeaderboardEntry("xXx_Pr0_R3cycl3r_xXx", 666, "2026-06-18 07:47:20"),
+                new LeaderboardEntry("Trash Bandicoot", 484, "2026-04-13 20:35:47"),
+                new LeaderboardEntry("Dumpster diver", 353, "2025-11-13 08:14:09"),
+                new LeaderboardEntry("CyberScrap2077", 231, "2025-11-12 13:43:48"),
+                new LeaderboardEntry("Trashman", 165, "2025-12-07 09:18:10"),
+                new LeaderboardEntry("Klank", 117, "2026-01-24 21:51:13"),
+                new LeaderboardEntry("Bepsiman", 59, "2026-01-30 08:33:24"),
+                new LeaderboardEntry("6", 7, "2026-05-16 06:15:09")
+            };
     }
 
     /// <summary>

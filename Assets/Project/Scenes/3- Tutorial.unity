@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _currentGamemode: 0
-  _mistakesAllowed: 10
+  _mistakesAllowed: 5
   _gameDuration: 0
   ScoreSystem:
     _scoreMultiplierLevels:
@@ -587,11 +587,10 @@ MonoBehaviour:
     _scoreMultiplierDuration: 5
     _displayScoreInformation: 0
     SuccessSound: {fileID: 8300000, guid: 20c2bbb14c56e4f4bba435825258efdb, type: 3}
+    GreaterSuccessSound: {fileID: 0}
     MistakeSound: {fileID: 8300000, guid: ee3d8c8315555ad40a200d6a98be64e4, type: 3}
     _successVolume: 0.5
     _mistakeVolume: 0.5
-    Gamemode: 0
-    LivesRemaining: 0
   _leaderboardUI: {fileID: 1087726222}
   IntroMusicSound: {fileID: 8300000, guid: 1c6621445bab3db49a2f825d39e552e7, type: 3}
   MusicSound: {fileID: 8300000, guid: 90c5a760ef2a0654297afe8d93fe3dfc, type: 3}
@@ -9391,6 +9390,7 @@ MonoBehaviour:
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 10
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -12652,7 +12652,7 @@ MonoBehaviour:
   _saveButton: {fileID: 929423769}
   _entriesContainer: {fileID: 236658584}
   _entryPrefab: {fileID: 7247316530227304886, guid: 14eb5aa1975d74d4f8ff5c004b0efbe5, type: 3}
-  _maxVisibleEntries: 5
+  _maxVisibleEntries: 10
   _playerNameKey: PlayerName
   _defaultPlayerName: Anonymous
   _maxNameLength: 20
@@ -12706,7 +12706,6 @@ MonoBehaviour:
   - {fileID: 635058315}
   - {fileID: 1485585674}
   - {fileID: 635058314}
-  _trashToEndTutorial: 10
   _trashSpawnStages: []
   _lastSpawnStage:
     SpawnDelaySeconds: 1.5
@@ -13795,6 +13794,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2673907996357236417, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: GameOverPanel_Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 3371367863106450707, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13873,6 +13876,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3371367863106450707, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643572623558903273, guid: c36fbd1002a9d8c4292232fc0e8902ac, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20599,6 +20606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 354016154821283773, guid: 844f794f7a69a0a4d8ba5b9792874415, type: 3}
+      propertyPath: m_text
+      value: 'Streak:'
+      objectReference: {fileID: 0}
     - target: {fileID: 502545469683270251, guid: 844f794f7a69a0a4d8ba5b9792874415, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.026
