@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [System.Serializable]
 public class ScoreMultiplier
@@ -45,6 +47,8 @@ public class ScoreSystem
     public float ScoreMultiplierRemainingDuration => _multiplierDurationLeft;
     public float ScoreCurrentlyMultiplied => GetCurrentlyMultipliedScore();
 
+    float _pitch = 1;
+
     public GameManager.Gamemode Gamemode;
     public int LivesRemaining;
 
@@ -75,13 +79,18 @@ public class ScoreSystem
                 _score += (uint)score;
 
             AudioClip clip = _scoreMultiplier == 0f ? SuccessSound : _scoreMultiplierLevels[GetMultiplierIndex()].MultiplierSound;
-            AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
+
+            if (_scores.Count > _scoreMultiplierLevels.Length)
+                _pitch = GetPitchBasedOnStreak(_scores.Count - _scoreMultiplierLevels.Length);
+
+            AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, pitch: _pitch, AudioManager.AudioMixerType.SFX);
         }
         else //Mistake
         {
             _score += GetCurrentlyMultipliedScore();
             _scores.Clear();
 
+            _pitch = 1f;
             _multiplierDurationLeft = _scoreMultiplier = 0f;
 
             if (Gamemode != GameManager.Gamemode.Timebased)
@@ -90,6 +99,13 @@ public class ScoreSystem
 
             AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
+    }
+
+    public float GetPitchBasedOnStreak(int streak)
+    {
+        float t = 1f - Mathf.Exp(-0.05f * streak);
+
+        return Mathf.Lerp(1f, 2f, t);
     }
 
     uint GetCurrentlyMultipliedScore()
