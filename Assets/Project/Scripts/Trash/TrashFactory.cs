@@ -16,6 +16,7 @@ public class TrashFactory
     {
         Trash trash = _trashPool.Get();
         trash.transform.position = position;
+        trash.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
         Rigidbody trashRB = trash.GetComponent<Rigidbody>();
         trashRB.linearVelocity = Vector3.zero;
         trashRB.angularVelocity = Random.onUnitSphere;
