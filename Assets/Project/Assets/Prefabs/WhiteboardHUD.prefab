@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Streal:'
+  m_text: 'Streak:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f35263c755aa1934b814ad7b382c7857, type: 2}
   m_sharedMaterial: {fileID: -1217826505094410988, guid: f35263c755aa1934b814ad7b382c7857, type: 2}
