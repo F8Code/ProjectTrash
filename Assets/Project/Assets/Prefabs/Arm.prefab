@@ -835,7 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287832ba683ff264dad213add42fb9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hand
-  _palm: {fileID: 0}
+  _palm: {fileID: 7676586074575526211}
   _thumb: {fileID: 4008159903838433329}
   _otherFingers:
   - {fileID: 6260985928432432645}
@@ -928,14 +928,14 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _elbowJoint: {fileID: 367308837537172332}
   _circleSliceCenter: {fileID: 0}
-  _circleSliceYRotationDegrees: 15
-  _circleSliceAngle: 60
-  _circleSliceMaxRadius: 1
-  _circleSliceMinRadius: 0.35
-  _armMovementStrength: 1
-  _cameraMovementStrength: 0.9
-  _armSidewaysRotationRangeDegrees: {x: -50, y: 35}
-  _cameraSidewaysRotationRangeDegrees: {x: 0, y: 0}
+  _circleSliceYRotationDegrees: 10
+  _circleSliceAngle: 80
+  _circleSliceMaxRadius: 1.2
+  _circleSliceMinRadius: 0.25
+  _armMovementStrength: 0.8
+  _cameraMovementStrength: 0.55
+  _armSidewaysRotationRangeDegrees: {x: -50, y: 30}
+  _cameraSidewaysRotationRangeDegrees: {x: -25, y: 25}
   _cameraFollowSpeed: 5
   _armRotationSpeed: 0.8
   _elbowRotationRangeDegrees: {x: -60, y: 180}
@@ -944,9 +944,9 @@ MonoBehaviour:
   _reverseWristAxis: 0
   _emptyHandLiftDegrees: 45
   _grabbingHandLiftDegrees: 75
-  _armDegreesPerSecond: 120
-  _trashDetectionRadiusMultiplier: 1.5
-  _trashDetectionHeightMultiplier: 1.5
+  _armDegreesPerSecond: 300
+  _trashDetectionRadiusMultiplier: 2
+  _trashDetectionHeightMultiplier: 2
 --- !u!1 &3546064979460370875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1443,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPalm
   _detectionCollider: {fileID: 1351039981898506700}
+  rayDistance: 15
+  trashLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  moveSpeed: 5
+  stopDistance: 0.5
 --- !u!1 &6866976222593799207
 GameObject:
   m_ObjectHideFlags: 0

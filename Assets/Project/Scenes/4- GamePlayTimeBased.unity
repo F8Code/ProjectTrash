@@ -18848,7 +18848,8 @@ MonoBehaviour:
   _sfxMixerGroup: {fileID: -9190736617788701220, guid: fca4fed45ff97a74a8d14b83d3299a7b, type: 2}
   _endingTimer: {fileID: 328732848}
   _fadeDuration: 2
-  _endTime: 7
+  _endOnTime: 7
+  _endOnMistakes: 2
 --- !u!4 &1638787116
 Transform:
   m_ObjectHideFlags: 0

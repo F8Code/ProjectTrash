@@ -29,7 +29,7 @@ public class PlayerPalm : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawLine(transform.position, -1 * transform.forward * rayDistance, Color.green, 1f);
+        //Debug.DrawLine(transform.position, -1 * transform.forward * rayDistance, Color.green, 1f);
     }
 
     void OnTriggerEnter(Collider other)
