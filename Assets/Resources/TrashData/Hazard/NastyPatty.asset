@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba8e30f47b9386478595a1f7dd2aaff, type: 3}
   m_Name: NastyPatty
   m_EditorClassIdentifier: Assembly-CSharp::TrashData
-  Name: NastyPatty
+  Name: Nasty Patty
   Type: 4
   Mesh: {fileID: 6239881831769578202, guid: 8c56c17b2eee8ff42ae3100f8b658d4b, type: 3}
   Material: {fileID: 2100000, guid: 7707f2530a33b774d84463ac03e2994f, type: 2}

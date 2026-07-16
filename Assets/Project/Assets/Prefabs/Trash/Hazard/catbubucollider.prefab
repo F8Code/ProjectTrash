@@ -90,6 +90,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &8688832543525594990
 SphereCollider:
@@ -110,7 +111,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.00029182434
+  m_Radius: 0.00033
   m_Center: {x: -0.001862003, y: 0.000019301777, z: 0.0007414818}
 --- !u!135 &843312696885209079
 SphereCollider:
@@ -131,5 +132,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.00020742416
+  m_Radius: 0.00023
   m_Center: {x: -0.001862003, y: 0.000019301777, z: 0.00027418137}

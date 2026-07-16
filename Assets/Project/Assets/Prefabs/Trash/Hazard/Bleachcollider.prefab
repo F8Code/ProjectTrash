@@ -91,6 +91,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &843593173485966539
 CapsuleCollider:
@@ -111,8 +112,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00025
-  m_Height: 0.003
+  m_Radius: 0.0003
+  m_Height: 0.0033
   m_Direction: 2
   m_Center: {x: 0.0006, y: -0.000006227492, z: 0.001501733}
 --- !u!136 &2785916227022642508
@@ -134,7 +135,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00055
+  m_Radius: 0.0006
   m_Height: 0.0028
   m_Direction: 2
   m_Center: {x: -0.0002, y: -0.000006227492, z: 0.0013}
@@ -157,7 +158,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00055
+  m_Radius: 0.0006
   m_Height: 0.0028
   m_Direction: 2
   m_Center: {x: 0.0002, y: -0.000006227492, z: 0.0013}

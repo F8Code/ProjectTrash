@@ -91,6 +91,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &4698682818249011369
 CapsuleCollider:
@@ -111,8 +112,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00015
-  m_Height: 0.004162977
+  m_Radius: 0.00017
+  m_Height: 0.0047
   m_Direction: 0
   m_Center: {x: 0.00023040664, y: 0, z: 0.000100000005}
 --- !u!1 &6149574507306085650
@@ -166,7 +167,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00012
+  m_Radius: 0.00017
   m_Height: 0.0005129396
   m_Direction: 0
   m_Center: {x: 0.00033836538, y: 0, z: 0.0001999998}
@@ -195,13 +196,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8921612184116956909}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9034037, z: -0, w: 0.42879105}
+  m_LocalRotation: {x: 0, y: 0.86602545, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 0.00233, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3197832744044017891}
-  m_LocalEulerAnglesHint: {x: 0, y: 129.218, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!136 &2424605731748252702
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -221,7 +222,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00012
-  m_Height: 0.00064031663
+  m_Radius: 0.00017
+  m_Height: 0.0009
   m_Direction: 0
   m_Center: {x: 0.00023931848, y: 0, z: 0.00009999987}
