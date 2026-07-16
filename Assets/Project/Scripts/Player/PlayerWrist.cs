@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerWrist : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class PlayerWrist : MonoBehaviour
     const float ON_THROW_NO_COLLISION_DURATION = 1f;
 
     [Header("References")]
+    [Tooltip("Reference to the player's palm")]
+    [SerializeField] PlayerPalm _palm;
     [Tooltip("Reference to the player's thumb fingertip joint")]
     [SerializeField] PlayerFingertip _thumb;
     [Tooltip("References to the remaining fingertip joints")]
@@ -65,6 +69,8 @@ public class PlayerWrist : MonoBehaviour
     {
         foreach (PlayerFingertip finger in _allFingers)
             finger.OnFingerContact += HandleFingerContact;
+
+        _palm.OnPalmContact += HandlePalmContact;
     }
 
     void Update()
@@ -100,7 +106,18 @@ public class PlayerWrist : MonoBehaviour
         if (finger != _thumb && !_thumb.Contacts.Contains(trash))
             return;
 
-        GrabTrash(trash);  
+        GrabTrash(trash);
+    }
+
+    private void HandlePalmContact(PlayerPalm palm, Trash trash)
+    {
+        if (!_shouldGrab)
+            return;
+
+        if (_grabbedTrash != null)
+            return;
+
+        GrabTrash(trash);
     }
 
     public void CustomUpdate()
@@ -115,6 +132,9 @@ public class PlayerWrist : MonoBehaviour
             else  
                 _armAnimator.SetFloat(finger.AnimatorVariable, _currentGrab01);
         }
+
+        if (_shouldGrab && _palm.Contacts.Any())
+            _isTouching = true;
 
         if (!_shouldGrab && _grabbedTrash != null)
             ReleaseTrash();
@@ -201,4 +221,6 @@ public class PlayerWrist : MonoBehaviour
     }
 
     public void ShouldGrab(bool shouldGrab) => _shouldGrab = shouldGrab;
+
+    //public void Telekinesis() => _palm.DetectAndPullTrash();
 }

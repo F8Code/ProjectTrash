@@ -179,6 +179,9 @@ public class PlayerArm : MonoBehaviour
     {
         bool isTryingToGrab = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
 
+        if (isTryingToGrab && !_wrist.IsGrabbing)
+            _wrist.Telekinesis();
+
         bool shouldWristGrab = isTryingToGrab && (_wrist.IsGrabbing || TrashInProximity());
         _wrist.ShouldGrab(shouldWristGrab);
 
