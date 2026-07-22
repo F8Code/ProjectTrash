@@ -37,6 +37,8 @@ public class ScoreSystem
     public AudioClip MistakeSound;
     [Tooltip("Correct sort volume multiplier")]
     [SerializeField, Range(0f, 1f)] private float _successVolume = 0.75f;
+    [Tooltip("Volume multiplier for every five scored")]
+    [SerializeField, Range(0f, 2f)] private float _greaterSuccessVolume = 1.5f;
     [Tooltip("Mistake sound volume multiplier")]
     [SerializeField, Range(0f, 1f)] private float _mistakeVolume = 0.75f;
 
@@ -93,10 +95,8 @@ public class ScoreSystem
             if (_scoreMultiplier > 0)
                 OnScoreFlash?.Invoke(_scoreMultiplier);
 
-            //if (_scores.Count % 5 == 1)
-            //{
-            //    AudioManager.Instance.PlayAudio(GreaterSuccessSound, _successVolume, AudioPlaybackContext.PlaybackPriority.High, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
-            //}
+            if (_scores.Count > 1 && _scores.Count % 5 == 1)
+                AudioManager.Instance.PlayAudio(GreaterSuccessSound, _successVolume, AudioPlaybackContext.PlaybackPriority.High, GameManager.Instance.transform.position, false, pitch: 1, AudioManager.AudioMixerType.SFX);
         }
         else //Mistake
         {

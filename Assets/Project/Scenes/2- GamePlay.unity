@@ -587,9 +587,10 @@ MonoBehaviour:
     _scoreMultiplierDuration: 5
     _displayScoreInformation: 0
     SuccessSound: {fileID: 8300000, guid: 20c2bbb14c56e4f4bba435825258efdb, type: 3}
-    GreaterSuccessSound: {fileID: 0}
+    GreaterSuccessSound: {fileID: 8300000, guid: 6fce2a18f55085146abb8c2aa43aaed0, type: 3}
     MistakeSound: {fileID: 8300000, guid: ee3d8c8315555ad40a200d6a98be64e4, type: 3}
     _successVolume: 0.5
+    _greaterSuccessVolume: 0.75
     _mistakeVolume: 0.5
   _leaderboardUI: {fileID: 1087726222}
   IntroMusicSound: {fileID: 8300000, guid: 1c6621445bab3db49a2f825d39e552e7, type: 3}

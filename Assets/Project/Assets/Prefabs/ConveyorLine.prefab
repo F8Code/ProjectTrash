@@ -1595,11 +1595,11 @@ PrefabInstance:
       objectReference: {fileID: 7666955938421355902}
     - target: {fileID: 4677488733820534403, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: _trashFlingSpeed
-      value: 1.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4677488733820534403, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: _trashMovementSpeed
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4677488733820534403, guid: cade7f1c8abe8184f9135d0eb79bea20, type: 3}
       propertyPath: _disableTrashGravity
