@@ -109,6 +109,7 @@ public class Trash : MonoBehaviour
         if (trash != this)
             return;
 
+        _trailVFX.SetActive(!isGrabbed);
         //Debug.Log(gameObject.name + " played sound!");
 
         PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
@@ -116,7 +117,6 @@ public class Trash : MonoBehaviour
             AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         else if (!isGrabbed && _data.ThrowSound != null)
         {
-
             float velocityMagnitude = handVelocity.magnitude;
 
             Debug.Log($"Trash {Name} thrown. Hand velocity: {velocityMagnitude:F2} m/s (Vector: {handVelocity})");
@@ -124,7 +124,6 @@ public class Trash : MonoBehaviour
             // Only play sound if velocity threshold are met
             if (velocityMagnitude >= _minimumThrowVelocity)
             {
-                _trailVFX.SetActive(true);
                 AudioManager.Instance.PlayAudio(_data.ThrowSound, _throwSoundVolume * Mathf.Clamp01(velocityMagnitude / 10f), AudioPlaybackContext.PlaybackPriority.Low, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
             }
         }
