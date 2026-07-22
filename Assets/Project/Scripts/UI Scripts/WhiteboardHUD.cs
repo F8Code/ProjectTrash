@@ -9,6 +9,10 @@ public class WhiteboardHUD : MonoBehaviour
     [SerializeField] private TMP_Text multiplierText;
     [SerializeField] private TMP_Text multiplierCountdownText;
 
+    [Header("VFX")]
+    [SerializeField] GameObject _particleSpawn;
+    [SerializeField] ParticleSystem _streakVFXPrefab;
+
     //Counter for tutorial
     private uint _tutorialObjects = 0;
 
@@ -25,6 +29,15 @@ public class WhiteboardHUD : MonoBehaviour
         }
         else
             gamemodeCondition.text = "Mistakes left:";
+
+        GameManager.Instance.ScoreSystem.OnScoreFlash += ScoreSystem_OnScoreFlash;
+    }
+
+    private void ScoreSystem_OnScoreFlash(float streak)
+    {
+        ParticleSystem vfx = Instantiate(_streakVFXPrefab, _particleSpawn.transform.position, _particleSpawn.transform.rotation, _particleSpawn.transform);
+        vfx.Play();
+        Destroy(vfx.gameObject, vfx.main.duration);
     }
 
     private void Instance_TrashSpawned(object sender, System.EventArgs e)
@@ -46,7 +59,7 @@ public class WhiteboardHUD : MonoBehaviour
             gamemodeValue.text = GameManager.Instance.ScoreSystem.LivesRemaining.ToString();
 
         scoreText.text = GameManager.Instance.ScoreSystem.Score.ToString();
-        multiplierText.text = GameManager.Instance.ScoreSystem.ScoreMultiplier.ToString();
+        multiplierText.text = $"x{GameManager.Instance.ScoreSystem.ScoreMultiplier}";
         int remainingDurationInSeconds = (int)GameManager.Instance.ScoreSystem.ScoreMultiplierRemainingDuration;
         multiplierCountdownText.text = remainingDurationInSeconds.ToString();
     }

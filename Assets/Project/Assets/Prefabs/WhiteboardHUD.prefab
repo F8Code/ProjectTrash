@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &248926496927187027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7534066936327874443}
+  m_Layer: 0
+  m_Name: ParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7534066936327874443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248926496927187027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.91, y: 0.15, z: 1.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 502545469683270251}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &288883498345146578
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +602,7 @@ Transform:
   - {fileID: 8764317420225385510}
   - {fileID: 7304377346063494994}
   - {fileID: 5674992972775974816}
+  - {fileID: 7534066936327874443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6471072374117346188
@@ -590,6 +622,8 @@ MonoBehaviour:
   scoreText: {fileID: 1622929677832892816}
   multiplierText: {fileID: 902808595093849911}
   multiplierCountdownText: {fileID: 6010376656416561570}
+  _particleSpawn: {fileID: 248926496927187027}
+  _streakVFXPrefab: {fileID: 570832250925526149, guid: dcd90c4976197424b9958a7c54b6bb8c, type: 3}
 --- !u!1 &1941461890604154904
 GameObject:
   m_ObjectHideFlags: 0

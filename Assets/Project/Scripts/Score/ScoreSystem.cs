@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
@@ -51,6 +52,8 @@ public class ScoreSystem
 
     float _pitch = 1;
 
+    public event Action<float> OnScoreFlash;
+
     // Game ender
     internal uint LivesRemaining;
 
@@ -82,10 +85,13 @@ public class ScoreSystem
 
             AudioClip clip = _scoreMultiplier == 0f ? SuccessSound : _scoreMultiplierLevels[GetMultiplierIndex()].MultiplierSound;
 
-            if (_scores.Count > _scoreMultiplierLevels.Length)
+            if (_scores.Count >= _scoreMultiplierLevels.Length)
                 _pitch = GetPitchBasedOnStreak(_scores.Count - _scoreMultiplierLevels.Length);
 
             AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, pitch: _pitch, AudioManager.AudioMixerType.SFX);
+
+            if (_scoreMultiplier > 0)
+                OnScoreFlash?.Invoke(_scoreMultiplier);
 
             //if (_scores.Count % 5 == 1)
             //{
