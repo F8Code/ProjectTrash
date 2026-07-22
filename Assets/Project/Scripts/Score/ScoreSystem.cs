@@ -30,6 +30,8 @@ public class ScoreSystem
     [Header("Audio Settings")]
     [Tooltip("Sound played when sorting correctly")]
     public AudioClip SuccessSound;
+    [Tooltip("Sound played every five trash correctly sorted")]
+    public AudioClip GreaterSuccessSound;
     [Tooltip("Sound played when making a mistake")]
     public AudioClip MistakeSound;
     [Tooltip("Correct sort volume multiplier")]
@@ -84,6 +86,11 @@ public class ScoreSystem
                 _pitch = GetPitchBasedOnStreak(_scores.Count - _scoreMultiplierLevels.Length);
 
             AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, pitch: _pitch, AudioManager.AudioMixerType.SFX);
+
+            //if (_scores.Count % 5 == 1)
+            //{
+            //    AudioManager.Instance.PlayAudio(GreaterSuccessSound, _successVolume, AudioPlaybackContext.PlaybackPriority.High, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
+            //}
         }
         else //Mistake
         {

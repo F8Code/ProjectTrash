@@ -48,11 +48,11 @@ PrefabInstance:
     - target: {fileID: -2055858736464597407, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: failVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+      objectReference: {fileID: 6403252182692130911, guid: 4e12b3c53c0f8ee4da83655d8d2770d5, type: 3}
     - target: {fileID: -2055858736464597407, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: successVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
+      objectReference: {fileID: 9169966119468206341, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: -2055858736464597407, guid: 821eafd359323f3478cf1379589e3de4, type: 3}
       propertyPath: _highlightColor.b
       value: 1
@@ -226,11 +226,11 @@ PrefabInstance:
     - target: {fileID: 7537534755599725086, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
       propertyPath: failVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+      objectReference: {fileID: 6403252182692130911, guid: 4e12b3c53c0f8ee4da83655d8d2770d5, type: 3}
     - target: {fileID: 7537534755599725086, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
       propertyPath: successVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
+      objectReference: {fileID: 9169966119468206341, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: 7537534755599725086, guid: d7a20ed2526b3d342a12a4bf08650f10, type: 3}
       propertyPath: _highlightColor.b
       value: 1
@@ -284,11 +284,11 @@ PrefabInstance:
     - target: {fileID: 4709108286792160481, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: failVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+      objectReference: {fileID: 6403252182692130911, guid: 4e12b3c53c0f8ee4da83655d8d2770d5, type: 3}
     - target: {fileID: 4709108286792160481, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: successVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
+      objectReference: {fileID: 9169966119468206341, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: 4709108286792160481, guid: 81f94296e0d269b4a9d910a4a82e2f50, type: 3}
       propertyPath: _highlightColor.b
       value: 1
@@ -390,11 +390,11 @@ PrefabInstance:
     - target: {fileID: 1009876749381732781, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
       propertyPath: failVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+      objectReference: {fileID: 6403252182692130911, guid: 4e12b3c53c0f8ee4da83655d8d2770d5, type: 3}
     - target: {fileID: 1009876749381732781, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
       propertyPath: successVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
+      objectReference: {fileID: 9169966119468206341, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: 1009876749381732781, guid: 867b86bf7d35c2d42a3846ebfe54bb9f, type: 3}
       propertyPath: _highlightColor.b
       value: 1
@@ -484,11 +484,11 @@ PrefabInstance:
     - target: {fileID: -448950146190268607, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
       propertyPath: failVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+      objectReference: {fileID: 6403252182692130911, guid: 4e12b3c53c0f8ee4da83655d8d2770d5, type: 3}
     - target: {fileID: -448950146190268607, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
       propertyPath: successVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
+      objectReference: {fileID: 9169966119468206341, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: -448950146190268607, guid: dffba7f6a1eaab149bbd63eabbcb625d, type: 3}
       propertyPath: _highlightColor.g
       value: 1
@@ -590,11 +590,11 @@ PrefabInstance:
     - target: {fileID: -7098169315685624605, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: failVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: ed26a4958be17114dbf4e2d923936c3f, type: 3}
+      objectReference: {fileID: 6403252182692130911, guid: 4e12b3c53c0f8ee4da83655d8d2770d5, type: 3}
     - target: {fileID: -7098169315685624605, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: successVFXPrefab
       value: 
-      objectReference: {fileID: 7614292742687418803, guid: fee1f02cbd731e44181fdc5fe5cb587b, type: 3}
+      objectReference: {fileID: 9169966119468206341, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: -7098169315685624605, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: _highlightColor.b
       value: 1
@@ -661,6 +661,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1957617086595822576, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257976395808755377, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_text
+      value: W a s t e
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257976395808755377, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_wordSpacing
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257976395808755377, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}
+      propertyPath: m_characterSpacing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6919420638526353700, guid: 628ed66d5e39d674682831bc81c2b833, type: 3}

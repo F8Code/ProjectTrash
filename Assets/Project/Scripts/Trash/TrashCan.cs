@@ -65,7 +65,7 @@ public class TrashCan : MonoBehaviour
         if (trash.Type == _acceptedTrash && successVFXPrefab != null)
         {
             ParticleSystem vfx = Instantiate(successVFXPrefab,
-                                           transform.position + Vector3.up * 0.5f,
+                                           transform.position + Vector3.up,
                                            Quaternion.identity);
             vfx.Play();
             Destroy(vfx.gameObject, vfx.main.duration);
@@ -74,14 +74,14 @@ public class TrashCan : MonoBehaviour
         else if (trash.Type != _acceptedTrash && failVFXPrefab != null)
         {
             ParticleSystem vfx = Instantiate(failVFXPrefab,
-                                           transform.position + Vector3.up * 0.5f,
+                                           transform.position + Vector3.up,
                                            Quaternion.identity);
             vfx.Play();
             Destroy(vfx.gameObject, vfx.main.duration);
             Debug.Log("FAILED VFX PLAYED!");
         }
 
-            OnTrashCollected?.Invoke(trash, (trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score);
+        OnTrashCollected?.Invoke(trash, (trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score);
         Debug.Log($"Trash {trash.Name} collected. Score: {(trash.Type == _acceptedTrash ? 1 : -1) * (int)trash.Score}");
     }
 

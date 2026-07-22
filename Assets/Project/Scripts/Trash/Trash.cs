@@ -4,6 +4,8 @@ using Random = UnityEngine.Random;
 
 public class Trash : MonoBehaviour
 {
+    [Tooltip("Trailed used after throwing")]
+    [SerializeField] GameObject _trailVFX;
     [Tooltip("Minimum velocity magnitude required for the throw sound to play")]
     [SerializeField, Range(0f, 10f)] private float _minimumThrowVelocity = 2f;
 
@@ -35,7 +37,7 @@ public class Trash : MonoBehaviour
 
     private void OnEnable()
     {
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += PlayFeedbackActions;
     }
 
@@ -61,6 +63,9 @@ public class Trash : MonoBehaviour
 
         //Logic
         _markedForDespawn = false;
+
+        if (_trailVFX != null)
+            _trailVFX.SetActive(false);
     }
 
     void ReplaceColliders(TrashData data)
@@ -108,11 +113,10 @@ public class Trash : MonoBehaviour
 
         PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
         if (isGrabbed && _data.PickupSound != null)
-        {
-			AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
-        }
+            AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         else if (!isGrabbed && _data.ThrowSound != null)
         {
+
             float velocityMagnitude = handVelocity.magnitude;
 
             Debug.Log($"Trash {Name} thrown. Hand velocity: {velocityMagnitude:F2} m/s (Vector: {handVelocity})");
@@ -120,6 +124,7 @@ public class Trash : MonoBehaviour
             // Only play sound if velocity threshold are met
             if (velocityMagnitude >= _minimumThrowVelocity)
             {
+                _trailVFX.SetActive(true);
                 AudioManager.Instance.PlayAudio(_data.ThrowSound, _throwSoundVolume * Mathf.Clamp01(velocityMagnitude / 10f), AudioPlaybackContext.PlaybackPriority.Low, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
             }
         }
@@ -131,7 +136,7 @@ public class Trash : MonoBehaviour
             return;
 
         if (_markedForDespawn) return;
-        
+
         _markedForDespawn = true;
         OnTrashCollected?.Invoke(this, -(int)Score);
 
@@ -140,7 +145,7 @@ public class Trash : MonoBehaviour
 
     private void OnDisable()
     {
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed -= PlayFeedbackActions;
     }
 }
