@@ -8,6 +8,7 @@ using ProjectTrash.UI;
 public class MenuUiBootstrap : MonoBehaviour
 {
     static MenuUiBootstrap _instance;
+    TMP_Text _languageLabel;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Bootstrap()
@@ -20,21 +21,104 @@ public class MenuUiBootstrap : MonoBehaviour
         _instance = host.AddComponent<MenuUiBootstrap>();
         _instance.StartCoroutine(_instance.BuildNextFrame());
         SceneManager.sceneLoaded += (_, _) => _instance.StartCoroutine(_instance.BuildNextFrame());
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged += _instance.OnLanguageChanged;
     }
 
     IEnumerator BuildNextFrame()
     {
         yield return null;
+        WireAchievementsButton();
+        WireAchievementsBackButton();
         CreateLanguageButton();
         if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.LanguageChanged -= OnLanguageChanged;
+            LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
             LocalizationManager.Instance.RefreshAll();
+        }
+        UpdateLanguageButtonLabel(_languageLabel);
+    }
+
+    void OnLanguageChanged() => UpdateLanguageButtonLabel(_languageLabel);
+
+    static void WireAchievementsButton()
+    {
+        GameObject buttonObject = GameObject.Find("MainButtonAchievements");
+        if (buttonObject == null)
+        {
+            Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (Transform transform in transforms)
+            {
+                if (transform.name == "MainButtonAchievements")
+                {
+                    buttonObject = transform.gameObject;
+                    break;
+                }
+            }
+        }
+
+        if (buttonObject == null)
+            return;
+
+        Button button = buttonObject.GetComponent<Button>();
+        if (button == null)
+            return;
+
+        button.onClick.RemoveListener(OpenAchievements);
+        button.onClick.AddListener(OpenAchievements);
+    }
+
+    static void OpenAchievements()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowPanel("UICanvas_Achievements");
+    }
+
+    static void WireAchievementsBackButton()
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+        {
+            if (transform.name != "BackButton" && transform.name != "MainBackButton")
+                continue;
+
+            Transform canvas = transform;
+            while (canvas != null && canvas.name != "UICanvas_Achievements")
+                canvas = canvas.parent;
+            if (canvas == null)
+                continue;
+
+            Button button = transform.GetComponent<Button>();
+            if (button == null)
+                continue;
+
+            button.onClick.RemoveListener(OpenStartScreen);
+            button.onClick.AddListener(OpenStartScreen);
+            return;
+        }
+    }
+
+    static void OpenStartScreen()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowPanel("UICanvas_Startscreen");
     }
 
     void CreateLanguageButton()
     {
         VersionDisplay versionDisplay = FindFirstObjectByType<VersionDisplay>(FindObjectsInactive.Include);
-        if (versionDisplay == null || versionDisplay.transform.parent.Find("LanguageToggle") != null)
+        if (versionDisplay == null)
             return;
+
+        Transform existing = versionDisplay.transform.parent.Find("LanguageToggle");
+        if (existing != null)
+        {
+            _languageLabel = existing.GetComponentInChildren<TMP_Text>(true);
+            BindLanguageButton(existing.GetComponent<Button>(), _languageLabel);
+            UpdateLanguageButtonLabel(_languageLabel);
+            return;
+        }
 
         RectTransform versionRect = versionDisplay.GetComponent<RectTransform>();
         TMP_Text versionText = versionDisplay.GetComponent<TMP_Text>();
@@ -73,12 +157,22 @@ public class MenuUiBootstrap : MonoBehaviour
         label.fontSizeMin = 16f;
         label.fontSizeMax = 32f;
         label.raycastTarget = false;
-        UpdateLanguageButtonLabel(label);
+        _languageLabel = label;
 
         Button button = buttonObject.GetComponent<Button>();
         ColorBlock colors = button.colors;
         colors.highlightedColor = new Color(1f, 1f, 1f, 0.35f);
         button.colors = colors;
+        BindLanguageButton(button, label);
+        UpdateLanguageButtonLabel(label);
+    }
+
+    static void BindLanguageButton(Button button, TMP_Text label)
+    {
+        if (button == null)
+            return;
+
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
             LocalizationManager.Instance?.ToggleLanguage();

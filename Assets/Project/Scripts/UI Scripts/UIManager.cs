@@ -68,6 +68,8 @@ public class UIManager : MonoBehaviour
     {
         if (panelDictionary.TryGetValue(panelName, out UIPanel panel))
             ShowPanel(panel);
+        else
+            Debug.LogWarning($"[UIManager] Panel not found: {panelName}");
     }
 
     /// <summary>
@@ -98,6 +100,7 @@ public class UIManager : MonoBehaviour
         // Enable the Canvas (not GameObject)
         panel.SetActive(true);
         currentPanel = panel;
+        LocalizationManager.Instance?.RefreshAll();
 
         // Play entry sound if enabled
         if (panel.playSound && panel.entrySoundClip != null && AudioManager.Instance != null)

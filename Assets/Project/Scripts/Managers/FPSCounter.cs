@@ -80,7 +80,9 @@ public class FPSCounter : MonoBehaviour
             return;
 
         // Update text
-        _fpsText.text = string.Format("FPS: {0:F1}", _currentFPS);
+        string prefix = LocalizationManager.Instance != null ? LocalizationManager.Instance.Get("FPS:") : "FPS:";
+        _fpsText.text = string.Format("{0} {1:F1}", prefix, _currentFPS);
+        LocalizationManager.Instance?.ApplyFont(_fpsText);
 
         // Update color based on FPS
         if (_currentFPS >= 60f)

@@ -26,6 +26,10 @@ public class PlayerWrist : MonoBehaviour
     [Header("Grabbing settings")]
     [Tooltip("Speed at which the hand closes or opens during grab animation")]
     [SerializeField, Range(0.1f, 2f)] float _grabSpeed = 1f;
+    [Tooltip("How strongly palm contact pulls a free object toward the palm before it is grabbed")]
+    [SerializeField, Range(0f, 8f)] float _palmPullAcceleration = 6f;
+    [Tooltip("Maximum pull speed while the object is still free")]
+    [SerializeField, Range(0.2f, 3f)] float _palmPullMaxSpeed = 1.1f;
 
     [Header("Throwing settings")]
     [Tooltip("How many seconds of recent hand motion are averaged into the throw")]
@@ -42,7 +46,11 @@ public class PlayerWrist : MonoBehaviour
     [Tooltip("Additional upward velocity applied when releasing a grabbed object")]
     [SerializeField, Range(0f, 2f)] float _thrownTrashBonusUpwardsVelocity = 1f;
     [Tooltip("How much heavy-item arm slowdown is undone at throw time (0 = keep slow throws, 1 = full compensation)")]
-    [SerializeField, Range(0f, 1f)] float _heavyItemThrowCompensation = 0.7f;
+    [SerializeField, Range(0f, 1f)] float _heavyItemThrowCompensation = 1f;
+    [Tooltip("Large items keep this fraction of throw speed so they stay a bit harder to score")]
+    [SerializeField, Range(0.6f, 1f)] float _largeItemThrowSpeedFactor = 0.9f;
+    [Tooltip("Extra upward kick for bulky items so they clear the table")]
+    [SerializeField, Range(0f, 2f)] float _largeItemBonusUpwardsVelocity = 0.55f;
     [Tooltip("Multiplier applied to averaged hand spin when the item is released")]
     [SerializeField, Range(0f, 2f)] float _thrownTrashAngularMultiplier = 1f;
     [SerializeField, Range(0f, 30f)] float _thrownTrashAngularVelocityLimit = 12f;
@@ -56,6 +64,8 @@ public class PlayerWrist : MonoBehaviour
     [Header("Collision ignore")]
     [SerializeField, Range(0f, 0.5f)] float _dropCollisionIgnoreDuration = 0.08f;
     [SerializeField, Range(0.05f, 1f)] float _throwCollisionIgnoreDuration = 0.35f;
+    [Tooltip("How long a fast throw ignores the hand so the trajectory is not slowed")]
+    [SerializeField, Range(0.1f, 1f)] float _throwHandIgnoreDuration = 0.5f;
 
     [Header("Audio Settings")]
     [Tooltip("Sound played when picking up the trash")]
@@ -118,10 +128,7 @@ public class PlayerWrist : MonoBehaviour
 
     private void HandlePalmContact(PlayerPalm palm, Trash trash)
     {
-        if (!_shouldGrab)
-            return;
-
-        if (_grabbedTrash != null)
+        if (!_shouldGrab || _grabbedTrash != null || trash == null)
             return;
 
         GrabTrash(trash);
@@ -143,6 +150,9 @@ public class PlayerWrist : MonoBehaviour
         if (_shouldGrab && _palm.Contacts.Any())
             _isTouching = true;
 
+        if (_shouldGrab && !_isGrabbing)
+            PullFreeTrashTowardPalm();
+
         bool releasing = !_shouldGrab && _grabbedTrash != null;
         if (_grabbedTrash != null)
         {
@@ -157,6 +167,30 @@ public class PlayerWrist : MonoBehaviour
             ReleaseTrash();
     }
 
+    void PullFreeTrashTowardPalm()
+    {
+        if (_palm == null)
+            return;
+
+        foreach (Trash trash in _palm.Contacts)
+        {
+            if (trash == null)
+                continue;
+
+            Rigidbody body = trash.GetComponent<Rigidbody>();
+            if (body == null || body.isKinematic)
+                continue;
+
+            Vector3 toPalm = _palm.transform.position - body.position;
+            float distance = toPalm.magnitude;
+            if (distance < 0.05f || distance > 0.45f)
+                continue;
+
+            Vector3 desiredVelocity = toPalm.normalized * Mathf.Min(_palmPullMaxSpeed, distance * _palmPullAcceleration);
+            body.linearVelocity = Vector3.MoveTowards(body.linearVelocity, desiredVelocity, _palmPullAcceleration * Time.deltaTime);
+        }
+    }
+
     void GrabTrash(Trash trash)
     {
         //Internal logic
@@ -165,10 +199,14 @@ public class PlayerWrist : MonoBehaviour
 
         //Parenting
         _originalTrashParent = _grabbedTrash.transform.parent;
-        _grabbedTrash.transform.SetParent(transform);
+        _grabbedTrash.transform.SetParent(transform, true);
 
         //Physics
-        _grabbedTrash.GetComponent<Rigidbody>().isKinematic = true;
+        Rigidbody trashRB = _grabbedTrash.GetComponent<Rigidbody>();
+        trashRB.linearVelocity = Vector3.zero;
+        trashRB.angularVelocity = Vector3.zero;
+        trashRB.isKinematic = true;
+        SetTrashHandCollisionIgnored(_grabbedTrash, true);
 
         ResetThrowMotionBaseline();
         _throwMotionSamples.Clear();
@@ -185,10 +223,10 @@ public class PlayerWrist : MonoBehaviour
         ComputeOutgoingThrow(out Vector3 throwVelocity, out Vector3 throwAngularVelocity, out float collisionIgnoreDuration, out bool isThrow);
 
         //Parenting
-        _grabbedTrash.transform.parent = _originalTrashParent;
+        _grabbedTrash.transform.SetParent(_originalTrashParent, true);
 
-        //Disable trash-hand collision for a moment
-        StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash, collisionIgnoreDuration));
+        float ignoreDuration = isThrow ? Mathf.Max(collisionIgnoreDuration, _throwHandIgnoreDuration) : collisionIgnoreDuration;
+        StartCoroutine(TemporarilyIgnoreTrashCollisions(_grabbedTrash, ignoreDuration));
 
         //Physics and velocity
         Rigidbody trashRB = _grabbedTrash.GetComponent<Rigidbody>();
@@ -214,7 +252,7 @@ public class PlayerWrist : MonoBehaviour
     void SampleThrowMotion()
     {
         float dt = Time.deltaTime;
-        Vector3 position = _grabbedTrash.transform.position;
+        Vector3 position = transform.position;
         Quaternion rotation = _grabbedTrash.transform.rotation;
 
         if (dt > 0.0001f)
@@ -242,7 +280,7 @@ public class PlayerWrist : MonoBehaviour
         if (_grabbedTrash == null)
             return;
 
-        _lastTrashPosition = _grabbedTrash.transform.position;
+        _lastTrashPosition = transform.position;
         _lastTrashRotation = _grabbedTrash.transform.rotation;
     }
 
@@ -250,6 +288,7 @@ public class PlayerWrist : MonoBehaviour
     {
         GetAveragedThrowMotion(out Vector3 linearVelocity, out Vector3 angularVelocity);
 
+        float size01 = GetHeldItemSize01();
         linearVelocity *= _thrownTrashSpeedMultiplier * GetHeavyItemThrowCompensation();
         angularVelocity *= _thrownTrashAngularMultiplier;
 
@@ -265,13 +304,17 @@ public class PlayerWrist : MonoBehaviour
         }
 
         Vector3 direction = linearVelocity.normalized;
-        speed = Mathf.Clamp(speed, _minFlingSpeed, _thrownTrashVelocityLimit);
+        float maxSpeed = Mathf.Lerp(_thrownTrashVelocityLimit, _thrownTrashVelocityLimit * 1.35f, size01);
+        float sizeAdjustedSpeed = speed * Mathf.Lerp(1f, _largeItemThrowSpeedFactor, size01);
+        speed = Mathf.Clamp(sizeAdjustedSpeed, _minFlingSpeed, maxSpeed);
         direction = ApplyAimAssist(direction, _grabbedTrash.GetComponent<Trash>());
 
-        float throwStrength01 = Mathf.InverseLerp(_minFlingSpeed, _thrownTrashVelocityLimit, speed);
-        throwVelocity = direction * speed + Vector3.up * throwStrength01 * _thrownTrashBonusUpwardsVelocity;
+        float throwStrength01 = Mathf.InverseLerp(_minFlingSpeed, maxSpeed, speed);
+        float extraUp = _thrownTrashBonusUpwardsVelocity + _largeItemBonusUpwardsVelocity * size01;
+        throwVelocity = direction * speed + Vector3.up * throwStrength01 * extraUp;
         throwAngularVelocity = Vector3.ClampMagnitude(angularVelocity, _thrownTrashAngularVelocityLimit);
-        collisionIgnoreDuration = Mathf.Lerp(_dropCollisionIgnoreDuration, _throwCollisionIgnoreDuration, throwStrength01);
+        collisionIgnoreDuration = Mathf.Lerp(_dropCollisionIgnoreDuration, _throwCollisionIgnoreDuration + 0.2f * size01, throwStrength01);
+
     }
 
     void GetAveragedThrowMotion(out Vector3 linearVelocity, out Vector3 angularVelocity)
@@ -304,6 +347,23 @@ public class PlayerWrist : MonoBehaviour
 
         float debuf = Mathf.Max(PlayerManager.Instance.Arm.ArmSpeedDebuf, 0.1f);
         return Mathf.Lerp(1f, 1f / debuf, _heavyItemThrowCompensation);
+    }
+
+    float GetHeldItemSize01()
+    {
+        if (_grabbedTrash == null)
+            return 0f;
+
+        float extent = 0.1f;
+        Renderer[] renderers = _grabbedTrash.GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers)
+        {
+            if (renderer == null)
+                continue;
+            extent = Mathf.Max(extent, renderer.bounds.extents.magnitude);
+        }
+
+        return Mathf.Clamp01(Mathf.InverseLerp(0.12f, 0.65f, extent));
     }
 
     Vector3 ApplyAimAssist(Vector3 throwDirection, Trash trash)
@@ -367,22 +427,23 @@ public class PlayerWrist : MonoBehaviour
 
     IEnumerator TemporarilyIgnoreTrashCollisions(GameObject releasedObject, float duration)
     {
-        Collider[] handColliders = GetComponentsInChildren<Collider>();
-        Collider[] objectColliders = releasedObject.GetComponentsInChildren<Collider>();
-
-        foreach (Collider handCol in handColliders)
-            foreach (Collider objCol in objectColliders)
-                if (handCol && objCol) Physics.IgnoreCollision(handCol, objCol, true);
-
+        SetTrashHandCollisionIgnored(releasedObject, true);
         yield return new WaitForSeconds(Mathf.Max(0f, duration));
+        if (releasedObject != null)
+            SetTrashHandCollisionIgnored(releasedObject, false);
+    }
 
-        if (releasedObject == null)
-            yield break;
+    void SetTrashHandCollisionIgnored(GameObject trashObject, bool ignored)
+    {
+        if (trashObject == null)
+            return;
 
-        objectColliders = releasedObject.GetComponentsInChildren<Collider>();
+        Collider[] handColliders = GetComponentsInChildren<Collider>(true);
+        Collider[] objectColliders = trashObject.GetComponentsInChildren<Collider>(true);
         foreach (Collider handCol in handColliders)
             foreach (Collider objCol in objectColliders)
-                if (handCol && objCol) Physics.IgnoreCollision(handCol, objCol, false);
+                if (handCol && objCol)
+                    Physics.IgnoreCollision(handCol, objCol, ignored);
     }
 
     void OnDisable()

@@ -43,15 +43,47 @@ public class AchievementUI : MonoBehaviour
             card.transform.SetParent(_content, false);
         }
 
+        HorizontalLayoutGroup layout = _content.GetComponent<HorizontalLayoutGroup>();
+        if (layout != null)
+        {
+            layout.childAlignment = TextAnchor.MiddleLeft;
+            layout.spacing = 48f;
+            layout.childForceExpandWidth = false;
+            layout.childControlWidth = true;
+            layout.padding = new RectOffset(32, 64, 24, 24);
+        }
+
+        RectTransform contentRect = _content as RectTransform;
+        if (contentRect != null)
+        {
+            contentRect.anchorMin = new Vector2(0f, 0f);
+            contentRect.anchorMax = new Vector2(0f, 1f);
+            contentRect.pivot = new Vector2(0f, 0.5f);
+            contentRect.anchoredPosition = Vector2.zero;
+        }
+
+        ContentSizeFitter fitter = _content.GetComponent<ContentSizeFitter>();
+        if (fitter != null)
+            fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        if (contentRect != null)
+        {
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contentRect);
+        }
+
         LocalizationManager.Instance?.RefreshAll();
     }
 
     static GameObject CreateCard(AchievementDefinition definition, bool unlocked, TMP_FontAsset font)
     {
         GameObject card = new($"Achievement_{definition.Id}", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
-        card.GetComponent<LayoutElement>().preferredWidth = 320f;
-        card.GetComponent<LayoutElement>().preferredHeight = 420f;
-        card.GetComponent<LayoutElement>().minWidth = 280f;
+        LayoutElement layoutElement = card.GetComponent<LayoutElement>();
+        layoutElement.minWidth = 340f;
+        layoutElement.preferredWidth = 380f;
+        layoutElement.flexibleWidth = 0f;
+        layoutElement.minHeight = 400f;
+        layoutElement.preferredHeight = 460f;
         card.GetComponent<Image>().color = unlocked ? new Color(1f, 1f, 1f, 0.16f) : new Color(0.15f, 0.15f, 0.15f, 0.55f);
 
         VerticalLayoutGroup column = card.AddComponent<VerticalLayoutGroup>();

@@ -151,7 +151,11 @@ public class LeaderboardUI : MonoBehaviour
 
             TextMeshProUGUI buttonText = _saveButton.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
-                buttonText.text = _scoreSaved ? "Update" : "Save";
+            {
+                string source = _scoreSaved ? "Update" : "Save";
+                buttonText.text = LocalizationManager.Instance != null ? LocalizationManager.Instance.Get(source) : source;
+                LocalizationManager.Instance?.ApplyFont(buttonText);
+            }
         }
     }
 

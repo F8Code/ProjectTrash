@@ -19,7 +19,10 @@ public class LocalizationManager : MonoBehaviour
 
     readonly Dictionary<int, string> _sourceTexts = new();
     readonly Dictionary<int, TMP_FontAsset> _originalFonts = new();
+    readonly Dictionary<int, Vector3> _originalFontSizes = new();
+    readonly Dictionary<int, string[]> _dropdownSources = new();
     TMP_FontAsset _chineseFont;
+    const float ChineseFontScale = 0.5f;
     public string CurrentLanguage { get; private set; } = EnglishCode;
     public bool IsChinese => CurrentLanguage == ChineseCode;
 
@@ -61,6 +64,16 @@ public class LocalizationManager : MonoBehaviour
     {
         _sourceTexts.Clear();
         _originalFonts.Clear();
+        _originalFontSizes.Clear();
+        _dropdownSources.Clear();
+        RefreshAll();
+        StartCoroutine(RefreshAfterLateSpawn());
+    }
+
+    System.Collections.IEnumerator RefreshAfterLateSpawn()
+    {
+        yield return null;
+        yield return null;
         RefreshAll();
     }
 
@@ -80,17 +93,67 @@ public class LocalizationManager : MonoBehaviour
 
     public string Get(string source)
     {
-        if (string.IsNullOrWhiteSpace(source) || !IsChinese)
+        if (string.IsNullOrWhiteSpace(source))
             return source;
 
-        string trimmed = source.Trim();
-        if (LocalizationTable.Chinese.TryGetValue(trimmed, out string translated))
+        if (!IsChinese)
+        {
+            if (ContainsCjk(source) && TryGetEnglishSource(source, out string english))
+                return english;
+            return source;
+        }
+
+        if (TryTranslate(source, out string translated))
             return translated;
 
-        if (trimmed.EndsWith(":") && LocalizationTable.Chinese.TryGetValue(trimmed.TrimEnd(':').Trim() + ":", out translated))
-            return translated;
+        if (source.TrimStart().StartsWith("FPS:", StringComparison.OrdinalIgnoreCase))
+        {
+            int colon = source.IndexOf(':');
+            return Get("FPS:") + source[(colon + 1)..];
+        }
 
         return source;
+    }
+
+    static bool TryTranslate(string source, out string translated)
+    {
+        foreach (string key in CandidateKeys(source))
+        {
+            if (LocalizationTable.Chinese.TryGetValue(key, out translated))
+                return true;
+        }
+
+        translated = null;
+        return false;
+    }
+
+    static IEnumerable<string> CandidateKeys(string source)
+    {
+        string trimmed = source.Trim().Trim('\u200B');
+        yield return trimmed;
+
+        string collapsed = Regex.Replace(trimmed, @"\s+", " ");
+        if (collapsed != trimmed)
+            yield return collapsed;
+
+        if (collapsed.EndsWith(":"))
+            yield return collapsed.TrimEnd(':').Trim() + ":";
+    }
+
+    static bool TryGetEnglishSource(string chinese, out string english)
+    {
+        string trimmed = Regex.Replace(chinese.Trim().Trim('\u200B'), @"\s+", " ");
+        foreach (KeyValuePair<string, string> pair in LocalizationTable.Chinese)
+        {
+            if (string.Equals(pair.Value, trimmed, StringComparison.Ordinal))
+            {
+                english = pair.Key;
+                return true;
+            }
+        }
+
+        english = null;
+        return false;
     }
 
     public void RefreshAll()
@@ -114,8 +177,11 @@ public class LocalizationManager : MonoBehaviour
         int id = label.GetInstanceID();
         if (!_originalFonts.ContainsKey(id) && label.font != null && label.font != _chineseFont)
             _originalFonts[id] = label.font;
+        if (!_originalFontSizes.ContainsKey(id))
+            _originalFontSizes[id] = new Vector3(label.fontSize, label.fontSizeMin, label.fontSizeMax);
 
-        if (IsChinese && _chineseFont != null)
+        bool needsCjkFont = _chineseFont != null && (IsChinese || IsLanguageToggle(label));
+        if (needsCjkFont)
         {
             label.font = _chineseFont;
             if (!string.IsNullOrEmpty(label.text))
@@ -125,6 +191,15 @@ public class LocalizationManager : MonoBehaviour
         {
             label.font = original;
         }
+
+        if (_originalFontSizes.TryGetValue(id, out Vector3 sizes))
+        {
+            bool worldSpaceLabel = sizes.x > 0f && sizes.x < 4f;
+            float scale = IsChinese && !worldSpaceLabel ? ChineseFontScale : 1f;
+            label.fontSize = sizes.x * scale;
+            label.fontSizeMin = sizes.y * scale;
+            label.fontSizeMax = sizes.z * scale;
+        }
     }
 
     void ApplyToLabel(TMP_Text label)
@@ -132,19 +207,26 @@ public class LocalizationManager : MonoBehaviour
         if (label == null || label.GetComponent<ProjectTrash.UI.VersionDisplay>() != null)
             return;
 
+        if (IsLanguageToggle(label))
+        {
+            ApplyFont(label);
+            return;
+        }
+
         int id = label.GetInstanceID();
         if (!_sourceTexts.ContainsKey(id))
         {
             string current = label.text ?? "";
-            if (ShouldSkip(current) && label.name != "LanguageToggle" && label.transform.parent?.name != "LanguageToggle")
+            if (ShouldSkip(current))
             {
                 ApplyFont(label);
                 return;
             }
 
-            _sourceTexts[id] = current;
+            _sourceTexts[id] = ResolveSource(current);
         }
 
+        _sourceTexts[id] = ResolveSource(_sourceTexts[id]);
         string source = _sourceTexts[id];
         label.text = Get(source);
         ApplyFont(label);
@@ -155,11 +237,20 @@ public class LocalizationManager : MonoBehaviour
         if (dropdown == null)
             return;
 
-        bool changed = false;
-        for (int i = 0; i < dropdown.options.Count; i++)
+        int id = dropdown.GetInstanceID();
+        if (!_dropdownSources.ContainsKey(id))
         {
-            string source = dropdown.options[i].text;
-            string translated = Get(source);
+            string[] sources = new string[dropdown.options.Count];
+            for (int i = 0; i < dropdown.options.Count; i++)
+                sources[i] = ResolveSource(dropdown.options[i].text);
+            _dropdownSources[id] = sources;
+        }
+
+        bool changed = false;
+        string[] originals = _dropdownSources[id];
+        for (int i = 0; i < dropdown.options.Count && i < originals.Length; i++)
+        {
+            string translated = Get(originals[i]);
             if (translated != dropdown.options[i].text)
             {
                 dropdown.options[i].text = translated;
@@ -213,6 +304,35 @@ public class LocalizationManager : MonoBehaviour
             return true;
         if (NumericOnly.IsMatch(text.Trim()))
             return true;
+        return false;
+    }
+
+    string ResolveSource(string current)
+    {
+        if (ContainsCjk(current) && TryGetEnglishSource(current, out string english))
+            return english;
+        return current;
+    }
+
+    static bool IsLanguageToggle(TMP_Text label)
+    {
+        if (label.name == "LanguageToggle")
+            return true;
+        Transform parent = label.transform.parent;
+        return parent != null && parent.name == "LanguageToggle";
+    }
+
+    static bool ContainsCjk(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return false;
+
+        foreach (char character in text)
+        {
+            if (character >= 0x4E00 && character <= 0x9FFF)
+                return true;
+        }
+
         return false;
     }
 }

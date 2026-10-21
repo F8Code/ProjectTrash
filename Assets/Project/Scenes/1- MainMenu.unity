@@ -13360,7 +13360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1191254830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13425,7 +13425,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191254829}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -28006,7 +28006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6515765673055982541, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 6913911468940056662, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -28038,7 +28038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6994199423519414358, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6994199423519414358, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -28046,7 +28046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6994199423519414358, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 7125439124431273610, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -28062,7 +28062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7612992588409720794, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 7891852418603861278, guid: 832785d8745c8aa45958b662ab15e9a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

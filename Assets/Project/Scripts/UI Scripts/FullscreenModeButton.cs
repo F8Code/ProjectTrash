@@ -64,16 +64,23 @@ public class FullscreenModeButton : MonoBehaviour
         // Use custom name if provided, otherwise use default
         if (_customModeNames.Length > currentMode && !string.IsNullOrEmpty(_customModeNames[currentMode]))
         {
-            _modeText.text = _customModeNames[currentMode];
+            _modeText.text = Translate(_customModeNames[currentMode]);
         }
         else if (currentMode >= 0 && currentMode < _defaultModeNames.Length)
         {
-            _modeText.text = _defaultModeNames[currentMode];
+            _modeText.text = Translate(_defaultModeNames[currentMode]);
         }
         else
         {
-            _modeText.text = "Unknown";
+            _modeText.text = Translate("Unknown");
         }
+
+        LocalizationManager.Instance?.ApplyFont(_modeText);
+    }
+
+    static string Translate(string source)
+    {
+        return LocalizationManager.Instance != null ? LocalizationManager.Instance.Get(source) : source;
     }
 
     /// <summary>

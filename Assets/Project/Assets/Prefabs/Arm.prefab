@@ -846,12 +846,14 @@ MonoBehaviour:
   _grabSpeed: 2
   _throwVelocitySampleWindow: 0.12
   _thrownTrashSpeedMultiplier: 1.5
-  _thrownTrashVelocityLimit: 3
+  _thrownTrashVelocityLimit: 4.2
   _dropSpeedThreshold: 0.85
   _minFlingSpeed: 2.4
   _displayDebugLogTrashVelocityOnRelease: 1
   _thrownTrashBonusUpwardsVelocity: 1.2
-  _heavyItemThrowCompensation: 0.7
+  _heavyItemThrowCompensation: 1
+  _largeItemThrowSpeedFactor: 0.9
+  _largeItemBonusUpwardsVelocity: 0.55
   _thrownTrashAngularMultiplier: 1
   _thrownTrashAngularVelocityLimit: 12
   _aimAssistConeDegrees: 28
@@ -859,6 +861,7 @@ MonoBehaviour:
   _preferMatchingBinForAimAssist: 1
   _dropCollisionIgnoreDuration: 0.08
   _throwCollisionIgnoreDuration: 0.35
+  _throwHandIgnoreDuration: 0.5
   PickupSound: {fileID: 8300000, guid: a0052050134ef4542b1b6fcebad6e006, type: 3}
   ThrowSound: {fileID: 8300000, guid: 3c7a2c34432a18e4da6a794254018095, type: 3}
   _grabSoundVolume: 1
@@ -1387,8 +1390,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
-  m_Height: 0.2
+  m_Radius: 0.07
+  m_Height: 0.18
   m_Direction: 1
   m_Center: {x: 0.0000000013969834, y: 1.2172456e-16, z: 0.000000027939677}
 --- !u!136 &6869219802792596633

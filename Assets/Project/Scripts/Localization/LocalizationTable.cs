@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 
 public static class LocalizationTable
 {
-    public static readonly Dictionary<string, string> Chinese = new()
+    public static readonly Dictionary<string, string> Chinese = new(StringComparer.OrdinalIgnoreCase)
     {
         { "Project Trash", "垃圾计划" },
+        { "Trash Project", "垃圾计划" },
         { "Play vs Mistakes", "生存模式" },
         { "Play vs Time", "限时模式" },
         { "Start Playing", "开始游戏" },
@@ -14,12 +16,14 @@ public static class LocalizationTable
         { "Credits", "制作人员" },
         { "Settings", "设置" },
         { "Tutorial", "教程" },
+        { "How to play", "玩法说明" },
         { "Learn by playing!", "边玩边学！" },
         { "*HOLD LEFT MOUSE BUTTON TO GRAB", "*按住鼠标左键抓取" },
         { "*FLICK MOUSE UP AND RELEASE TO THROW", "*向上甩动鼠标并松开以扔出" },
         { "* HOLD RIGHT MOUSE BUTTON TO ROTATE", "*按住鼠标右键旋转" },
         { "Back", "返回" },
         { "Save", "保存" },
+        { "Update", "更新" },
         { "Resume", "继续" },
         { "Resume Work", "继续工作" },
         { "Restart", "重新开始" },
@@ -57,6 +61,9 @@ public static class LocalizationTable
         { "Sound", "音频" },
         { "Game Designers", "游戏设计" },
         { "Producer", "制作人" },
+        { "Product Owner", "产品负责人" },
+        { "Gameplay Programmer", "玩法程序" },
+        { "Sound Designer", "音效设计" },
         { "UI/UX", "界面设计" },
         { "UX/UI design", "界面设计" },
         { "Game design", "游戏设计" },
@@ -74,6 +81,24 @@ public static class LocalizationTable
         { "No Filters Available", "暂无滤镜" },
         { "None", "无" },
         { "Default", "默认" },
+        { "Custom filter", "自定义滤镜" },
+        { "Achromatopsia", "全色盲" },
+        { "Deuteranopia", "绿色盲" },
+        { "Protanopia", "红色盲" },
+        { "Tritanopia", "蓝色盲" },
+        { "Borderless", "无边框" },
+        { "Borderless Fullscreen", "无边框全屏" },
+        { "Maximized", "最大化" },
+        { "Maximized Windowed", "最大化窗口" },
+        { "Windowed", "窗口化" },
+        { "Unknown", "未知" },
+        { "FPS:", "帧率：" },
+        { "Signature", "签名" },
+        { "Enter Name", "输入名字" },
+        { "1. Click and hold to grab an item", "1. 按住鼠标抓取物品" },
+        { "2. Sort into the right bins", "2. 分类到正确的垃圾桶" },
+        { "3. Sort 5 things wrong and you are FIRED!", "3. 分错5次就会被解雇！" },
+        { "Mixed", "混合垃圾" },
         { "English", "English" },
         { "中文", "中文" },
         { "Locked", "未解锁" },
