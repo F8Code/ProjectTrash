@@ -49,6 +49,18 @@ public class UIManager : MonoBehaviour
         Debug.Log($"<color=green>[UIManager] Initialized {panelDictionary.Count} panels</color>");
     }
 
+    public void RegisterPanel(UIPanel panel)
+    {
+        if (panel == null || panel.panelObject == null)
+            return;
+
+        panel.Initialize();
+        if (!string.IsNullOrEmpty(panel.panelName))
+            panelDictionary[panel.panelName] = panel;
+        if (!panels.Contains(panel))
+            panels.Add(panel);
+    }
+
     /// <summary>
     /// Show a panel by name with animation
     /// </summary>

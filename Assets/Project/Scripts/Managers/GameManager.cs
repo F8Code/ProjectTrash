@@ -210,6 +210,8 @@ public class GameManager : MonoBehaviour
         _audioSource.clip = GameOverMusicSound;
         _audioSource.Play();
 
+        AchievementManager.Instance?.NotifyGameEnded();
+
         if (_leaderboardUI != null)
             _leaderboardUI.ShowGameOver(ScoreSystem.Score);
 

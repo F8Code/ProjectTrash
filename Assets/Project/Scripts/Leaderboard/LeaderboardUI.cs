@@ -73,7 +73,10 @@ public class LeaderboardUI : MonoBehaviour
             CursorManager.Instance.ShowCursorForUI();
 
         if (_gameOverScoreText != null)
-            _gameOverScoreText.text = $"Score: {finalScore}";
+        {
+            string prefix = LocalizationManager.Instance != null ? LocalizationManager.Instance.Get("Score:") : "Score:";
+            _gameOverScoreText.text = $"{prefix} {finalScore}";
+        }
 
         // Load saved player name into input field
         if (_playerNameInput != null)

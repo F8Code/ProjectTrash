@@ -48,6 +48,7 @@ public class ScoreSystem
     List<int> _scores = new();
 
     public int Score => (int)_score;
+    public int CurrentStreak => _scores.Count;
     public float ScoreMultiplier => _scoreMultiplier;
     public float ScoreMultiplierRemainingDuration => _multiplierDurationLeft;
     public float ScoreCurrentlyMultiplied => GetCurrentlyMultipliedScore();
@@ -98,7 +99,7 @@ public class ScoreSystem
             if (_scores.Count > 1 && _scores.Count % 5 == 1)
                 AudioManager.Instance.PlayAudio(GreaterSuccessSound, _successVolume, AudioPlaybackContext.PlaybackPriority.High, GameManager.Instance.transform.position, false, pitch: 1, AudioManager.AudioMixerType.SFX);
         }
-        else //Mistake
+        else
         {
             _score += GetCurrentlyMultipliedScore();
 
@@ -113,6 +114,8 @@ public class ScoreSystem
 
             AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
+
+        AchievementManager.Instance?.NotifyScore(score, CurrentStreak, Score + (int)ScoreCurrentlyMultiplied);
     }
 
     public float GetPitchBasedOnStreak(int streak)

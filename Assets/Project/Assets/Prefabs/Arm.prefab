@@ -844,10 +844,21 @@ MonoBehaviour:
   - {fileID: 3519710649070591389}
   _armAnimator: {fileID: 4644124295607104602}
   _grabSpeed: 2
+  _throwVelocitySampleWindow: 0.12
   _thrownTrashSpeedMultiplier: 1.5
   _thrownTrashVelocityLimit: 3
+  _dropSpeedThreshold: 0.85
+  _minFlingSpeed: 2.4
   _displayDebugLogTrashVelocityOnRelease: 1
   _thrownTrashBonusUpwardsVelocity: 1.2
+  _heavyItemThrowCompensation: 0.7
+  _thrownTrashAngularMultiplier: 1
+  _thrownTrashAngularVelocityLimit: 12
+  _aimAssistConeDegrees: 28
+  _aimAssistStrength: 0.28
+  _preferMatchingBinForAimAssist: 1
+  _dropCollisionIgnoreDuration: 0.08
+  _throwCollisionIgnoreDuration: 0.35
   PickupSound: {fileID: 8300000, guid: a0052050134ef4542b1b6fcebad6e006, type: 3}
   ThrowSound: {fileID: 8300000, guid: 3c7a2c34432a18e4da6a794254018095, type: 3}
   _grabSoundVolume: 1

@@ -33,5 +33,6 @@ public static class GameConstants
         public const string GameOverPanel = "GameOverPanel_Canvas";
         public const string LeaderboardPanel = "Leaderboard_Canvas";
         public const string PauseMenu = "UICanvas_PauseMenu";
+        public const string Achievements = "UICanvas_Achievements";
     }
 }

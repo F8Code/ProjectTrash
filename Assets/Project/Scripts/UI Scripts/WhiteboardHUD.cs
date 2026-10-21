@@ -19,16 +19,15 @@ public class WhiteboardHUD : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Timebased)
-            gamemodeCondition.text = "Time left:";
-        else if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Tutorial)
+        ApplyGamemodeLabel();
+        if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Tutorial)
         {
-            gamemodeCondition.text = "Trash left:";
             TrashManager.Instance.TrashSpawned += Instance_TrashSpawned;
             _tutorialObjects = GameManager.Instance.MistakeLimit;
         }
-        else
-            gamemodeCondition.text = "Mistakes left:";
+
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged += ApplyGamemodeLabel;
 
         GameManager.Instance.ScoreSystem.OnScoreFlash += ScoreSystem_OnScoreFlash;
     }
@@ -38,6 +37,23 @@ public class WhiteboardHUD : MonoBehaviour
         ParticleSystem vfx = Instantiate(_streakVFXPrefab, _particleSpawn.transform.position, _particleSpawn.transform.rotation, _particleSpawn.transform);
         vfx.Play();
         Destroy(vfx.gameObject, vfx.main.duration);
+    }
+
+    void OnDestroy()
+    {
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged -= ApplyGamemodeLabel;
+    }
+
+    void ApplyGamemodeLabel()
+    {
+        string source = GameManager.Instance.CurrentGamemode switch
+        {
+            GameManager.Gamemode.Timebased => "Time left:",
+            GameManager.Gamemode.Tutorial => "Trash left:",
+            _ => "Mistakes left:"
+        };
+        gamemodeCondition.text = LocalizationManager.Instance != null ? LocalizationManager.Instance.Get(source) : source;
     }
 
     private void Instance_TrashSpawned(object sender, System.EventArgs e)

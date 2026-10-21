@@ -21,6 +21,8 @@ public class TrashCan : MonoBehaviour
     [SerializeField] PlayerWrist _playerWrist;
 
     HashSet<Trash> _ignoredTrash = new();
+    public TrashType AcceptedType => _acceptedTrash;
+    public Vector3 ThrowAimPoint => transform.position + Vector3.up;
     public event Action<Trash, int> OnTrashCollected;
 
     private bool _isHighlighted = false;
