@@ -91,6 +91,16 @@ public class LocalizationManager : MonoBehaviour
         LanguageChanged?.Invoke();
     }
 
+    public void SetLabelSource(TMP_Text label, string englishSource)
+    {
+        if (label == null || string.IsNullOrWhiteSpace(englishSource))
+            return;
+
+        _sourceTexts[label.GetInstanceID()] = englishSource;
+        label.text = Get(englishSource);
+        ApplyFont(label);
+    }
+
     public string Get(string source)
     {
         if (string.IsNullOrWhiteSpace(source))

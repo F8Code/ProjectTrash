@@ -181,11 +181,10 @@ public class PlayerArm : MonoBehaviour
     void SetHandHeightAndGrab()
     {
         bool isTryingToGrab = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
+        bool loweringHand = isTryingToGrab && !_wrist.IsGrabbing;
+        _wrist.TickPalmTelekinesis(loweringHand);
 
-        //if (isTryingToGrab && !_wrist.IsGrabbing)
-        //    _wrist.Telekinesis();
-
-        bool shouldWristGrab = isTryingToGrab && (_wrist.IsGrabbing || TrashInProximity());
+        bool shouldWristGrab = isTryingToGrab && (_wrist.IsGrabbing || TrashInProximity() || _wrist.IsPalmTelekinesisActive);
         _wrist.ShouldGrab(shouldWristGrab);
 
         if(shouldWristGrab && _wrist.IsTouching && !_wrist.IsGrabbing)

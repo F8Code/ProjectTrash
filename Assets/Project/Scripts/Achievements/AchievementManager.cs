@@ -16,6 +16,7 @@ public class AchievementDefinition
 public class AchievementSaveData
 {
     public List<string> UnlockedIds = new();
+    public List<string> CorrectlySortedItemNames = new();
 }
 
 public class AchievementManager : MonoBehaviour
@@ -31,10 +32,20 @@ public class AchievementManager : MonoBehaviour
 
     public static AchievementManager Instance { get; private set; }
 
+    static readonly string[] RequiredTrashFolders =
+    {
+        "TrashData/Plastic",
+        "TrashData/Paper",
+        "TrashData/Metal",
+        "TrashData/Glass",
+        "TrashData/Hazard",
+        "TrashData/Mixed"
+    };
+
     readonly HashSet<string> _unlockedIds = new();
+    readonly HashSet<string> _correctlySortedItemNames = new();
     readonly List<AchievementDefinition> _definitions = new();
-    bool _hadMistakeThisRun;
-    bool _hadCorrectSortThisRun;
+    HashSet<string> _requiredItemNames;
     bool _notifiedTimelessThisRun;
 
     public IReadOnlyList<AchievementDefinition> Definitions => _definitions;
@@ -73,9 +84,8 @@ public class AchievementManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        _hadMistakeThisRun = false;
-        _hadCorrectSortThisRun = false;
         _notifiedTimelessThisRun = false;
+        _correctlySortedItemNames.Clear();
     }
 
     void Update()
@@ -98,29 +108,32 @@ public class AchievementManager : MonoBehaviour
     {
         if (delta >= 0)
         {
-            _hadCorrectSortThisRun = true;
             if (totalScore > 999)
                 Unlock(BeatTrashbubu);
-            if (streak >= 20)
+            if (streak >= 30)
                 Unlock(StreakMaster);
-            if (streak >= 10 && GameManager.Instance != null && GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Mistakebased)
+            if (streak >= 20 && GameManager.Instance != null && GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Mistakebased)
                 Unlock(FlawlessShift);
-        }
-        else
-        {
-            _hadMistakeThisRun = true;
         }
     }
 
-    public void NotifyTrashSortedInBin(Trash trash)
+    public void NotifyTrashSortedInBin(Trash trash, bool sortedCorrectly)
     {
-        if (trash == null)
+        if (trash == null || !sortedCorrectly)
             return;
 
         string name = trash.Name ?? "";
-        if (name.IndexOf("catbubu", StringComparison.OrdinalIgnoreCase) >= 0 ||
-            name.IndexOf("trashbubu", StringComparison.OrdinalIgnoreCase) >= 0)
+        bool isBubu = name.IndexOf("catbubu", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                      name.IndexOf("trashbubu", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                      name.IndexOf("bubu", StringComparison.OrdinalIgnoreCase) >= 0;
+        if (isBubu && trash.Type == TrashType.Hazard)
             Unlock(TrashTheTrashbubu);
+
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            _correctlySortedItemNames.Add(name);
+            TryUnlockProfessional();
+        }
     }
 
     public void NotifyGameEnded()
@@ -135,8 +148,41 @@ public class AchievementManager : MonoBehaviour
         if (totalScore > 999)
             Unlock(BeatTrashbubu);
 
-        if (!_hadMistakeThisRun && _hadCorrectSortThisRun)
-            Unlock(TheProfessional);
+        TryUnlockProfessional();
+    }
+
+    void TryUnlockProfessional()
+    {
+        HashSet<string> required = GetRequiredItemNames();
+        if (required.Count == 0)
+            return;
+
+        foreach (string itemName in required)
+        {
+            if (!_correctlySortedItemNames.Contains(itemName))
+                return;
+        }
+
+        Unlock(TheProfessional);
+    }
+
+    HashSet<string> GetRequiredItemNames()
+    {
+        if (_requiredItemNames != null)
+            return _requiredItemNames;
+
+        _requiredItemNames = new HashSet<string>();
+        foreach (string folder in RequiredTrashFolders)
+        {
+            TrashData[] items = Resources.LoadAll<TrashData>(folder);
+            foreach (TrashData item in items)
+            {
+                if (item != null && !string.IsNullOrWhiteSpace(item.Name))
+                    _requiredItemNames.Add(item.Name);
+            }
+        }
+
+        return _requiredItemNames;
     }
 
     void Unlock(string id)
@@ -163,19 +209,19 @@ public class AchievementManager : MonoBehaviour
         {
             Id = StreakMaster,
             Title = "Streak Master",
-            Description = "Sort 20 items correctly in a row."
+            Description = "Sort 30 items correctly in a row."
         });
         _definitions.Add(new AchievementDefinition
         {
             Id = TrashTheTrashbubu,
-            Title = "Trash the Trashbubu",
-            Description = "Throw a Trashbubu into a bin."
+            Title = "Trash the bubu",
+            Description = "Throw a Trashbubu into a Hazardous bin."
         });
         _definitions.Add(new AchievementDefinition
         {
             Id = FlawlessShift,
             Title = "Flawless Shift",
-            Description = "Get a 10-item streak in Play vs Mistakes."
+            Description = "Get a 20-item streak in Play vs Mistakes."
         });
         _definitions.Add(new AchievementDefinition
         {
@@ -187,7 +233,7 @@ public class AchievementManager : MonoBehaviour
         {
             Id = TheProfessional,
             Title = "The Professional",
-            Description = "Finish a run with no mistakes."
+            Description = "In one run, sort every trash item into the correct bin at least once."
         });
     }
 
@@ -203,11 +249,15 @@ public class AchievementManager : MonoBehaviour
 
         foreach (string id in data.UnlockedIds)
             _unlockedIds.Add(id);
+
     }
 
     void Save()
     {
-        AchievementSaveData data = new() { UnlockedIds = new List<string>(_unlockedIds) };
+        AchievementSaveData data = new()
+        {
+            UnlockedIds = new List<string>(_unlockedIds)
+        };
         PlayerPrefs.SetString(SaveKey, JsonUtility.ToJson(data));
         PlayerPrefs.Save();
     }

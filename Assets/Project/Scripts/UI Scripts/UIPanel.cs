@@ -92,7 +92,12 @@ public class UIPanel
 
             // Set initial active state - only control Canvas, NOT GameObject
             if (canvas != null)
+            {
                 canvas.enabled = startActive;
+                var raycaster = panelObject.GetComponent<UnityEngine.UI.GraphicRaycaster>();
+                if (raycaster != null)
+                    raycaster.enabled = startActive;
+            }
             else
                 panelObject.SetActive(startActive);
         }
@@ -103,7 +108,12 @@ public class UIPanel
         if (panelObject != null)
         {
             if (canvas != null)
+            {
                 canvas.enabled = active;
+                var raycaster = panelObject.GetComponent<UnityEngine.UI.GraphicRaycaster>();
+                if (raycaster != null)
+                    raycaster.enabled = active;
+            }
             else
                 panelObject.SetActive(active);
         }

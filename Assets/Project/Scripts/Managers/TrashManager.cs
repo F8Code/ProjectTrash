@@ -192,7 +192,7 @@ public class TrashManager : MonoBehaviour
 
     void CollectTrashFromBin(Trash trash, int score)
     {
-        AchievementManager.Instance?.NotifyTrashSortedInBin(trash);
+        AchievementManager.Instance?.NotifyTrashSortedInBin(trash, score > 0);
         CollectTrash(trash, score);
     }
 

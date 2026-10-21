@@ -26,10 +26,14 @@ public class PlayerWrist : MonoBehaviour
     [Header("Grabbing settings")]
     [Tooltip("Speed at which the hand closes or opens during grab animation")]
     [SerializeField, Range(0.1f, 2f)] float _grabSpeed = 1f;
-    [Tooltip("How strongly palm contact pulls a free object toward the palm before it is grabbed")]
+    [Tooltip("How strongly the palm ray pulls a free object toward the palm")]
     [SerializeField, Range(0f, 8f)] float _palmPullAcceleration = 6f;
     [Tooltip("Maximum pull speed while the object is still free")]
     [SerializeField, Range(0.2f, 3f)] float _palmPullMaxSpeed = 1.1f;
+    [Tooltip("Length of the palm ray used to catch slim items when lowering the hand")]
+    [SerializeField, Range(0.05f, 0.6f)] float _palmRayDistance = 0.28f;
+    [Tooltip("Radius of the palm spherecast")]
+    [SerializeField, Range(0.01f, 0.12f)] float _palmRayRadius = 0.04f;
 
     [Header("Throwing settings")]
     [Tooltip("How many seconds of recent hand motion are averaged into the throw")]
@@ -87,10 +91,13 @@ public class PlayerWrist : MonoBehaviour
     Vector3 _lastTrashPosition;
     Quaternion _lastTrashRotation = Quaternion.identity;
     readonly List<ThrowMotionSample> _throwMotionSamples = new();
+    Trash _palmRayTarget;
+    bool _palmTelekinesisLocked;
 
     public Vector3 Position => GetCenterPosition();
     public bool IsGrabbing => _isGrabbing;
     public bool IsTouching => _isTouching;
+    public bool IsPalmTelekinesisActive => _palmRayTarget != null && !_palmTelekinesisLocked;
 
     public event Action<Trash, bool, Vector3> OnTrashGrabbed;
 
@@ -150,9 +157,6 @@ public class PlayerWrist : MonoBehaviour
         if (_shouldGrab && _palm.Contacts.Any())
             _isTouching = true;
 
-        if (_shouldGrab && !_isGrabbing)
-            PullFreeTrashTowardPalm();
-
         bool releasing = !_shouldGrab && _grabbedTrash != null;
         if (_grabbedTrash != null)
         {
@@ -167,28 +171,64 @@ public class PlayerWrist : MonoBehaviour
             ReleaseTrash();
     }
 
-    void PullFreeTrashTowardPalm()
+    public void TickPalmTelekinesis(bool handLowering)
     {
-        if (_palm == null)
+        if (_isGrabbing || _palm == null)
             return;
 
-        foreach (Trash trash in _palm.Contacts)
+        if (!handLowering)
         {
-            if (trash == null)
-                continue;
-
-            Rigidbody body = trash.GetComponent<Rigidbody>();
-            if (body == null || body.isKinematic)
-                continue;
-
-            Vector3 toPalm = _palm.transform.position - body.position;
-            float distance = toPalm.magnitude;
-            if (distance < 0.05f || distance > 0.45f)
-                continue;
-
-            Vector3 desiredVelocity = toPalm.normalized * Mathf.Min(_palmPullMaxSpeed, distance * _palmPullAcceleration);
-            body.linearVelocity = Vector3.MoveTowards(body.linearVelocity, desiredVelocity, _palmPullAcceleration * Time.deltaTime);
+            _palmRayTarget = null;
+            return;
         }
+
+        if (_palmTelekinesisLocked)
+            return;
+
+        if (_palmRayTarget != null && _palm.Contacts.Contains(_palmRayTarget))
+        {
+            _palmTelekinesisLocked = true;
+            _palmRayTarget = null;
+            return;
+        }
+
+        if (_palmRayTarget == null)
+            _palmRayTarget = FindTrashUnderPalm();
+
+        PullTrashTowardPalm(_palmRayTarget);
+    }
+
+    Trash FindTrashUnderPalm()
+    {
+        Vector3 origin = _palm.transform.position;
+        Vector3 direction = Vector3.down;
+        int layerMask = 1 << GameConstants.Layer.Trash;
+
+        if (Physics.SphereCast(origin, _palmRayRadius, direction, out RaycastHit hit, _palmRayDistance, layerMask, QueryTriggerInteraction.Ignore))
+            return hit.collider.GetComponentInParent<Trash>();
+
+        if (Physics.SphereCast(origin, _palmRayRadius * 0.75f, -_palm.transform.up, out hit, _palmRayDistance, layerMask, QueryTriggerInteraction.Ignore))
+            return hit.collider.GetComponentInParent<Trash>();
+
+        return null;
+    }
+
+    void PullTrashTowardPalm(Trash trash)
+    {
+        if (trash == null)
+            return;
+
+        Rigidbody body = trash.GetComponent<Rigidbody>();
+        if (body == null || body.isKinematic)
+            return;
+
+        Vector3 toPalm = _palm.transform.position - body.position;
+        float distance = toPalm.magnitude;
+        if (distance < 0.04f)
+            return;
+
+        Vector3 desiredVelocity = toPalm.normalized * Mathf.Min(_palmPullMaxSpeed, distance * _palmPullAcceleration);
+        body.linearVelocity = Vector3.MoveTowards(body.linearVelocity, desiredVelocity, _palmPullAcceleration * Time.deltaTime);
     }
 
     void GrabTrash(Trash trash)
@@ -207,6 +247,8 @@ public class PlayerWrist : MonoBehaviour
         trashRB.angularVelocity = Vector3.zero;
         trashRB.isKinematic = true;
         SetTrashHandCollisionIgnored(_grabbedTrash, true);
+        _palmTelekinesisLocked = true;
+        _palmRayTarget = null;
 
         ResetThrowMotionBaseline();
         _throwMotionSamples.Clear();
@@ -240,6 +282,8 @@ public class PlayerWrist : MonoBehaviour
         //Internal logic
         _isGrabbing = false;
         _grabbedTrash = null;
+        _palmTelekinesisLocked = false;
+        _palmRayTarget = null;
         _throwMotionSamples.Clear();
 
         //Audio
@@ -463,5 +507,13 @@ public class PlayerWrist : MonoBehaviour
         return position / _allFingers.Length;
     }
 
-    public void ShouldGrab(bool shouldGrab) => _shouldGrab = shouldGrab;
+    public void ShouldGrab(bool shouldGrab)
+    {
+        _shouldGrab = shouldGrab;
+        if (!shouldGrab && !_isGrabbing)
+        {
+            _palmRayTarget = null;
+            _palmTelekinesisLocked = false;
+        }
+    }
 }

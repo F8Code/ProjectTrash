@@ -20,6 +20,7 @@ public class WhiteboardHUD : MonoBehaviour
     void Start()
     {
         ApplyGamemodeLabel();
+        StartCoroutine(ApplyGamemodeLabelNextFrame());
         if (GameManager.Instance.CurrentGamemode == GameManager.Gamemode.Tutorial)
         {
             TrashManager.Instance.TrashSpawned += Instance_TrashSpawned;
@@ -30,6 +31,14 @@ public class WhiteboardHUD : MonoBehaviour
             LocalizationManager.Instance.LanguageChanged += ApplyGamemodeLabel;
 
         GameManager.Instance.ScoreSystem.OnScoreFlash += ScoreSystem_OnScoreFlash;
+    }
+
+    System.Collections.IEnumerator ApplyGamemodeLabelNextFrame()
+    {
+        yield return null;
+        yield return null;
+        yield return null;
+        ApplyGamemodeLabel();
     }
 
     private void ScoreSystem_OnScoreFlash(float streak)
@@ -47,13 +56,20 @@ public class WhiteboardHUD : MonoBehaviour
 
     void ApplyGamemodeLabel()
     {
+        if (gamemodeCondition == null || GameManager.Instance == null)
+            return;
+
         string source = GameManager.Instance.CurrentGamemode switch
         {
             GameManager.Gamemode.Timebased => "Time left:",
             GameManager.Gamemode.Tutorial => "Trash left:",
             _ => "Mistakes left:"
         };
-        gamemodeCondition.text = LocalizationManager.Instance != null ? LocalizationManager.Instance.Get(source) : source;
+
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.SetLabelSource(gamemodeCondition, source);
+        else
+            gamemodeCondition.text = source;
     }
 
     private void Instance_TrashSpawned(object sender, System.EventArgs e)
