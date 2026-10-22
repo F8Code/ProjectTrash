@@ -45,10 +45,12 @@ public class AchievementManager : MonoBehaviour
     readonly HashSet<string> _unlockedIds = new();
     readonly HashSet<string> _correctlySortedItemNames = new();
     readonly List<AchievementDefinition> _definitions = new();
+    readonly List<AchievementDefinition> _unlockedThisRun = new();
     HashSet<string> _requiredItemNames;
     bool _notifiedTimelessThisRun;
 
     public IReadOnlyList<AchievementDefinition> Definitions => _definitions;
+    public IReadOnlyList<AchievementDefinition> UnlockedThisRun => _unlockedThisRun;
     public event Action<AchievementDefinition> AchievementUnlocked;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -86,6 +88,7 @@ public class AchievementManager : MonoBehaviour
     {
         _notifiedTimelessThisRun = false;
         _correctlySortedItemNames.Clear();
+        _unlockedThisRun.Clear();
     }
 
     void Update()
@@ -193,7 +196,10 @@ public class AchievementManager : MonoBehaviour
         Save();
         AchievementDefinition definition = _definitions.Find(item => item.Id == id);
         if (definition != null)
+        {
+            _unlockedThisRun.Add(definition);
             AchievementUnlocked?.Invoke(definition);
+        }
     }
 
     void BuildDefinitions()

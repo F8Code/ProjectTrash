@@ -21642,7 +21642,7 @@ MonoBehaviour:
   _cursorMode: 0
   _mouseButton: 0
   _enableClickEffect: 1
-  _showDebugLogs: 1
+  _showDebugLogs: 0
 --- !u!4 &1918726492
 Transform:
   m_ObjectHideFlags: 0

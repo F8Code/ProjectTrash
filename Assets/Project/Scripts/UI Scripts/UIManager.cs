@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
         // Enable the Canvas (not GameObject)
         panel.SetActive(true);
         currentPanel = panel;
+        MenuUiBootstrap.FixMenuHoverIcons();
         LocalizationManager.Instance?.RefreshAll();
 
         // Play entry sound if enabled

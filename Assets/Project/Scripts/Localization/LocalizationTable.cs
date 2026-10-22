@@ -133,5 +133,7 @@ public static class LocalizationTable
         { "Survive more than 2 minutes in Play vs Time.", "在限时模式中坚持超过2分钟。" },
         { "The Professional", "专业回收员" },
         { "In one run, sort every trash item into the correct bin at least once.", "在单局内将每一种垃圾都正确分类至少一次。" },
+        { "Achievements unlocked", "本局解锁成就" },
+        { "No new achievements", "本局未解锁成就" },
     };
 }

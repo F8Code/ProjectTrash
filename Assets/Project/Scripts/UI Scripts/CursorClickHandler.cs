@@ -36,7 +36,7 @@ public class CursorClickHandler : MonoBehaviour
     [SerializeField] private bool _enableClickEffect = true;
 
     [Header("Debug")]
-    [SerializeField] private bool _showDebugLogs = true;
+    [SerializeField] private bool _showDebugLogs = false;
 
     private bool _isClicking = false;
     private InputAction _currentClickAction;

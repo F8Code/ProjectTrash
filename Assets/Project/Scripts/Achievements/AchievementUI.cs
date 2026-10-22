@@ -80,6 +80,12 @@ public class AchievementUI : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         LayoutRebuilder.ForceRebuildLayoutImmediate(_grid);
         LocalizationManager.Instance?.RefreshAll();
+        foreach (TMP_Text label in _grid.GetComponentsInChildren<TMP_Text>(true))
+        {
+            label.enableWordWrapping = true;
+            label.textWrappingMode = TextWrappingModes.Normal;
+            label.overflowMode = TextOverflowModes.Ellipsis;
+        }
     }
 
     void EnsureGrid()
@@ -168,9 +174,9 @@ public class AchievementUI : MonoBehaviour
         icon.color = unlocked ? new Color(0.95f, 0.82f, 0.35f, 1f) : new Color(0.45f, 0.45f, 0.45f, 1f);
         icon.sprite = definition.Icon;
 
-        CreateText(card.transform, definition.Title, 24f, font, FontStyles.Bold);
-        CreateText(card.transform, definition.Description, 16f, font, FontStyles.Normal);
-        CreateText(card.transform, unlocked ? "Unlocked" : "Locked", 15f, font, FontStyles.Italic);
+        CreateText(card.transform, definition.Title, 36f, font, FontStyles.Bold);
+        CreateText(card.transform, definition.Description, 32f, font, FontStyles.Normal);
+        CreateText(card.transform, unlocked ? "Unlocked" : "Locked", 30f, font, FontStyles.Italic);
         return card;
     }
 

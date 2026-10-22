@@ -78,6 +78,9 @@ public class LeaderboardUI : MonoBehaviour
             _gameOverScoreText.text = $"{prefix} {finalScore}";
         }
 
+        MenuUiBootstrap.FixMenuHoverIcons();
+        RefreshGameOverAchievements();
+
         // Load saved player name into input field
         if (_playerNameInput != null)
         {
@@ -226,6 +229,86 @@ public class LeaderboardUI : MonoBehaviour
         }
 
         Debug.Log($"<color=green>[LeaderboardUI] Spawned {_spawnedEntries.Count} entry objects</color>");
+    }
+
+    void RefreshGameOverAchievements()
+    {
+        Transform panel = FindGameOverPanel();
+        if (panel == null)
+            return;
+
+        Transform existing = panel.Find("UnlockedThisRun");
+        if (existing != null)
+            Destroy(existing.gameObject);
+
+        GameObject root = new("UnlockedThisRun", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
+        root.transform.SetParent(panel, false);
+
+        RectTransform rect = root.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.28f, 0.32f);
+        rect.anchorMax = new Vector2(0.72f, 0.54f);
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+
+        VerticalLayoutGroup layout = root.GetComponent<VerticalLayoutGroup>();
+        layout.padding = new RectOffset(8, 8, 4, 4);
+        layout.spacing = 4f;
+        layout.childAlignment = TextAnchor.UpperCenter;
+        layout.childForceExpandHeight = false;
+        layout.childForceExpandWidth = true;
+        layout.childControlHeight = true;
+        layout.childControlWidth = true;
+
+        ContentSizeFitter fitter = root.GetComponent<ContentSizeFitter>();
+        fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+
+        TMP_FontAsset font = _gameOverScoreText != null ? _gameOverScoreText.font : null;
+        Color color = _gameOverScoreText != null ? _gameOverScoreText.color : Color.white;
+
+        IReadOnlyList<AchievementDefinition> unlocked =
+            AchievementManager.Instance != null ? AchievementManager.Instance.UnlockedThisRun : null;
+
+        string heading = unlocked != null && unlocked.Count > 0 ? "Achievements unlocked" : "No new achievements";
+        CreateGameOverLabel(root.transform, heading, 28f, font, color, FontStyles.Bold);
+
+        if (unlocked != null)
+        {
+            foreach (AchievementDefinition definition in unlocked)
+                CreateGameOverLabel(root.transform, definition.Title, 24f, font, color, FontStyles.Normal);
+        }
+
+        LocalizationManager.Instance?.RefreshAll();
+    }
+
+    static Transform FindGameOverPanel()
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+        {
+            if (transform.name == "Panel_GameOver")
+                return transform;
+        }
+
+        return null;
+    }
+
+    static void CreateGameOverLabel(Transform parent, string source, float size, TMP_FontAsset font, Color color, FontStyles style)
+    {
+        GameObject textObject = new("Label", typeof(RectTransform), typeof(TextMeshProUGUI), typeof(LayoutElement));
+        textObject.transform.SetParent(parent, false);
+        TextMeshProUGUI label = textObject.GetComponent<TextMeshProUGUI>();
+        label.text = source;
+        label.fontSize = size;
+        label.alignment = TextAlignmentOptions.Center;
+        label.enableWordWrapping = true;
+        label.overflowMode = TextOverflowModes.Ellipsis;
+        label.fontStyle = style;
+        label.color = color;
+        label.raycastTarget = false;
+        if (font != null)
+            label.font = font;
+        textObject.GetComponent<LayoutElement>().preferredHeight = size + 8f;
     }
 
     private string GetPlayerName()

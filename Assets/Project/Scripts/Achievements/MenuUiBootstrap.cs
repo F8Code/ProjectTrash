@@ -107,8 +107,10 @@ public class MenuUiBootstrap : MonoBehaviour
             UIManager.Instance.ShowPanel("UICanvas_Startscreen");
     }
 
-    static void FixMenuHoverIcons()
+    public static void FixMenuHoverIcons()
     {
+        FixGameOverButtonStack();
+
         Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Button button in buttons)
         {
@@ -119,6 +121,51 @@ public class MenuUiBootstrap : MonoBehaviour
             if (button.GetComponent<MenuHoverIcon>() == null)
                 button.gameObject.AddComponent<MenuHoverIcon>();
         }
+    }
+
+    static void FixGameOverButtonStack()
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+        {
+            if (transform.name != "Btn_LayoutGroup" || !IsUnder(transform, "UICanvas_GameOver"))
+                continue;
+
+            VerticalLayoutGroup layout = transform.GetComponent<VerticalLayoutGroup>();
+            if (layout == null)
+                layout = transform.gameObject.AddComponent<VerticalLayoutGroup>();
+
+            layout.padding = new RectOffset(0, 0, 0, 0);
+            layout.spacing = 18f;
+            layout.childAlignment = TextAnchor.MiddleCenter;
+            layout.childForceExpandWidth = false;
+            layout.childForceExpandHeight = false;
+            layout.childControlWidth = false;
+            layout.childControlHeight = false;
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                if (transform.GetChild(i) is not RectTransform child)
+                    continue;
+
+                child.anchorMin = new Vector2(0.5f, 0.5f);
+                child.anchorMax = new Vector2(0.5f, 0.5f);
+                child.pivot = new Vector2(0.5f, 0.5f);
+                child.sizeDelta = new Vector2(560f, 50f);
+            }
+        }
+    }
+
+    static bool IsUnder(Transform transform, string name)
+    {
+        while (transform != null)
+        {
+            if (transform.name == name)
+                return true;
+            transform = transform.parent;
+        }
+
+        return false;
     }
 
     static void WireStartGameButtons()
