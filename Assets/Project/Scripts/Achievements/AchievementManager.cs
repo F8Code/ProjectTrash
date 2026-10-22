@@ -76,6 +76,7 @@ public class AchievementManager : MonoBehaviour
         BuildDefinitions();
         Load();
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SteamAchievements.PushLocalUnlocks(this);
     }
 
     void OnDestroy()
@@ -194,12 +195,21 @@ public class AchievementManager : MonoBehaviour
             return;
 
         Save();
+        SteamAchievements.Unlock(id);
         AchievementDefinition definition = _definitions.Find(item => item.Id == id);
         if (definition != null)
         {
             _unlockedThisRun.Add(definition);
             AchievementUnlocked?.Invoke(definition);
         }
+    }
+
+    public void ImportUnlocked(string id)
+    {
+        if (string.IsNullOrEmpty(id) || !_unlockedIds.Add(id))
+            return;
+
+        Save();
     }
 
     void BuildDefinitions()
