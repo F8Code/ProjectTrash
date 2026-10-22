@@ -97,7 +97,7 @@ public class SteamAchievements : MonoBehaviour
             return;
 
         _statsReceived = Steamworks.Callback<Steamworks.UserStatsReceived_t>.Create(OnUserStatsReceived);
-        Steamworks.SteamUserStats.RequestCurrentStats();
+        //Steamworks.SteamUserStats.RequestCurrentStats();
 #endif
     }
 
