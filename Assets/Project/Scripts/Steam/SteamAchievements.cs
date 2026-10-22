@@ -14,10 +14,13 @@ public class SteamAchievements : MonoBehaviour
     {
         if (_instance != null)
             return;
-
+#if UNITY_WEBGL
+        return;
+#else
         GameObject host = new("SteamAchievements");
         DontDestroyOnLoad(host);
         _instance = host.AddComponent<SteamAchievements>();
+#endif
     }
 
     void Awake()

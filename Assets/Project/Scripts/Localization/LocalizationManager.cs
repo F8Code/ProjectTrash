@@ -332,6 +332,11 @@ public class LocalizationManager : MonoBehaviour
             return;
         }
 
+#if UNITY_WEBGL
+        Debug.LogWarning("[Localization] Skipping runtime Chinese font atlas on WebGL.");
+        return;
+#endif
+
         _chineseFont = TMP_FontAsset.CreateFontAsset(
             source,
             90,

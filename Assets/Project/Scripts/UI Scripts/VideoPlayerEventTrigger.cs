@@ -51,6 +51,11 @@ namespace ProjectTrash.UI
                 enabled = false;
                 return;
             }
+
+#if UNITY_WEBGL
+            _videoPlayer.waitForFirstFrame = false;
+            _videoPlayer.skipOnDrop = true;
+#endif
         }
 
         private void OnEnable()
@@ -63,6 +68,9 @@ namespace ProjectTrash.UI
                 _videoPlayer.prepareCompleted += OnVideoPrepared;
 
                 _hasFinished = false;
+#if UNITY_WEBGL
+                StartCoroutine(SkipIfVideoStuck());
+#endif
             }
         }
 
@@ -75,6 +83,18 @@ namespace ProjectTrash.UI
                 _videoPlayer.started -= OnVideoStarted;
                 _videoPlayer.prepareCompleted -= OnVideoPrepared;
             }
+        }
+
+        System.Collections.IEnumerator SkipIfVideoStuck()
+        {
+            yield return new WaitForSeconds(4f);
+            if (_hasFinished)
+                yield break;
+            if (_videoPlayer != null && _videoPlayer.isPlaying)
+                yield break;
+
+            Debug.LogWarning("[VideoPlayerEventTrigger] Video did not start on WebGL; skipping.");
+            OnVideoFinished(_videoPlayer);
         }
 
         /// <summary>
