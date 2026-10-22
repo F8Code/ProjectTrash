@@ -13360,7 +13360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1191254830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13425,7 +13425,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191254829}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -28903,6 +28903,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2576362538466414392, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576362538466414392, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2846312991437898655, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -28987,9 +28995,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7214588337630984607, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214588337630984607, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7511529400094926914, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
       propertyPath: m_Name
       value: UICanvas_GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931196642858427296, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931196642858427296, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

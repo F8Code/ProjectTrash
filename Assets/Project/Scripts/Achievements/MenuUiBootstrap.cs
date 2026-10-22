@@ -31,6 +31,7 @@ public class MenuUiBootstrap : MonoBehaviour
         WireAchievementsButton();
         WireAchievementsBackButton();
         WireStartGameButtons();
+        FixMenuHoverIcons();
         CreateLanguageButton();
         if (LocalizationManager.Instance != null)
         {
@@ -104,6 +105,20 @@ public class MenuUiBootstrap : MonoBehaviour
     {
         if (UIManager.Instance != null)
             UIManager.Instance.ShowPanel("UICanvas_Startscreen");
+    }
+
+    static void FixMenuHoverIcons()
+    {
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Button button in buttons)
+        {
+            if (!button.name.StartsWith("MainButton"))
+                continue;
+            if (button.transform.Find("Logo") == null)
+                continue;
+            if (button.GetComponent<MenuHoverIcon>() == null)
+                button.gameObject.AddComponent<MenuHoverIcon>();
+        }
     }
 
     static void WireStartGameButtons()

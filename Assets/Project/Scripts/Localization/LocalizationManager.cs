@@ -22,7 +22,8 @@ public class LocalizationManager : MonoBehaviour
     readonly Dictionary<int, Vector3> _originalFontSizes = new();
     readonly Dictionary<int, string[]> _dropdownSources = new();
     TMP_FontAsset _chineseFont;
-    const float ChineseFontScale = 0.5f;
+    const float TitleFontScale = 0.55f;
+    const float MenuFontScale = 0.8f;
     public string CurrentLanguage { get; private set; } = EnglishCode;
     public bool IsChinese => CurrentLanguage == ChineseCode;
 
@@ -146,8 +147,27 @@ public class LocalizationManager : MonoBehaviour
         if (collapsed != trimmed)
             yield return collapsed;
 
+        string unspacedLetters = CollapseSpacedLetters(collapsed);
+        if (unspacedLetters != collapsed)
+            yield return unspacedLetters;
+
         if (collapsed.EndsWith(":"))
             yield return collapsed.TrimEnd(':').Trim() + ":";
+    }
+
+    static string CollapseSpacedLetters(string source)
+    {
+        string[] parts = source.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length < 2)
+            return source;
+
+        foreach (string part in parts)
+        {
+            if (part.Length != 1)
+                return source;
+        }
+
+        return string.Concat(parts);
     }
 
     static bool TryGetEnglishSource(string chinese, out string english)
@@ -172,11 +192,39 @@ public class LocalizationManager : MonoBehaviour
 
         TMP_Text[] labels = FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (TMP_Text label in labels)
+        {
+            ApplyFontScale(label);
             ApplyToLabel(label);
+        }
 
         TMP_Dropdown[] dropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (TMP_Dropdown dropdown in dropdowns)
             ApplyToDropdown(dropdown);
+    }
+
+    void ApplyFontScale(TMP_Text label)
+    {
+        if (label == null)
+            return;
+
+        int id = label.GetInstanceID();
+        if (!_originalFontSizes.ContainsKey(id))
+            _originalFontSizes[id] = new Vector3(label.fontSize, label.fontSizeMin, label.fontSizeMax);
+
+        Vector3 sizes = _originalFontSizes[id];
+        bool worldSpace = sizes.x > 0f && sizes.x < 8f;
+        if (worldSpace)
+            return;
+
+        float scale = sizes.x >= 120f ? TitleFontScale : MenuFontScale;
+        if (!IsChinese)
+            scale *= sizes.x >= 120f ? 1.2f : 1.3f;
+        label.fontSize = sizes.x * scale;
+        label.fontSizeMin = sizes.y * scale;
+        label.fontSizeMax = Mathf.Max(sizes.z * scale, label.fontSize);
+        label.enableWordWrapping = false;
+        label.textWrappingMode = TextWrappingModes.NoWrap;
+        label.overflowMode = TextOverflowModes.Overflow;
     }
 
     public void ApplyFont(TMP_Text label)
@@ -187,8 +235,8 @@ public class LocalizationManager : MonoBehaviour
         int id = label.GetInstanceID();
         if (!_originalFonts.ContainsKey(id) && label.font != null && label.font != _chineseFont)
             _originalFonts[id] = label.font;
-        if (!_originalFontSizes.ContainsKey(id))
-            _originalFontSizes[id] = new Vector3(label.fontSize, label.fontSizeMin, label.fontSizeMax);
+
+        ApplyFontScale(label);
 
         bool needsCjkFont = _chineseFont != null && (IsChinese || IsLanguageToggle(label));
         if (needsCjkFont)
@@ -200,15 +248,6 @@ public class LocalizationManager : MonoBehaviour
         else if (_originalFonts.TryGetValue(id, out TMP_FontAsset original) && original != null)
         {
             label.font = original;
-        }
-
-        if (_originalFontSizes.TryGetValue(id, out Vector3 sizes))
-        {
-            bool worldSpaceLabel = sizes.x > 0f && sizes.x < 4f;
-            float scale = IsChinese && !worldSpaceLabel ? ChineseFontScale : 1f;
-            label.fontSize = sizes.x * scale;
-            label.fontSizeMin = sizes.y * scale;
-            label.fontSizeMax = sizes.z * scale;
         }
     }
 
@@ -233,7 +272,7 @@ public class LocalizationManager : MonoBehaviour
                 return;
             }
 
-            _sourceTexts[id] = ResolveSource(current);
+            _sourceTexts[id] = ResolveSource(current.Trim().Trim('\u200B'));
         }
 
         _sourceTexts[id] = ResolveSource(_sourceTexts[id]);

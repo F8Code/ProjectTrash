@@ -588,6 +588,12 @@ MonoBehaviour:
     _displayScoreInformation: 0
     SuccessSound: {fileID: 8300000, guid: 20c2bbb14c56e4f4bba435825258efdb, type: 3}
     GreaterSuccessSound: {fileID: 8300000, guid: 6fce2a18f55085146abb8c2aa43aaed0, type: 3}
+    GreaterSuccessVariants:
+    - {fileID: 8300000, guid: 8f3a1c2e4b5d6e7f8091a2b3c4d5e6f1, type: 3}
+    - {fileID: 8300000, guid: 9a4b2d3e5c6f708192a3b4c5d6e7f801, type: 3}
+    - {fileID: 8300000, guid: 0b5c3e4f6d708192a3b4c5d6e7f80912, type: 3}
+    - {fileID: 8300000, guid: 1c6d4f507e8192a3b4c5d6e7f8091a23, type: 3}
+    - {fileID: 8300000, guid: 2d7e50618f92a3b4c5d6e7f8091a2b34, type: 3}
     MistakeSound: {fileID: 8300000, guid: ee3d8c8315555ad40a200d6a98be64e4, type: 3}
     _successVolume: 0.5
     _greaterSuccessVolume: 0.75
@@ -10203,6 +10209,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2846312991437898655, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4018301556326933883, guid: 1c0f1d88d2c5a994b99f97b1f0ae68b3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12395,6 +12405,8 @@ MonoBehaviour:
   - {fileID: 635058315}
   - {fileID: 1485585674}
   - {fileID: 635058314}
+  _truckDropPoint: {fileID: 0}
+  _truckDropPointFallbackOffset: {x: 0, y: 0.4, z: 0}
   _trashSpawnStages:
   - DurationSeconds: 10
     SpawnDelaySeconds: 2

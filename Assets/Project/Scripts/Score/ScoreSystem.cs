@@ -54,6 +54,7 @@ public class ScoreSystem
     public float ScoreCurrentlyMultiplied => GetCurrentlyMultipliedScore();
 
     float _pitch = 1;
+    int _greaterSuccessIndex;
 
     public event Action<float> OnScoreFlash;
 
@@ -88,16 +89,37 @@ public class ScoreSystem
 
             AudioClip clip = _scoreMultiplier == 0f ? SuccessSound : _scoreMultiplierLevels[GetMultiplierIndex()].MultiplierSound;
 
+            bool atMaxMultiplier = _scoreMultiplierLevels != null &&
+                _scoreMultiplierLevels.Length > 0 &&
+                GetMultiplierIndex() == _scoreMultiplierLevels.Length - 1;
+            int extraAtMax = atMaxMultiplier
+                ? Mathf.Max(0, _scores.Count - ((int)_scoreMultiplierRequiredComboInclusiveSeconds + _scoreMultiplierLevels.Length - 1))
+                : 0;
+
             if (_scores.Count >= _scoreMultiplierLevels.Length)
                 _pitch = GetPitchBasedOnStreak(_scores.Count - _scoreMultiplierLevels.Length);
 
-            AudioManager.Instance.PlayAudio(clip, _successVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, pitch: _pitch, AudioManager.AudioMixerType.SFX);
+            float volume = _successVolume;
+            if (atMaxMultiplier)
+            {
+                float t = 1f - Mathf.Exp(-0.12f * extraAtMax);
+                volume = Mathf.Lerp(_successVolume, Mathf.Min(1f, _successVolume * 1.85f), t);
+                _pitch = Mathf.Lerp(_pitch, 2.35f, t);
+            }
+
+            AudioManager.Instance.PlayAudio(clip, volume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, pitch: _pitch, AudioManager.AudioMixerType.SFX);
+
+            if (atMaxMultiplier && extraAtMax > 0)
+            {
+                AudioClip accent = _scoreMultiplierLevels[^1].MultiplierSound;
+                AudioManager.Instance.PlayAudio(accent, volume * 0.4f, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, pitch: _pitch * 1.14f, AudioManager.AudioMixerType.SFX);
+            }
 
             if (_scoreMultiplier > 0)
                 OnScoreFlash?.Invoke(_scoreMultiplier);
 
             if (_scores.Count > 1 && _scores.Count % 5 == 1)
-                AudioManager.Instance.PlayAudio(GreaterSuccessSound, _successVolume, AudioPlaybackContext.PlaybackPriority.High, GameManager.Instance.transform.position, false, pitch: 1, AudioManager.AudioMixerType.SFX);
+                AudioManager.Instance.PlayAudio(GreaterSuccessSound, _greaterSuccessVolume, AudioPlaybackContext.PlaybackPriority.High, GameManager.Instance.transform.position, false, pitch: 1, AudioManager.AudioMixerType.SFX);
         }
         else
         {
@@ -115,6 +137,7 @@ public class ScoreSystem
             AudioManager.Instance.PlayAudio(MistakeSound, _mistakeVolume, AudioPlaybackContext.PlaybackPriority.Medium, GameManager.Instance.transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         }
 
+        Debug.Log(CurrentStreak);
         AchievementManager.Instance?.NotifyScore(score, CurrentStreak, Score + (int)ScoreCurrentlyMultiplied);
     }
 
@@ -142,9 +165,4 @@ public class ScoreSystem
     {
         return (uint)Mathf.Clamp(_scores.Count - _scoreMultiplierRequiredComboInclusiveSeconds, 0, _scoreMultiplierLevels.Length - 1);
     }
-    
-    //public void RestoreLife()
-    //{
-    //    _mistakesAllowed++;
-    //}
 }
