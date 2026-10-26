@@ -16,11 +16,21 @@ public class AtmosphereEffects : MonoBehaviour
         Smoke
     }
 
-    const float MinInterval = 5f;
-    const float MaxInterval = 15f;
+    enum EffectGroup
+    {
+        Lights,
+        Shakes,
+        Gases
+    }
+
+    const float MinInterval = 4f;
+    const float MaxInterval = 10f;
     const float SfxVolume = 0.4f;
     const float SettleDuration = 1f;
     const float CrashDelay = 1f;
+    const float StartupDelay = 20f;
+    const float ShakeAmplitudeScale = 0.8f;
+    const float GasAlphaScale = 0.8f;
 
     static AtmosphereEffects _instance;
 
@@ -28,7 +38,7 @@ public class AtmosphereEffects : MonoBehaviour
 
     readonly List<Light> _sceneLights = new();
     readonly Dictionary<Light, float> _lightIntensities = new();
-    readonly MaterialPropertyBlock _handBlock = new();
+    MaterialPropertyBlock _handBlock;
     Renderer[] _handRenderers;
 
     public AudioClip _lightClip; 
@@ -51,7 +61,7 @@ public class AtmosphereEffects : MonoBehaviour
     Transform _dustRoot;
     readonly List<DustCloud> _dustClouds = new();
     Sprite[] _dustSprites;
-    Effect? _lastNonLightEffect;
+    EffectGroup? _lastGroup;
 
     class DustCloud
     {
@@ -94,7 +104,6 @@ public class AtmosphereEffects : MonoBehaviour
         _instance = this;
         EnsureSfxSource();
         LoadClips();
-        CacheLights();
         StartCoroutine(RunLoop());
     }
 
@@ -132,7 +141,23 @@ public class AtmosphereEffects : MonoBehaviour
 
     IEnumerator RunLoop()
     {
-        yield return new WaitForSeconds(Random.Range(MinInterval, MaxInterval));
+        while (GameManager.Instance == null)
+            yield return null;
+
+        float startup = 0f;
+        while (startup < StartupDelay && !ShouldStopEffects())
+        {
+            if (IsGameplayActive())
+                startup += Time.deltaTime;
+            yield return null;
+        }
+
+        if (ShouldStopEffects())
+            yield break;
+
+        CacheLights();
+        CacheHandRenderers();
+        LoadDustSprites();
 
         while (!ShouldStopEffects())
         {
@@ -140,40 +165,70 @@ public class AtmosphereEffects : MonoBehaviour
             if (ShouldStopEffects())
                 yield break;
 
-            Effect effect = PickEffect();
-            yield return Play(effect);
+            Effect? effect = null;
+            for (int attempt = 0; attempt < 8; attempt++)
+            {
+                Effect candidate = PickEffect();
+                if (CanPlay(candidate))
+                {
+                    effect = candidate;
+                    break;
+                }
+            }
+
+            if (effect.HasValue)
+                yield return Play(effect.Value);
+
             yield return new WaitForSeconds(Random.Range(MinInterval, MaxInterval));
         }
     }
 
     static bool IsGameplayActive()
     {
-        return GameManager.Instance != null && GameManager.Instance.CurrentState is GamePlayingState;
+        if (GameManager.Instance == null)
+            return false;
+        return GameManager.Instance.CurrentState is GamePlayingState or GameTutorialState;
     }
 
     static bool ShouldStopEffects()
     {
-        return GameManager.Instance == null || GameManager.Instance.CurrentState is GameOverState;
+        if (GameManager.Instance == null)
+            return false;
+        return GameManager.Instance.CurrentState is GameOverState;
+    }
+
+    bool CanPlay(Effect effect)
+    {
+        if (effect is Effect.FlickerAll or Effect.FlickerOne)
+        {
+            CacheLights();
+            return _sceneLights.Count > 0;
+        }
+
+        if (effect is Effect.Fog or Effect.Smoke)
+        {
+            Sprite[] sprites = LoadDustSprites();
+            return sprites != null && sprites.Length > 0;
+        }
+
+        return true;
     }
 
     Effect PickEffect()
     {
-        Effect picked;
-        int guard = 0;
-        do
+        List<EffectGroup> groups = new() { EffectGroup.Lights, EffectGroup.Shakes, EffectGroup.Gases };
+        if (_lastGroup is EffectGroup.Shakes or EffectGroup.Gases)
+            groups.Remove(_lastGroup.Value);
+
+        EffectGroup group = groups[Random.Range(0, groups.Count)];
+        _lastGroup = group;
+        return group switch
         {
-            picked = (Effect)Random.Range(0, 7);
-            guard++;
-        }
-        while (guard < 24 && !IsLight(picked) && _lastNonLightEffect == picked);
-
-        if (!IsLight(picked))
-            _lastNonLightEffect = picked;
-
-        return picked;
+            EffectGroup.Lights => Random.value < 0.5f ? Effect.FlickerAll : Effect.FlickerOne,
+            EffectGroup.Shakes => (Effect)Random.Range((int)Effect.ShakeLight, (int)Effect.ShakeHeavy + 1),
+            _ => Random.value < 0.5f ? Effect.Fog : Effect.Smoke
+        };
     }
-
-    static bool IsLight(Effect effect) => effect is Effect.FlickerAll or Effect.FlickerOne;
 
     IEnumerator Play(Effect effect)
     {
@@ -186,9 +241,9 @@ public class AtmosphereEffects : MonoBehaviour
         {
             Effect.FlickerAll => FlickerLights(true, Random.Range(3f, 10f), 1.5f),
             Effect.FlickerOne => FlickerLights(false, Random.Range(4f, 12f), 2f),
-            Effect.ShakeLight => Shake(0.01f, 10f, 0.3f),
-            Effect.ShakeMedium => Shake(0.08f, 4f, 0.5f),
-            Effect.ShakeHeavy => Shake(0.2f, 1.5f, 0.4f),
+            Effect.ShakeLight => Shake(0.01f * ShakeAmplitudeScale, 10f, 0.3f),
+            Effect.ShakeMedium => Shake(0.08f * ShakeAmplitudeScale, 4f, 0.5f),
+            Effect.ShakeHeavy => Shake(0.2f * ShakeAmplitudeScale, 1.5f, 0.4f),
             Effect.Fog => PlayDust(fog: true),
             _ => PlayDust(fog: false)
         };
@@ -312,6 +367,8 @@ public class AtmosphereEffects : MonoBehaviour
         {
             List<Light> allowed = GetSingleFlickerLights();
             if (allowed.Count == 0)
+                allowed = _sceneLights;
+            if (allowed.Count == 0)
                 yield break;
             targets = new List<Light> { allowed[Random.Range(0, allowed.Count)] };
         }
@@ -406,7 +463,7 @@ public class AtmosphereEffects : MonoBehaviour
         float duration = fog ? Random.Range(6f, 10f) : Random.Range(2.2f, 3.5f);
         float fadeIn = fog ? 1.2f : 0.35f;
         float fadeOut = fog ? 1.4f : 0.7f;
-        float peakAlpha = fog ? 0.25f : 0.72f;
+        float peakAlpha = (fog ? 0.25f : 0.72f) * GasAlphaScale;
         Color color = fog ? new Color(0.82f, 0.86f, 0.9f) : new Color(0.04f, 0.04f, 0.04f);
         int count = fog ? 10 : 12;
         float sizeMin = fog ? 5.5f : 2.8f;
@@ -627,6 +684,8 @@ public class AtmosphereEffects : MonoBehaviour
         CacheHandRenderers();
         if (_handRenderers == null)
             return;
+
+        _handBlock ??= new MaterialPropertyBlock();
 
         Color color = Color.white * Mathf.Clamp(multiplier, 0.05f, 1.15f);
         color.a = 1f;
