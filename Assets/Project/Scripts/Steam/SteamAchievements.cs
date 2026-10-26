@@ -24,6 +24,7 @@ public class SteamAchievements : MonoBehaviour
         GameObject host = new("SteamAchievements");
         DontDestroyOnLoad(host);
         _instance = host.AddComponent<SteamAchievements>();
+        host.AddComponent<SteamLeaderboards>();
 #endif
     }
 
@@ -60,6 +61,8 @@ public class SteamAchievements : MonoBehaviour
         if (_instance == this)
             _instance = null;
     }
+
+    public static bool IsReady => _instance != null && _instance._initialized;
 
     public static void Unlock(string id)
     {

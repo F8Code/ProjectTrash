@@ -65,6 +65,7 @@ public class LeaderboardManager : MonoBehaviour
             _leaderboardEntries = _leaderboardEntries.Take(MAX_ENTRIES).ToList();
 
         SaveLeaderboard();
+        SteamLeaderboards.UploadScore(score);
         Debug.Log($"Leaderboard: Added entry for {playerName} with score {score}");
     }
 

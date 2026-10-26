@@ -437,7 +437,7 @@ public class LocalizationManager : MonoBehaviour
         Transform current = label != null ? label.transform : null;
         while (current != null)
         {
-            if (current.name == "AchievementGrid")
+            if (current.name == "AchievementGrid" || current.name == "LeaderboardSourceToggle" || current.name == "LeaderboardStatus")
                 return true;
             current = current.parent;
         }

@@ -138,5 +138,13 @@ public static class LocalizationTable
         { "In one run, sort every trash item into the correct bin at least once.", "在单局内将每一种垃圾都正确分类至少一次。" },
         { "Achievements unlocked", "本局解锁成就" },
         { "No new achievements", "本局未解锁成就" },
+        { "Local", "本地" },
+        { "World", "全球" },
+        { "World Leaderboard", "全球排行榜" },
+        { "Local Leaderboard", "本地排行榜" },
+        { "Connecting to Steam...", "正在连接 Steam..." },
+        { "Steam is offline", "Steam 未连接" },
+        { "Loading...", "加载中..." },
+        { "No world scores yet", "暂无全球分数" },
     };
 }

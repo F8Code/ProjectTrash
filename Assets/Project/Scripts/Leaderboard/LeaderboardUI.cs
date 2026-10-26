@@ -29,6 +29,11 @@ public class LeaderboardUI : MonoBehaviour
     private int _currentScore;
     private bool _scoreSaved = false;
     private string _savedEntryName = ""; // Track the name that was saved
+    private bool _showWorld;
+    private Button _sourceToggle;
+    private TextMeshProUGUI _sourceToggleLabel;
+    private TextMeshProUGUI _boardTitle;
+    private TextMeshProUGUI _statusLabel;
 
     private void Awake()
     {
@@ -36,19 +41,33 @@ public class LeaderboardUI : MonoBehaviour
             _saveButton.onClick.AddListener(OnSaveButtonClicked);
     }
 
+    private void OnEnable()
+    {
+        SteamLeaderboards.EntriesUpdated += OnWorldEntriesUpdated;
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnDisable()
+    {
+        SteamLeaderboards.EntriesUpdated -= OnWorldEntriesUpdated;
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged -= OnLanguageChanged;
+    }
+
     private void Start()
     {
         HideAllPanels();
-
-        // Refresh leaderboard display
+        EnsureSourceToggle();
         RefreshLeaderboardDisplay();
     }
 
     private void OnDestroy()
     {
-        // Clean up listeners
         if (_saveButton != null)
             _saveButton.onClick.RemoveListener(OnSaveButtonClicked);
+        if (_sourceToggle != null)
+            _sourceToggle.onClick.RemoveListener(OnSourceToggleClicked);
     }
 
     /// <summary>
@@ -110,7 +129,9 @@ public class LeaderboardUI : MonoBehaviour
         if (CursorManager.Instance != null)
             CursorManager.Instance.ShowCursorForUI();
 
-        // Refresh leaderboard display
+        EnsureSourceToggle();
+        if (_showWorld)
+            SteamLeaderboards.RequestWorldEntries();
         RefreshLeaderboardDisplay();
     }
 
@@ -207,28 +228,189 @@ public class LeaderboardUI : MonoBehaviour
         ShowLeaderboard();
     }
 
+    private void OnWorldEntriesUpdated()
+    {
+        if (_showWorld)
+            RefreshLeaderboardDisplay();
+    }
+
+    private void OnLanguageChanged() => RefreshSourceLabels();
+
+    private void OnSourceToggleClicked()
+    {
+        _showWorld = !_showWorld;
+        if (_showWorld)
+            SteamLeaderboards.RequestWorldEntries();
+        RefreshLeaderboardDisplay();
+    }
+
     private void RefreshLeaderboardDisplay()
     {
+        EnsureSourceToggle();
+        RefreshSourceLabels();
+
         foreach (var entry in _spawnedEntries)
             Destroy(entry);
 
         _spawnedEntries.Clear();
 
-        List<LeaderboardEntry> entries = LeaderboardManager.Instance.LeaderboardEntries;
+        IReadOnlyList<LeaderboardEntry> entries = _showWorld
+            ? SteamLeaderboards.WorldEntries
+            : LeaderboardManager.Instance != null
+                ? LeaderboardManager.Instance.LeaderboardEntries
+                : null;
 
-        for (int i = 0; i < Mathf.Min(entries.Count, _maxVisibleEntries); i++)
+        bool hideRows = _showWorld && (SteamLeaderboards.IsDownloading || entries == null || entries.Count == 0);
+        if (!hideRows && entries != null)
         {
-            if (_entryPrefab != null && _entriesContainer != null)
+            for (int i = 0; i < Mathf.Min(entries.Count, _maxVisibleEntries); i++)
             {
-                GameObject entryObj = Instantiate(_entryPrefab, _entriesContainer);
-                _spawnedEntries.Add(entryObj);
+                if (_entryPrefab != null && _entriesContainer != null)
+                {
+                    GameObject entryObj = Instantiate(_entryPrefab, _entriesContainer);
+                    _spawnedEntries.Add(entryObj);
 
-                if (entryObj.TryGetComponent<LeaderboardEntryUI>(out var entryUI))
-                    entryUI.SetData(i + 1, entries[i].PlayerName, entries[i].Score);
+                    if (entryObj.TryGetComponent<LeaderboardEntryUI>(out var entryUI))
+                        entryUI.SetData(i + 1, entries[i].PlayerName, entries[i].Score);
+                }
             }
         }
 
         Debug.Log($"<color=green>[LeaderboardUI] Spawned {_spawnedEntries.Count} entry objects</color>");
+    }
+
+    void EnsureSourceToggle()
+    {
+        Transform panel = FindNamedTransform("Panel_Leaderboard");
+        if (panel == null)
+            return;
+
+        if (_boardTitle == null)
+        {
+            Transform title = FindNamedTransform("Txt_Leaderboard");
+            if (title != null)
+                _boardTitle = title.GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+
+        if (_sourceToggle == null)
+        {
+            Transform existing = panel.Find("LeaderboardSourceToggle");
+            if (existing != null)
+                DestroyImmediate(existing.gameObject);
+
+            Transform back = panel.Find("BackButton");
+            GameObject toggleObject = back != null
+                ? Instantiate(back.gameObject, panel)
+                : new GameObject("LeaderboardSourceToggle", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+
+            toggleObject.name = "LeaderboardSourceToggle";
+            RectTransform rect = toggleObject.GetComponent<RectTransform>();
+            rect.SetParent(panel, false);
+            rect.anchorMin = new Vector2(0.016f, 0.046f);
+            rect.anchorMax = new Vector2(0.22f, 0.114f);
+            rect.pivot = new Vector2(0f, 0f);
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            rect.anchoredPosition = Vector2.zero;
+            rect.localScale = Vector3.one;
+
+            Transform logo = toggleObject.transform.Find("Logo");
+            if (logo != null)
+                logo.gameObject.SetActive(false);
+
+            _sourceToggle = toggleObject.GetComponent<Button>();
+            if (_sourceToggle != null)
+            {
+                _sourceToggle.onClick = new Button.ButtonClickedEvent();
+                _sourceToggle.onClick.AddListener(OnSourceToggleClicked);
+            }
+
+            _sourceToggleLabel = toggleObject.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (_sourceToggleLabel != null)
+            {
+                RectTransform labelRect = _sourceToggleLabel.rectTransform;
+                labelRect.anchorMin = Vector2.zero;
+                labelRect.anchorMax = Vector2.one;
+                labelRect.offsetMin = Vector2.zero;
+                labelRect.offsetMax = Vector2.zero;
+                _sourceToggleLabel.alignment = TextAlignmentOptions.Center;
+                _sourceToggleLabel.enableAutoSizing = true;
+                _sourceToggleLabel.fontSizeMin = 18f;
+                _sourceToggleLabel.fontSizeMax = 40f;
+                _sourceToggleLabel.enableWordWrapping = false;
+                _sourceToggleLabel.overflowMode = TextOverflowModes.Overflow;
+            }
+        }
+
+        if (_statusLabel == null)
+        {
+            Transform existingStatus = panel.Find("LeaderboardStatus");
+            if (existingStatus != null)
+                DestroyImmediate(existingStatus.gameObject);
+
+            GameObject statusObject = new("LeaderboardStatus", typeof(RectTransform), typeof(TextMeshProUGUI));
+            statusObject.transform.SetParent(panel, false);
+            RectTransform statusRect = statusObject.GetComponent<RectTransform>();
+            statusRect.anchorMin = new Vector2(0.28f, 0.16f);
+            statusRect.anchorMax = new Vector2(0.72f, 0.28f);
+            statusRect.offsetMin = Vector2.zero;
+            statusRect.offsetMax = Vector2.zero;
+            _statusLabel = statusObject.GetComponent<TextMeshProUGUI>();
+            _statusLabel.alignment = TextAlignmentOptions.Center;
+            _statusLabel.enableWordWrapping = true;
+            _statusLabel.fontSize = 28f;
+            _statusLabel.raycastTarget = false;
+            if (_sourceToggleLabel != null)
+            {
+                _statusLabel.font = _sourceToggleLabel.font;
+                _statusLabel.color = _sourceToggleLabel.color;
+            }
+            else if (_gameOverScoreText != null)
+            {
+                _statusLabel.font = _gameOverScoreText.font;
+                _statusLabel.color = _gameOverScoreText.color;
+            }
+        }
+    }
+
+    void RefreshSourceLabels()
+    {
+        SetLocalized(_sourceToggleLabel, _showWorld ? "Local" : "World");
+        SetLocalized(_boardTitle, _showWorld ? "World Leaderboard" : "Leaderboard");
+
+        if (_statusLabel != null)
+        {
+            bool showStatus = _showWorld && (SteamLeaderboards.IsDownloading || SteamLeaderboards.WorldEntries.Count == 0);
+            _statusLabel.gameObject.SetActive(showStatus);
+            if (showStatus)
+            {
+                string status = string.IsNullOrEmpty(SteamLeaderboards.Status) ? "No world scores yet" : SteamLeaderboards.Status;
+                SetLocalized(_statusLabel, status);
+            }
+        }
+    }
+
+    static void SetLocalized(TMP_Text label, string englishSource)
+    {
+        if (label == null)
+            return;
+
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.SetLabelSource(label, englishSource);
+        else
+            label.text = englishSource;
+    }
+
+    static Transform FindNamedTransform(string objectName)
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+        {
+            if (transform.name == objectName)
+                return transform;
+        }
+
+        return null;
     }
 
     void RefreshGameOverAchievements()
