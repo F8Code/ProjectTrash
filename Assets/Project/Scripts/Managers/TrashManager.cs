@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 
@@ -46,12 +48,14 @@ public class TrashManager : MonoBehaviour
     [SerializeField] Transform _trashSpawnPosition;
     [Tooltip("Trash cans that award points when correct trash is thrown in them")]
     [SerializeField] List<TrashCan> _trashCans = new();
+    public IReadOnlyList<TrashCan> TrashCans => _trashCans;
     [Tooltip("Trash conveyors that move trash from A to B")]
     [SerializeField] List<TrashConveyor> _trashConveyors = new();
+    [Tooltip("Where conveyor fall-offs are placed inside the truck. If empty, uses the table play area.")]
+    [SerializeField] Transform _truckDropPoint;
+    [SerializeField] Vector3 _truckDropPointFallbackOffset = new Vector3(0f, 0.4f, 0f);
 
     [Header("Trash spawn settings")]
-    [Tooltip("Ammount of trash that needs to be despawned for the tutorial stage to finish")]
-    [SerializeField] uint _trashToEndTutorial = 3;
     [Tooltip("Trash spawning stages that are processed one after another depending on their duration")]
     [SerializeField] List<TrashSpawnStage> _trashSpawnStages = new();
     [Tooltip("The final trash spawning stage that plays when all others have finished")]
@@ -64,6 +68,7 @@ public class TrashManager : MonoBehaviour
 
     //Tutorial stage related
     uint _trashDespawned = 0;
+    public event EventHandler TrashSpawned;
 
     bool _isTutorial => GameManager.Instance.CurrentState is GameTutorialState || (GameManager.Instance.CurrentState is GamePausedState && GameManager.Instance.PreviousState is GameTutorialState);
 
@@ -92,7 +97,7 @@ public class TrashManager : MonoBehaviour
     void OnEnable()
     {
         foreach (TrashCan trashCan in _trashCans)
-            trashCan.OnTrashCollected += CollectTrash;
+            trashCan.OnTrashCollected += CollectTrashFromBin;
     }
 
     void Start()
@@ -163,6 +168,34 @@ public class TrashManager : MonoBehaviour
             conveyor.CustomUpdate();
     }
 
+    public bool RescueFallenTrash(Trash trash)
+    {
+        if (trash == null)
+            return false;
+
+        Vector3 destination;
+        if (_truckDropPoint != null)
+            destination = _truckDropPoint.position;
+        else if (PlayerManager.Instance != null)
+            destination = PlayerManager.Instance.Arm.PlayAreaOrigin + _truckDropPointFallbackOffset;
+        else if (_trashConveyors.Count > 0)
+        {
+            TrashConveyor dumpConveyor = _trashConveyors[_trashConveyors.Count - 1];
+            destination = dumpConveyor.transform.position + dumpConveyor.transform.forward * 0.75f + Vector3.up * 0.4f;
+        }
+        else
+            return false;
+
+        trash.TeleportTo(destination);
+        return true;
+    }
+
+    void CollectTrashFromBin(Trash trash, int score)
+    {
+        AchievementManager.Instance?.NotifyTrashSortedInBin(trash, score > 0);
+        CollectTrash(trash, score);
+    }
+
     void CollectTrash(Trash trash, int score)
     {
         GameManager.Instance.ScoreSystem.AddScore(score);
@@ -185,9 +218,11 @@ public class TrashManager : MonoBehaviour
             foreach (TrashCan trashCan in _trashCans)
                 trashCan.StopIgnoringTrash(trash);
 
-            _trashDespawned++;
-            if(_isTutorial)
+            if (_isTutorial)
+            {
+                _trashDespawned++;
                 ProgressTutorial();
+            }
         }
 
         _trashToDespawn.Clear();
@@ -195,16 +230,17 @@ public class TrashManager : MonoBehaviour
 
     void ProgressTutorial()
     {
-        if (_trashDespawned >= _trashToEndTutorial)
-            GameManager.Instance.EndTutorialStage();
+        if (_trashDespawned > GameManager.Instance.MistakeLimit)
+            GameManager.Instance.EndGame();
 
         SpawnTrash();
+        TrashSpawned.Invoke(null, null);
     }
 
     void OnDisable()
     {
         foreach (TrashCan trashCan in _trashCans)
-            trashCan.OnTrashCollected -= CollectTrash;
+            trashCan.OnTrashCollected -= CollectTrashFromBin;
 
         foreach (Trash trash in _trash)
             trash.OnTrashCollected -= CollectTrash;

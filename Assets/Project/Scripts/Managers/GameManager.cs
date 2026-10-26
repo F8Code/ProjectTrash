@@ -4,6 +4,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("Gamemode settings")]
+    [Tooltip("If Mistakebased, the game ends once player makes as many mistakes as configured. Otherwise on Timebased, the game ends once time runs out or the multiplier is interrupted")]
+    [SerializeField] Gamemode _currentGamemode = Gamemode.Mistakebased;
+    [Tooltip("How many mistakes are allowed before the game ends")]
+    [SerializeField, Range(0, 20)] uint _mistakesAllowed = 10;
+    [Tooltip("How many seconds the game lasts before it ends")]
+    [SerializeField, Range(0, 120)] uint _gameDuration = 60;
+
     //Scoring logic
     public ScoreSystem ScoreSystem;
 
@@ -17,7 +25,10 @@ public class GameManager : MonoBehaviour
     private float _activeGameTime = 0f;
 
     private float _roundedDeltaTime = 0.01666f; //60FPS
+    public Gamemode CurrentGamemode => _currentGamemode;
+    public float GameDuration => _gameDuration;
     public float GameTime => _activeGameTime;
+    public uint MistakeLimit => _mistakesAllowed;
     public int FPS => (int)(1.0f / _roundedDeltaTime);
 
     //Leaderboard UI
@@ -30,7 +41,7 @@ public class GameManager : MonoBehaviour
     private bool _inPauseContext = false; // Track if we're in pause menu navigation
 
     // Internal logic
-    private int _initialMistakesAllowed;
+    //private int _initialMistakesAllowed;
 
     [Header("Music Settings")]
     [Tooltip("Intro Music AudioClip")]
@@ -61,8 +72,22 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _initialMistakesAllowed = ScoreSystem.LivesRemaining;
-        _stateMachine.ChangeState(new GameTutorialState());
+        switch (_currentGamemode)
+        {
+            case Gamemode.Tutorial:
+                _stateMachine.ChangeState(new GameTutorialState());
+                ScoreSystem.LivesRemaining = _mistakesAllowed;
+                break;
+            case Gamemode.Mistakebased:
+                _stateMachine.ChangeState(new GamePlayingState());
+                ScoreSystem.LivesRemaining = _mistakesAllowed;
+                break;
+            case Gamemode.Timebased:
+                _stateMachine.ChangeState(new GamePlayingState());
+                break;
+            default:
+                break;
+        }
 
         _audioSource = GetComponent<AudioSource>();
         _audioSource.clip = IntroMusicSound;
@@ -85,6 +110,27 @@ public class GameManager : MonoBehaviour
             {
                 _audioSource.clip = MusicSound;
                 _audioSource.Play();
+            }
+
+            if (_currentGamemode == Gamemode.Timebased)
+            {
+                AudioManager.Instance.UpdateEndingTimer(_gameDuration - _activeGameTime);
+                if (_activeGameTime > _gameDuration && ScoreSystem.ScoreMultiplierRemainingDuration == 0)
+                {
+                    AudioManager.Instance.StopEndingTimer();
+                    EndGame();
+                }
+            }
+            else
+            {
+                if (_currentGamemode == Gamemode.Mistakebased)
+                    AudioManager.Instance.UpdateEndingTimer(ScoreSystem.LivesRemaining);
+
+                if (ScoreSystem.LivesRemaining == 0)
+                {
+                    AudioManager.Instance.StopEndingTimer();
+                    EndGame();
+                }
             }
         }
 
@@ -117,6 +163,8 @@ public class GameManager : MonoBehaviour
         _isPaused = true;
         _inPauseContext = true;
 
+        //Time.timeScale = 0;
+
         if (UIManager.Instance != null)
             UIManager.Instance.ShowPanel(GameConstants.Canvas.PauseMenu);
 
@@ -133,6 +181,8 @@ public class GameManager : MonoBehaviour
         _isPaused = false;
         _inPauseContext = false;
 
+        //Time.timeScale = 1;
+
         // Hide all UI panels before resuming
         if (UIManager.Instance != null)
             UIManager.Instance.HideAllPanels();
@@ -143,14 +193,6 @@ public class GameManager : MonoBehaviour
         // Return to previous state (Tutorial or Playing)
         if (PreviousState != null)
             _stateMachine.ChangeState(PreviousState);
-    }
-
-    public void EndTutorialStage()
-    {
-        while (ScoreSystem.LivesRemaining < _initialMistakesAllowed)
-            ScoreSystem.RestoreLife();
-
-        SetState(new GamePlayingState());
     }
 
     public void EndGame()
@@ -168,9 +210,26 @@ public class GameManager : MonoBehaviour
         _audioSource.clip = GameOverMusicSound;
         _audioSource.Play();
 
-        // Show Game Over panel with final score
+        AchievementManager.Instance?.NotifyGameEnded();
+
         if (_leaderboardUI != null)
             _leaderboardUI.ShowGameOver(ScoreSystem.Score);
+
+        //switch (_currentGamemode)
+        //{
+        //    case Gamemode.Tutorial:
+        //        _leaderboardUI.ShowGameover();
+        //        break;
+        //    default:
+        //        if (_leaderboardUI != null)
+        //            _leaderboardUI.ShowGameOver(ScoreSystem.Score);
+        //        break;
+        //}
+    }
+
+    public void AddTimeBasedOnStreak(int extraSeconds)
+    {
+        _activeGameTime -= extraSeconds;
     }
 
     private void SetState(IGameState state)
@@ -179,5 +238,12 @@ public class GameManager : MonoBehaviour
             _stateMachine.ChangeState(state);
         else if (state is not GamePausedState)
             _stateMachine.SetPreviousState(state);
+    }
+
+    public enum Gamemode
+    {
+        Tutorial,
+        Mistakebased,
+        Timebased
     }
 }

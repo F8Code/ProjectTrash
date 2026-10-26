@@ -4,6 +4,8 @@ using Random = UnityEngine.Random;
 
 public class Trash : MonoBehaviour
 {
+    [Tooltip("Trailed used after throwing")]
+    [SerializeField] GameObject _trailVFX;
     [Tooltip("Minimum velocity magnitude required for the throw sound to play")]
     [SerializeField, Range(0f, 10f)] private float _minimumThrowVelocity = 2f;
 
@@ -19,10 +21,13 @@ public class Trash : MonoBehaviour
     Rigidbody _rb;
     GameObject _activeColliderSet;
     bool _markedForDespawn = true;
+    bool _hasReachedPlayArea;
+    float _ignoreDespawnUntil;
 
     public string Name => _data.Name;
     public TrashType Type => _data.Type;
     public uint Score => 1 + _data.MassScore + _data.SizeScore;
+    public bool HasReachedPlayArea => _hasReachedPlayArea;
 
     public event Action<Trash, int> OnTrashCollected;
 
@@ -35,7 +40,7 @@ public class Trash : MonoBehaviour
 
     private void OnEnable()
     {
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += PlayFeedbackActions;
     }
 
@@ -61,6 +66,11 @@ public class Trash : MonoBehaviour
 
         //Logic
         _markedForDespawn = false;
+        _hasReachedPlayArea = false;
+        _ignoreDespawnUntil = 0f;
+
+        if (_trailVFX != null)
+            _trailVFX.SetActive(false);
     }
 
     void ReplaceColliders(TrashData data)
@@ -104,13 +114,14 @@ public class Trash : MonoBehaviour
         if (trash != this)
             return;
 
+        _trailVFX.SetActive(!isGrabbed);
         //Debug.Log(gameObject.name + " played sound!");
 
         PlayerManager.Instance.Arm.SetArmSpeedDebuf(isGrabbed ? _data.HandSpeedMultiplier : 1f);
+        if (isGrabbed)
+            _hasReachedPlayArea = true;
         if (isGrabbed && _data.PickupSound != null)
-        {
-			AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
-        }
+            AudioManager.Instance.PlayAudio(_data.PickupSound, _grabSoundVolume, AudioPlaybackContext.PlaybackPriority.Medium, transform.position, false, 1, AudioManager.AudioMixerType.SFX);
         else if (!isGrabbed && _data.ThrowSound != null)
         {
             float velocityMagnitude = handVelocity.magnitude;
@@ -125,22 +136,66 @@ public class Trash : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.contactCount == 0 || collision.GetContact(0).normal.y < 0.45f)
+            return;
+
+        TryMarkReachedPlayArea(collision.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != GameConstants.Layer.TrashDespawnPlane)
             return;
 
-        if (_markedForDespawn) return;
-        
+        if (_markedForDespawn || Time.time < _ignoreDespawnUntil)
+            return;
+
+        if (!_hasReachedPlayArea && TrashManager.Instance != null && TrashManager.Instance.RescueFallenTrash(this))
+        {
+            Debug.Log($"Trash {Name} fell off the conveyor and was moved into the truck.");
+            return;
+        }
+
         _markedForDespawn = true;
         OnTrashCollected?.Invoke(this, -(int)Score);
 
         Debug.Log($"Trash {Name} fell to the floor. Score: {-(int)Score}");
     }
 
+    public void TeleportTo(Vector3 position)
+    {
+        _rb.position = position;
+        transform.position = position;
+        _rb.linearVelocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _hasReachedPlayArea = true;
+        _ignoreDespawnUntil = Time.time + 0.35f;
+    }
+
+    void TryMarkReachedPlayArea(GameObject other)
+    {
+        if (_hasReachedPlayArea || other == null)
+            return;
+
+        if (other.layer == GameConstants.Layer.Trash ||
+            other.layer == GameConstants.Layer.TrashDespawnPlane ||
+            other.layer == GameConstants.Layer.Player)
+            return;
+
+        if (other.GetComponentInParent<TrashConveyor>() != null)
+            return;
+
+        if (other.GetComponentInParent<PlayerArm>() != null)
+            return;
+
+        _hasReachedPlayArea = true;
+    }
+
     private void OnDisable()
     {
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed -= PlayFeedbackActions;
     }
 }

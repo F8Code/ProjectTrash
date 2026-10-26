@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LEGSwhiteboard_legswhiteboard_BaseColor
   m_Shader: {fileID: -6465566751694194690, guid: 57ba3020df7b6914da8f1f507c9167b1, type: 3}
-  m_Parent: {fileID: 2100000, guid: b224fb0d083194943a795b768a24a22a, type: 2}
+  m_Parent: {fileID: 2100000, guid: b4c3645c79ca8974fb56cd6a39f4d53b, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []

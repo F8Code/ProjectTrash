@@ -52,7 +52,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0002
+  m_Radius: 0.00025
   m_Height: 0.0007
   m_Direction: 2
   m_Center: {x: 0, y: -4.802132e-10, z: 0.0029}
@@ -76,9 +76,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.0026
+  m_Height: 0.003
   m_Direction: 2
-  m_Center: {x: 0, y: -4.802132e-10, z: 0.00128}
+  m_Center: {x: 0, y: 0, z: 0.0012}
 --- !u!1 &7679913557787629859
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,4 +168,5 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Cooking Pot
   Type: 2
   Mesh: {fileID: 807079015669808685, guid: da7cb8f11c24d364faf705eb29a91213, type: 3}
-  Material: {fileID: 2100000, guid: 9b7365b695bbdb642983eceb7ccd70ec, type: 2}
+  Material: {fileID: 2100000, guid: 1fc8cb3dde8ffc54b8e16451fbd86c6c, type: 2}
   ColliderPrefab: {fileID: 315669384938602634, guid: 616b97b8a27a12245a02c7229bfdb933, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 3

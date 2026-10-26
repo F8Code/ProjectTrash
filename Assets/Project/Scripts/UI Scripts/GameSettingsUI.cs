@@ -32,6 +32,12 @@ public class GameSettingsUI : MonoBehaviour
 
     private void OnEnable()
     {
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.LanguageChanged -= OnLanguageChanged;
+            LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
+        }
+
         // Hook up slider events
         if (_masterVolumeSlider != null)
             _masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
@@ -72,7 +78,11 @@ public class GameSettingsUI : MonoBehaviour
             _vSyncToggle.onValueChanged.RemoveListener(OnVSyncToggled);
         if (_fullscreenDropdown != null)
             _fullscreenDropdown.onValueChanged.RemoveListener(OnFullscreenModeChanged);
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged -= OnLanguageChanged;
     }
+
+    void OnLanguageChanged() => UpdateFullscreenModeText();
 
     private void LoadCurrentSettings()
     {
@@ -190,7 +200,11 @@ public class GameSettingsUI : MonoBehaviour
     {
         if (_fullscreenModeText != null && GameSettingsManager.Instance != null)
         {
-            _fullscreenModeText.text = GameSettingsManager.Instance.GetFullscreenModeString();
+            string mode = GameSettingsManager.Instance.GetFullscreenModeString();
+            _fullscreenModeText.text = LocalizationManager.Instance != null
+                ? LocalizationManager.Instance.Get(mode)
+                : mode;
+            LocalizationManager.Instance?.ApplyFont(_fullscreenModeText);
         }
     }
 

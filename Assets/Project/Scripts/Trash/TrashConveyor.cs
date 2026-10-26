@@ -19,6 +19,45 @@ public class TrashConveyor : MonoBehaviour
     private readonly Dictionary<Rigidbody, float> _trash = new();
     private readonly HashSet<Rigidbody> _ignoredTrash = new();
 
+    #region AnimatedConveyor
+    [Tooltip("Conveyor which requires playing animation")]
+    [SerializeField] GameObject ConveyorObject;
+    private int spriteColumn = 2;
+    private int spriteRow = 2;
+    private float framesPerSeconds = 40f;
+
+    private Material material;
+
+    void Start()
+    {
+        if (ConveyorObject)
+        {
+            material = ConveyorObject.GetComponent<Renderer>().material;
+        }
+    }
+
+    void Update()
+    {
+        if (material)
+        {
+            int index = (int)(Time.time * framesPerSeconds);
+            int totalFrames = spriteColumn * spriteRow;
+
+            index = (totalFrames - 1) - (index % totalFrames);
+
+            Vector2 size = new Vector2(1f / spriteColumn, 1f / spriteRow);
+
+            int uIndex = index % spriteColumn;
+            int vIndex = index / spriteColumn;
+
+            Vector2 offset = new Vector2(uIndex * size.x, 1f - size.y - vIndex * size.y);
+
+            material.SetTextureScale("_BaseMap", size);
+            material.SetTextureOffset("_BaseMap", offset);
+        }
+    }
+    #endregion
+
     void OnEnable()
     {
         if (PlayerManager.Instance != null)
@@ -97,4 +136,5 @@ public class TrashConveyor : MonoBehaviour
         if (PlayerManager.Instance != null)
             PlayerManager.Instance.Arm.Wrist.OnTrashGrabbed += ManageIgnoredTrash;
     }
+
 }

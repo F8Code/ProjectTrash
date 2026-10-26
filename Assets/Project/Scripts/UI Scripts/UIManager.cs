@@ -49,6 +49,18 @@ public class UIManager : MonoBehaviour
         Debug.Log($"<color=green>[UIManager] Initialized {panelDictionary.Count} panels</color>");
     }
 
+    public void RegisterPanel(UIPanel panel)
+    {
+        if (panel == null || panel.panelObject == null)
+            return;
+
+        panel.Initialize();
+        if (!string.IsNullOrEmpty(panel.panelName))
+            panelDictionary[panel.panelName] = panel;
+        if (!panels.Contains(panel))
+            panels.Add(panel);
+    }
+
     /// <summary>
     /// Show a panel by name with animation
     /// </summary>
@@ -56,6 +68,8 @@ public class UIManager : MonoBehaviour
     {
         if (panelDictionary.TryGetValue(panelName, out UIPanel panel))
             ShowPanel(panel);
+        else
+            Debug.LogWarning($"[UIManager] Panel not found: {panelName}");
     }
 
     /// <summary>
@@ -86,6 +100,8 @@ public class UIManager : MonoBehaviour
         // Enable the Canvas (not GameObject)
         panel.SetActive(true);
         currentPanel = panel;
+        MenuUiBootstrap.FixMenuHoverIcons();
+        LocalizationManager.Instance?.RefreshAll();
 
         // Play entry sound if enabled
         if (panel.playSound && panel.entrySoundClip != null && AudioManager.Instance != null)
@@ -161,11 +177,11 @@ public class UIManager : MonoBehaviour
                 mixerType: AudioManager.AudioMixerType.SFX);
         }
 
-        if (panel.useAnimation)
+        bool animated = false;
+        if (panel.useAnimation && UITweenAnimator.Instance != null)
         {
             if (panel.animationType == UIPanel.AnimationType.Slide && panel.animatedTransform != null)
             {
-                // Ensure curve is valid
                 AnimationCurve curve = panel.exitCurve;
                 if (curve == null || curve.keys.Length == 0)
                     curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -181,10 +197,10 @@ public class UIManager : MonoBehaviour
                         onComplete?.Invoke();
                     }
                 );
+                animated = true;
             }
             else if (panel.animationType == UIPanel.AnimationType.Fade && panel.canvasGroup != null)
             {
-                // Ensure curve is valid
                 AnimationCurve curve = panel.fadeOutCurve;
                 if (curve == null || curve.keys.Length == 0)
                     curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -199,9 +215,11 @@ public class UIManager : MonoBehaviour
                         onComplete?.Invoke();
                     }
                 );
+                animated = true;
             }
         }
-        else
+
+        if (!animated)
         {
             panel.SetActive(false);
             onComplete?.Invoke();
@@ -240,13 +258,16 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(string sceneName)
     {
-        yield return StartCoroutine(_fadeOutCanvas.FadeIn());
+        if (_fadeOutCanvas != null)
+            yield return StartCoroutine(_fadeOutCanvas.FadeIn());
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
     private IEnumerator LoadSceneCoroutine(int sceneIndex)
     {
-        yield return StartCoroutine(_fadeOutCanvas.FadeIn());
+        if (_fadeOutCanvas != null)
+            yield return StartCoroutine(_fadeOutCanvas.FadeIn());
+        Debug.Log($"<color=yellow>[UIManager] Loading scene index: {sceneIndex}</color>");
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
     

@@ -31,8 +31,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4829005205249356904}
   - {fileID: 4354053271134713866}
+  - {fileID: 4829005205249356904}
   - {fileID: 5789625010329808284}
   - {fileID: 695332152695977970}
   - {fileID: 514435532160573616}
@@ -94,6 +94,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &676622321199956442
 GameObject:

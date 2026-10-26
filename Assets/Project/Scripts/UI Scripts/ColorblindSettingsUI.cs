@@ -11,13 +11,19 @@ public class ColorblindSettingsUI : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_Dropdown colorblindDropdown;
 
-    private void Start() => InitializeDropdown();
+    private void Start()
+    {
+        InitializeDropdown();
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged += InitializeDropdown;
+    }
 
     private void OnDestroy()
     {
-        // Unsubscribe from events
         if (colorblindDropdown != null)
             colorblindDropdown.onValueChanged.RemoveListener(OnDropdownValueChanged);
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.LanguageChanged -= InitializeDropdown;
     }
 
     /// <summary>
@@ -42,14 +48,17 @@ public class ColorblindSettingsUI : MonoBehaviour
         }
 
         // Add options to dropdown
-        colorblindDropdown.AddOptions(new System.Collections.Generic.List<string>(filterNames));
+        var options = new System.Collections.Generic.List<string>();
+        foreach (string filterName in filterNames)
+            options.Add(LocalizationManager.Instance != null ? LocalizationManager.Instance.Get(filterName) : filterName);
+        colorblindDropdown.AddOptions(options);
 
         // Set current value from settings manager
         int currentModeIndex = ColorblindSettingsManager.Instance.CurrentModeIndex;
         colorblindDropdown.value = currentModeIndex;
         colorblindDropdown.RefreshShownValue();
 
-        // Subscribe to value changed event
+        colorblindDropdown.onValueChanged.RemoveListener(OnDropdownValueChanged);
         colorblindDropdown.onValueChanged.AddListener(OnDropdownValueChanged);
 
         Debug.Log($"<color=green>[ColorblindSettingsUI] Dropdown initialized with {filterNames.Length} colorblind filters</color>");

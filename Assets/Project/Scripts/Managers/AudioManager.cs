@@ -1,8 +1,9 @@
-using UnityEngine;
-using UnityEngine.Audio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -19,10 +20,22 @@ public class AudioManager : MonoBehaviour
     [SerializeField, Range(1, 50)] private int _audioSourcePoolInitialCapacity = 10;
     [SerializeField, Range(0f, 1f)] private float _masterVolumeMultiplier = 1f;
     
-    [Header("Audio Mixer Groups")]
     [SerializeField] private AudioMixerGroup _masterMixerGroup;
     [SerializeField] private AudioMixerGroup _musicMixerGroup;
     [SerializeField] private AudioMixerGroup _sfxMixerGroup;
+
+
+    [Header("Ending Timer")]
+    [SerializeField] private AudioSource _endingTimer;
+    [SerializeField, Range(0f, 5f)] private float _fadeDuration = 2f;
+    [Tooltip("For time based gamemode")]
+    [SerializeField, Range(0f, 10f)] private float _endOnTime = 7f;
+    [Tooltip("For mistake based gamemode")]
+    [SerializeField, Range(1, 3)] private uint _endOnMistakes = 2;
+
+    private bool warningPlaying = false;
+    private Coroutine fadeCoroutine;
+
 
     private AudioPlaybackOrchestrator _orchestrator;
     private IAudioSourcePoolStrategy _poolStrategy;
@@ -91,6 +104,75 @@ public class AudioManager : MonoBehaviour
             _ => _sfxMixerGroup
         };
     }
+
+    #region Ending Timer
+    public void UpdateEndingTimer(float timeRemaining)
+    {
+        if (timeRemaining <= _endOnTime && !warningPlaying)
+        {
+            warningPlaying = true;
+
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+
+            _endingTimer.volume = 0f;
+            _endingTimer.Play();
+
+            fadeCoroutine = StartCoroutine(FadeAudio(1f));
+        }
+        else if (timeRemaining > _endOnTime && warningPlaying)
+        {
+            warningPlaying = false;
+
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+
+            fadeCoroutine = StartCoroutine(FadeOutAndStop());
+        }
+    }
+
+    public void UpdateEndingTimer(uint mistakesRemaining)
+    {
+        if (mistakesRemaining <= _endOnMistakes && !warningPlaying)
+        {
+            warningPlaying = true;
+
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+
+            _endingTimer.volume = 0f;
+            _endingTimer.Play();
+
+            fadeCoroutine = StartCoroutine(FadeAudio(1f));
+        }
+    }
+
+    public void StopEndingTimer()
+    {
+        StartCoroutine(FadeOutAndStop());
+    }
+
+    IEnumerator FadeAudio(float targetVolume)
+    {
+        float startVolume = _endingTimer.volume;
+        float elapsed = 0f;
+
+        while (elapsed < _fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            _endingTimer.volume = Mathf.Lerp(startVolume, targetVolume, elapsed / _fadeDuration);
+            yield return null;
+        }
+
+        _endingTimer.volume = targetVolume;
+    }
+
+    IEnumerator FadeOutAndStop()
+    {
+        yield return FadeAudio(0f);
+        _endingTimer.Stop();
+    }
+    #endregion
 
     private void OnDestroy()
     {

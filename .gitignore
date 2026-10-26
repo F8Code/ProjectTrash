@@ -99,3 +99,14 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 .fake
+/1.3Build
+
+# SteamPipe / SteamCMD (downloaded locally; scripts are kept)
+/Steamworks/ContentBuilder/builder/
+/Steamworks/ContentBuilder/content/
+/Steamworks/ContentBuilder/output/
+/Steamworks/steamcmd.zip
+/Steamworks/steamworks_sdk.zip
+/1.3release
+/1.3.2
+/1.3.3

@@ -17,8 +17,10 @@ public static class GameConstants
     public static class Scene
     {
         public const string Bootstrapper = "0- Bootstrapper";
+        public const string Intro = "0- Intro";
         public const string MainMenu = "1- MainMenu";
         public const string Game = "2- GamePlay";
+        public const string GameTimeBased = "4- GamePlayTimeBased";
     }
 
     public static class AudioMixer
@@ -33,5 +35,6 @@ public static class GameConstants
         public const string GameOverPanel = "GameOverPanel_Canvas";
         public const string LeaderboardPanel = "Leaderboard_Canvas";
         public const string PauseMenu = "UICanvas_PauseMenu";
+        public const string Achievements = "UICanvas_Achievements";
     }
 }

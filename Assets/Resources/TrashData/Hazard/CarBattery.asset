@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Car Battery
   Type: 4
   Mesh: {fileID: -1148737532897001896, guid: b7b7e489ed0b51545a9b7ab218512f18, type: 3}
-  Material: {fileID: 2100000, guid: aaa3fe3fe135caa449ed274fc0c01e93, type: 2}
+  Material: {fileID: 2100000, guid: 2c3427ad0d79f8e4f8c071476237b013, type: 2}
   ColliderPrefab: {fileID: 3168955095813108849, guid: 814e960c8076c954cb15412df6fe5e91, type: 3}
   PhysicsMaterial: {fileID: 13400000, guid: c9c816e59b79c6f409dd5c2c7e08e3ff, type: 2}
   RigidBodyMass: 5

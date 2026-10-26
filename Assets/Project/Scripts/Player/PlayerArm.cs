@@ -72,6 +72,7 @@ public class PlayerArm : MonoBehaviour
     [SerializeField, Range(0.5f, 2f)] float _trashDetectionHeightMultiplier = 1f;
 
     public PlayerWrist Wrist => _wrist;
+    public Vector3 PlayAreaOrigin => _circleSliceCenter != null ? _circleSliceCenter.position : transform.position;
 
     Quaternion _baseElbowRotation;
     Quaternion _baseWristRotation;
@@ -80,6 +81,8 @@ public class PlayerArm : MonoBehaviour
     float _currentCameraY;
 
     float _armSpeedDebuf = 1f;
+    public float ArmSpeedDebuf => _armSpeedDebuf;
+    public bool IsGrabLiftMoving { get; private set; }
     public void SetArmSpeedDebuf(float debuf) => _armSpeedDebuf = debuf;
 
     void Awake()
@@ -178,8 +181,10 @@ public class PlayerArm : MonoBehaviour
     void SetHandHeightAndGrab()
     {
         bool isTryingToGrab = InputManager.Instance.PlayerActions.Grab.ReadValue<float>() == 1f;
+        bool loweringHand = isTryingToGrab && !_wrist.IsGrabbing;
+        _wrist.TickPalmTelekinesis(loweringHand);
 
-        bool shouldWristGrab = isTryingToGrab && (_wrist.IsGrabbing || TrashInProximity());
+        bool shouldWristGrab = isTryingToGrab && (_wrist.IsGrabbing || TrashInProximity() || _wrist.IsPalmTelekinesisActive);
         _wrist.ShouldGrab(shouldWristGrab);
 
         if(shouldWristGrab && _wrist.IsTouching && !_wrist.IsGrabbing)
@@ -189,7 +194,8 @@ public class PlayerArm : MonoBehaviour
         float targetLiftAngle = shouldBeLifted ? (_wrist.IsGrabbing ? _grabbingHandLiftDegrees : _emptyHandLiftDegrees) : 0f;
 
         _currentLiftDegrees = Mathf.MoveTowards(_currentLiftDegrees, targetLiftAngle, _armDegreesPerSecond * Time.deltaTime);
-        _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z); 
+        _elbowJoint.localRotation = Quaternion.Euler(_currentLiftDegrees, _elbowJoint.localEulerAngles.y, _elbowJoint.localEulerAngles.z);
+        IsGrabLiftMoving = _wrist.IsGrabbing && Mathf.Abs(_currentLiftDegrees - targetLiftAngle) > 0.05f;
     }
 
     bool TrashInProximity()

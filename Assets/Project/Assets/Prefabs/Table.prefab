@@ -240,6 +240,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2179905756270797508
 BoxCollider:
@@ -314,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5214063826714354847}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -422,6 +423,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &5989551452488434431
 BoxCollider:
@@ -592,6 +594,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4483706124559793140
 BoxCollider:
@@ -825,6 +828,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1817427291670995224
 BoxCollider:
@@ -961,41 +965,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8321719248620677015}
     - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _circleSliceAngle
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: _circleSliceCenter
       value: 
       objectReference: {fileID: 5660109428800761918}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _armMovementStrength
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _circleSliceMaxRadius
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _circleSliceMinRadius
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _cameraMovementStrength
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _circleSliceYRotationDegrees
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _armSidewaysRotationRangeDegrees.x
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720570375213784136, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
-      propertyPath: _armSidewaysRotationRangeDegrees.y
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 3296429521139650845, guid: a9d339f1d156c524c9fc21282b59287f, type: 3}
       propertyPath: m_Name
       value: Arm
