@@ -10,6 +10,14 @@ public class AchievementDefinition
     public string Title;
     public string Description;
     public Sprite Icon;
+    public Sprite LockedIcon;
+
+    public Sprite GetDisplayIcon(bool unlocked)
+    {
+        if (unlocked)
+            return Icon != null ? Icon : LockedIcon;
+        return LockedIcon != null ? LockedIcon : Icon;
+    }
 }
 
 [Serializable]
@@ -22,6 +30,7 @@ public class AchievementSaveData
 public class AchievementManager : MonoBehaviour
 {
     public const string BeatTrashbubu = "beat_trashbubu";
+    public const int BeatTrashbubuScore = 2001;
     public const string StreakMaster = "streak_master";
     public const string TrashTheTrashbubu = "trash_the_trashbubu";
     public const string FlawlessShift = "flawless_shift";
@@ -112,7 +121,7 @@ public class AchievementManager : MonoBehaviour
     {
         if (delta >= 0)
         {
-            if (totalScore > 999)
+            if (totalScore > BeatTrashbubuScore)
                 Unlock(BeatTrashbubu);
             if (streak >= 30)
                 Unlock(StreakMaster);
@@ -149,7 +158,7 @@ public class AchievementManager : MonoBehaviour
             return;
 
         int totalScore = GameManager.Instance.ScoreSystem.Score + (int)GameManager.Instance.ScoreSystem.ScoreCurrentlyMultiplied;
-        if (totalScore > 999)
+        if (totalScore > BeatTrashbubuScore)
             Unlock(BeatTrashbubu);
 
         TryUnlockProfessional();
@@ -215,42 +224,54 @@ public class AchievementManager : MonoBehaviour
     void BuildDefinitions()
     {
         _definitions.Clear();
-        _definitions.Add(new AchievementDefinition
+        _definitions.Add(CreateDefinition(BeatTrashbubu, "Beat Trashbubu", "Score more than 2001 points in one run."));
+        _definitions.Add(CreateDefinition(StreakMaster, "Streak Master", "Sort 30 items correctly in a row."));
+        _definitions.Add(CreateDefinition(TrashTheTrashbubu, "Trash the bubu", "Throw a Trashbubu into a Hazardous bin."));
+        _definitions.Add(CreateDefinition(FlawlessShift, "Flawless Shift", "Get a 20-item streak in Play vs Mistakes."));
+        _definitions.Add(CreateDefinition(Timeless, "Timeless", "Survive more than 2 minutes in Play vs Time."));
+        _definitions.Add(CreateDefinition(TheProfessional, "The Professional", "In one run, sort every trash item into the correct bin at least once."));
+    }
+
+    static AchievementDefinition CreateDefinition(string id, string title, string description)
+    {
+        return new AchievementDefinition
         {
-            Id = BeatTrashbubu,
-            Title = "Beat Trashbubu",
-            Description = "Score more than 999 points in one run."
-        });
-        _definitions.Add(new AchievementDefinition
+            Id = id,
+            Title = title,
+            Description = description,
+            Icon = LoadSprite($"Achievements/{id}"),
+            LockedIcon = LoadSprite($"Achievements/{id}_locked")
+        };
+    }
+
+    static Sprite LoadSprite(string path)
+    {
+        Sprite[] sprites = Resources.LoadAll<Sprite>(path);
+        if (sprites != null)
         {
-            Id = StreakMaster,
-            Title = "Streak Master",
-            Description = "Sort 30 items correctly in a row."
-        });
-        _definitions.Add(new AchievementDefinition
-        {
-            Id = TrashTheTrashbubu,
-            Title = "Trash the bubu",
-            Description = "Throw a Trashbubu into a Hazardous bin."
-        });
-        _definitions.Add(new AchievementDefinition
-        {
-            Id = FlawlessShift,
-            Title = "Flawless Shift",
-            Description = "Get a 20-item streak in Play vs Mistakes."
-        });
-        _definitions.Add(new AchievementDefinition
-        {
-            Id = Timeless,
-            Title = "Timeless",
-            Description = "Survive more than 2 minutes in Play vs Time."
-        });
-        _definitions.Add(new AchievementDefinition
-        {
-            Id = TheProfessional,
-            Title = "The Professional",
-            Description = "In one run, sort every trash item into the correct bin at least once."
-        });
+            foreach (Sprite sprite in sprites)
+            {
+                if (sprite != null && sprite.name == System.IO.Path.GetFileName(path))
+                    return sprite;
+            }
+
+            if (sprites.Length > 0 && sprites[0] != null)
+                return sprites[0];
+        }
+
+        Sprite loaded = Resources.Load<Sprite>(path);
+        if (loaded != null)
+            return loaded;
+
+        Texture2D texture = Resources.Load<Texture2D>(path);
+        if (texture == null || texture.width < 2 || texture.height < 2)
+            return null;
+
+        return Sprite.Create(
+            texture,
+            new Rect(0f, 0f, texture.width, texture.height),
+            new Vector2(0.5f, 0.5f),
+            100f);
     }
 
     void Load()

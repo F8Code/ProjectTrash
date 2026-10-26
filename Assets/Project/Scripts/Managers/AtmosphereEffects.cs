@@ -24,8 +24,12 @@ public class AtmosphereEffects : MonoBehaviour
 
     static AtmosphereEffects _instance;
 
+    static readonly int HandColorId = Shader.PropertyToID("_Color");
+
     readonly List<Light> _sceneLights = new();
     readonly Dictionary<Light, float> _lightIntensities = new();
+    readonly MaterialPropertyBlock _handBlock = new();
+    Renderer[] _handRenderers;
 
     public AudioClip _lightClip; 
     public AudioClip _lightsClip; 
@@ -100,6 +104,7 @@ public class AtmosphereEffects : MonoBehaviour
             _instance = null;
 
         RestoreLights();
+        RestoreHand();
         ClearDustClouds();
         if (_camera != null)
             _camera.position -= _appliedShake;
@@ -332,6 +337,12 @@ public class AtmosphereEffects : MonoBehaviour
                     float flickered = on ? original * Mathf.Lerp(0.15f, 1.15f, noise) : 0f;
                     light.intensity = Mathf.Lerp(original, flickered, weight);
                 }
+
+                // Hand uses an unlit cell shader, so scene light intensity never reaches it.
+                float handNoise = Mathf.PerlinNoise(seed, Time.time * 14f);
+                bool handOn = handNoise > 0.38f;
+                float handMul = handOn ? Mathf.Lerp(0.15f, 1.15f, handNoise) : 0.08f;
+                ApplyHandFlicker(Mathf.Lerp(1f, handMul, weight));
             }
 
             yield return null;
@@ -339,6 +350,7 @@ public class AtmosphereEffects : MonoBehaviour
 
         SetSfxWeight(0f);
         RestoreLights(targets);
+        RestoreHand();
     }
 
     IEnumerator Shake(float amplitude, float duration, float sfxVol)
@@ -594,6 +606,44 @@ public class AtmosphereEffects : MonoBehaviour
             if (light != null && _lightIntensities.TryGetValue(light, out float original))
                 light.intensity = original;
         }
+    }
+
+    void CacheHandRenderers()
+    {
+        if (_handRenderers != null && _handRenderers.Length > 0 && _handRenderers[0] != null)
+            return;
+
+        PlayerArm arm = PlayerManager.Instance != null
+            ? PlayerManager.Instance.Arm
+            : FindFirstObjectByType<PlayerArm>();
+        if (arm == null)
+            return;
+
+        _handRenderers = arm.GetComponentsInChildren<Renderer>(true);
+    }
+
+    void ApplyHandFlicker(float multiplier)
+    {
+        CacheHandRenderers();
+        if (_handRenderers == null)
+            return;
+
+        Color color = Color.white * Mathf.Clamp(multiplier, 0.05f, 1.15f);
+        color.a = 1f;
+        foreach (Renderer renderer in _handRenderers)
+        {
+            if (renderer == null)
+                continue;
+
+            renderer.GetPropertyBlock(_handBlock);
+            _handBlock.SetColor(HandColorId, color);
+            renderer.SetPropertyBlock(_handBlock);
+        }
+    }
+
+    void RestoreHand()
+    {
+        ApplyHandFlicker(1f);
     }
 
     bool TryGetCamera(out Transform camera)

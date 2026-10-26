@@ -1,0 +1,12 @@
+"AppBuild"
+{
+	"AppID" "4798760"
+	"Desc" "update1.3 - Chinese, better grabbing, hazards, and more"
+	"SetLive" "update1.3"
+	"ContentRoot" "..\\content\\windows\\"
+	"BuildOutput" "..\\output\\"
+	"Depots"
+	{
+		"4798761" "depot_build_4798761.vdf"
+	}
+}

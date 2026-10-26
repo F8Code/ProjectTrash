@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 [InitializeOnLoad]
@@ -49,7 +50,7 @@ static class SteamworksDefine
         if (!Directory.Exists(cache))
             return false;
 
-        foreach (string directory in Directory.GetDirectories(cache, "com.rlabrecque.steamworks.net@*"))
+        foreach (string directory in Directory.GetDirectories(cache, "com.rlabrecque.steamworks.net*"))
         {
             if (Directory.Exists(directory))
                 return true;
@@ -65,6 +66,30 @@ static class SteamworksDefine
 
         string path = Path.Combine(Directory.GetParent(Application.dataPath)!.FullName, "steam_appid.txt");
         File.WriteAllText(path, SteamAppId.Value.ToString());
+    }
+}
+
+class SteamAppIdBuildCopy : IPostprocessBuildWithReport
+{
+    public int callbackOrder => 0;
+
+    public void OnPostprocessBuild(BuildReport report)
+    {
+        if (SteamAppId.Value == 0)
+            return;
+
+        BuildTarget target = report.summary.platform;
+        if (target != BuildTarget.StandaloneWindows &&
+            target != BuildTarget.StandaloneWindows64 &&
+            target != BuildTarget.StandaloneLinux64 &&
+            target != BuildTarget.StandaloneOSX)
+            return;
+
+        string dir = Path.GetDirectoryName(report.summary.outputPath);
+        if (string.IsNullOrEmpty(dir))
+            return;
+
+        File.WriteAllText(Path.Combine(dir, "steam_appid.txt"), SteamAppId.Value.ToString());
     }
 }
 #endif

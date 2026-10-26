@@ -1,0 +1,16 @@
+"DepotBuild"
+{
+	"DepotID" "4798761"
+	"FileMapping"
+	{
+		"LocalPath" "*"
+		"DepotPath" "."
+		"recursive" "1"
+	}
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "*.mdb"
+	"FileExclusion" "*.zip"
+	"FileExclusion" "*_BurstDebugInformation_DoNotShip*"
+	"FileExclusion" "*_BackUpThisFolder_ButDontShipItWithYourGame*"
+	"FileExclusion" "DoNotShip*"
+}

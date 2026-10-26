@@ -1,15 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SteamAchievements : MonoBehaviour
 {
     static SteamAchievements _instance;
     bool _initialized;
+    bool _needStore;
+    float _storeRetryAt;
+    readonly HashSet<string> _pendingUnlocks = new();
 
 #if STEAMWORKS_NET
-    Steamworks.Callback<Steamworks.UserStatsReceived_t> _statsReceived;
+    Steamworks.Callback<Steamworks.UserStatsStored_t> _statsStored;
 #endif
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Bootstrap()
     {
         if (_instance != null)
@@ -38,8 +42,12 @@ public class SteamAchievements : MonoBehaviour
     void Update()
     {
 #if STEAMWORKS_NET
-        if (_initialized)
-            Steamworks.SteamAPI.RunCallbacks();
+        if (!_initialized)
+            return;
+
+        Steamworks.SteamAPI.RunCallbacks();
+        if (_needStore && Time.unscaledTime >= _storeRetryAt)
+            TryStoreStats();
 #endif
     }
 
@@ -66,11 +74,7 @@ public class SteamAchievements : MonoBehaviour
         if (_instance == null || manager == null)
             return;
 
-        foreach (AchievementDefinition definition in manager.Definitions)
-        {
-            if (manager.IsUnlocked(definition.Id))
-                _instance.UnlockInternal(definition.Id);
-        }
+        _instance.SyncWith(manager);
     }
 
     void TryInitialize()
@@ -97,37 +101,82 @@ public class SteamAchievements : MonoBehaviour
         }
 
         if (!_initialized)
+        {
+            Debug.LogWarning("[SteamAchievements] Steam is not running or App ID 4798760 could not initialize.");
             return;
+        }
 
-        _statsReceived = Steamworks.Callback<Steamworks.UserStatsReceived_t>.Create(OnUserStatsReceived);
-        //Steamworks.SteamUserStats.RequestCurrentStats();
+        _statsStored = Steamworks.Callback<Steamworks.UserStatsStored_t>.Create(OnUserStatsStored);
+        SyncWith(AchievementManager.Instance);
+        FlushPending();
 #endif
     }
 
     void UnlockInternal(string id)
     {
+        _pendingUnlocks.Add(id);
+
 #if STEAMWORKS_NET
         if (!_initialized)
             return;
 
-        Steamworks.SteamUserStats.SetAchievement(id);
-        Steamworks.SteamUserStats.StoreStats();
+        if (!Steamworks.SteamUserStats.SetAchievement(id))
+            Debug.LogWarning($"[SteamAchievements] SetAchievement failed for '{id}'.");
+
+        TryStoreStats();
 #endif
     }
 
-#if STEAMWORKS_NET
-    void OnUserStatsReceived(Steamworks.UserStatsReceived_t data)
+    void SyncWith(AchievementManager manager)
     {
-        if (AchievementManager.Instance == null)
+        if (manager == null)
             return;
 
-        foreach (AchievementDefinition definition in AchievementManager.Instance.Definitions)
+#if STEAMWORKS_NET
+        if (_initialized)
         {
-            if (Steamworks.SteamUserStats.GetAchievement(definition.Id, out bool achieved) && achieved)
-                AchievementManager.Instance.ImportUnlocked(definition.Id);
-            else if (AchievementManager.Instance.IsUnlocked(definition.Id))
+            foreach (AchievementDefinition definition in manager.Definitions)
+            {
+                if (Steamworks.SteamUserStats.GetAchievement(definition.Id, out bool achieved) && achieved)
+                    manager.ImportUnlocked(definition.Id);
+            }
+        }
+#endif
+
+        foreach (AchievementDefinition definition in manager.Definitions)
+        {
+            if (manager.IsUnlocked(definition.Id))
                 UnlockInternal(definition.Id);
         }
+    }
+
+    void FlushPending()
+    {
+        if (_pendingUnlocks.Count == 0)
+            return;
+
+        foreach (string id in new List<string>(_pendingUnlocks))
+            UnlockInternal(id);
+    }
+
+#if STEAMWORKS_NET
+    void TryStoreStats()
+    {
+        _needStore = !Steamworks.SteamUserStats.StoreStats();
+        _storeRetryAt = Time.unscaledTime + 2f;
+    }
+
+    void OnUserStatsStored(Steamworks.UserStatsStored_t data)
+    {
+        if (data.m_eResult == Steamworks.EResult.k_EResultOK)
+        {
+            _needStore = false;
+            return;
+        }
+
+        _needStore = true;
+        _storeRetryAt = Time.unscaledTime + 2f;
+        Debug.LogWarning($"[SteamAchievements] StoreStats result {data.m_eResult}");
     }
 #endif
 }

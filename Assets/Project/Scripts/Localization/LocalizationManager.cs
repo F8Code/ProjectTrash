@@ -22,6 +22,7 @@ public class LocalizationManager : MonoBehaviour
     readonly Dictionary<int, Vector3> _originalFontSizes = new();
     readonly Dictionary<int, string[]> _dropdownSources = new();
     TMP_FontAsset _chineseFont;
+    TMP_FontAsset _englishFont;
     const float TitleFontScale = 0.55f;
     const float MenuFontScale = 0.8f;
     public string CurrentLanguage { get; private set; } = EnglishCode;
@@ -188,7 +189,7 @@ public class LocalizationManager : MonoBehaviour
 
     public void RefreshAll()
     {
-        EnsureChineseFont();
+        EnsureFonts();
 
         TMP_Text[] labels = FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (TMP_Text label in labels)
@@ -216,6 +217,9 @@ public class LocalizationManager : MonoBehaviour
         if (worldSpace)
             return;
 
+        if (IsAchievementCardLabel(label))
+            return;
+
         float scale = sizes.x >= 120f ? TitleFontScale : MenuFontScale;
         if (!IsChinese)
             scale *= sizes.x >= 120f ? 1.2f : 1.3f;
@@ -232,23 +236,58 @@ public class LocalizationManager : MonoBehaviour
         if (label == null)
             return;
 
-        int id = label.GetInstanceID();
-        if (!_originalFonts.ContainsKey(id) && label.font != null && label.font != _chineseFont)
-            _originalFonts[id] = label.font;
-
+        EnsureFonts();
+        CaptureOriginalFont(label);
         ApplyFontScale(label);
 
-        bool needsCjkFont = _chineseFont != null && (IsChinese || IsLanguageToggle(label));
-        if (needsCjkFont)
-        {
-            label.font = _chineseFont;
-            if (!string.IsNullOrEmpty(label.text))
-                _chineseFont.TryAddCharacters(label.text);
-        }
-        else if (_originalFonts.TryGetValue(id, out TMP_FontAsset original) && original != null)
-        {
-            label.font = original;
-        }
+        bool useChinese = _chineseFont != null && (ContainsCjk(label.text) || (IsChinese && !IsLanguageToggle(label)));
+        TMP_FontAsset target = useChinese ? _chineseFont : GetEnglishFont(label);
+        if (target == null)
+            return;
+
+        label.font = target;
+        if (target.material != null)
+            label.fontSharedMaterial = target.material;
+
+        if (useChinese && !string.IsNullOrEmpty(label.text))
+            _chineseFont.TryAddCharacters(label.text);
+    }
+
+    void CaptureOriginalFont(TMP_Text label)
+    {
+        int id = label.GetInstanceID();
+        if (_originalFonts.ContainsKey(id))
+            return;
+
+        TMP_FontAsset font = label.font;
+        if (font == null || IsChineseFont(font))
+            return;
+
+        _originalFonts[id] = font;
+    }
+
+    TMP_FontAsset GetEnglishFont(TMP_Text label)
+    {
+        int id = label.GetInstanceID();
+        if (_originalFonts.TryGetValue(id, out TMP_FontAsset original) && original != null && !IsChineseFont(original))
+            return original;
+
+        if (_englishFont != null)
+            return _englishFont;
+
+        return label.font != null && !IsChineseFont(label.font) ? label.font : null;
+    }
+
+    bool IsChineseFont(TMP_FontAsset font)
+    {
+        if (font == null)
+            return false;
+        if (font == _chineseFont)
+            return true;
+
+        string name = font.name;
+        return name.IndexOf("Chinese", StringComparison.OrdinalIgnoreCase) >= 0
+            || name.IndexOf("YaHei", StringComparison.OrdinalIgnoreCase) >= 0;
     }
 
     void ApplyToLabel(TMP_Text label)
@@ -286,26 +325,21 @@ public class LocalizationManager : MonoBehaviour
         if (dropdown == null)
             return;
 
-        int id = dropdown.GetInstanceID();
-        if (!_dropdownSources.ContainsKey(id))
-        {
-            string[] sources = new string[dropdown.options.Count];
-            for (int i = 0; i < dropdown.options.Count; i++)
-                sources[i] = ResolveSource(dropdown.options[i].text);
-            _dropdownSources[id] = sources;
-        }
-
         bool changed = false;
-        string[] originals = _dropdownSources[id];
-        for (int i = 0; i < dropdown.options.Count && i < originals.Length; i++)
+        string[] sources = new string[dropdown.options.Count];
+        for (int i = 0; i < dropdown.options.Count; i++)
         {
-            string translated = Get(originals[i]);
+            string source = ResolveSource(dropdown.options[i].text);
+            sources[i] = source;
+            string translated = Get(source);
             if (translated != dropdown.options[i].text)
             {
                 dropdown.options[i].text = translated;
                 changed = true;
             }
         }
+
+        _dropdownSources[dropdown.GetInstanceID()] = sources;
 
         if (changed)
             dropdown.RefreshShownValue();
@@ -314,6 +348,28 @@ public class LocalizationManager : MonoBehaviour
             ApplyFont(dropdown.captionText);
         if (dropdown.itemText != null)
             ApplyFont(dropdown.itemText);
+    }
+
+    void EnsureFonts()
+    {
+        EnsureEnglishFont();
+        EnsureChineseFont();
+    }
+
+    void EnsureEnglishFont()
+    {
+        if (_englishFont != null)
+            return;
+
+        TMP_FontAsset[] fonts = Resources.FindObjectsOfTypeAll<TMP_FontAsset>();
+        foreach (TMP_FontAsset font in fonts)
+        {
+            if (font != null && font.name.IndexOf("RoadRage", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                _englishFont = font;
+                return;
+            }
+        }
     }
 
     void EnsureChineseFont()
@@ -374,6 +430,19 @@ public class LocalizationManager : MonoBehaviour
             return true;
         Transform parent = label.transform.parent;
         return parent != null && parent.name == "LanguageToggle";
+    }
+
+    static bool IsAchievementCardLabel(TMP_Text label)
+    {
+        Transform current = label != null ? label.transform : null;
+        while (current != null)
+        {
+            if (current.name == "AchievementGrid")
+                return true;
+            current = current.parent;
+        }
+
+        return false;
     }
 
     static bool ContainsCjk(string text)
