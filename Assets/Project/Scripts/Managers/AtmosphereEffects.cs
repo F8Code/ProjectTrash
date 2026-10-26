@@ -463,8 +463,8 @@ public class AtmosphereEffects : MonoBehaviour
         float duration = fog ? Random.Range(6f, 10f) : Random.Range(2.2f, 3.5f);
         float fadeIn = fog ? 1.2f : 0.35f;
         float fadeOut = fog ? 1.4f : 0.7f;
-        float peakAlpha = (fog ? 0.25f : 0.72f) * GasAlphaScale;
-        Color color = fog ? new Color(0.82f, 0.86f, 0.9f) : new Color(0.04f, 0.04f, 0.04f);
+        float peakAlpha = (fog ? 0.25f : 0.52f) * GasAlphaScale;
+        Color color = fog ? new Color(0.82f, 0.86f, 0.9f) : new Color(0.15f, 0.15f, 0.15f);
         int count = fog ? 10 : 12;
         float sizeMin = fog ? 5.5f : 2.8f;
         float sizeMax = fog ? 11f : 5.5f;

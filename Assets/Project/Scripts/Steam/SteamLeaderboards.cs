@@ -5,7 +5,7 @@ using UnityEngine;
 public class SteamLeaderboards : MonoBehaviour
 {
     public const string ApiName = "HighScore";
-    public const int VisibleEntries = 10;
+    public const int VisibleEntries = 15;
 
     public static SteamLeaderboards Instance { get; private set; }
     public static event Action EntriesUpdated;
@@ -183,6 +183,7 @@ public class SteamLeaderboards : MonoBehaviour
 
         _pendingScore = -1;
         Debug.Log($"[SteamLeaderboards] Uploaded score {result.m_nScore}, rank {result.m_nGlobalRankNew}.");
+        DownloadInternal();
     }
 
     void OnScoresDownloaded(Steamworks.LeaderboardScoresDownloaded_t result, bool ioFailure)
@@ -215,7 +216,7 @@ public class SteamLeaderboards : MonoBehaviour
                 playerName = "Player";
             }
 
-            _worldEntries.Add(new LeaderboardEntry(playerName, entry.m_nScore));
+            _worldEntries.Add(new LeaderboardEntry(playerName, entry.m_nScore, rank: entry.m_nGlobalRank));
         }
 
         _status = _worldEntries.Count == 0 ? "No world scores yet" : string.Empty;

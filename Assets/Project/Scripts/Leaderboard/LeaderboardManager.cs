@@ -7,7 +7,8 @@ public class LeaderboardManager : MonoBehaviour
     public static LeaderboardManager Instance { get; private set; }
 
     private const string LEADERBOARD_KEY = "LeaderboardData";
-    private const int MAX_ENTRIES = 10;
+    public const int MaxVisibleEntries = 15;
+    private const int MAX_ENTRIES = MaxVisibleEntries;
 
     private List<LeaderboardEntry> _leaderboardEntries = new();
 
@@ -47,26 +48,27 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds a new entry to the leaderboard
+    /// Inserts a new score at its rank. Existing rows shift down; the lowest drops off the top 10.
     /// </summary>
-    public void AddEntry(string playerName, int score)
+    public LeaderboardEntry AddEntry(string playerName, int score)
     {
         if (string.IsNullOrEmpty(playerName))
             playerName = "Anonymous";
 
         LeaderboardEntry newEntry = new(playerName, score);
-        _leaderboardEntries.Add(newEntry);
+        int insertAt = _leaderboardEntries.FindIndex(e => score > e.Score);
+        if (insertAt < 0)
+            insertAt = _leaderboardEntries.Count;
 
-        // Sort by score descending
-        _leaderboardEntries.Sort();
+        _leaderboardEntries.Insert(insertAt, newEntry);
 
-        // Keep only top MAX_ENTRIES
         if (_leaderboardEntries.Count > MAX_ENTRIES)
-            _leaderboardEntries = _leaderboardEntries.Take(MAX_ENTRIES).ToList();
+            _leaderboardEntries.RemoveRange(MAX_ENTRIES, _leaderboardEntries.Count - MAX_ENTRIES);
 
         SaveLeaderboard();
         SteamLeaderboards.UploadScore(score);
-        Debug.Log($"Leaderboard: Added entry for {playerName} with score {score}");
+        Debug.Log($"Leaderboard: Inserted {playerName} with {score} at rank {insertAt + 1}");
+        return newEntry;
     }
 
     /// <summary>
@@ -90,24 +92,22 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates an existing entry's name (finds by score and old name)
+    /// Renames a saved run in place. Does not remove other rows or re-rank.
     /// </summary>
     public void UpdateEntryName(string oldName, int score, string newName)
     {
         LeaderboardEntry entry = _leaderboardEntries.FirstOrDefault(e =>
-      e.PlayerName == oldName && e.Score == score);
+            e.PlayerName == oldName && e.Score == score);
 
         if (entry != null)
         {
-            // Remove old entry and add new one to maintain sorting
-            _leaderboardEntries.Remove(entry);
-            AddEntry(newName, score);
-            Debug.Log($"Leaderboard: Updated entry from {oldName} to {newName}");
+            entry.PlayerName = newName;
+            SaveLeaderboard();
+            Debug.Log($"Leaderboard: Renamed {oldName} → {newName}");
+            return;
         }
-        else
-        {
-            Debug.LogWarning($"Leaderboard: Entry not found for {oldName} with score {score}");
-        }
+
+        Debug.LogWarning($"Leaderboard: Entry not found for {oldName} with score {score}");
     }
 
     /// <summary>

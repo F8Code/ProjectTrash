@@ -77,9 +77,10 @@ public class LeaderboardUI : MonoBehaviour
     {
         Debug.Log($"<color=cyan>[LeaderboardUI] ShowGameOver called with score: {finalScore}</color>");
 
+        bool newRun = _currentScore != finalScore || !_scoreSaved;
         _currentScore = finalScore;
 
-        if (_currentScore != finalScore || !_scoreSaved)
+        if (newRun)
         {
             _scoreSaved = false;
             _savedEntryName = "";
@@ -192,16 +193,13 @@ public class LeaderboardUI : MonoBehaviour
 
         if (_scoreSaved && !string.IsNullOrEmpty(_savedEntryName))
         {
-            Debug.Log($"<color=yellow>[LeaderboardUI] Updating score: {_savedEntryName} → {playerName}</color>");
+            Debug.Log($"<color=yellow>[LeaderboardUI] Renaming entry: {_savedEntryName} → {playerName}</color>");
 
             if (LeaderboardManager.Instance != null)
             {
-                LeaderboardManager.Instance.RemoveEntry(_savedEntryName, _currentScore);
-                LeaderboardManager.Instance.AddEntry(playerName, _currentScore);
+                LeaderboardManager.Instance.UpdateEntryName(_savedEntryName, _currentScore, playerName);
                 _savedEntryName = playerName;
                 SetPlayerName(playerName);
-
-                Debug.Log($"<color=green>[LeaderboardUI] Score updated successfully!</color>");
             }
         }
         else
@@ -263,20 +261,44 @@ public class LeaderboardUI : MonoBehaviour
         bool hideRows = _showWorld && (SteamLeaderboards.IsDownloading || entries == null || entries.Count == 0);
         if (!hideRows && entries != null)
         {
-            for (int i = 0; i < Mathf.Min(entries.Count, _maxVisibleEntries); i++)
+            int visible = LeaderboardManager.MaxVisibleEntries;
+            FitEntryList();
+            for (int i = 0; i < Mathf.Min(entries.Count, visible); i++)
             {
                 if (_entryPrefab != null && _entriesContainer != null)
                 {
                     GameObject entryObj = Instantiate(_entryPrefab, _entriesContainer);
                     _spawnedEntries.Add(entryObj);
 
+                    if (!entryObj.TryGetComponent(out LayoutElement layoutElement))
+                        layoutElement = entryObj.AddComponent<LayoutElement>();
+                    layoutElement.minHeight = 28f;
+                    layoutElement.preferredHeight = 32f;
+
                     if (entryObj.TryGetComponent<LeaderboardEntryUI>(out var entryUI))
-                        entryUI.SetData(i + 1, entries[i].PlayerName, entries[i].Score);
+                    {
+                        int rank = entries[i].Rank > 0 ? entries[i].Rank : i + 1;
+                        entryUI.SetData(rank, entries[i].PlayerName, entries[i].Score);
+                    }
                 }
             }
         }
 
         Debug.Log($"<color=green>[LeaderboardUI] Spawned {_spawnedEntries.Count} entry objects</color>");
+    }
+
+    void FitEntryList()
+    {
+        if (_entriesContainer == null)
+            return;
+
+        if (_entriesContainer.TryGetComponent(out VerticalLayoutGroup layout))
+        {
+            layout.spacing = 4f;
+            layout.padding = new RectOffset(10, 10, 8, 0);
+            layout.childControlHeight = true;
+            layout.childForceExpandHeight = false;
+        }
     }
 
     void EnsureSourceToggle()
@@ -306,8 +328,8 @@ public class LeaderboardUI : MonoBehaviour
             toggleObject.name = "LeaderboardSourceToggle";
             RectTransform rect = toggleObject.GetComponent<RectTransform>();
             rect.SetParent(panel, false);
-            rect.anchorMin = new Vector2(0.016f, 0.046f);
-            rect.anchorMax = new Vector2(0.22f, 0.114f);
+            rect.anchorMin = new Vector2(0.016f, 0.03f);
+            rect.anchorMax = new Vector2(0.424f, 0.166f);
             rect.pivot = new Vector2(0f, 0f);
             rect.offsetMin = Vector2.zero;
             rect.offsetMax = Vector2.zero;
@@ -335,8 +357,8 @@ public class LeaderboardUI : MonoBehaviour
                 labelRect.offsetMax = Vector2.zero;
                 _sourceToggleLabel.alignment = TextAlignmentOptions.Center;
                 _sourceToggleLabel.enableAutoSizing = true;
-                _sourceToggleLabel.fontSizeMin = 18f;
-                _sourceToggleLabel.fontSizeMax = 40f;
+                _sourceToggleLabel.fontSizeMin = 28f;
+                _sourceToggleLabel.fontSizeMax = 72f;
                 _sourceToggleLabel.enableWordWrapping = false;
                 _sourceToggleLabel.overflowMode = TextOverflowModes.Overflow;
             }

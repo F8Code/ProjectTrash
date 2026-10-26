@@ -1,7 +1,7 @@
 "AppBuild"
 {
 	"AppID" "4798760"
-	"Desc" "update1.3 - Chinese, better grabbing, hazards, and more"
+	"Desc" "1.3.3 - Leaderboard insert, Local/World switch, top 15"
 	"SetLive" "update1.3"
 	"ContentRoot" "..\\content\\windows\\"
 	"BuildOutput" "..\\output\\"
